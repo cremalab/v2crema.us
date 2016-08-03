@@ -1,14 +1,28 @@
+$mango: #fcad2b;
+
 .logo-wrapper {
   width: 100vw;
   height: 50vh; }
 
+
+.mango-btn {
+  width: 253px;
+	height: 48px;
+  font-family: 'Lato';
+	font-size: 14px;
+	font-weight: 900;
+	line-height: 1.4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+	background-color: $mango;
+}
 
 #showcase1 {
   height: 100vh;
   width: 100vw;
   position: relative;
  
-
   h1 {
     color: white;
   }
@@ -23,51 +37,65 @@
 
 
   svg {
-    width: 300vw;
+    width: 280vw;
     position: absolute;
     z-index: -1;
     right: -145%;
   }
   .grid {
-    overflow-x: hidden;
-    overflow-y: auto;
-    perspective: 1px;
+    top: 114px;
+    position: absolute;
     .col {
       width: 50%;
-
+      // background: url('/images/home/enterprise1.png')
       img {
-        width: 50%;
-        position: absolute
+        width: 100%;
+        
+      }
+      .showcase-text {
+        padding: 20px;
       }
     } 
   }
 }
 
 
-.parallax {
-  position: relative;
-  perspective: 1px;
+#showcase2 {
+  margin: 10vw 0;
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-size: 200%;
+  col {
+    width: 50%;
+  }
+  img {
+    width: 100%;
+  }
+  h1 {
+    color: black;
+  }
+  .showcase-text {
+    padding: 25px;
+  }
 }
 
-.parallax .parallax-layer {
-  padding: 100vh 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  border: 1px solid red;
+#showcase3 {
+  position: relative;
+  #internal-gradient{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+  h1 {
+    color: white;
+  }
+  .grid {
+    top: 154px;
+    position: absolute;
+  }
+  col {
+    width: 50%;
+  }
+  img {
+    width: 100%;
+  }
 }
 
-.base {
-  transform: translateZ(0);
-}
-
-.back {
-  transform: translateZ(-1px);
-}

@@ -3,18 +3,40 @@ block styles
   link(rel='stylesheet', href='/stylesheets/build/modules/home.css')
 
 block content
-  .parallax
-    .logo-wrapper
-      include ./partials/header-logo.jade  
-      
-    #showcase1
-      .cover-video
-      include ./partials/enterprise-svg.jade
-      .grid.parallax-layer.back
-        .col#parallaxCol1
-          img(src="/images/home/m-l-mock-2@2x.png" id="parallax-img-1").parallax-layer.base
-        .col
-          .showcase-text
-            h1 Helping enterprises innovate
-            p Crema works outside the enterprise machine to move fast, prototype new ideas, and test new product opportunities for brands looking to innovate within their industry. Having a website or app is no longer a differentiator.  Companies must solve problems and create value to stand out in a crowded digital world.  Crema ideates, builds, and tests new ideas to find product-market fit. 
+  .logo-wrapper
+    include ./partials/header-logo.jade  
+    
+  #showcase1
+    .cover-video
+    include ./partials/enterprise-svg.jade
+    .grid
+      .col
+        img(src="/images/home/1.png")
+      .col
+        .showcase-text
+          h1 Helping enterprises innovate
+          p Crema works outside the enterprise machine to move fast, prototype new ideas, and test new product opportunities for brands looking to innovate within their industry. Having a website or app is no longer a differentiator.  Companies must solve problems and create value to stand out in a crowded digital world.  Crema ideates, builds, and tests new ideas to find product-market fit.
+          button.mango-btn  See our enterprise work
 
+  #showcase2
+    .grid
+      .col
+        .showcase-text
+          h1 Launching new digital ventures
+          p Navigating the startup waters takes planning, execution, and guts. Our strategy led teams connects ideation, prototyping, funding, and product releases; to marketing, growth, and customer development. All in an effort to position new business for potentially rapid growth.  
+          button.mango-btn  See our venture work
+      .col
+        img(src="/images/home/2.png")  
+
+
+  #showcase3
+    img(src='/images/home/bitmap.png', id="internal-gradient")
+    .grid
+      .col
+        img(src="/images/home/3.png")
+      .col
+        .showcase-text
+          h1 Launching new digital ventures
+          p Navigating the startup waters takes planning, execution, and guts. Our strategy led teams connects ideation, prototyping, funding, and product releases; to marketing, growth, and customer development. All in an effort to position new business for potentially rapid growth.  
+          button.mango-btn  See our venture work
+        

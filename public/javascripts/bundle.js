@@ -52,7 +52,14 @@
 /* 1 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
+
+	var waypoint = new Waypoint({
+	  element: document.getElementById('showcase1'),
+	  handler: function handler(direction) {
+	    console.log('Scrolled to waypoint!');
+	  }
+	});
 
 /***/ }
 /******/ ]);

@@ -2,6 +2,18 @@
   width: 100vw;
   height: 50vh; }
 
+.mango-btn {
+  width: 253px;
+  height: 48px;
+  font-family: 'Lato';
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #fcad2b; }
+
 #showcase1 {
   height: 100vh;
   width: 100vw;
@@ -15,40 +27,44 @@
     position: absolute;
     background-color: #fff; }
   #showcase1 svg {
-    width: 300vw;
+    width: 280vw;
     position: absolute;
     z-index: -1;
     right: -145%; }
   #showcase1 .grid {
-    overflow-x: hidden;
-    overflow-y: auto;
-    perspective: 1px; }
+    top: 114px;
+    position: absolute; }
     #showcase1 .grid .col {
       width: 50%; }
       #showcase1 .grid .col img {
-        width: 50%;
-        position: absolute; }
+        width: 100%; }
+      #showcase1 .grid .col .showcase-text {
+        padding: 20px; }
 
-.parallax {
-  position: relative;
-  perspective: 1px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-size: 200%; }
+#showcase2 {
+  margin: 10vw 0;
+  height: 100vh; }
+  #showcase2 col {
+    width: 50%; }
+  #showcase2 img {
+    width: 100%; }
+  #showcase2 h1 {
+    color: black; }
+  #showcase2 .showcase-text {
+    padding: 25px; }
 
-.parallax .parallax-layer {
-  padding: 100vh 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  border: 1px solid red; }
-
-.base {
-  transform: translateZ(0); }
-
-.back {
-  transform: translateZ(-1px); }
+#showcase3 {
+  position: relative; }
+  #showcase3 #internal-gradient {
+    position: absolute;
+    width: 100%;
+    z-index: -1; }
+  #showcase3 h1 {
+    color: white; }
+  #showcase3 .grid {
+    top: 154px;
+    position: absolute; }
+  #showcase3 col {
+    width: 50%; }
+  #showcase3 img {
+    width: 100%; }
