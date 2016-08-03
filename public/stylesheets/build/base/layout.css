@@ -1,0 +1,19 @@
+body {
+  margin: 0; }
+
+.grid {
+  display: table;
+  table-layout: auto;
+  border-spacing: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%; }
+
+.col {
+  display: table-cell;
+  vertical-align: middle; }
+
+a {
+  color: black;
+  padding: 15px;
+  text-decoration: none; }

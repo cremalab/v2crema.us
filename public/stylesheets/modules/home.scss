@@ -1,0 +1,73 @@
+.logo-wrapper {
+  width: 100vw;
+  height: 50vh; }
+
+
+#showcase1 {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+ 
+
+  h1 {
+    color: white;
+  }
+  
+  .cover-video {
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+  }
+
+
+  svg {
+    width: 300vw;
+    position: absolute;
+    z-index: -1;
+    right: -145%;
+  }
+  .grid {
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+    .col {
+      width: 50%;
+
+      img {
+        width: 50%;
+        position: absolute
+      }
+    } 
+  }
+}
+
+
+.parallax {
+  position: relative;
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 200%;
+}
+
+.parallax .parallax-layer {
+  padding: 100vh 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  border: 1px solid red;
+}
+
+.base {
+  transform: translateZ(0);
+}
+
+.back {
+  transform: translateZ(-1px);
+}
