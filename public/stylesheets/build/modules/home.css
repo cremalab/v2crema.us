@@ -27,27 +27,64 @@
     position: absolute;
     background-color: #fff; }
   #showcase1 svg {
-    width: 280vw;
-    position: absolute;
-    z-index: -1;
-    right: -145%; }
+    z-index: -1; }
+  #showcase1 #brookside-img {
+    width: 57%;
+    top: 30%;
+    left: 50%;
+    z-index: 2; }
+  #showcase1 #cups-img {
+    width: 100%;
+    top: 85%;
+    z-index: 1; }
+  #showcase1 #ML-img {
+    width: 50%; }
   #showcase1 .grid {
     top: 114px;
     position: absolute; }
     #showcase1 .grid .col {
-      width: 50%; }
+      width: 50%;
+      position: relative; }
       #showcase1 .grid .col img {
-        width: 100%; }
+        width: 100%;
+        top: 100px;
+        position: absolute; }
       #showcase1 .grid .col .showcase-text {
-        padding: 20px; }
+        padding: 20px;
+        transform: translateY(8vw);
+        color: white; }
 
 #showcase2 {
   margin: 10vw 0;
   height: 100vh; }
-  #showcase2 col {
+  #showcase2 #tilr-mobile-img {
+    width: 49%;
+    top: 0;
+    right: 0%;
+    z-index: 1; }
+  #showcase2 #tilr-img {
+    width: 100%;
+    top: 65%; }
+  #showcase2 #throttle-img {
     width: 50%; }
+  #showcase2 #neighborly-img {
+    width: 70%;
+    right: 0;
+    top: 80%; }
+  #showcase2 #pc-img {
+    width: 70%;
+    bottom: -75%;
+    right: 25%; }
+  #showcase2 #hiphire-img {
+    width: 50%;
+    top: 100%;
+    right: 0; }
+  #showcase2 .col {
+    width: 50%;
+    position: relative; }
   #showcase2 img {
-    width: 100%; }
+    width: 100%;
+    position: absolute; }
   #showcase2 h1 {
     color: black; }
   #showcase2 .showcase-text {

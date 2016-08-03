@@ -18,6 +18,8 @@ $mango: #fcad2b;
 	background-color: $mango;
 }
 
+
+
 #showcase1 {
   height: 100vh;
   width: 100vw;
@@ -37,23 +39,43 @@ $mango: #fcad2b;
 
 
   svg {
-    width: 280vw;
-    position: absolute;
     z-index: -1;
-    right: -145%;
   }
+
+  #brookside-img {
+   width: 57%;
+    top: 30%;
+    left: 50%;
+    z-index: 2
+  }
+
+  #cups-img {
+    width: 100%;
+    top: 85%;
+    z-index: 1;
+  }
+
+
+  #ML-img {
+    width: 50%
+  }
+
+
   .grid {
     top: 114px;
     position: absolute;
     .col {
       width: 50%;
-      // background: url('/images/home/enterprise1.png')
+      position: relative;
       img {
         width: 100%;
-        
+        top: 100px;
+        position: absolute;
       }
       .showcase-text {
         padding: 20px;
+        transform: translateY(8vw);
+        color: white;
       }
     } 
   }
@@ -63,11 +85,44 @@ $mango: #fcad2b;
 #showcase2 {
   margin: 10vw 0;
   height: 100vh;
-  col {
+
+  #tilr-mobile-img {
+    width: 49%;
+    top: 0;
+    right: 0%;
+    z-index: 1;
+  }
+  #tilr-img {
+    width: 100%;
+    top: 65%;
+  }
+  #throttle-img {
     width: 50%;
+  }
+  #neighborly-img {
+    width: 70%;
+    right: 0;
+    top: 80%;
+  }
+  #pc-img {
+    width: 70%;
+    bottom: -75%;
+    right: 25%;
+  }
+  #hiphire-img {
+    width: 50%;
+    top: 100%;
+    right: 0;
+  }
+
+  .col {
+    width: 50%;
+    position: relative;
   }
   img {
     width: 100%;
+    position: absolute;
+    
   }
   h1 {
     color: black;
