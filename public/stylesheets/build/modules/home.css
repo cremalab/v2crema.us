@@ -69,8 +69,6 @@
     width: 50%;
     top: 94%;
     right: 0; }
-  #showcase2 .grid {
-    border: solid 2px pink; }
   #showcase2 .col {
     width: 50%;
     position: relative; }
@@ -106,7 +104,6 @@
     right: -10%;
     bottom: -30%; }
   #showcase3 .grid {
-    border: solid 2px black;
     height: 85vw; }
   #showcase3 .col {
     width: 50%;

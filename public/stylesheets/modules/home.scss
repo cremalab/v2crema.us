@@ -95,7 +95,6 @@ $SVGHeightWidthRatio: .85;
     right: 0;
   }
   .grid {
-    border: solid 2px pink;
   }
   .col {
     width: 50%;
@@ -146,7 +145,6 @@ $SVGHeightWidthRatio: .85;
   }
 
   .grid {
-    border: solid 2px black;
     height: 100vw * $SVGHeightWidthRatio; 
   }
   .col {
@@ -232,7 +230,7 @@ ul {
   .landing-logos ul {
     display: table;
   }
-  
+
 }
 
 
