@@ -91,6 +91,20 @@
   #showcase3 svg {
     position: absolute;
     z-index: -1; }
+  #showcase3 #score-img {
+    top: 26%; }
+  #showcase3 #plaster-img {
+    width: 75%;
+    bottom: -11%;
+    left: -5%; }
+  #showcase3 #str-plain-img {
+    width: 50%;
+    bottom: -35%;
+    right: 14%; }
+  #showcase3 #str-img {
+    width: 50%;
+    right: -10%;
+    bottom: -30%; }
   #showcase3 .grid {
     border: solid 2px black;
     height: 85vw; }
@@ -105,3 +119,64 @@
   #showcase3 img {
     width: 100%;
     position: absolute; }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden; }
+
+.landing-logos {
+  text-align: center;
+  max-width: 100vw;
+  overflow: scroll; }
+
+.landing-logos ul {
+  margin: 3em auto;
+  text-align: center;
+  display: inline-block;
+  max-width: 100vw; }
+
+.landing-logos ul li {
+  display: inline-block;
+  padding: 1em; }
+
+.landing-logos img {
+  max-width: 135px;
+  max-height: 65px;
+  height: auto; }
+
+.landing-logos .logo {
+  width: 135px;
+  height: 65px;
+  /*background-color: teal;*/
+  margin: 1em;
+  vertical-align: middle; }
+
+.landing-logos .logos {
+  /*animation-name will be inserted here by landingPage.js*/
+  animation-duration: 35s;
+  animation-iteration-count: 3;
+  animation-timing-function: linear; }
+
+.landing-logos ul:hover {
+  animation-play-state: paused; }
+
+@keyframes move {
+  0% {
+    margin-left: 0; }
+  50% {
+    margin-left: -275%; }
+  100% {
+    margin-left: 0; } }
+
+/*sliding usecase divs under earch other*/
+@media screen and (max-width: 500px) {
+  .landing-logos .logos {
+    overflow: scroll; }
+  .landing-logos .logo {
+    margin-left: .11em;
+    margin-right: .11em;
+    display: table-cell;
+    vertical-align: middle; }
+  .landing-logos ul {
+    display: table; } }

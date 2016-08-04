@@ -1,10 +1,10 @@
 extends layout
-block styles
+block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/home.css')
 
 block content
   .logo-wrapper
-    include ./partials/header-logo.jade  
+    include ./partials/home-video-logo.jade  
     
   #showcase1
     .cover-video
@@ -40,8 +40,8 @@ block content
     include ./partials/internal-svg.jade
     .grid
       .col
-        img(src="/images/home/internal/scorebot-mock@2x.png" id="score-img" data-parallax="true" data-speed="0.1" data-direction="up" )
-        img(src="/images/home/internal/plaster-mock@2x.png" id="plaster-img" data-parallax="true" data-speed="0.3" data-direction="up")
+        img(src="/images/home/internal/scorebot-mock@2x.png" id="score-img" data-parallax="true" data-speed="0.06" data-direction="up" )
+        img(src="/images/home/internal/plaster-mock@2x.png" id="plaster-img" data-parallax="true" data-speed="0.06" data-direction="up")
         img(src="/images/home/internal/string-plain@2x.png" id="str-plain-img" data-parallax="true" data-speed="0.2" data-direction="up")
         img(src="/images/home/internal/string-mock@2x.png" id="str-img" data-parallax="true" data-speed="0.2" data-direction="up")
       .col
@@ -50,3 +50,21 @@ block content
           p Navigating the startup waters takes planning, execution, and guts. Our strategy led teams connects ideation, prototyping, funding, and product releases; to marketing, growth, and customer development. All in an effort to position new business for potentially rapid growth.  
           button.mango-btn  SEE OUR INTERNAL WORK
         
+
+  
+  //- displaying comapany logos 
+  //- routes/index.js is reading file names from './public/images/logos/client-logos';
+  //- and exposing them as an array 'logoFileNames' with relative path '/images/logos/client-logos/';
+  .landing-logos#waypoints-logos
+    ul.logos
+      -var ob = logoFileNames
+      -for(var prop in ob)
+        li.logo 
+          img(src='#{ob[prop]}')
+
+
+  include ./partials/footer.jade
+  .post-footer
+    a(href='')
+      img(src='/images/home/see-our-services.png')
+  

@@ -1,0 +1,62 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 35px 0;
+  background-color: $coral;
+  .footer-content{
+    width: 90%;
+    margin: 0 auto;
+  }
+  h1 {
+    color: white;
+    margin-bottom: 5px;
+  }
+  .subh1 { 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    color: white;
+  }
+  hr {
+    border: solid 1px #ffffff;
+    width: 100%;
+    margin-top: 20px;
+  }
+  button {
+    margin: 20px;
+  }
+  .grid {
+    margin-top: 45px;
+  }
+  .address {
+    text-align: left;
+    color: white;
+    .address-head {
+      font-family: 'Spartan', sans-serif;
+      font-size: 13px;
+    
+    }
+    .address-txt {
+      padding: 2px 0;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+    }
+  }
+  .social-wrapper {
+    text-align: right;
+    img {
+      margin: 0 10px;
+
+    }
+  }
+}
+
+.post-footer {
+  text-align: center;
+  width: 100%;
+  padding: 50px 0;
+  img {
+    width: 35%;
+  }
+}
