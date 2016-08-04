@@ -1,34 +1,19 @@
-$mango: #fcad2b;
+$SVGHeightWidthRatio: .85;
+
 
 .logo-wrapper {
   width: 100vw;
-  height: 50vh; }
+  height: 50vh; 
+  }
 
-
-.mango-btn {
-  width: 253px;
-	height: 48px;
-  font-family: 'Lato';
-	font-size: 14px;
-	font-weight: 900;
-	line-height: 1.4;
-  color: white;
-  border: none;
-  border-radius: 5px;
-	background-color: $mango;
-}
-
-
-
+// First block ENTERPRISE
 #showcase1 {
-  height: 100vh;
   width: 100vw;
   position: relative;
  
   h1 {
     color: white;
   }
-  
   .cover-video {
     z-index: -2;
     width: 100%;
@@ -36,34 +21,27 @@ $mango: #fcad2b;
     position: absolute;
     background-color: #fff;
   }
-
-
   svg {
+    position: absolute;
     z-index: -1;
   }
-
   #brookside-img {
    width: 57%;
-    top: 30%;
+    top: 18%;
     left: 50%;
     z-index: 2
   }
-
   #cups-img {
     width: 100%;
-    top: 85%;
+    top: 65%;
     z-index: 1;
   }
-
-
   #ML-img {
-    width: 50%
+    width: 50%;
+    top: 15%;
   }
-
-
   .grid {
-    top: 114px;
-    position: absolute;
+    height: 100vw * $SVGHeightWidthRatio;
     .col {
       width: 50%;
       position: relative;
@@ -73,17 +51,16 @@ $mango: #fcad2b;
         position: absolute;
       }
       .showcase-text {
-        padding: 20px;
         transform: translateY(8vw);
         color: white;
+        padding: 0 10% 0 5%; 
       }
     } 
   }
 }
 
-
+// Second Block Venture
 #showcase2 {
-  margin: 10vw 0;
   height: 100vh;
 
   #tilr-mobile-img {
@@ -97,27 +74,35 @@ $mango: #fcad2b;
     top: 65%;
   }
   #throttle-img {
-    width: 50%;
+    width: 45%;
+    top: 40%;
+    left: -5%;
   }
   #neighborly-img {
-    width: 70%;
+    width: 60%;
     right: 0;
-    top: 80%;
+    top: 75%;
+        z-index: 1;
   }
   #pc-img {
     width: 70%;
-    bottom: -75%;
+    bottom: -50%;
     right: 25%;
   }
   #hiphire-img {
     width: 50%;
-    top: 100%;
+    top: 94%;
     right: 0;
   }
-
+  .grid {
+    border: solid 2px pink;
+  }
   .col {
     width: 50%;
     position: relative;
+  }
+  .showcase-text {
+    padding: 0 5% 0 10%; 
   }
   img {
     width: 100%;
@@ -127,11 +112,9 @@ $mango: #fcad2b;
   h1 {
     color: black;
   }
-  .showcase-text {
-    padding: 25px;
-  }
+  
 }
-
+// Third Block Internal
 #showcase3 {
   position: relative;
   #internal-gradient{
@@ -139,18 +122,41 @@ $mango: #fcad2b;
     width: 100%;
     z-index: -1;
   }
+  svg {
+    position: absolute;
+    z-index: -1;
+  }
+  #score-img {
+
+  }
+  #plaster-img {
+
+  }
+  #str-plain-img {
+
+  }
+  #str-img {
+
+  }
+
+  .grid {
+    border: solid 2px black;
+    height: 100vw * $SVGHeightWidthRatio; 
+  }
+  .col {
+    width: 50%;
+    position: relative;
+  }
+  .showcase-text {
+    padding: 0 10% 0 5%; 
+    color: white;
+  }
   h1 {
     color: white;
   }
-  .grid {
-    top: 154px;
-    position: absolute;
-  }
-  col {
-    width: 50%;
-  }
   img {
     width: 100%;
+    position: absolute;
   }
 }
 

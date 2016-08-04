@@ -2,20 +2,7 @@
   width: 100vw;
   height: 50vh; }
 
-.mango-btn {
-  width: 253px;
-  height: 48px;
-  font-family: 'Lato';
-  font-size: 14px;
-  font-weight: 900;
-  line-height: 1.4;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  background-color: #fcad2b; }
-
 #showcase1 {
-  height: 100vh;
   width: 100vw;
   position: relative; }
   #showcase1 h1 {
@@ -27,21 +14,22 @@
     position: absolute;
     background-color: #fff; }
   #showcase1 svg {
+    position: absolute;
     z-index: -1; }
   #showcase1 #brookside-img {
     width: 57%;
-    top: 30%;
+    top: 18%;
     left: 50%;
     z-index: 2; }
   #showcase1 #cups-img {
     width: 100%;
-    top: 85%;
+    top: 65%;
     z-index: 1; }
   #showcase1 #ML-img {
-    width: 50%; }
+    width: 50%;
+    top: 15%; }
   #showcase1 .grid {
-    top: 114px;
-    position: absolute; }
+    height: 85vw; }
     #showcase1 .grid .col {
       width: 50%;
       position: relative; }
@@ -50,12 +38,11 @@
         top: 100px;
         position: absolute; }
       #showcase1 .grid .col .showcase-text {
-        padding: 20px;
         transform: translateY(8vw);
-        color: white; }
+        color: white;
+        padding: 0 10% 0 5%; }
 
 #showcase2 {
-  margin: 10vw 0;
   height: 100vh; }
   #showcase2 #tilr-mobile-img {
     width: 49%;
@@ -66,29 +53,34 @@
     width: 100%;
     top: 65%; }
   #showcase2 #throttle-img {
-    width: 50%; }
+    width: 45%;
+    top: 40%;
+    left: -5%; }
   #showcase2 #neighborly-img {
-    width: 70%;
+    width: 60%;
     right: 0;
-    top: 80%; }
+    top: 75%;
+    z-index: 1; }
   #showcase2 #pc-img {
     width: 70%;
-    bottom: -75%;
+    bottom: -50%;
     right: 25%; }
   #showcase2 #hiphire-img {
     width: 50%;
-    top: 100%;
+    top: 94%;
     right: 0; }
+  #showcase2 .grid {
+    border: solid 2px pink; }
   #showcase2 .col {
     width: 50%;
     position: relative; }
+  #showcase2 .showcase-text {
+    padding: 0 5% 0 10%; }
   #showcase2 img {
     width: 100%;
     position: absolute; }
   #showcase2 h1 {
     color: black; }
-  #showcase2 .showcase-text {
-    padding: 25px; }
 
 #showcase3 {
   position: relative; }
@@ -96,12 +88,20 @@
     position: absolute;
     width: 100%;
     z-index: -1; }
+  #showcase3 svg {
+    position: absolute;
+    z-index: -1; }
+  #showcase3 .grid {
+    border: solid 2px black;
+    height: 85vw; }
+  #showcase3 .col {
+    width: 50%;
+    position: relative; }
+  #showcase3 .showcase-text {
+    padding: 0 10% 0 5%;
+    color: white; }
   #showcase3 h1 {
     color: white; }
-  #showcase3 .grid {
-    top: 154px;
-    position: absolute; }
-  #showcase3 col {
-    width: 50%; }
   #showcase3 img {
-    width: 100%; }
+    width: 100%;
+    position: absolute; }

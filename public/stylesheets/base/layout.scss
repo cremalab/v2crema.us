@@ -1,3 +1,5 @@
+$mango: #fcad2b;
+
 body{
   margin: 0;
   overflow-x: hidden;
@@ -27,6 +29,19 @@ p {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
 	line-height: 1.5;
+}
+
+.mango-btn {
+  width: 253px;
+	height: 48px;
+  font-family: 'Lato';
+	font-size: 14px;
+	font-weight: 900;
+	line-height: 1.4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+	background-color: $mango;
 }
 
 .header-nav {
