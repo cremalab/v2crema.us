@@ -2,6 +2,9 @@
   width: 100vw;
   height: 50vh; }
 
+.img-fadein {
+  opacity: 1 !important; }
+
 #showcase1 {
   width: 100vw;
   position: relative; }
@@ -20,11 +23,13 @@
     width: 57%;
     top: 18%;
     left: 50%;
-    z-index: 2; }
+    z-index: 2;
+    transition-delay: .5s; }
   #showcase1 #cups-img {
     width: 100%;
     top: 65%;
-    z-index: 1; }
+    z-index: 1;
+    transition-delay: 1s; }
   #showcase1 #ML-img {
     width: 50%;
     top: 15%; }
@@ -34,6 +39,8 @@
       width: 50%;
       position: relative; }
       #showcase1 .grid .col img {
+        opacity: 0;
+        transition: opacity 0.6s;
         width: 100%;
         top: 100px;
         position: absolute; }
@@ -51,24 +58,29 @@
     z-index: 1; }
   #showcase2 #tilr-img {
     width: 100%;
-    top: 65%; }
+    top: 65%;
+    transition-delay: 1s; }
   #showcase2 #throttle-img {
     width: 45%;
     top: 40%;
-    left: -5%; }
+    left: -5%;
+    transition-delay: .5s; }
   #showcase2 #neighborly-img {
     width: 60%;
     right: 0;
     top: 75%;
-    z-index: 1; }
+    z-index: 1;
+    transition-delay: .5s; }
   #showcase2 #pc-img {
     width: 70%;
     bottom: -50%;
-    right: 25%; }
+    right: 25%;
+    transition-delay: 1s; }
   #showcase2 #hiphire-img {
     width: 50%;
     top: 94%;
-    right: 0; }
+    right: 0;
+    transition-delay: 1.5s; }
   #showcase2 .col {
     width: 50%;
     position: relative; }
@@ -76,7 +88,9 @@
     padding: 0 5% 0 10%; }
   #showcase2 img {
     width: 100%;
-    position: absolute; }
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.6s; }
   #showcase2 h1 {
     color: black; }
 
@@ -94,15 +108,18 @@
   #showcase3 #plaster-img {
     width: 75%;
     bottom: -11%;
-    left: -5%; }
+    left: -5%;
+    transition-delay: .3s; }
   #showcase3 #str-plain-img {
     width: 50%;
     bottom: -35%;
-    right: 14%; }
+    right: 14%;
+    transition-delay: 1s; }
   #showcase3 #str-img {
     width: 50%;
     right: -10%;
-    bottom: -30%; }
+    bottom: -30%;
+    transition-delay: .6s; }
   #showcase3 .grid {
     height: 85vw; }
   #showcase3 .col {
@@ -115,7 +132,9 @@
     color: white; }
   #showcase3 img {
     width: 100%;
-    position: absolute; }
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.6s; }
 
 ul {
   list-style-type: none;
