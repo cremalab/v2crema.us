@@ -41,4 +41,19 @@ block content
         .service-col.-text
           h1 Early customer development
           p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
-       
+  .tech-wrapper 
+    h1 Tech Stack
+    //- displaying comapany logos 
+    //- routes/index.js is reading file names from './public/images/logos/client-logos';
+    //- and exposing them as an array 'logoFileNames' with relative path '/images/logos/client-logos/';
+    //- displaying comapany logos 
+    //- routes/index.js is reading file names from './public/images/logos/client-logos';
+    //- and exposing them as an array 'logoFileNames' with relative path '/images/logos/client-logos/';
+    .landing-logos
+      ul.logos
+        -var ob = logoFileNames
+        -for(var prop in ob)
+          li.logo 
+            img(src='#{ob[prop]}')
+
+    h1 Integrations       
