@@ -7,6 +7,9 @@ import Blazy from 'blazy'
 
 
 
+
+
+if (document.getElementById('services-links') ) {
 Smooth.init()
 let links = document.getElementById('services-links').getElementsByTagName('a')
 function styleLinks(el) {
@@ -17,11 +20,9 @@ function styleLinks(el) {
   el.style.color = 'black' 
   el.getElementsByTagName('img')[0].style.opacity = 1 
   }
-// for (let i = 0; i < links.length; i++) {
-//   links[i].addEventListener('click', styleLinks.bind(this, links[i]) )
-// }
 
-if (document.getElementById('services-links') ) {
+
+
   new Waypoint({
       element: document.getElementById('prototyping'),
       handler: function(direction) {
