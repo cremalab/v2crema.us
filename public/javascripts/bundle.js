@@ -54,33 +54,176 @@
 
 	'use strict';
 
+	__webpack_require__(2);
+
 	__webpack_require__(4);
 
-	__webpack_require__(3);
+	var _smoothScroll = __webpack_require__(5);
 
-	// import 'blazy'
+	var _smoothScroll2 = _interopRequireDefault(_smoothScroll);
 
-	var bLazy = new Blazy({
+	var _blazy = __webpack_require__(6);
+
+	var _blazy2 = _interopRequireDefault(_blazy);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//SERVICES Page
+
+
+	_smoothScroll2.default.init();
+	var links = document.getElementById('services-links').getElementsByTagName('a');
+	function styleLinks(el) {
+	  for (var i = 0; i < links.length; i++) {
+	    links[i].style.color = '#afafaf';
+	    links[i].getElementsByTagName('img')[0].style.opacity = 0;
+	  }
+	  el.style.color = 'black';
+	  el.getElementsByTagName('img')[0].style.opacity = 1;
+	}
+	// for (let i = 0; i < links.length; i++) {
+	//   links[i].addEventListener('click', styleLinks.bind(this, links[i]) )
+	// }
+
+	if (document.getElementById('services-links')) {
+	  new Waypoint({
+	    element: document.getElementById('prototyping'),
+	    handler: function handler(direction) {
+	      console.log('fire prototyping waypoint');
+	      if (direction == 'up') {
+	        styleLinks(document.getElementById('service-inno-a'));
+	        document.getElementById('innovation').style.opacity = 1;
+	        document.getElementById('prototyping').style.opacity = .3;
+	      } else {
+	        styleLinks(document.getElementById('service-proto-a'));
+	        document.getElementById('innovation').style.opacity = .3;
+	        document.getElementById('prototyping').style.opacity = 1;
+	      }
+	    },
+	    offset: window.innerHeight * .35
+	  });
+	  new Waypoint({
+	    element: document.getElementById('branding'),
+	    handler: function handler(direction) {
+	      if (direction == 'up') {
+	        styleLinks(document.getElementById('service-proto-a'));
+	        document.getElementById('prototyping').style.opacity = 1;
+	        document.getElementById('branding').style.opacity = .3;
+	      } else {
+	        styleLinks(document.getElementById('service-branding-a'));
+	        document.getElementById('prototyping').style.opacity = .3;
+	        document.getElementById('branding').style.opacity = 1;
+	      }
+	    },
+	    offset: window.innerHeight * .45
+	  });
+	  new Waypoint({
+	    element: document.getElementById('ux'),
+	    handler: function handler(direction) {
+	      if (direction == 'up') {
+	        styleLinks(document.getElementById('service-branding-a'));
+	        document.getElementById('branding').style.opacity = 1;
+	        document.getElementById('ux').style.opacity = .3;
+	      } else {
+	        styleLinks(document.getElementById('service-ux-a'));
+	        document.getElementById('branding').style.opacity = .3;
+	        document.getElementById('ux').style.opacity = 1;
+	      }
+	    },
+	    offset: window.innerHeight * .65
+	  });
+	}
+
+	//SERVICES Page
+
+	var bLazy = new _blazy2.default({
 	  successClass: 'img-fadein'
 	});
 
-	//turn crema video off and on
-	var cremaVid = document.getElementById('crema-vid-logo');
-	new Waypoint({
-	  element: document.getElementById('showcase1'),
-	  handler: function handler(direction) {
-	    if (direction == "up") {
-	      cremaVid.play();
-	      console.log('play logo vid');
-	    } else {
-	      cremaVid.pause();
-	      console.log('pause logo vid');
-	    }
-	  }
-	});
+	//turn crema video off and on if on homepage
+	if (document.getElementById('crema-vid-logo')) {
+	  (function () {
+	    var cremaVid = document.getElementById('crema-vid-logo');
+	    new Waypoint({
+	      element: document.getElementById('showcase1'),
+	      handler: function handler(direction) {
+	        if (direction == 'up') {
+	          cremaVid.play();
+	          console.log('play logo vid');
+	        } else {
+	          cremaVid.pause();
+	          console.log('pause logo vid');
+	        }
+	      }
+	    });
+	  })();
+	}
 
 /***/ },
 /* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _jquery = __webpack_require__(3);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function draw() {
+	  requestAnimationFrame(draw);
+	  scrollEvent();
+	  // setInterval(() => scrollEvent(), 2000)
+	}
+	draw();
+
+	function scrollEvent() {
+
+	  if (!is_touch_device()) {
+	    (function () {
+	      var sym = void 0;
+	      var viewportTop = (0, _jquery2.default)(window).scrollTop();
+	      var windowHeight = (0, _jquery2.default)(window).height();
+	      var viewportBottom = windowHeight + viewportTop;
+	      if ((0, _jquery2.default)(window).width()) (0, _jquery2.default)('[data-parallax="true"]').each(function () {
+	        // console.log('this', this)
+	        // console.log('this', $(this))
+	        if (isElementInViewport(this)) {
+	          var distance = viewportTop * (0, _jquery2.default)(this).attr('data-speed');
+	          if ((0, _jquery2.default)(this).attr('data-direction') === 'up') {
+	            sym = '-';
+	          } else {
+	            sym = '';
+	          }
+	          (0, _jquery2.default)(this).css('transform', 'translate3d(0, ' + sym + distance + 'px,0)');
+	        }
+	      });
+	    })();
+	  }
+	}
+
+	function is_touch_device() {
+	  return 'ontouchstart' in window // works on most browsers 
+	  || 'onmsgesturechange' in window; // works on ie10
+	}
+
+	function isElementInViewport(el) {
+
+	  //special bonus for those using jQuery
+	  if (typeof jQuery === 'function' && el instanceof jQuery) {
+	    el = el[0];
+	  }
+
+	  var rect = el.getBoundingClientRect();
+
+	  return rect.top >= -1200 && rect.left >= -250 && rect.bottom - 1200 <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+	  rect.right - 250 <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+	  ;
+	}
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11094,7 +11237,7 @@
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	/*!
@@ -11844,67 +11987,334 @@
 	;
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! smooth-scroll v9.2.0 | (c) 2016 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
+	!function(e,t){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t(e)), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=t(e):e.smoothScroll=t(e)}("undefined"!=typeof global?global:this.window||this.global,function(e){"use strict";var t,n,r,o,a,c={},i="querySelector"in document&&"addEventListener"in e,u={selector:"[data-scroll]",selectorHeader:"[data-scroll-header]",speed:500,easing:"easeInOutCubic",offset:0,updateURL:!0,callback:function(){}},l=function(){var e={},t=!1,n=0,r=arguments.length;"[object Boolean]"===Object.prototype.toString.call(arguments[0])&&(t=arguments[0],n++);for(var o=function(n){for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t&&"[object Object]"===Object.prototype.toString.call(n[r])?e[r]=l(!0,e[r],n[r]):e[r]=n[r])};r>n;n++){var a=arguments[n];o(a)}return e},s=function(e){return Math.max(e.scrollHeight,e.offsetHeight,e.clientHeight)},f=function(e,t){var n,r,o=t.charAt(0),a="classList"in document.documentElement;for("["===o&&(t=t.substr(1,t.length-2),n=t.split("="),n.length>1&&(r=!0,n[1]=n[1].replace(/"/g,"").replace(/'/g,"")));e&&e!==document&&1===e.nodeType;e=e.parentNode){if("."===o)if(a){if(e.classList.contains(t.substr(1)))return e}else if(new RegExp("(^|\\s)"+t.substr(1)+"(\\s|$)").test(e.className))return e;if("#"===o&&e.id===t.substr(1))return e;if("["===o&&e.hasAttribute(n[0])){if(!r)return e;if(e.getAttribute(n[0])===n[1])return e}if(e.tagName.toLowerCase()===t)return e}return null};c.escapeCharacters=function(e){"#"===e.charAt(0)&&(e=e.substr(1));for(var t,n=String(e),r=n.length,o=-1,a="",c=n.charCodeAt(0);++o<r;){if(t=n.charCodeAt(o),0===t)throw new InvalidCharacterError("Invalid character: the input contains U+0000.");a+=t>=1&&31>=t||127==t||0===o&&t>=48&&57>=t||1===o&&t>=48&&57>=t&&45===c?"\\"+t.toString(16)+" ":t>=128||45===t||95===t||t>=48&&57>=t||t>=65&&90>=t||t>=97&&122>=t?n.charAt(o):"\\"+n.charAt(o)}return"#"+a};var d=function(e,t){var n;return"easeInQuad"===e&&(n=t*t),"easeOutQuad"===e&&(n=t*(2-t)),"easeInOutQuad"===e&&(n=.5>t?2*t*t:-1+(4-2*t)*t),"easeInCubic"===e&&(n=t*t*t),"easeOutCubic"===e&&(n=--t*t*t+1),"easeInOutCubic"===e&&(n=.5>t?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1),"easeInQuart"===e&&(n=t*t*t*t),"easeOutQuart"===e&&(n=1- --t*t*t*t),"easeInOutQuart"===e&&(n=.5>t?8*t*t*t*t:1-8*--t*t*t*t),"easeInQuint"===e&&(n=t*t*t*t*t),"easeOutQuint"===e&&(n=1+--t*t*t*t*t),"easeInOutQuint"===e&&(n=.5>t?16*t*t*t*t*t:1+16*--t*t*t*t*t),n||t},m=function(e,t,n){var r=0;if(e.offsetParent)do r+=e.offsetTop,e=e.offsetParent;while(e);return r=Math.max(r-t-n,0),Math.min(r,p()-h())},h=function(){return Math.max(document.documentElement.clientHeight,window.innerHeight||0)},p=function(){return Math.max(e.document.body.scrollHeight,e.document.documentElement.scrollHeight,e.document.body.offsetHeight,e.document.documentElement.offsetHeight,e.document.body.clientHeight,e.document.documentElement.clientHeight)},g=function(e){return e&&"object"==typeof JSON&&"function"==typeof JSON.parse?JSON.parse(e):{}},b=function(t,n){e.history.pushState&&(n||"true"===n)&&"file:"!==e.location.protocol&&e.history.pushState(null,null,[e.location.protocol,"//",e.location.host,e.location.pathname,e.location.search,t].join(""))},v=function(e){return null===e?0:s(e)+e.offsetTop};c.animateScroll=function(n,c,i){var s=g(c?c.getAttribute("data-options"):null),f=l(t||u,i||{},s),h="[object Number]"===Object.prototype.toString.call(n)?!0:!1,y=h?null:"#"===n?e.document.documentElement:e.document.querySelector(n);if(h||y){var O=e.pageYOffset;r||(r=e.document.querySelector(f.selectorHeader)),o||(o=v(r));var S,I,H=h?n:m(y,o,parseInt(f.offset,10)),E=H-O,j=p(),w=0;h||b(n,f.updateURL);var C=function(t,r,o){var a=e.pageYOffset;(t==r||a==r||e.innerHeight+a>=j)&&(clearInterval(o),h||y.focus(),f.callback(n,c))},L=function(){w+=16,S=w/parseInt(f.speed,10),S=S>1?1:S,I=O+E*d(f.easing,S),e.scrollTo(0,Math.floor(I)),C(I,H,a)},A=function(){clearInterval(a),a=setInterval(L,16)};0===e.pageYOffset&&e.scrollTo(0,0),A()}};var y=function(e){if(0===e.button&&!e.metaKey&&!e.ctrlKey){var n=f(e.target,t.selector);if(n&&"a"===n.tagName.toLowerCase()){if(n.origin!==location.origin||n.pathname!==location.pathname)return;e.preventDefault();var r=c.escapeCharacters(n.hash);c.animateScroll(r,n,t)}}},O=function(e){n||(n=setTimeout(function(){n=null,o=v(r)},66))};return c.destroy=function(){t&&(e.document.removeEventListener("click",y,!1),e.removeEventListener("resize",O,!1),t=null,n=null,r=null,o=null,a=null)},c.init=function(n){i&&(c.destroy(),t=l(u,n||{}),r=e.document.querySelector(t.selectorHeader),o=v(r),e.document.addEventListener("click",y,!1),r&&e.addEventListener("resize",O,!1))},c});
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-	var _jquery = __webpack_require__(2);
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
 
-	var _jquery2 = _interopRequireDefault(_jquery);
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  hey, [be]Lazy.js - v1.6.2 - 2016.05.09
+	  A fast, small and dependency free lazy load script (https://github.com/dinbror/blazy)
+	  (c) Bjoern Klinggaard - @bklinggaard - http://dinbror.dk/blazy
+	*/
+	;
+	(function(root, blazy) {
+	    if (true) {
+	        // AMD. Register bLazy as an anonymous module
+	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (blazy), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof exports === 'object') {
+	        // Node. Does not work with strict CommonJS, but
+	        // only CommonJS-like environments that support module.exports,
+	        // like Node.
+	        module.exports = blazy();
+	    } else {
+	        // Browser globals. Register bLazy on window
+	        root.Blazy = blazy();
+	    }
+	})(this, function() {
+	    'use strict';
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	    //private vars
+	    var _source, _viewport, _isRetina, _attrSrc = 'src',
+	        _attrSrcset = 'srcset';
 
-	function draw() {
-	  requestAnimationFrame(draw);
-	  scrollEvent();
-	  // setInterval(() => scrollEvent(), 2000)
-	}
-	draw();
-
-	function scrollEvent() {
-
-	  if (!is_touch_device()) {
-	    (function () {
-	      var sym = void 0;
-	      var viewportTop = (0, _jquery2.default)(window).scrollTop();
-	      var windowHeight = (0, _jquery2.default)(window).height();
-	      var viewportBottom = windowHeight + viewportTop;
-	      if ((0, _jquery2.default)(window).width()) (0, _jquery2.default)('[data-parallax="true"]').each(function () {
-	        // console.log('this', this)
-	        // console.log('this', $(this))
-	        if (isElementInViewport(this)) {
-	          var distance = viewportTop * (0, _jquery2.default)(this).attr('data-speed');
-	          if ((0, _jquery2.default)(this).attr('data-direction') === 'up') {
-	            sym = '-';
-	          } else {
-	            sym = '';
-	          }
-	          (0, _jquery2.default)(this).css('transform', 'translate3d(0, ' + sym + distance + 'px,0)');
+	    // constructor
+	    return function Blazy(options) {
+	        //IE7- fallback for missing querySelectorAll support
+	        if (!document.querySelectorAll) {
+	            var s = document.createStyleSheet();
+	            document.querySelectorAll = function(r, c, i, j, a) {
+	                a = document.all, c = [], r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
+	                for (i = r.length; i--;) {
+	                    s.addRule(r[i], 'k:v');
+	                    for (j = a.length; j--;) a[j].currentStyle.k && c.push(a[j]);
+	                    s.removeRule(0);
+	                }
+	                return c;
+	            };
 	        }
-	      });
-	    })();
-	  }
-	}
 
-	function is_touch_device() {
-	  return 'ontouchstart' in window // works on most browsers 
-	  || 'onmsgesturechange' in window; // works on ie10
-	}
+	        //options and helper vars
+	        var scope = this;
+	        var util = scope._util = {};
+	        util.elements = [];
+	        util.destroyed = true;
+	        scope.options = options || {};
+	        scope.options.error = scope.options.error || false;
+	        scope.options.offset = scope.options.offset || 100;
+	        scope.options.success = scope.options.success || false;
+	        scope.options.selector = scope.options.selector || '.b-lazy';
+	        scope.options.separator = scope.options.separator || '|';
+	        scope.options.container = scope.options.container ? document.querySelectorAll(scope.options.container) : false;
+	        scope.options.errorClass = scope.options.errorClass || 'b-error';
+	        scope.options.breakpoints = scope.options.breakpoints || false; // obsolete
+	        scope.options.loadInvisible = scope.options.loadInvisible || false;
+	        scope.options.successClass = scope.options.successClass || 'b-loaded';
+	        scope.options.validateDelay = scope.options.validateDelay || 25;
+	        scope.options.saveViewportOffsetDelay = scope.options.saveViewportOffsetDelay || 50;
+	        scope.options.srcset = scope.options.srcset || 'data-srcset';
+	        scope.options.src = _source = scope.options.src || 'data-src';
+	        _isRetina = window.devicePixelRatio > 1;
+	        _viewport = {};
+	        _viewport.top = 0 - scope.options.offset;
+	        _viewport.left = 0 - scope.options.offset;
 
-	function isElementInViewport(el) {
 
-	  //special bonus for those using jQuery
-	  if (typeof jQuery === 'function' && el instanceof jQuery) {
-	    el = el[0];
-	  }
+	        /* public functions
+	         ************************************/
+	        scope.revalidate = function() {
+	            initialize(this);
+	        };
+	        scope.load = function(elements, force) {
+	            var opt = this.options;
+	            if (elements.length === undefined) {
+	                loadElement(elements, force, opt);
+	            } else {
+	                each(elements, function(element) {
+	                    loadElement(element, force, opt);
+	                });
+	            }
+	        };
+	        scope.destroy = function() {
+	            var self = this;
+	            var util = self._util;
+	            if (self.options.container) {
+	                each(self.options.container, function(object) {
+	                    unbindEvent(object, 'scroll', util.validateT);
+	                });
+	            }
+	            unbindEvent(window, 'scroll', util.validateT);
+	            unbindEvent(window, 'resize', util.validateT);
+	            unbindEvent(window, 'resize', util.saveViewportOffsetT);
+	            util.count = 0;
+	            util.elements.length = 0;
+	            util.destroyed = true;
+	        };
 
-	  var rect = el.getBoundingClientRect();
+	        //throttle, ensures that we don't call the functions too often
+	        util.validateT = throttle(function() {
+	            validate(scope);
+	        }, scope.options.validateDelay, scope);
+	        util.saveViewportOffsetT = throttle(function() {
+	            saveViewportOffset(scope.options.offset);
+	        }, scope.options.saveViewportOffsetDelay, scope);
+	        saveViewportOffset(scope.options.offset);
 
-	  return rect.top >= -1200 && rect.left >= -250 && rect.bottom - 1200 <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-	  rect.right - 250 <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
-	  ;
-	}
+	        //handle multi-served image src (obsolete)
+	        each(scope.options.breakpoints, function(object) {
+	            if (object.width >= window.screen.width) {
+	                _source = object.src;
+	                return false;
+	            }
+	        });
+
+	        // start lazy load
+	        setTimeout(function() {
+	            initialize(scope);
+	        }); // "dom ready" fix
+
+	    };
+
+
+	    /* Private helper functions
+	     ************************************/
+	    function initialize(self) {
+	        var util = self._util;
+	        // First we create an array of elements to lazy load
+	        util.elements = toArray(self.options.selector);
+	        util.count = util.elements.length;
+	        // Then we bind resize and scroll events if not already binded
+	        if (util.destroyed) {
+	            util.destroyed = false;
+	            if (self.options.container) {
+	                each(self.options.container, function(object) {
+	                    bindEvent(object, 'scroll', util.validateT);
+	                });
+	            }
+	            bindEvent(window, 'resize', util.saveViewportOffsetT);
+	            bindEvent(window, 'resize', util.validateT);
+	            bindEvent(window, 'scroll', util.validateT);
+	        }
+	        // And finally, we start to lazy load.
+	        validate(self);
+	    }
+
+	    function validate(self) {
+	        var util = self._util;
+	        for (var i = 0; i < util.count; i++) {
+	            var element = util.elements[i];
+	            if (elementInView(element) || hasClass(element, self.options.successClass)) {
+	                self.load(element);
+	                util.elements.splice(i, 1);
+	                util.count--;
+	                i--;
+	            }
+	        }
+	        if (util.count === 0) {
+	            self.destroy();
+	        }
+	    }
+
+	    function elementInView(ele) {
+	        var rect = ele.getBoundingClientRect();
+	        return (
+	            // Intersection
+	            rect.right >= _viewport.left && rect.bottom >= _viewport.top && rect.left <= _viewport.right && rect.top <= _viewport.bottom
+	        );
+	    }
+
+	    function loadElement(ele, force, options) {
+	        // if element is visible, not loaded or forced
+	        if (!hasClass(ele, options.successClass) && (force || options.loadInvisible || (ele.offsetWidth > 0 && ele.offsetHeight > 0))) {
+	            var dataSrc = ele.getAttribute(_source) || ele.getAttribute(options.src); // fallback to default 'data-src'
+	            if (dataSrc) {
+	                var dataSrcSplitted = dataSrc.split(options.separator);
+	                var src = dataSrcSplitted[_isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
+	                var isImage = equal(ele, 'img');
+	                // Image or background image
+	                if (isImage || ele.src === undefined) {
+	                    var img = new Image();
+	                    // using EventListener instead of onerror and onload
+	                    // due to bug introduced in chrome v50 
+	                    // (https://productforums.google.com/forum/#!topic/chrome/p51Lk7vnP2o)
+	                    var onErrorHandler = function() {
+	                        if (options.error) options.error(ele, "invalid");
+	                        addClass(ele, options.errorClass);
+	                        unbindEvent(img, 'error', onErrorHandler);
+	                        unbindEvent(img, 'load', onLoadHandler);
+	                    };
+	                    var onLoadHandler = function() {
+	                        // Is element an image
+	                        if (isImage) {
+	                            setSrc(ele, src); //src
+	                            handleSource(ele, _attrSrcset, options.srcset); //srcset
+	                            //picture element
+	                            var parent = ele.parentNode;
+	                            if (parent && equal(parent, 'picture')) {
+	                                each(parent.getElementsByTagName('source'), function(source) {
+	                                    handleSource(source, _attrSrcset, options.srcset);
+	                                });
+	                            }
+	                        // or background-image
+	                        } else {
+	                            ele.style.backgroundImage = 'url("' + src + '")';
+	                        }
+	                        itemLoaded(ele, options);
+	                        unbindEvent(img, 'load', onLoadHandler);
+	                        unbindEvent(img, 'error', onErrorHandler);
+	                    };
+	                    bindEvent(img, 'error', onErrorHandler);
+	                    bindEvent(img, 'load', onLoadHandler);
+	                    setSrc(img, src); //preload
+	                } else { // An item with src like iframe, unity, simpelvideo etc
+	                    setSrc(ele, src);
+	                    itemLoaded(ele, options);
+	                }
+	            } else {
+	                // video with child source
+	                if (equal(ele, 'video')) {
+	                    each(ele.getElementsByTagName('source'), function(source) {
+	                        handleSource(source, _attrSrc, options.src);
+	                    });
+	                    ele.load();
+	                    itemLoaded(ele, options);
+	                } else {
+	                    if (options.error) options.error(ele, "missing");
+	                    addClass(ele, options.errorClass);
+	                }
+	            }
+	        }
+	    }
+
+	    function itemLoaded(ele, options) {
+	        addClass(ele, options.successClass);
+	        if (options.success) options.success(ele);
+	        // cleanup markup, remove data source attributes
+	        ele.removeAttribute(options.src);
+	        each(options.breakpoints, function(object) {
+	            ele.removeAttribute(object.src);
+	        });
+	    }
+
+	    function setSrc(ele, src) {
+	        ele[_attrSrc] = src;
+	    }
+
+	    function handleSource(ele, attr, dataAttr) {
+	        var dataSrc = ele.getAttribute(dataAttr);
+	        if (dataSrc) {
+	            ele[attr] = dataSrc;
+	            ele.removeAttribute(dataAttr);
+	        }
+	    }
+
+	    function equal(ele, str) {
+	        return ele.nodeName.toLowerCase() === str;
+	    }
+
+	    function hasClass(ele, className) {
+	        return (' ' + ele.className + ' ').indexOf(' ' + className + ' ') !== -1;
+	    }
+
+	    function addClass(ele, className) {
+	        if (!hasClass(ele, className)) {
+	            ele.className += ' ' + className;
+	        }
+	    }
+
+	    function toArray(selector) {
+	        var array = [];
+	        var nodelist = document.querySelectorAll(selector);
+	        for (var i = nodelist.length; i--; array.unshift(nodelist[i])) {}
+	        return array;
+	    }
+
+	    function saveViewportOffset(offset) {
+	        _viewport.bottom = (window.innerHeight || document.documentElement.clientHeight) + offset;
+	        _viewport.right = (window.innerWidth || document.documentElement.clientWidth) + offset;
+	    }
+
+	    function bindEvent(ele, type, fn) {
+	        if (ele.attachEvent) {
+	            ele.attachEvent && ele.attachEvent('on' + type, fn);
+	        } else {
+	            ele.addEventListener(type, fn, false);
+	        }
+	    }
+
+	    function unbindEvent(ele, type, fn) {
+	        if (ele.detachEvent) {
+	            ele.detachEvent && ele.detachEvent('on' + type, fn);
+	        } else {
+	            ele.removeEventListener(type, fn, false);
+	        }
+	    }
+
+	    function each(object, fn) {
+	        if (object && fn) {
+	            var l = object.length;
+	            for (var i = 0; i < l && fn(object[i], i) !== false; i++) {}
+	        }
+	    }
+
+	    function throttle(fn, minDelay, scope) {
+	        var lastCall = 0;
+	        return function() {
+	            var now = +new Date();
+	            if (now - lastCall < minDelay) {
+	                return;
+	            }
+	            lastCall = now;
+	            fn.apply(scope, arguments);
+	        };
+	    }
+	});
 
 /***/ }
 /******/ ]);

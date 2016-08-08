@@ -1,0 +1,75 @@
+$servicesBlue: #907dfc;
+$servicesLinkGrey: #afafaf;
+.service-nav {
+  position: fixed;
+  display: table;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 25vw;
+  background-color: white;
+  .link-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 2em; 
+  }
+  a {
+    color: $servicesLinkGrey;
+    display: block;
+    font-size: 16px;
+    line-height: 1.9;
+    font-family: 'Lato', sans-serif;
+    text-align: right;
+    direction: rtl;
+    transition: .5s;
+    img {
+      opacity: 0;
+      padding-right: 5px;     
+    }
+  }
+  a:hover {
+    transform: scale(1.05)
+        
+  }
+  #service-inno-a {
+    img {opacity: 1}
+    color: black;
+  }
+}
+
+.service-wrapper {
+  display: table;
+  background-color: $servicesBlue;
+  
+}
+
+.services-left {
+  display: table-cell;
+  width: 30%;
+}
+
+.services-right {
+  display: table-cell;
+  width: 70%;
+
+  .service {
+    display: table;
+    opacity: .3;
+    height: 60vh;
+    width: 95%;
+    color: white;
+    transition: all .8s;
+  }
+  img {
+    width: 95%;
+  }
+  #innovation {
+    opacity: 1;
+  }
+  .service-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+  }
+
+}

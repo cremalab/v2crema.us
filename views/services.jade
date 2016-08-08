@@ -1,0 +1,44 @@
+extends layout
+
+append styles
+  link(href="/stylesheets/build/modules/services.css", rel="stylesheet")
+
+block content
+  .service-nav
+    .link-wrapper#services-links
+      a(data-scroll href='#innovation' id='service-inno-a') Innovation strategy
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#prototyping' id='service-proto-a') Concept prototyping
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#branding', id='service-branding-a') Product Branding
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#ux' id='service-ux-a') User experience design
+        img(src='/images/services/service/oval-2.png')
+  .service-wrapper
+    .services-left
+    .services-right
+      .service#innovation
+        .service-col.-img
+          img(src='/images/home/cups2x.png')
+        .service-col.-text
+          h1 Innovation strategy
+          p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+      .service#prototyping
+        .service-col.-img
+          img(src='/images/services/service/unspecified.png')
+        .service-col.-text
+          h1 Concept prototyping
+          p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+      .service#branding
+        .service-col.-img
+          img(src='/images/home/l-b-mock-2.png')
+        .service-col.-text
+          h1 Product Branding
+          p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.     
+      .service#ux
+        .service-col.-img
+          img(src='/images/services/service/unspecified.png')
+        .service-col.-text
+          h1 Early customer development
+          p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+       

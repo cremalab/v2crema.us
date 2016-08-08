@@ -1,0 +1,57 @@
+.service-nav {
+  position: fixed;
+  display: table;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 25vw;
+  background-color: white; }
+  .service-nav .link-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 2em; }
+  .service-nav a {
+    color: #afafaf;
+    display: block;
+    font-size: 16px;
+    line-height: 1.9;
+    font-family: 'Lato', sans-serif;
+    text-align: right;
+    direction: rtl;
+    transition: .5s; }
+    .service-nav a img {
+      opacity: 0;
+      padding-right: 5px; }
+  .service-nav a:hover {
+    transform: scale(1.05); }
+  .service-nav #service-inno-a {
+    color: black; }
+    .service-nav #service-inno-a img {
+      opacity: 1; }
+
+.service-wrapper {
+  display: table;
+  background-color: #907dfc; }
+
+.services-left {
+  display: table-cell;
+  width: 30%; }
+
+.services-right {
+  display: table-cell;
+  width: 70%; }
+  .services-right .service {
+    display: table;
+    opacity: .3;
+    height: 60vh;
+    width: 95%;
+    color: white;
+    transition: all .8s; }
+  .services-right img {
+    width: 95%; }
+  .services-right #innovation {
+    opacity: 1; }
+  .services-right .service-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle; }

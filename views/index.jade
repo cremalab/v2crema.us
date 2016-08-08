@@ -1,6 +1,10 @@
 extends layout
+
 block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/home.css')
+
+block vars
+  - var onHomePage = true
 
 block content
   .logo-wrapper

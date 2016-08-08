@@ -36,4 +36,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Crema.us', logoFileNames: logoFileNames })
 })
 
+/* GET home page. */
+router.get('/services', function(req, res, next) {
+  res.render('services', { title: 'Crema.us - Services' })
+})
+
 module.exports = router

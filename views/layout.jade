@@ -6,16 +6,23 @@ html
     <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
    
     block styles
+
+    block vars
+
       
       
   body
     .header-nav
       .grid
-        a(href="#", title="title").col What we do
-        a(href="#", title="title").col Services
-        a(href="#", title="title").col Team
-        a(href="#", title="title").col Contact
+        .col.-cremalogo
+          if !onHomePage
+            include ./partials/crema-logo-svg
+        .col.links-nav  
+          a(href="#", title="title") What we do
+          a(href="#", title="title") Services
+          a(href="#", title="title") Team
+          a(href="#", title="title") Contact
     
     block content
-    <script src="https://rawgithub.com/dinbror/blazy/master/blazy.min.js"></script>  
+    //- <script src="https://rawgithub.com/dinbror/blazy/master/blazy.min.js"></script>  
     script(src='./javascripts/bundle.js')
