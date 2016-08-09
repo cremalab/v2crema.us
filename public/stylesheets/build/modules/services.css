@@ -32,8 +32,12 @@
     .service-nav #service-inno-a img {
       opacity: 1; }
 
+.blue-bg {
+  background-color: #907dfc; }
+
 .service-wrapper {
   display: table;
+  margin: 0 auto;
   background-color: #907dfc; }
   .service-wrapper #first-service {
     transform: translateY(13%);
@@ -76,7 +80,8 @@
 
 .services-right {
   display: table-cell;
-  padding-left: 2em; }
+  padding-left: 2em;
+  max-width: 1200px; }
   .services-right .service {
     display: table;
     height: 60vh;

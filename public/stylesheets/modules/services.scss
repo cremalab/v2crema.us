@@ -42,9 +42,12 @@ $servicesLinkGrey: #afafaf;
     color: black;
   }
 }
-
+.blue-bg {
+  background-color: $servicesBlue;
+}
 .service-wrapper {
   display: table;
+  margin: 0 auto;
   background-color: $servicesBlue;
   #first-service {
     transform: translateY(13%);
@@ -103,6 +106,7 @@ $servicesLinkGrey: #afafaf;
 .services-right {
   display: table-cell;
   padding-left: 2em;
+  max-width: 1200px;
 
 
   .service {
