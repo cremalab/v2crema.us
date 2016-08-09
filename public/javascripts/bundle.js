@@ -73,6 +73,16 @@
 
 	if (document.getElementById('services-links')) {
 	  (function () {
+	    var initServiceVideo = function initServiceVideo(iframeId) {
+	      var vid = document.getElementById(iframeId);
+	      if (!vid.dataset.added) {
+	        setTimeout(function () {
+	          vid.src = vid.dataset.src;
+	          vid.dataset.added = 'true';
+	        }, 250);
+	      }
+	    };
+
 	    var styleLinks = function styleLinks(el) {
 	      for (var i = 0; i < links.length; i++) {
 	        links[i].style.color = '#afafaf';
@@ -83,20 +93,23 @@
 	    };
 
 	    _smoothScroll2.default.init();
+
 	    var links = document.getElementById('services-links').getElementsByTagName('a');
 
 
 	    new Waypoint({
 	      element: document.getElementById('prototyping'),
 	      handler: function handler(direction) {
+
 	        console.log('fire prototyping waypoint');
 	        if (direction == 'up') {
 	          styleLinks(document.getElementById('service-inno-a'));
 	          document.getElementById('innovation').style.opacity = 1;
-	          document.getElementById('prototyping').style.opacity = .3;
+	          document.getElementById('prototyping').style.opacity = 0;
 	        } else {
 	          styleLinks(document.getElementById('service-proto-a'));
-	          document.getElementById('innovation').style.opacity = .3;
+	          initServiceVideo('proto-iframe');
+	          document.getElementById('innovation').style.opacity = 0;
 	          document.getElementById('prototyping').style.opacity = 1;
 	        }
 	      },
@@ -108,10 +121,11 @@
 	        if (direction == 'up') {
 	          styleLinks(document.getElementById('service-proto-a'));
 	          document.getElementById('prototyping').style.opacity = 1;
-	          document.getElementById('branding').style.opacity = .3;
+	          document.getElementById('branding').style.opacity = 0;
 	        } else {
+	          initServiceVideo('branding-iframe');
 	          styleLinks(document.getElementById('service-branding-a'));
-	          document.getElementById('prototyping').style.opacity = .3;
+	          document.getElementById('prototyping').style.opacity = 0;
 	          document.getElementById('branding').style.opacity = 1;
 	        }
 	      },
@@ -123,10 +137,11 @@
 	        if (direction == 'up') {
 	          styleLinks(document.getElementById('service-branding-a'));
 	          document.getElementById('branding').style.opacity = 1;
-	          document.getElementById('ux').style.opacity = .3;
+	          document.getElementById('ux').style.opacity = 0;
 	        } else {
+	          initServiceVideo('ux-iframe');
 	          styleLinks(document.getElementById('service-ux-a'));
-	          document.getElementById('branding').style.opacity = .3;
+	          document.getElementById('branding').style.opacity = 0;
 	          document.getElementById('ux').style.opacity = 1;
 	        }
 	      },

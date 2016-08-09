@@ -11,6 +11,18 @@ import Blazy from 'blazy'
 
 if (document.getElementById('services-links') ) {
 Smooth.init()
+
+function initServiceVideo(iframeId){
+  let vid = document.getElementById(iframeId)
+    if (!vid.dataset.added) {
+      setTimeout(function() {
+        vid.src = vid.dataset.src
+        vid.dataset.added = 'true'  
+      }, 250)
+       
+    }
+}
+
 let links = document.getElementById('services-links').getElementsByTagName('a')
 function styleLinks(el) {
   for (let i = 0; i < links.length; i++) {
@@ -26,14 +38,16 @@ function styleLinks(el) {
   new Waypoint({
       element: document.getElementById('prototyping'),
       handler: function(direction) {
+        
         console.log('fire prototyping waypoint')
         if (direction == 'up') {
           styleLinks(document.getElementById('service-inno-a'))
           document.getElementById('innovation').style.opacity = 1
-          document.getElementById('prototyping').style.opacity = .3
+          document.getElementById('prototyping').style.opacity = 0
         } else {
           styleLinks(document.getElementById('service-proto-a'))
-          document.getElementById('innovation').style.opacity = .3
+          initServiceVideo('proto-iframe')
+          document.getElementById('innovation').style.opacity = 0
           document.getElementById('prototyping').style.opacity = 1 
         }
       },
@@ -45,10 +59,11 @@ function styleLinks(el) {
         if (direction == 'up') {
           styleLinks(document.getElementById('service-proto-a'))
           document.getElementById('prototyping').style.opacity = 1
-          document.getElementById('branding').style.opacity = .3
+          document.getElementById('branding').style.opacity = 0
         } else {
+          initServiceVideo('branding-iframe')
           styleLinks(document.getElementById('service-branding-a')) 
-          document.getElementById('prototyping').style.opacity = .3
+          document.getElementById('prototyping').style.opacity = 0
           document.getElementById('branding').style.opacity = 1
         }
       },
@@ -60,10 +75,11 @@ function styleLinks(el) {
         if (direction == 'up') {
           styleLinks(document.getElementById('service-branding-a'))
           document.getElementById('branding').style.opacity = 1
-          document.getElementById('ux').style.opacity = .3
+          document.getElementById('ux').style.opacity = 0
         } else {
+          initServiceVideo('ux-iframe')
           styleLinks(document.getElementById('service-ux-a'))
-          document.getElementById('branding').style.opacity = .3
+          document.getElementById('branding').style.opacity = 0
           document.getElementById('ux').style.opacity = 1
 
         }

@@ -1,13 +1,18 @@
 $servicesBlue: #907dfc;
 $lighBlue: #8cd8fd;
 $servicesLinkGrey: #afafaf;
+
+.header-nav {
+  position: fixed;
+}
+
 .service-nav {
   position: fixed;
   display: table;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 25vw;
+  width: 300px;
   background-color: white;
   .link-wrapper {
     display: table-cell;
@@ -41,38 +46,92 @@ $servicesLinkGrey: #afafaf;
 .service-wrapper {
   display: table;
   background-color: $servicesBlue;
-  
+  #first-service {
+    transform: translateY(13%);
+    height: 80vh;
+    .smoothScrollPt {
+      // so smooth scroll will line up
+      bottom: -30%;
+    }
+  }
+  #last-service {
+    transform: translateY(-13%);
+    height: 85vh;
+  }
+  #proto-vid {
+    background-image: url('/images/services/service/poster-vid2.png')
+  }
+  #branding-vid {
+    background-image: url('/images/services/service/poster-vid2.png')
+  }
+  #ux-vid {
+    background-image: url('/images/services/service/poster-vid2.png')
+  }
+
+  .videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    // padding-top: 25px;
+    height: 0;
+    background-size: cover;
+    .smoothScrollPt {
+      position: absolute;
+      opacity: 0;
+      bottom: 0;
+      height: 10%;
+      width: 100%;
+    }
+  }
+  .videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 }
 
 .services-left {
   display: table-cell;
-  width: 30%;
+  width: 300px;
 }
 
 .services-right {
   display: table-cell;
-  width: 70%;
+  padding-left: 2em;
+
 
   .service {
     display: table;
-    opacity: .3;
     height: 60vh;
     width: 95%;
     color: white;
-    transition: all .8s;
+    
+    .-text {
+      opacity: 0;
+      transition: all .8s;
+    }
   }
   img {
     width: 95%;
   }
   #innovation {
     opacity: 1;
-    margin-top: 2em;
+    
 
+  }
+  .vid {
+    padding-right: 25px;
   }
   .service-col {
     display: table-cell;
     width: 50%;
     vertical-align: middle;
+
   }
 
 }
