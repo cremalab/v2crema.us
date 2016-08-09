@@ -67,7 +67,7 @@ function styleLinks(el) {
           document.getElementById('branding').style.opacity = 1
         }
       },
-      offset: window.innerHeight * .45  
+      offset: window.innerHeight * .35  
   })
   new Waypoint({
       element: document.getElementById('ux'),
@@ -84,7 +84,7 @@ function styleLinks(el) {
 
         }
       },
-      offset: window.innerHeight * .65  
+      offset: window.innerHeight * .35  
   })
 }
 
