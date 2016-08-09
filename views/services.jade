@@ -58,9 +58,15 @@ block content
     //- and exposing them as an array 'logoFileNames' with relative path '/images/logos/client-logos/';
     .landing-logos
       ul.logos
-        -var ob = logoFileNames
-        -for(var prop in ob)
+        -for (var idx = 0; idx <techNum; idx++)
           li.logo 
-            img(src='#{ob[prop]}')
+            img(src='#{logoFileNames[idx]}')
+            p #{techSubs[idx]}
 
     h1 Integrations       
+    .landing-logos
+      ul.logos
+        -for (var idx = 0; idx <integrationNum; idx++)
+          li.logo 
+            img(src='#{integrationFileNames[idx]}')
+            p #{integrationSubs[idx]}

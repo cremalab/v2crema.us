@@ -17,8 +17,15 @@ function makeRelativeImgPaths(absUrl, relativeUrl) {
   
 }
 var techImgPaths = [] 
+var techSubs = [
+  'Android', 'Angular', 'Apple', 'Monkey C', 'CSS', 'HTML5', 'Java', 'Javascript', 'Node', 'Rails', 'React', 'Redux', 'Ruby', 'Swift'
+]
 makeRelativeImgPaths('./public/images/services/tech-logos', '/images/services/tech-logos/').then(logos => techImgPaths = logos)
-
+var integrationImgPaths = []
+var integrationSubs = [
+  'Asana', 'Firebase', 'Github', 'Google Analytics', 'Heroku', 'Intercom', 'Mailchimp', 'Mixpanel', 'Pubnub', 'Sendgrid', 'Slack', 'Twilio'
+]
+makeRelativeImgPaths('./public/images/services/integration-logos', '/images/services/integration-logos/').then(logos => integrationImgPaths = logos)
 
 
 // Path to folder with comapany logos
@@ -55,7 +62,15 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/services', function(req, res, next) {
-    res.render('services', { title: 'Crema.us', logoFileNames: techImgPaths })
+    res.render('services', { 
+      title: 'Crema.us',
+      logoFileNames: techImgPaths, 
+      techSubs: techSubs,  
+      techNum: techSubs.length,
+      integrationFileNames: integrationImgPaths, 
+      integrationSubs: integrationSubs,
+      integrationNum: integrationSubs.length
+    })
   
   
 })
