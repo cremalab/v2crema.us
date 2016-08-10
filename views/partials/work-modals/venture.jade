@@ -1,0 +1,26 @@
+//- modal popup showing work
+
+.work-modal2#modal-ven
+  .work-content
+    .close-modal#close-venture X
+    h1 Our middle name is Ad-venture
+    img(data-src="/images/home/ventures/dv-tilr.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  )
+    include ../footer.jade
+    .post-footer
+      a(href='')
+        img(src='/images/home/see-our-services.png')
+
+script.
+  document.getElementById('btn-modal-ven')
+    
+    .addEventListener('click', function() {
+      var modalEnt = document.getElementById('modal-ven')
+      modalEnt.classList.add('active-work-modal2')
+      console.log('click ent')
+    })
+  document.getElementById('close-venture')
+    .addEventListener('click', function() {
+      document.getElementById('modal-ven').classList.remove('active-work-modal2')
+    })  
+
+          

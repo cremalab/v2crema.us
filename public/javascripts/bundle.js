@@ -98,7 +98,7 @@
 
 
 	    new Waypoint({
-	      element: document.getElementById('prototyping'),
+	      element: document.getElementById('proto-vid'),
 	      handler: function handler(direction) {
 
 	        console.log('fire prototyping waypoint');
@@ -113,10 +113,10 @@
 	          document.getElementById('prototyping').style.opacity = 1;
 	        }
 	      },
-	      offset: window.innerHeight * .35
+	      offset: window.innerHeight * .45
 	    });
 	    new Waypoint({
-	      element: document.getElementById('branding'),
+	      element: document.getElementById('branding-vid'),
 	      handler: function handler(direction) {
 	        if (direction == 'up') {
 	          styleLinks(document.getElementById('service-proto-a'));
@@ -129,10 +129,10 @@
 	          document.getElementById('branding').style.opacity = 1;
 	        }
 	      },
-	      offset: window.innerHeight * .35
+	      offset: window.innerHeight * .45
 	    });
 	    new Waypoint({
-	      element: document.getElementById('ux'),
+	      element: document.getElementById('ux-vid'),
 	      handler: function handler(direction) {
 	        if (direction == 'up') {
 	          styleLinks(document.getElementById('service-branding-a'));
@@ -145,7 +145,7 @@
 	          document.getElementById('ux').style.opacity = 1;
 	        }
 	      },
-	      offset: window.innerHeight * .35
+	      offset: window.innerHeight * .45
 	    });
 	  })();
 	}

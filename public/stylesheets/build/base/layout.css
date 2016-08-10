@@ -28,6 +28,7 @@
   width: 100%;
   text-align: center;
   padding: 5vw 0;
+  position: relative;
   background-color: #fc5252; }
   .footer .footer-content {
     width: 90%;

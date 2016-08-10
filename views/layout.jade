@@ -16,12 +16,14 @@ html
       .grid
         .col.-cremalogo
           if !onHomePage
-            include ./partials/crema-logo-svg
+            a(href="/")
+              include ./partials/crema-logo-svg
         .col.links-nav  
-          a(href="#", title="title") What we do
-          a(href="#", title="title") Services
-          a(href="#", title="title") Team
-          a(href="#", title="title") Contact
+          a(href="/what-we-do", title="What We Do") What we do
+          a(href="/services", title="Services") Services
+          a(href="/expertise", title="Expertise") Expertise
+          a(href="/team", title="Team") Team
+          
     
     block content
     //- <script src="https://rawgithub.com/dinbror/blazy/master/blazy.min.js"></script>  

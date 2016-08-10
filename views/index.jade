@@ -2,13 +2,14 @@ extends layout
 
 block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/home.css')
+  link(href="/stylesheets/build/modules/work-modals.css", rel="stylesheet")
 
 block vars
   - var onHomePage = true
 
 block content
   .logo-wrapper
-    include ./partials/home-video-logo.jade  
+    include ./partials/home-video-logo.jade
     
   #showcase1
     .cover-video
@@ -22,7 +23,7 @@ block content
         .showcase-text
           h1 Helping enterprises innovate
           p Crema works outside the enterprise machine to move fast, prototype new ideas, and test new product opportunities for brands looking to innovate within their industry. Having a website or app is no longer a differentiator.  Companies must solve problems and create value to stand out in a crowded digital world.  Crema ideates, builds, and tests new ideas to find product-market fit.
-          button.mango-btn  SEE OUT ENTERPRISE WORK
+          button.mango-btn#btn-modal-ent  SEE OUT ENTERPRISE WORK
 
   #showcase2
     .grid
@@ -30,7 +31,7 @@ block content
         .showcase-text
           h1 Launching new digital ventures
           p Navigating the startup waters takes planning, execution, and guts. Our strategy led teams connects ideation, prototyping, funding, and product releases; to marketing, growth, and customer development. All in an effort to position new business for potentially rapid growth.  
-          button.mango-btn  SEE OUT VENTURE WORK
+          button.mango-btn#btn-modal-ven  SEE OUT VENTURE WORK
       .col
         img(data-src="/images/home/ventures/tilr-mobile.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="tilr-mobile-img" data-parallax="true" data-speed="0.1" data-direction="up" )
         img(data-src="/images/home/ventures/dv-tilr.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="tilr-img" data-parallax="true" data-speed="0.3" data-direction="up")
@@ -72,3 +73,5 @@ block content
     a(href='')
       img(src='/images/home/see-our-services.png')
   
+  include ./partials/work-modals/enterprise.jade
+  include ./partials/work-modals/venture.jade

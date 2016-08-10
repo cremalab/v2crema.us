@@ -14,17 +14,35 @@ block content
         img(src='/images/services/service/oval-2.png')
       a(data-scroll href='#ux-pt' id='service-ux-a') User experience design
         img(src='/images/services/service/oval-2.png')
+        
   .blue-bg
     .service-wrapper#inno-pt
       .services-left
-      .services-right
+      
+      .services-right 
+        //- floating text on right
+        .service-text-fixed#innovation
+          h1 Innovation strategy
+          p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+        .service-text-fixed#prototyping
+          h1 Concept prototyping
+          p Consistent across all mediums, and be unique to the personality and purpose of the solution. Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be 
+        .service-text-fixed#branding
+          h1 Product Branding
+          p And be unique to the personality and purpose of the solution. Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+        .service-text-fixed#ux    
+          h1 Early customer development
+          p  A voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.    
+        
+        
+        //- start video content
         .service#first-service
           .service-col.vid
             .videowrapper
               .smoothScrollPt#proto-pt
-              <iframe src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=1&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
               
-          .service-col.-text#innovation
+          .service-col.-text
             h1 Innovation strategy
             p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
             
@@ -32,25 +50,28 @@ block content
           .service-col.vid
             .videowrapper#proto-vid
               .smoothScrollPt#branding-pt
-              <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/SD8OKGImkLY?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-          .service-col.-text#prototyping
+              <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+          .service-col.-text
             h1 Concept prototyping
             p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+       
         .service
           .service-col.vid
             .videowrapper#branding-vid
               .smoothScrollPt#ux-pt
               <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
-          .service-col.-text#branding
+          .service-col.-text
             h1 Product Branding
             p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.     
+        
         .service#last-service
           .service-col.vid
             .videowrapper#ux-vid
-              <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/SD8OKGImkLY" frameborder="0" allowfullscreen></iframe>
-          .service-col.-text#ux
+              <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U" frameborder="0" allowfullscreen></iframe>
+          .service-col.-text
             h1 Early customer development
             p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+  
   .tech-wrapper 
     h1 Tech Stack
     //- displaying comapany logos 
@@ -70,3 +91,9 @@ block content
           li.logo 
             img(src='#{integrationFileNames[idx]}')
             p #{integrationSubs[idx]}
+
+          
+  include ./partials/footer
+  .post-footer
+    a(href='')
+      img(src='/images/services/see-our-expertise.png')
