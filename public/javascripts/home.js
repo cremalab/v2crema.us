@@ -76,17 +76,35 @@ function styleLinks(el) {
           styleLinks(document.getElementById('service-branding-a'))
           document.getElementById('branding').style.opacity = 1
           document.getElementById('ux').style.opacity = 0
+          
         } else {
           initServiceVideo('ux-iframe')
           styleLinks(document.getElementById('service-ux-a'))
           document.getElementById('branding').style.opacity = 0
           document.getElementById('ux').style.opacity = 1
+          
 
         }
       },
       offset: window.innerHeight * .45  
   })
+
+  new Waypoint({
+      element: document.getElementById('fade-links-text'),
+      handler: function(direction) {
+        if (direction == 'up') {
+          document.getElementById('services-links').style.opacity = 1
+          document.getElementById('ux').style.opacity = 1
+        } else {
+          document.getElementById('services-links').style.opacity = 0
+          document.getElementById('ux').style.opacity = 0
+        }
+      },
+      offset: window.innerHeight < 905 ? window.innerHeight * .65 : window.innerHeight * .45  
+  })
 }
+
+
 
 //SERVICES Page
 
