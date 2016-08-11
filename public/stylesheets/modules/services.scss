@@ -6,6 +6,11 @@ $servicesLinkGrey: #afafaf;
   position: fixed;
 }
 
+.svg-wrapper {
+  position: fixed;
+  width: 100vw;
+}
+
 .service-nav {
   position: fixed;
   display: table;
@@ -50,9 +55,9 @@ $servicesLinkGrey: #afafaf;
   display: table;
   margin: 0 auto;
   background-color: $servicesBlue;
-  // #first-vid {
-  //   background-image: url('/images/services/vid-poster-c.png')
-  // }
+  #first-vid {
+    background-image: url('/images/services/poster-vid3.png')
+  }
   #first-service {
     transform: translateY(13%);
     height: 80vh;
@@ -61,19 +66,36 @@ $servicesLinkGrey: #afafaf;
       bottom: -30%;
     }
   }
+
   #last-service {
     transform: translateY(-13%);
     height: 85vh;
   }
-  // #proto-vid {
-  //   background-image: url('/images/services/vid-poster-c.png')
-  // }
-  // #branding-vid {
-  //   background-image: url('/images/services/vid-poster-c.png')
-  // }
-  // #ux-vid {
-  //   background-image: url('/images/services/vid-poster-c.png')
-  // }
+  #proto-vid {
+    background-image: url('/images/services/poster-vid4.png')
+  }
+  #branding-vid {
+    background-image: url('/images/services/poster-vid5.png')
+  }
+  #ux-vid {
+    background-image: url('/images/services/poster-vid3.png')
+  }
+  #api-vid {
+    background-image: url('/images/services/poster-vid4.png')
+  }
+  #mobile-vid {
+    background-image: url('/images/services/poster-vid5.png')
+  }
+  #test-vid {
+    background-image: url('/images/services/poster-vid3.png')
+  }
+  #product-vid {
+    background-image: url('/images/services/poster-vid4.png')
+  }
+  #early-vid {
+    background-image: url('/images/services/poster-vid5.png')
+  }
+
 
   .videowrapper {
     float: none;
@@ -92,6 +114,22 @@ $servicesLinkGrey: #afafaf;
       bottom: 0;
       height: 10%;
       width: 100%;
+    }
+    .play-btn-svg {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
+      transition: all .6s;
+      z-index: 1;
+      animation-iteration-count: 30;
+      animation-timing-function: linear;
+      animation-duration: 1.8s;
+      // animation-name: crema-spinner;
+    }
+    .play-btn-svg:hover {
+      transform: scale(1.1);
     }
   }
   .videowrapper iframe {
@@ -268,7 +306,9 @@ $servicesLinkGrey: #afafaf;
   animation-iteration-count:infinite;
   animation-timing-function: linear;
   animation-duration: 1.8s;
-  animation-name: crema-spinner;
+  transition: opacity .8s;
+  opacity: .5;
+  // animation-name: crema-spinner;
 }
 
 
@@ -283,3 +323,14 @@ $servicesLinkGrey: #afafaf;
   }
 }
 
+@keyframes crema-spinner-rev {
+  0% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  
+}

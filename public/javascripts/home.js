@@ -12,22 +12,38 @@ import Blazy from 'blazy'
 if (document.getElementById('services-links') ) {
 Smooth.init()
 
+function addPlayBtnListeners(className) {
+  let btns = document.getElementsByClassName(className)
+  for (let i =0; i < btns.length; i++){
+    btns[i].addEventListener('click', initServiceVideo.bind(btns[i]))  
+  }
+  
+}
+addPlayBtnListeners('videowrapper')
+
 function initServiceVideo(iframeId){
-  let vid = document.getElementById(iframeId)
-    if (!vid.dataset.added) {
-      setTimeout(function() {
-        vid.src = vid.dataset.src
-        vid.dataset.added = 'true'  
-      }, 250)
-       
-    }
+  console.log(this.id)
+  let vid = this.getElementsByTagName('iframe')[0]
+  let btn = this.getElementsByClassName('play-btn-svg')[0]
+  let spinner = this.getElementsByClassName('crema-spinner')[0]
+  btn.style.zIndex= 0
+  btn.style.animationName = 'crema-spinner-rev'
+  spinner.style.animationName = 'crema-spinner'
+  spinner.style.opacity = 1
+  console.log(btn)
+  if (!vid.dataset.added) {
+    vid.src = vid.dataset.src
+    vid.dataset.added = 'true'
+  }    
+  
+  
 }
 
 function wayptOffset() {
   if (window.innerHeight > 910)
-    return window.innerHeight * .40
+    return window.innerHeight * .87
   else
-    return window.innerHeight * .45
+    return window.innerHeight * .75
 }
 
 let links = document.getElementById('services-links').getElementsByTagName('a')
@@ -49,13 +65,20 @@ function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
     
   } else {
     console.log(`Direction: ${direction} show ${downId}` )
-    if (iframeId) initServiceVideo(iframeId)
+    // if (iframeId) initServiceVideo(iframeId)
     styleLinks(document.getElementById(downLink))
     document.getElementById(upId).style.opacity = 0
-    document.getElementById(downId).style.opacity = 1
+    // document.getElementById(downId).style.opacity = 1
   }
 }
 
+function fadeTextIn(upId, downId, direction) {
+  if (direction === 'up') {
+    // document.getElementById(upId).style.opacity = 1
+  }else {
+    document.getElementById(downId).style.opacity = 1
+  }
+}
 
 
   new Waypoint({
@@ -66,11 +89,26 @@ function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
       offset: wayptOffset()  
   })
   new Waypoint({
+      element: document.getElementById('proto-pt'),
+      handler: function(direction) {
+        fadeTextIn('innovation', 'prototyping', direction)
+      },
+      offset: 200
+  })
+
+  new Waypoint({
       element: document.getElementById('branding-vid'),
       handler: function(direction) {
         fadeText('prototyping', 'branding', 'service-proto-a', 'service-branding-a', direction, 'branding-iframe')
       },
       offset: wayptOffset()  
+  })
+  new Waypoint({
+      element: document.getElementById('branding-pt'),
+      handler: function(direction) {
+        fadeTextIn('prototyping', 'branding', direction)
+      },
+      offset: 100
   })
   new Waypoint({
       element: document.getElementById('ux-vid'),
@@ -80,11 +118,25 @@ function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
       offset: wayptOffset()  
   })
   new Waypoint({
+      element: document.getElementById('ux-pt'),
+      handler: function(direction) {
+        fadeTextIn('branding', 'ux', direction)
+      },
+      offset: 100
+  })
+  new Waypoint({
       element: document.getElementById('api-vid'),
       handler: function(direction) {
         fadeText('ux', 'api', 'service-ux-a', 'service-api-a', direction, 'api-iframe')
       },
       offset: wayptOffset()  
+  })
+  new Waypoint({
+      element: document.getElementById('api-pt'),
+      handler: function(direction) {
+        fadeTextIn('ux', 'api', direction)
+      },
+      offset: 100
   })
   new Waypoint({
       element: document.getElementById('mobile-vid'),
@@ -94,11 +146,25 @@ function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
       offset: wayptOffset()  
   })
   new Waypoint({
+      element: document.getElementById('mobile-pt'),
+      handler: function(direction) {
+        fadeTextIn('api', 'mobile', direction)
+      },
+      offset: 100
+  })
+  new Waypoint({
       element: document.getElementById('test-vid'),
       handler: function(direction) {
         fadeText('mobile','test','service-mobile-a', 'service-test-a', direction, 'test-iframe' )
       },
       offset: wayptOffset()  
+  })
+  new Waypoint({
+      element: document.getElementById('test-pt'),
+      handler: function(direction) {
+        fadeTextIn('mobile', 'test', direction)
+      },
+      offset: 100
   })
   new Waypoint({
       element: document.getElementById('product-vid'),
@@ -108,18 +174,31 @@ function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
       offset: wayptOffset()  
   })
   new Waypoint({
+      element: document.getElementById('product-pt'),
+      handler: function(direction) {
+        fadeTextIn('test', 'product', direction)
+      },
+      offset: 100
+  })
+  new Waypoint({
       element: document.getElementById('early-vid'),
       handler: function(direction) {
         fadeText('product','early','service-product-a', 'service-early-a', direction, 'early-iframe' )
       },
       offset: wayptOffset()  
   })
-
-
+  new Waypoint({
+      element: document.getElementById('early-pt'),
+      handler: function(direction) {
+        fadeTextIn('product', 'early', direction)
+      },
+      offset: 100
+  })
   //final way point
   new Waypoint({
       element: document.getElementById('fade-links-text'),
       handler: function(direction) {
+        
         if (direction == 'up') {
           document.getElementById('services-links').style.opacity = 1
           document.getElementById('early').style.opacity = 1

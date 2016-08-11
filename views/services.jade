@@ -4,6 +4,8 @@ append styles
   link(href="/stylesheets/build/modules/services.css", rel="stylesheet")
 
 block content
+  .svg-wrapper
+    include ./partials/enterprise-svg  
   .service-nav
     .link-wrapper#services-links
       a(data-scroll href='#inno-pt' id='service-inno-a') Innovation strategy
@@ -62,59 +64,66 @@ block content
           p  When launching a new product, your early customers are the building blocks for success.  They are your sounding board and your ambassadors to jump-start the scaling process.  As a team we will engage and incentivize your early customers to gather feedback and spread the word about the solutions we are bringing to life.       
        
 
-
+        
         //- start video content
         .service#first-service
           .service-col.vid
             .videowrapper#first-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#proto-pt
-              <iframe src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=1&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+              <iframe src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text
             
         .service
           .service-col.vid
             .videowrapper#proto-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#branding-pt
-              <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+              <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text
             
         .service
           .service-col.vid
             .videowrapper#branding-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#ux-pt
-              <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
+              <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text        
         
         .service
           .service-col.vid
             .videowrapper#ux-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#api-pt
-              <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U" frameborder="0" allowfullscreen></iframe>
+              <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text
         //- new stuff    
         .service
           .service-col.vid
             .videowrapper#api-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#mobile-pt
-              <iframe id="api-iframe" src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=1&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+              <iframe id="api-iframe" src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=1&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text
             
         .service
           .service-col.vid
             .videowrapper#mobile-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#test-pt
-              <iframe id='mobile-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+              <iframe id='mobile-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text
             
         .service
           .service-col.vid
             .videowrapper#test-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#product-pt
               <iframe id="test-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
@@ -123,15 +132,18 @@ block content
         .service
           .service-col.vid
             .videowrapper#product-vid
+              include ./partials/btn-play-svg
               .crema-spinner
               .smoothScrollPt#early-pt
-              <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U" frameborder="0" allowfullscreen></iframe>
+              <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text
+
         .service#last-service
           .service-col.vid
             .videowrapper#early-vid
+              include ./partials/btn-play-svg
               .crema-spinner
-              <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U" frameborder="0" allowfullscreen></iframe>
+              <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
           .service-col.-text  
         //- end new stuff
 

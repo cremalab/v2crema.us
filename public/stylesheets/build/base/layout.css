@@ -68,6 +68,8 @@
 .post-footer {
   text-align: center;
   width: 100%;
+  position: relative;
+  background-color: white;
   padding: 50px 0; }
   .post-footer img {
     width: 25%; }

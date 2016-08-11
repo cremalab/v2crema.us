@@ -1,6 +1,10 @@
 .header-nav {
   position: fixed; }
 
+.svg-wrapper {
+  position: fixed;
+  width: 100vw; }
+
 .service-nav {
   position: fixed;
   display: table;
@@ -40,6 +44,8 @@
   display: table;
   margin: 0 auto;
   background-color: #907dfc; }
+  .service-wrapper #first-vid {
+    background-image: url("/images/services/poster-vid3.png"); }
   .service-wrapper #first-service {
     transform: translateY(13%);
     height: 80vh; }
@@ -48,6 +54,22 @@
   .service-wrapper #last-service {
     transform: translateY(-13%);
     height: 85vh; }
+  .service-wrapper #proto-vid {
+    background-image: url("/images/services/poster-vid4.png"); }
+  .service-wrapper #branding-vid {
+    background-image: url("/images/services/poster-vid5.png"); }
+  .service-wrapper #ux-vid {
+    background-image: url("/images/services/poster-vid3.png"); }
+  .service-wrapper #api-vid {
+    background-image: url("/images/services/poster-vid4.png"); }
+  .service-wrapper #mobile-vid {
+    background-image: url("/images/services/poster-vid5.png"); }
+  .service-wrapper #test-vid {
+    background-image: url("/images/services/poster-vid3.png"); }
+  .service-wrapper #product-vid {
+    background-image: url("/images/services/poster-vid4.png"); }
+  .service-wrapper #early-vid {
+    background-image: url("/images/services/poster-vid5.png"); }
   .service-wrapper .videowrapper {
     float: none;
     clear: both;
@@ -64,6 +86,19 @@
       bottom: 0;
       height: 10%;
       width: 100%; }
+    .service-wrapper .videowrapper .play-btn-svg {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
+      transition: all .6s;
+      z-index: 1;
+      animation-iteration-count: 30;
+      animation-timing-function: linear;
+      animation-duration: 1.8s; }
+    .service-wrapper .videowrapper .play-btn-svg:hover {
+      transform: scale(1.1); }
   .service-wrapper .videowrapper iframe {
     position: absolute;
     top: 0;
@@ -200,7 +235,8 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-duration: 1.8s;
-  animation-name: crema-spinner; }
+  transition: opacity .8s;
+  opacity: .5; }
 
 @keyframes crema-spinner {
   0% {
@@ -209,3 +245,11 @@
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+@keyframes crema-spinner-rev {
+  0% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); } }
