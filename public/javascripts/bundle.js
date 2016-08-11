@@ -84,7 +84,7 @@
 	    };
 
 	    var wayptOffset = function wayptOffset() {
-	      if (window.innerHeight > 910) return window.innerHeight * .35;else return window.innerHeight * .45;
+	      if (window.innerHeight > 910) return window.innerHeight * .40;else return window.innerHeight * .45;
 	    };
 
 	    var styleLinks = function styleLinks(el) {

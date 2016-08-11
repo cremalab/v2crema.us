@@ -25,7 +25,7 @@ function initServiceVideo(iframeId){
 
 function wayptOffset() {
   if (window.innerHeight > 910)
-    return window.innerHeight * .35
+    return window.innerHeight * .40
   else
     return window.innerHeight * .45
 }
