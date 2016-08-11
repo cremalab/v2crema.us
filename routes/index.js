@@ -71,8 +71,11 @@ router.get('/services', function(req, res, next) {
       integrationSubs: integrationSubs,
       integrationNum: integrationSubs.length
     })
-  
-  
+})
+
+/* GET home page. */
+router.get('/enterprise', function(req, res, next) {
+  res.render('enterprise', { title: 'Crema.us'})
 })
 
 module.exports = router
