@@ -50,9 +50,9 @@ $servicesLinkGrey: #afafaf;
   display: table;
   margin: 0 auto;
   background-color: $servicesBlue;
-  #first-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
+  // #first-vid {
+  //   background-image: url('/images/services/vid-poster-c.png')
+  // }
   #first-service {
     transform: translateY(13%);
     height: 80vh;
@@ -65,15 +65,15 @@ $servicesLinkGrey: #afafaf;
     transform: translateY(-13%);
     height: 85vh;
   }
-  #proto-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
-  #branding-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
-  #ux-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
+  // #proto-vid {
+  //   background-image: url('/images/services/vid-poster-c.png')
+  // }
+  // #branding-vid {
+  //   background-image: url('/images/services/vid-poster-c.png')
+  // }
+  // #ux-vid {
+  //   background-image: url('/images/services/vid-poster-c.png')
+  // }
 
   .videowrapper {
     float: none;
@@ -83,7 +83,9 @@ $servicesLinkGrey: #afafaf;
     padding-bottom: 56.25%;
     // padding-top: 25px;
     height: 0;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: none;
+    background-position-y: center;
     .smoothScrollPt {
       position: absolute;
       opacity: 0;
@@ -235,7 +237,7 @@ $servicesLinkGrey: #afafaf;
 
 }
 
-
+// MOBILE
 @media screen and (min-width: 1450px) {
   .service-text-fixed {
     margin-right: 4vw;

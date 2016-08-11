@@ -40,8 +40,6 @@
   display: table;
   margin: 0 auto;
   background-color: #907dfc; }
-  .service-wrapper #first-vid {
-    background-image: url("/images/services/service/poster-vid2.png"); }
   .service-wrapper #first-service {
     transform: translateY(13%);
     height: 80vh; }
@@ -50,12 +48,6 @@
   .service-wrapper #last-service {
     transform: translateY(-13%);
     height: 85vh; }
-  .service-wrapper #proto-vid {
-    background-image: url("/images/services/service/poster-vid2.png"); }
-  .service-wrapper #branding-vid {
-    background-image: url("/images/services/service/poster-vid2.png"); }
-  .service-wrapper #ux-vid {
-    background-image: url("/images/services/service/poster-vid2.png"); }
   .service-wrapper .videowrapper {
     float: none;
     clear: both;
@@ -63,7 +55,9 @@
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    background-size: cover; }
+    background-size: contain;
+    background-repeat: none;
+    background-position-y: center; }
     .service-wrapper .videowrapper .smoothScrollPt {
       position: absolute;
       opacity: 0;
