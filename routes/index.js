@@ -74,8 +74,8 @@ router.get('/services', function(req, res, next) {
 })
 
 /* GET home page. */
-router.get('/enterprise', function(req, res, next) {
-  res.render('enterprise', { title: 'Crema.us'})
+router.get('/enterprise-work', function(req, res, next) {
+  res.render('partials/work-modals/enterprise', { title: 'Crema.us - Enterprise Work'})
 })
 
 module.exports = router

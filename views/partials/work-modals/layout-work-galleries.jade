@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    title= title
+    link(href="/stylesheets/build/base/layout.css", rel="stylesheet")
+    link(href="/stylesheets/build/base/layout-work.css", rel="stylesheet")
+    <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+   
+    block styles
+
+    block vars
+
+      
+      
+  body
+    .close-modal
+      .x-wrapper   
+        include x-orange-svg
+    .work-wrapper     
+      block content
+    
+    script(src="https://rawgithub.com/dinbror/blazy/master/blazy.min.js")
+    script.
+      var bLazy = new Blazy({
+        successClass: 'img-fadein-work'
+      })
+      
+      var xWrapper = document.getElementsByClassName('x-wrapper')[0]
+      var workWrapper = document.getElementsByClassName('work-wrapper')[0]
+      document.getElementById('x-orange')
+        .addEventListener('click', function() {
+          xWrapper.classList.add('x-spin')
+          window.location.href = '/'
+          workWrapper.style.animationName = 'fade-out'
+        
+      })  
+      
+
+      
+    
