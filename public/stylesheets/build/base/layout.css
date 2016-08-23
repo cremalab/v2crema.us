@@ -117,7 +117,7 @@ p {
   border-radius: 5px;
   overflow: hidden;
   background-color: #fcad2b;
-  transition: all .7s; }
+  transition: all .5s; }
 
 .mango-btn:hover {
   background-color: #8CD8FD; }
