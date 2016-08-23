@@ -22,24 +22,16 @@
 
 .work-wrapper {
   animation-duration: 1s;
+  animation-timing-function: ease-out;
   animation-name: fade-in; }
-
-@keyframes fade-out {
-  0% {
-    opacity: 100; }
-  100% {
-    opacity: 0; } }
-
-@keyframes fade-in {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
 
 h1 {
   text-align: center;
   margin: 1.5em auto 2em auto;
   font-size: 48px; }
+
+.work-content .post-footer img {
+  width: 50%; }
 
 .work-img-wrapper {
   position: relative;
@@ -47,7 +39,8 @@ h1 {
   margin: 0 auto;
   min-height: 80vh; }
   .work-img-wrapper .work-by-crema {
-    position: relative; }
+    position: relative;
+    margin-bottom: 9em; }
     .work-img-wrapper .work-by-crema img {
       transition: all 1s;
       width: 100%;

@@ -22,7 +22,6 @@ body{
 
 a {
   color: black;
-  padding: 5px;
   size: 14px;
   text-decoration: none;
   font-family: 'Spartan', sans-serif;
@@ -46,10 +45,18 @@ p {
 	font-weight: 900;
 	line-height: 1.4;
   color: white;
+  position: relative;
   border: none;
   border-radius: 5px;
+  overflow: hidden;
 	background-color: $mango;
+  transition: all .7s;
 }
+
+.mango-btn:hover {
+  background-color: #8CD8FD;
+}
+
 
 @font-face {
   font-family: "Spartan";
@@ -58,4 +65,21 @@ p {
 
 h1 {
   font-family: 'Spartan', sans-serif;
+}
+
+.layout-wrapper {
+  transition: opacity 1s;
+  animation-duration: 1s;
+  animation-name: fade-in;
+}
+
+
+@keyframes fade-out {
+  0% { opacity: 100}
+  100% {opacity: 0}
+}
+
+@keyframes fade-in {
+  0% { opacity: 0}
+  100% {opacity: 100}
 }

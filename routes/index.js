@@ -73,9 +73,17 @@ router.get('/services', function(req, res, next) {
     })
 })
 
-/* GET home page. */
+
 router.get('/enterprise-work', function(req, res, next) {
   res.render('partials/work-modals/enterprise', { title: 'Crema.us - Enterprise Work'})
 })
+router.get('/innovative-work', function(req, res, next) {
+  res.render('partials/work-modals/innovative', { title: 'Crema.us - Innovative Ventures'})
+})
+router.get('/our-work', function(req, res, next) {
+  res.render('partials/work-modals/crafting', { title: 'Crema.us - Our Products'})
+})
+
+
 
 module.exports = router

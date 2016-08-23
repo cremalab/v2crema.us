@@ -48,6 +48,19 @@
 
 	__webpack_require__(1);
 
+	__webpack_require__(7);
+
+	var btns = document.getElementsByClassName('mango-btn');
+	var layoutWrapper = document.getElementsByClassName('layout-wrapper')[0];
+
+	//code that will run on all pages
+	Array.prototype.forEach.call(btns, function (btn) {
+	  btn.addEventListener('click', function () {
+	    console.log('fading...');
+	    layoutWrapper.style.opacity = 0;
+	  });
+	});
+
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -58,219 +71,11 @@
 
 	__webpack_require__(4);
 
-	var _smoothScroll = __webpack_require__(5);
-
-	var _smoothScroll2 = _interopRequireDefault(_smoothScroll);
-
 	var _blazy = __webpack_require__(6);
 
 	var _blazy2 = _interopRequireDefault(_blazy);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//SERVICES Page
-
-
-	if (document.getElementById('services-links')) {
-	  (function () {
-	    var addPlayBtnListeners = function addPlayBtnListeners(className) {
-	      var btns = document.getElementsByClassName(className);
-	      for (var i = 0; i < btns.length; i++) {
-	        btns[i].addEventListener('click', initServiceVideo.bind(btns[i]));
-	      }
-	    };
-
-	    var initServiceVideo = function initServiceVideo(iframeId) {
-	      console.log(this.id);
-	      var vid = this.getElementsByTagName('iframe')[0];
-	      var btn = this.getElementsByClassName('play-btn-svg')[0];
-	      var spinner = this.getElementsByClassName('crema-spinner')[0];
-	      btn.style.zIndex = 0;
-	      btn.style.animationName = 'crema-spinner-rev';
-	      spinner.style.animationName = 'crema-spinner';
-	      spinner.style.opacity = 1;
-	      console.log(btn);
-	      if (!vid.dataset.added) {
-	        vid.src = vid.dataset.src;
-	        vid.dataset.added = 'true';
-	      }
-	    };
-
-	    var wayptOffset = function wayptOffset() {
-	      if (window.innerHeight > 910) return window.innerHeight * .87;else return window.innerHeight * .75;
-	    };
-
-	    var styleLinks = function styleLinks(el) {
-	      for (var i = 0; i < links.length; i++) {
-	        links[i].style.color = '#afafaf';
-	        links[i].getElementsByTagName('img')[0].style.opacity = 0;
-	      }
-	      el.style.color = 'black';
-	      el.getElementsByTagName('img')[0].style.opacity = 1;
-	    };
-
-	    var fadeText = function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
-	      if (direction == 'up') {
-	        console.log('Direction: ' + direction + ' show ' + upId);
-	        styleLinks(document.getElementById(upLink));
-	        document.getElementById(upId).style.opacity = 1;
-	        document.getElementById(downId).style.opacity = 0;
-	      } else {
-	        console.log('Direction: ' + direction + ' show ' + downId);
-	        // if (iframeId) initServiceVideo(iframeId)
-	        styleLinks(document.getElementById(downLink));
-	        document.getElementById(upId).style.opacity = 0;
-	        // document.getElementById(downId).style.opacity = 1
-	      }
-	    };
-
-	    var fadeTextIn = function fadeTextIn(upId, downId, direction) {
-	      if (direction === 'up') {
-	        // document.getElementById(upId).style.opacity = 1
-	      } else {
-	        document.getElementById(downId).style.opacity = 1;
-	      }
-	    };
-
-	    _smoothScroll2.default.init();
-
-	    addPlayBtnListeners('videowrapper');
-
-	    var links = document.getElementById('services-links').getElementsByTagName('a');
-
-
-	    new Waypoint({
-	      element: document.getElementById('proto-vid'),
-	      handler: function handler(direction) {
-	        fadeText('innovation', 'prototyping', 'service-inno-a', 'service-proto-a', direction, 'proto-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('proto-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('innovation', 'prototyping', direction);
-	      },
-	      offset: 200
-	    });
-
-	    new Waypoint({
-	      element: document.getElementById('branding-vid'),
-	      handler: function handler(direction) {
-	        fadeText('prototyping', 'branding', 'service-proto-a', 'service-branding-a', direction, 'branding-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('branding-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('prototyping', 'branding', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('ux-vid'),
-	      handler: function handler(direction) {
-	        fadeText('branding', 'ux', 'service-branding-a', 'service-ux-a', direction, 'ux-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('ux-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('branding', 'ux', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('api-vid'),
-	      handler: function handler(direction) {
-	        fadeText('ux', 'api', 'service-ux-a', 'service-api-a', direction, 'api-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('api-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('ux', 'api', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('mobile-vid'),
-	      handler: function handler(direction) {
-	        fadeText('api', 'mobile', 'service-api-a', 'service-mobile-a', direction, 'mobile-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('mobile-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('api', 'mobile', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('test-vid'),
-	      handler: function handler(direction) {
-	        fadeText('mobile', 'test', 'service-mobile-a', 'service-test-a', direction, 'test-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('test-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('mobile', 'test', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('product-vid'),
-	      handler: function handler(direction) {
-	        fadeText('test', 'product', 'service-test-a', 'service-product-a', direction, 'product-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('product-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('test', 'product', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('early-vid'),
-	      handler: function handler(direction) {
-	        fadeText('product', 'early', 'service-product-a', 'service-early-a', direction, 'early-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('early-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('product', 'early', direction);
-	      },
-	      offset: 100
-	    });
-	    //final way point
-	    new Waypoint({
-	      element: document.getElementById('fade-links-text'),
-	      handler: function handler(direction) {
-
-	        if (direction == 'up') {
-	          document.getElementById('services-links').style.opacity = 1;
-	          document.getElementById('early').style.opacity = 1;
-	        } else {
-	          document.getElementById('services-links').style.opacity = 0;
-	          document.getElementById('early').style.opacity = 0;
-	        }
-	      },
-	      offset: window.innerHeight < 905 ? window.innerHeight * .75 : window.innerHeight * .65
-	    });
-	  })();
-	}
-
-	//SERVICES Page
 
 	var bLazy = new _blazy2.default({
 	  successClass: 'img-fadein'
@@ -12451,6 +12256,225 @@
 	        };
 	    }
 	});
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(4);
+
+	var _smoothScroll = __webpack_require__(5);
+
+	var _smoothScroll2 = _interopRequireDefault(_smoothScroll);
+
+	var _blazy = __webpack_require__(6);
+
+	var _blazy2 = _interopRequireDefault(_blazy);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	if (document.getElementById('services-links')) {
+	  (function () {
+	    var addPlayBtnListeners = function addPlayBtnListeners(className) {
+	      var btns = document.getElementsByClassName(className);
+	      for (var i = 0; i < btns.length; i++) {
+	        btns[i].addEventListener('click', initServiceVideo.bind(btns[i]));
+	      }
+	    };
+
+	    var initServiceVideo = function initServiceVideo(iframeId) {
+	      console.log(this.id);
+	      var vid = this.getElementsByTagName('iframe')[0];
+	      var btn = this.getElementsByClassName('play-btn-svg')[0];
+	      var spinner = this.getElementsByClassName('crema-spinner')[0];
+	      btn.style.zIndex = 0;
+	      btn.style.animationName = 'crema-spinner-rev';
+	      spinner.style.animationName = 'crema-spinner';
+	      spinner.style.opacity = 1;
+	      console.log(btn);
+	      if (!vid.dataset.added) {
+	        vid.src = vid.dataset.src;
+	        vid.dataset.added = 'true';
+	      }
+	    };
+
+	    var wayptOffset = function wayptOffset() {
+	      if (window.innerHeight > 910) return window.innerHeight * .87;else return window.innerHeight * .75;
+	    };
+
+	    var styleLinks = function styleLinks(el) {
+	      for (var i = 0; i < links.length; i++) {
+	        links[i].style.color = '#afafaf';
+	        links[i].getElementsByTagName('img')[0].style.opacity = 0;
+	      }
+	      el.style.color = 'black';
+	      el.getElementsByTagName('img')[0].style.opacity = 1;
+	    };
+
+	    var fadeText = function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
+	      if (direction == 'up') {
+	        console.log('Direction: ' + direction + ' show ' + upId);
+	        styleLinks(document.getElementById(upLink));
+	        document.getElementById(upId).style.opacity = 1;
+	        document.getElementById(downId).style.opacity = 0;
+	      } else {
+	        console.log('Direction: ' + direction + ' show ' + downId);
+	        // if (iframeId) initServiceVideo(iframeId)
+	        styleLinks(document.getElementById(downLink));
+	        document.getElementById(upId).style.opacity = 0;
+	        // document.getElementById(downId).style.opacity = 1
+	      }
+	    };
+
+	    var fadeTextIn = function fadeTextIn(upId, downId, direction) {
+	      if (direction === 'up') {
+	        // document.getElementById(upId).style.opacity = 1
+	      } else {
+	        document.getElementById(downId).style.opacity = 1;
+	      }
+	    };
+
+	    _smoothScroll2.default.init();
+
+	    addPlayBtnListeners('videowrapper');
+
+	    var links = document.getElementById('services-links').getElementsByTagName('a');
+
+
+	    new Waypoint({
+	      element: document.getElementById('proto-vid'),
+	      handler: function handler(direction) {
+	        fadeText('innovation', 'prototyping', 'service-inno-a', 'service-proto-a', direction, 'proto-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('proto-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('innovation', 'prototyping', direction);
+	      },
+	      offset: 200
+	    });
+
+	    new Waypoint({
+	      element: document.getElementById('branding-vid'),
+	      handler: function handler(direction) {
+	        fadeText('prototyping', 'branding', 'service-proto-a', 'service-branding-a', direction, 'branding-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('branding-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('prototyping', 'branding', direction);
+	      },
+	      offset: 100
+	    });
+	    new Waypoint({
+	      element: document.getElementById('ux-vid'),
+	      handler: function handler(direction) {
+	        fadeText('branding', 'ux', 'service-branding-a', 'service-ux-a', direction, 'ux-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('ux-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('branding', 'ux', direction);
+	      },
+	      offset: 100
+	    });
+	    new Waypoint({
+	      element: document.getElementById('api-vid'),
+	      handler: function handler(direction) {
+	        fadeText('ux', 'api', 'service-ux-a', 'service-api-a', direction, 'api-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('api-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('ux', 'api', direction);
+	      },
+	      offset: 100
+	    });
+	    new Waypoint({
+	      element: document.getElementById('mobile-vid'),
+	      handler: function handler(direction) {
+	        fadeText('api', 'mobile', 'service-api-a', 'service-mobile-a', direction, 'mobile-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('mobile-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('api', 'mobile', direction);
+	      },
+	      offset: 100
+	    });
+	    new Waypoint({
+	      element: document.getElementById('test-vid'),
+	      handler: function handler(direction) {
+	        fadeText('mobile', 'test', 'service-mobile-a', 'service-test-a', direction, 'test-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('test-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('mobile', 'test', direction);
+	      },
+	      offset: 100
+	    });
+	    new Waypoint({
+	      element: document.getElementById('product-vid'),
+	      handler: function handler(direction) {
+	        fadeText('test', 'product', 'service-test-a', 'service-product-a', direction, 'product-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('product-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('test', 'product', direction);
+	      },
+	      offset: 100
+	    });
+	    new Waypoint({
+	      element: document.getElementById('early-vid'),
+	      handler: function handler(direction) {
+	        fadeText('product', 'early', 'service-product-a', 'service-early-a', direction, 'early-iframe');
+	      },
+	      offset: wayptOffset()
+	    });
+	    new Waypoint({
+	      element: document.getElementById('early-pt'),
+	      handler: function handler(direction) {
+	        fadeTextIn('product', 'early', direction);
+	      },
+	      offset: 100
+	    });
+	    //final way point
+	    new Waypoint({
+	      element: document.getElementById('fade-links-text'),
+	      handler: function handler(direction) {
+
+	        if (direction == 'up') {
+	          document.getElementById('services-links').style.opacity = 1;
+	          document.getElementById('early').style.opacity = 1;
+	        } else {
+	          document.getElementById('services-links').style.opacity = 0;
+	          document.getElementById('early').style.opacity = 0;
+	        }
+	      },
+	      offset: window.innerHeight < 905 ? window.innerHeight * .75 : window.innerHeight * .65
+	    });
+	  })();
+	}
+
+	//SERVICES Page
 
 /***/ }
 /******/ ]);
