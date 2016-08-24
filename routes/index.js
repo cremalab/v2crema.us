@@ -2,6 +2,25 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var path = require('path')
+var axios = require('axios')
+
+// let postTitles =[]
+// axios.get('https://medium.com/@cremalab/latest?format=json')
+// .then(function (res) {
+//     // console.log(res.data)
+//     let posts = JSON.parse(res.data.slice(16)).payload.references.Post
+    
+//     for (let key in posts) {
+      
+//       postTitles.push([posts[key].title, posts[key].uniqueSlug ])
+      
+//     }
+//     console.log(postTitles)
+    
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
 
 // returns array of image paths when given abs url to directory
 //default
@@ -60,7 +79,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Crema.us', logoFileNames: logoFileNames })
 })
 
-/* GET home page. */
 router.get('/services', function(req, res, next) {
     res.render('services', { 
       title: 'Crema.us',
@@ -73,7 +91,13 @@ router.get('/services', function(req, res, next) {
     })
 })
 
+/* GET home page. */
+router.get('/expertise', function(req, res, next) {
+  res.render('expertise', { title: 'Crema.us - Expertise' })
+})
 
+
+// Work Galleries
 router.get('/enterprise-work', function(req, res, next) {
   res.render('partials/work-modals/enterprise', { title: 'Crema.us - Enterprise Work'})
 })

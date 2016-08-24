@@ -1,0 +1,71 @@
+extends layout
+
+block append styles
+  link(rel='stylesheet', href='/stylesheets/build/modules/expertise.css')
+  //- link(href="/stylesheets/build/modules/work-modals.css", rel="stylesheet")
+
+block vars
+  
+
+block content
+  include ./partials/sq-red-svg
+  .headline
+    h1 Explore our video library
+    p It’s a place for us to share what we’re learning with you.
+
+  .video-library 
+    .grid 
+      .col
+        .poster-img
+          img(src="/images/expertise/1.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/2.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/3.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/2.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/3.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/1.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/2.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/3.png")
+        .subhead Kansas City Designers 
+          a Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/1.png")
+        .subhead Kansas City Designers 
+          a Watch it
+
+  .medium-wrapper
+    h1 Our Recent Medium articles
+    a Link to Article
+
+  include ./partials/footer.jade
+  .post-footer
+    a(href='')
+      img(src='/images/home/see-our-services.png')

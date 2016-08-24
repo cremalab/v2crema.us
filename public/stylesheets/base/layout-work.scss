@@ -95,3 +95,12 @@ h1 {
 .img-fadein-work {
    opacity: 1 !important;
 }
+
+.img-placeholder {
+  width: 100%;
+  position: absolute;
+  height: 42vw;
+  z-index: -1;
+  background: rgba(226,226,226,1);
+  background: linear-gradient(135deg, rgba(139,246,254,1) 0%, rgba(147,82,252,1) 100%);
+}

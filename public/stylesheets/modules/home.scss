@@ -7,11 +7,30 @@ $transitionTimeFade: opacity .4s;
 
 .logo-wrapper {
   width: 100vw;
-  height: 50vh; 
+  height: 50vh;
+  padding-top: 5em; 
   }
 
 .img-fadein {
   opacity: 1 !important;
+}
+
+.subtle-move {
+  position: absolute;
+  z-index: 2;
+}
+
+.img-lazy-wrapper {
+  position: relative;
+}
+
+.img-placeholder {
+  width: 100%;
+  position: absolute;
+  height: 42vw;
+  z-index: -1;
+  // background: rgba(226,226,226,1);
+  // background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(209,209,209,0.72) 73%, rgba(254,254,254,0.62) 100%);
 }  
 
 // First block ENTERPRISE
@@ -34,10 +53,11 @@ $transitionTimeFade: opacity .4s;
     z-index: -1;
   }
   #brookside-img {
-   width: 57%;
+    width: 57%;
+    height: 42.8vw;
     top: 18%;
     left: 50%;
-    z-index: 2;
+    
   }
   #cups-img {
     width: 100%;
@@ -58,7 +78,7 @@ $transitionTimeFade: opacity .4s;
         opacity: 0;
         transition: $transitionTimeFade;
         width: 100%;
-        top: 100px;
+        // top: 100px;
         position: absolute;
       }
       .showcase-text {
@@ -198,7 +218,7 @@ ul {
 .landing-logos {
   text-align: center;
   max-width: 90vw;
-  overflow: scroll;
+
 }
 .landing-logos ul {
   margin: 3em auto;
@@ -241,9 +261,12 @@ ul {
 
 /*sliding usecase divs under earch other*/
 @media screen and (max-width: 500px) {
-.landing-logos .logos {
-  overflow: scroll;
-}
+  .landing-logos {
+    overflow: scroll;
+  }
+  .landing-logos .logos {
+    overflow: scroll;
+  }
   .landing-logos .logo {
     margin-left: .11em;
     margin-right: .11em;

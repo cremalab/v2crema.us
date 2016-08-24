@@ -1,9 +1,23 @@
 .logo-wrapper {
   width: 100vw;
-  height: 50vh; }
+  height: 50vh;
+  padding-top: 5em; }
 
 .img-fadein {
   opacity: 1 !important; }
+
+.subtle-move {
+  position: absolute;
+  z-index: 2; }
+
+.img-lazy-wrapper {
+  position: relative; }
+
+.img-placeholder {
+  width: 100%;
+  position: absolute;
+  height: 42vw;
+  z-index: -1; }
 
 #showcase1 {
   width: 100vw;
@@ -21,9 +35,9 @@
     z-index: -1; }
   #showcase1 #brookside-img {
     width: 57%;
+    height: 42.8vw;
     top: 18%;
-    left: 50%;
-    z-index: 2; }
+    left: 50%; }
   #showcase1 #cups-img {
     width: 100%;
     top: 65%;
@@ -40,7 +54,6 @@
         opacity: 0;
         transition: opacity 0.4s;
         width: 100%;
-        top: 100px;
         position: absolute; }
       #showcase1 .grid .col .showcase-text {
         transform: translateY(8vw);
@@ -139,8 +152,7 @@ ul {
 
 .landing-logos {
   text-align: center;
-  max-width: 90vw;
-  overflow: scroll; }
+  max-width: 90vw; }
 
 .landing-logos ul {
   margin: 3em auto;
@@ -183,6 +195,8 @@ ul {
 
 /*sliding usecase divs under earch other*/
 @media screen and (max-width: 500px) {
+  .landing-logos {
+    overflow: scroll; }
   .landing-logos .logos {
     overflow: scroll; }
   .landing-logos .logo {
