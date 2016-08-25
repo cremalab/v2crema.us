@@ -19,13 +19,13 @@
     vertical-align: middle;
     padding-right: 2em; }
   .service-nav a {
-    color: #afafaf;
     display: block;
     padding: 5px;
     font-size: 16px;
     line-height: 1.9;
     font-family: 'Lato', sans-serif;
     text-align: right;
+    color: #afafaf;
     direction: rtl;
     transition: .5s; }
     .service-nav a img {

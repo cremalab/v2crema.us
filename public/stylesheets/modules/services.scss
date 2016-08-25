@@ -1,6 +1,4 @@
-$servicesBlue: #907dfc;
-$lighBlue: #8cd8fd;
-$servicesLinkGrey: #afafaf;
+@import '../base/_colors';
 
 .header-nav {
   position: fixed;
@@ -26,13 +24,13 @@ $servicesLinkGrey: #afafaf;
     padding-right: 2em; 
   }
   a {
-    color: $servicesLinkGrey;
     display: block;
     padding: 5px;
     font-size: 16px;
     line-height: 1.9;
     font-family: 'Lato', sans-serif;
     text-align: right;
+    color: $servicesLinkGrey;
     direction: rtl;
     transition: .5s;
     img {
@@ -42,7 +40,6 @@ $servicesLinkGrey: #afafaf;
   }
   a:hover {
     transform: scale(1.05)
-        
   }
   #service-inno-a {
     img {opacity: 1}

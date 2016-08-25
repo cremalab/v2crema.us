@@ -4,6 +4,7 @@ var fs = require('fs')
 var path = require('path')
 var axios = require('axios')
 
+
 let postTitles =[]
 let defaultTitles = [
     [ 'Cremalab Presents: Innovation Lab','cremalab-presents-innovation-lab-46b21dcacf4b' ],
@@ -19,7 +20,7 @@ function getLatestMedium() {
       for (let key in posts) {
         postTitles.push([posts[key].title, posts[key].uniqueSlug ])
       }
-      console.log(postTitles)
+      console.log(postTitles.length, 'Medium Posts Loaded')
     })
     .catch(function (error) {
       console.log(error)
@@ -27,8 +28,8 @@ function getLatestMedium() {
     })
 }
 getLatestMedium()
-
 setInterval( getLatestMedium, 1000 * 1000 * 86 ) // refresh medium links 1 time per day. 
+
 
 // returns array of image paths when given abs url to directory
 //default
@@ -82,6 +83,8 @@ var teamNameTitles = fs.readFileSync('public/images/team-names-titles.txt').toSt
 console.log(teamNameTitles.length, 'Team Titles Loaded Sucessfully')
 
 
+// ////// // Routes // ////// // 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Crema.us', logoFileNames: logoFileNames })
@@ -99,9 +102,18 @@ router.get('/services', function(req, res, next) {
     })
 })
 
-/* GET home page. */
 router.get('/expertise', function(req, res, next) {
   res.render('expertise', { title: 'Crema.us - Expertise', mediumPosts: postTitles })
+})
+
+router.get('/team', function(req, res, next) {
+  res.render('team', {
+    title: 'Crema.us - Team',
+    teamPhotos: teamPhotos,
+    numberOfPhotos: teamPhotos.length,
+    teamNameTitles: teamNameTitles
+  })
+  console.log(`Serving ${teamPhotos.length} team photos to /team`)
 })
 
 
