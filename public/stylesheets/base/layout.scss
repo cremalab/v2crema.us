@@ -26,6 +26,9 @@ a {
   text-decoration: none;
   font-family: 'Spartan', sans-serif;
 }
+a:hover {
+  color: $linkBlue;
+}
 
 button {
   cursor: pointer;

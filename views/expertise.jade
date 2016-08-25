@@ -63,9 +63,14 @@ block content
 
   .medium-wrapper
     h1 Our Recent Medium articles
-    a Link to Article
+    each arr in mediumPosts
+      a(href="https://medium.com/@cremalab/#{arr[1]}") #{arr[0]}    
+      
+
+    
+    
 
   include ./partials/footer.jade
   .post-footer
     a(href='')
-      img(src='/images/home/see-our-services.png')
+      img(src='/images/expertise/see-meet-team@2x.png')

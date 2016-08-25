@@ -52,7 +52,7 @@
         cursor: pointer;
       }
       a:hover {
-        color: #8CD8FD;
+        color: $linkBlue;
       }
     }
   
@@ -62,13 +62,17 @@
 .medium-wrapper {
   text-align: left;
   width: 50%;
+  padding-bottom: 4em;
   margin: 2em auto;
-  height: 50vh;
-
+  h1 {font-size:48px;}
   a {
     color: $mango;
-    margin: 1em auto 2.5em 0;
+    margin: 2em auto 1.5em 0;
     font-size: 24px;
+    display: block;
     font-family: 'Lato', sans-serif;
+  }
+  a:hover {
+    color: $linkBlue;
   }
 }

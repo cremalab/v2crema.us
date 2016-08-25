@@ -4,23 +4,25 @@ var fs = require('fs')
 var path = require('path')
 var axios = require('axios')
 
-// let postTitles =[]
-// axios.get('https://medium.com/@cremalab/latest?format=json')
-// .then(function (res) {
-//     // console.log(res.data)
-//     let posts = JSON.parse(res.data.slice(16)).payload.references.Post
-    
-//     for (let key in posts) {
+let postTitles =[]
+function getLatestMedium() {
+  axios.get('https://medium.com/@cremalab/latest?format=json')
+    .then(function (res) {
+      // console.log(res.data)
+      let posts = JSON.parse(res.data.slice(16)).payload.references.Post
       
-//       postTitles.push([posts[key].title, posts[key].uniqueSlug ])
-      
-//     }
-//     console.log(postTitles)
-    
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
+      for (let key in posts) {
+        postTitles.push([posts[key].title, posts[key].uniqueSlug ])
+      }
+      console.log(postTitles)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}
+getLatestMedium()
+
+setInterval( getLatestMedium, 1000 * 1000 * 86 ) // refresh medium links 1 time per day. 
 
 // returns array of image paths when given abs url to directory
 //default
@@ -93,7 +95,7 @@ router.get('/services', function(req, res, next) {
 
 /* GET home page. */
 router.get('/expertise', function(req, res, next) {
-  res.render('expertise', { title: 'Crema.us - Expertise' })
+  res.render('expertise', { title: 'Crema.us - Expertise', mediumPosts: postTitles })
 })
 
 
