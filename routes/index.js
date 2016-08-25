@@ -5,6 +5,11 @@ var path = require('path')
 var axios = require('axios')
 
 let postTitles =[]
+let defaultTitles = [
+    [ 'Cremalab Presents: Innovation Lab','cremalab-presents-innovation-lab-46b21dcacf4b' ],
+    [ 'Top 5 reasons to launch your product with a creative agency', 'top-5-reasons-to-launch-your-product-with-a-creative-agency-17bc37352c1e' ],
+    [ 'HipHire: Shifting Job Listing Services from Quantity to Quality', 'hiphire-shifting-job-listing-services-from-quantity-to-quality-f06351f115fc' ]
+  ]
 function getLatestMedium() {
   axios.get('https://medium.com/@cremalab/latest?format=json')
     .then(function (res) {
@@ -18,6 +23,7 @@ function getLatestMedium() {
     })
     .catch(function (error) {
       console.log(error)
+      postTitles = defaultTitles
     })
 }
 getLatestMedium()
