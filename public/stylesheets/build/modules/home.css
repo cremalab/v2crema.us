@@ -7,8 +7,7 @@
   opacity: 1 !important; }
 
 .subtle-move {
-  position: absolute;
-  z-index: 2; }
+  position: absolute; }
 
 .img-lazy-wrapper {
   position: relative; }
@@ -35,6 +34,7 @@
     z-index: -1; }
   #showcase1 #brookside-img {
     width: 57%;
+    z-index: 2;
     height: 42.8vw;
     top: 18%;
     left: 50%; }
@@ -69,29 +69,24 @@
     z-index: 1; }
   #showcase2 #tilr-img {
     width: 100%;
-    top: 60%;
-    transition-delay: .2s; }
+    top: 60%; }
   #showcase2 #throttle-img {
     width: 40%;
     top: 40%;
-    left: -5%;
-    transition-delay: .5s; }
+    left: -5%; }
   #showcase2 #neighborly-img {
     width: 61%;
     right: 0;
     top: 71%;
-    z-index: 1;
-    transition-delay: .7s; }
+    z-index: 1; }
   #showcase2 #pc-img {
     width: 67%;
     bottom: -50%;
-    right: 25%;
-    transition-delay: .8s; }
+    right: 25%; }
   #showcase2 #hiphire-img {
     width: 50%;
     top: 94%;
-    right: 0;
-    transition-delay: 1s; }
+    right: 0; }
   #showcase2 .col {
     width: 50%;
     position: relative; }
@@ -127,8 +122,7 @@
   #showcase3 #plaster-img {
     width: 75%;
     bottom: -11%;
-    left: -5%;
-    transition-delay: .6s; }
+    left: -5%; }
   #showcase3 .grid {
     height: 85vw; }
   #showcase3 .col {

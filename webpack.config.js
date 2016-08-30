@@ -1,9 +1,12 @@
 module.exports = {
   entry: {
-    filename: './public/javascripts/entry.js'
+    bundle: ['./public/javascripts/entry.js'],
+    servicesMobile: ['./public/javascripts/services-mobile.js']
+    
   },
   output: {
-    filename: './public/javascripts/bundle.js'
+    path: './public/javascripts',
+    filename: '[name].js'
   },
   module: {
       loaders: [

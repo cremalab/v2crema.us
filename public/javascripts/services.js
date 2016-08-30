@@ -3,7 +3,7 @@ import Smooth from 'smooth-scroll'
 import Blazy from 'blazy'
 
 
-if (document.getElementById('services-links') ) {
+if (document.getElementById('services-links') && window.innerWidth > 800 ) {
   Smooth.init()
 
   function addPlayBtnListeners(className) {

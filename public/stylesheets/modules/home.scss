@@ -17,7 +17,6 @@ $transitionTimeFade: opacity .4s;
 
 .subtle-move {
   position: absolute;
-  z-index: 2;
 }
 
 .img-lazy-wrapper {
@@ -29,8 +28,7 @@ $transitionTimeFade: opacity .4s;
   position: absolute;
   height: 42vw;
   z-index: -1;
-  // background: rgba(226,226,226,1);
-  // background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(209,209,209,0.72) 73%, rgba(254,254,254,0.62) 100%);
+  // background: linear-gradient(135deg, rgba(139,246,254,1) 0%, rgba(147,82,252,1) 100%);
 }  
 
 // First block ENTERPRISE
@@ -54,6 +52,7 @@ $transitionTimeFade: opacity .4s;
   }
   #brookside-img {
     width: 57%;
+    z-index: 2;
     height: 42.8vw;
     top: 18%;
     left: 50%;
@@ -103,13 +102,13 @@ $transitionTimeFade: opacity .4s;
   #tilr-img {
     width: 100%;
     top: 60%;
-    transition-delay: .2s;
+    
   }
   #throttle-img {
     width: 40%;
     top: 40%;
     left: -5%;
-    transition-delay: .5s;
+    
   }
   
   #neighborly-img {
@@ -117,19 +116,19 @@ $transitionTimeFade: opacity .4s;
     right: 0;
     top: 71%;
     z-index: 1;
-    transition-delay: .7s;
+    
   }
   #pc-img {
     width: 67%;
     bottom: -50%;
     right: 25%;
-    transition-delay: .8s;
+    
   }
   #hiphire-img {
     width: 50%;
     top: 94%;
     right: 0;
-    transition-delay: 1s;
+    
   }
   .grid {
   }
@@ -183,7 +182,7 @@ $transitionTimeFade: opacity .4s;
     width: 75%;
     bottom: -11%;
     left: -5%;
-    transition-delay: .6s;
+    
     }
   .grid {
     height: 100vw * $SVGHeightWidthRatio; 

@@ -41,36 +41,59 @@
 .blue-bg {
   background-color: #907dfc; }
 
+#first-vid {
+  background-image: url("/images/expertise/vid-posters/crema is.jpg"); }
+
+#first-service {
+  transform: translateY(13%);
+  height: 80vh; }
+  #first-service .smoothScrollPt {
+    bottom: -30%; }
+
+#last-service {
+  transform: translateY(-13%);
+  height: 85vh; }
+
+#proto-vid {
+  background-image: url("/images/expertise/vid-posters/Golden Layer.jpg"); }
+
+#branding-vid {
+  background-image: url("/images/expertise/vid-posters/Core Values.jpg"); }
+
+#ux-vid {
+  background-image: url("/images/services/poster-vid3.png"); }
+
+#api-vid {
+  background-image: url("/images/services/poster-vid4.png"); }
+
+#mobile-vid {
+  background-image: url("/images/services/poster-vid5.png"); }
+
+#test-vid {
+  background-image: url("/images/services/poster-vid3.png"); }
+
+#product-vid {
+  background-image: url("/images/services/poster-vid4.png"); }
+
+#early-vid {
+  background-image: url("/images/services/poster-vid5.png"); }
+
+.play-btn-svg {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  transition: all .6s;
+  z-index: 1;
+  animation-iteration-count: 30;
+  animation-timing-function: linear;
+  animation-duration: 1.8s; }
+
 .service-wrapper {
   display: table;
   margin: 0 auto;
   background-color: #907dfc; }
-  .service-wrapper #first-vid {
-    background-image: url("/images/services/poster-vid3.png"); }
-  .service-wrapper #first-service {
-    transform: translateY(13%);
-    height: 80vh; }
-    .service-wrapper #first-service .smoothScrollPt {
-      bottom: -30%; }
-  .service-wrapper #last-service {
-    transform: translateY(-13%);
-    height: 85vh; }
-  .service-wrapper #proto-vid {
-    background-image: url("/images/services/poster-vid4.png"); }
-  .service-wrapper #branding-vid {
-    background-image: url("/images/services/poster-vid5.png"); }
-  .service-wrapper #ux-vid {
-    background-image: url("/images/services/poster-vid3.png"); }
-  .service-wrapper #api-vid {
-    background-image: url("/images/services/poster-vid4.png"); }
-  .service-wrapper #mobile-vid {
-    background-image: url("/images/services/poster-vid5.png"); }
-  .service-wrapper #test-vid {
-    background-image: url("/images/services/poster-vid3.png"); }
-  .service-wrapper #product-vid {
-    background-image: url("/images/services/poster-vid4.png"); }
-  .service-wrapper #early-vid {
-    background-image: url("/images/services/poster-vid5.png"); }
   .service-wrapper .videowrapper {
     float: none;
     clear: both;
@@ -87,17 +110,6 @@
       bottom: 0;
       height: 10%;
       width: 100%; }
-    .service-wrapper .videowrapper .play-btn-svg {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      top: calc(50% - 30px);
-      left: calc(50% - 30px);
-      transition: all .6s;
-      z-index: 1;
-      animation-iteration-count: 30;
-      animation-timing-function: linear;
-      animation-duration: 1.8s; }
     .service-wrapper .videowrapper .play-btn-svg:hover {
       transform: scale(1.1); }
   .service-wrapper .videowrapper iframe {
@@ -201,17 +213,62 @@
   100% {
     margin-left: 0; } }
 
+@media screen and (max-width: 800px) {
+  .service-nav {
+    display: none; }
+  .blue-bg {
+    display: none; }
+  .tech-wrapper {
+    width: 100vw;
+    overflow: hidden;
+    text-align: left; }
+    .tech-wrapper h1 {
+      width: 90%;
+      margin-left: auto; }
+  .mobile-services-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background: #907dfc;
+    text-align: center;
+    overflow: hidden; }
+  .mobile-service-vid {
+    margin: 5em 1vw;
+    text-align: center;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center; }
+    .mobile-service-vid iframe {
+      z-index: 1; }
+  .mobile-services-text-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 50vh; }
+    .mobile-services-text-wrapper .service-text-mobile {
+      position: absolute;
+      opacity: 0;
+      text-align: left;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      width: 90%; } }
+
 /*sliding usecase divs under earch other*/
-@media screen and (max-width: 500px) {
-  .landing-logos .logos {
-    overflow: scroll; }
+@media screen and (max-width: 800px) {
   .landing-logos .logo {
-    margin-left: .11em;
-    margin-right: .11em;
-    display: table-cell;
+    margin: 0;
+    width: 20vw;
+    height: 20vh;
     vertical-align: middle; }
+    .landing-logos .logo img {
+      max-width: 100%; }
   .landing-logos ul {
-    display: table; } }
+    padding: 0;
+    list-style-type: none; } }
+
+@media screen and (min-width: 801px) {
+  .mobile-services-wrapper {
+    display: none; } }
 
 @media screen and (min-width: 1450px) {
   .service-text-fixed {

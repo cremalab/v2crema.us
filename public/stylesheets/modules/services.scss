@@ -49,51 +49,65 @@
 .blue-bg {
   background-color: $servicesBlue;
 }
+
+#first-vid {
+    background-image: url('/images/expertise/vid-posters/crema is.jpg')
+}
+#first-service {
+  transform: translateY(13%);
+  height: 80vh;
+  .smoothScrollPt {
+    // so smooth scroll will line up
+    bottom: -30%;
+  }
+}
+#last-service {
+  transform: translateY(-13%);
+  height: 85vh;
+}
+#proto-vid {
+  background-image: url('/images/expertise/vid-posters/Golden Layer.jpg')
+}
+#branding-vid {
+  background-image: url('/images/expertise/vid-posters/Core Values.jpg')
+}
+#ux-vid {
+  background-image: url('/images/services/poster-vid3.png')
+}
+#api-vid {
+  background-image: url('/images/services/poster-vid4.png')
+}
+#mobile-vid {
+  background-image: url('/images/services/poster-vid5.png')
+}
+#test-vid {
+  background-image: url('/images/services/poster-vid3.png')
+}
+#product-vid {
+  background-image: url('/images/services/poster-vid4.png')
+}
+#early-vid {
+  background-image: url('/images/services/poster-vid5.png')
+}
+
+.play-btn-svg {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    transition: all .6s;
+    z-index: 1;
+    animation-iteration-count: 30;
+    animation-timing-function: linear;
+    animation-duration: 1.8s;
+    // animation-name: crema-spinner;
+  }
+
 .service-wrapper {
   display: table;
   margin: 0 auto;
   background-color: $servicesBlue;
-  #first-vid {
-    background-image: url('/images/services/poster-vid3.png')
-  }
-  #first-service {
-    transform: translateY(13%);
-    height: 80vh;
-    .smoothScrollPt {
-      // so smooth scroll will line up
-      bottom: -30%;
-    }
-  }
-
-  #last-service {
-    transform: translateY(-13%);
-    height: 85vh;
-  }
-  #proto-vid {
-    background-image: url('/images/services/poster-vid4.png')
-  }
-  #branding-vid {
-    background-image: url('/images/services/poster-vid5.png')
-  }
-  #ux-vid {
-    background-image: url('/images/services/poster-vid3.png')
-  }
-  #api-vid {
-    background-image: url('/images/services/poster-vid4.png')
-  }
-  #mobile-vid {
-    background-image: url('/images/services/poster-vid5.png')
-  }
-  #test-vid {
-    background-image: url('/images/services/poster-vid3.png')
-  }
-  #product-vid {
-    background-image: url('/images/services/poster-vid4.png')
-  }
-  #early-vid {
-    background-image: url('/images/services/poster-vid5.png')
-  }
-
 
   .videowrapper {
     float: none;
@@ -112,19 +126,6 @@
       bottom: 0;
       height: 10%;
       width: 100%;
-    }
-    .play-btn-svg {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      top: calc(50% - 30px);
-      left: calc(50% - 30px);
-      transition: all .6s;
-      z-index: 1;
-      animation-iteration-count: 30;
-      animation-timing-function: linear;
-      animation-duration: 1.8s;
-      // animation-name: crema-spinner;
     }
     .play-btn-svg:hover {
       transform: scale(1.1);
@@ -255,22 +256,90 @@
   100% { margin-left: 0; }
 }
 
+@media screen and (max-width: 800px) {
+  .service-nav  {
+    display: none;
+  }
+  .blue-bg {
+    display: none;
+  }
+
+  .tech-wrapper {
+    width: 100vw;
+    overflow: hidden;
+    text-align: left;
+    h1 {
+      width: 90%;
+      margin-left: auto;
+    }
+  }
+
+  .mobile-services-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background: $servicesBlue;  
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .mobile-service-vid {
+    // width: 60vw;
+    // height: 50vh;
+    margin: 5em 1vw;
+    text-align: center;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    iframe {
+      z-index: 1;
+    }
+  }
+  .mobile-services-text-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 50vh;
+
+    .service-text-mobile {
+      position: absolute;
+      opacity: 0;
+      text-align: left;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      width: 90%;
+     
+    }
+  }
+}
+
+
+
 /*sliding usecase divs under earch other*/
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
 .landing-logos .logos {
-  overflow: scroll;
+  
+
 }
   .landing-logos .logo {
-    margin-left: .11em;
-    margin-right: .11em;
-    display: table-cell;
+    margin: 0; 
+    width: 20vw;
+    height: 20vh;
     vertical-align: middle;
+    img { max-width: 100%;}
   }
 
   .landing-logos ul {
-    display: table;
+    padding: 0;
+    list-style-type: none;
   }
 
+}
+
+@media screen and (min-width: 801px) {
+  .mobile-services-wrapper {
+    display: none;
+  }
 }
 
 // MOBILE

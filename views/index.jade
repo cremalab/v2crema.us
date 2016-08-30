@@ -2,7 +2,6 @@ extends layout
 
 block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/home.css')
-  link(href="/stylesheets/build/modules/work-modals.css", rel="stylesheet")
 
 block vars
   - var onHomePage = true
@@ -20,8 +19,14 @@ block content
           .img-lazy-wrapper
             .img-placeholder
             img(data-src="/images/home/phone-mock2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" )
-        img(data-src="/images/home/cups2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="cups-img" data-parallax="true" data-speed="0.35" data-direction="up")
-        img(data-src="/images/home/m-l-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="ML-img" data-parallax="true" data-speed="0.075" data-direction="down")
+        .subtle-move(id="cups-img" data-parallax="true" data-speed="0.35" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/cups2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" )
+        .subtle-move( id="ML-img" data-parallax="true" data-speed="0.075" data-direction="down")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/m-l-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
       .col
         .showcase-text
           h1 Helping enterprises innovate
@@ -38,22 +43,60 @@ block content
           a(href="/innovative-work")
             button.mango-btn SEE OUT VENTURE WORK
       .col
-        img(data-src="/images/home/ventures/tilr-mobile.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="tilr-mobile-img" data-parallax="true" data-speed="0.1" data-direction="up" )
-        img(data-src="/images/home/ventures/dv-tilr.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="tilr-img" data-parallax="true" data-speed="0.3" data-direction="up")
-        img(data-src="/images/home/ventures/throttle-mock.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="throttle-img" data-parallax="true" data-speed="0.05" data-direction="up")
-        img(data-src="/images/home/ventures/neighborly.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="neighborly-img" data-parallax="true" data-speed="0.2" data-direction="up")
-        img(data-src="/images/home/ventures/p-c-mock.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="pc-img" data-parallax="true" data-speed="0.3" data-direction="up")
-        img(data-src="/images/home/ventures/hip-hire.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="hiphire-img" data-parallax="true" data-speed="0.12" data-direction="up")  
+        .subtle-move(id="tilr-mobile-img" data-parallax="true" data-speed="0.1" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/ventures/tilr-mobile.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" )
+        
+        .subtle-move(id="tilr-img" data-parallax="true" data-speed="0.3" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/ventures/dv-tilr.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+        
+        .subtle-move(id="throttle-img" data-parallax="true" data-speed="0.05" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/ventures/throttle-mock.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+        
+        .subtle-move(id="neighborly-img" data-parallax="true" data-speed="0.2" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/ventures/neighborly.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" )
+        
+        .subtle-move(id="pc-img" data-parallax="true" data-speed="0.3" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/ventures/p-c-mock.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+        
+        .subtle-move(id="hiphire-img" data-parallax="true" data-speed="0.12" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/ventures/hip-hire.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  
 
 
   #showcase3
     include ./partials/internal-svg.jade
     .grid
       .col
-        img(data-src="/images/home/internal/scorebot-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="score-img" data-parallax="true" data-speed="0.06" data-direction="up" )
-        img(data-src="/images/home/internal/plaster-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="plaster-img" data-parallax="true" data-speed="0.06" data-direction="up")
-        img(data-src="/images/home/internal/string-plain@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="str-plain-img" data-parallax="true" data-speed="0.2" data-direction="up")
-        img(data-src="/images/home/internal/string-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="str-img" data-parallax="true" data-speed="0.2" data-direction="up")
+        .subtle-move(id="score-img" data-parallax="true" data-speed="0.06" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/internal/scorebot-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+        
+        .subtle-move(id="plaster-img" data-parallax="true" data-speed="0.06" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/internal/plaster-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" )
+        
+        .subtle-move(id="str-plain-img" data-parallax="true" data-speed="0.2" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/internal/string-plain@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
+        
+        .subtle-move(id="str-img" data-parallax="true" data-speed="0.2" data-direction="up")
+          .img-lazy-wrapper
+            .img-placeholder
+            img(data-src="/images/home/internal/string-mock@2x.png" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")
       .col
         .showcase-text
           h1 Crafting our own products
