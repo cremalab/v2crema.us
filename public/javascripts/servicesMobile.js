@@ -11090,9 +11090,7 @@
 	(0, _jquery2.default)('.mobile-vid-wrapper').slick({
 	  dots: true,
 	  speed: 300,
-	  slidesToShow: 1,
 	  centerMode: true,
-	  variableWidth: true,
 	  infinite: false
 	});
 

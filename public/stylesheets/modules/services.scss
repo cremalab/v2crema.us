@@ -51,7 +51,7 @@
 }
 
 #first-vid {
-    background-image: url('/images/expertise/vid-posters/crema is.jpg')
+    background-image: url('/images/expertise/vid-posters/crema-is.jpg')
 }
 #first-service {
   transform: translateY(13%);
@@ -256,6 +256,13 @@
   100% { margin-left: 0; }
 }
 
+.mobile-modal-vid {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
 @media screen and (max-width: 800px) {
   .service-nav  {
     display: none;
@@ -277,22 +284,49 @@
   .mobile-services-wrapper {
     height: 100vh;
     width: 100vw;
+    padding-top: 10vh;
     background: $servicesBlue;  
     text-align: center;
     overflow: hidden;
+
+    .mobile-vid-wrapper {
+      // width: 100%;
+      // height: 100%;
+    }
+    .slick-center{
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    
+    .play-btn-svg {
+      transform: scale(.6);
+    }
+    .crema-spinner,
+    .crema-spinner:after {
+      transform: scale(.6);
+    }
+
+    .slick-initialized .slick-slide {
+      // height: 35vh;
+      
+    }
   }
 
+
   .mobile-service-vid {
-    // width: 60vw;
-    // height: 50vh;
-    margin: 5em 1vw;
+    width: 60vw;
+    height: 50vh;
+    margin: 3em 6vw;
     text-align: center;
     position: relative;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     iframe {
       z-index: 1;
+      pointer-events: none;
+      width: 100%;
+      height:100%;
     }
   }
   .mobile-services-text-wrapper {
@@ -335,6 +369,7 @@
   }
 
 }
+  
 
 @media screen and (min-width: 801px) {
   .mobile-services-wrapper {
@@ -401,3 +436,4 @@
   }
   
 }
+
