@@ -21,49 +21,54 @@ block content
     .grid 
       .col
         .poster-img
-          img(src="/images/expertise/1.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/crema-is.jpg")
+        .subhead Crema Is 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=JHWx7l91awo") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/2.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/core-val.jpg")
+        .subhead Our Five Core Values 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=w6HsV5jcHM4") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/3.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/good-design.jpg")
+        .subhead Does Good Design Matter 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=r8VxJ-mD840") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/2.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/crema-clients.jpg")
+        .subhead Crema's Clients 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=1HlBqBfDP8A") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/3.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/define-mvp.jpg")
+        .subhead Defining the MVP
+          a(class="expert-video" href="https://www.youtube.com/watch?v=4__ZpyYnzPc") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/1.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/feedback-loops.jpg")
+        .subhead Feedback Loops in Design  
+          a(class="expert-video" href="https://www.youtube.com/watch?v=QiKhruyWfD4") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/2.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/golden-layer.jpg")
+        .subhead Arriving at the Golden Layer 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=9zJL6I_1mIE") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/3.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/good-apps.jpg")
+        .subhead Why Good Apps Fail 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=vhAt__lwYx8") Watch it
       .col
         .poster-img
-          img(src="/images/expertise/1.png")
-        .subhead Kansas City Designers 
-          a Watch it
+          img(src="/images/expertise/vid-posters/manage.jpg")
+        .subhead How Do We Manage 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=uNrVaUNp7L4") Watch it
+      .col
+        .poster-img
+          img(src="/images/expertise/vid-posters/user-testing.jpg")
+        .subhead Benefits of User Testing 
+          a(class="expert-video" href="https://www.youtube.com/watch?v=9S05mlfC6V4") Watch it
 
   .medium-wrapper
     h1 Our Recent Medium articles
@@ -79,13 +84,10 @@ block content
     a(href='')
       img(src='/images/expertise/see-meet-team@2x.png')
 
-  //- .video-modal
-  //-   <iframe id="api-iframe" src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-
-  <a class="video" href="https://www.youtube.com/watch?v=MWVqI-XcdyQ">Open DailyMotion video</a>
+  
 
   script.
-    $('.video').magnificPopup({
+    $('.expert-video').magnificPopup({
       type: 'iframe',
       
       
@@ -104,7 +106,7 @@ block content
             // Or a function that should return %id%, for example:
             // id: function(url) { return 'parsed id'; }
 
-            src: '//www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
+            src: '//www.youtube.com/embed/%id%?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1' // URL that will be set as a source for iframe.
           }
         }
       }
