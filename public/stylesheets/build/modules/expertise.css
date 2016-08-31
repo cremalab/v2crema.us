@@ -1,3 +1,14 @@
+.video-modal {
+  position: fixed;
+  width: 65vw;
+  min-height: 25vh;
+  background: #e2e2e2;
+  background: linear-gradient(135deg, #8bf6fe 0%, #9352fc 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 0px 4000px rgba(0, 0, 0, 0.46); }
+
 .headline {
   padding-top: 8em;
   color: white;
