@@ -52,25 +52,25 @@ $transitionTimeFade: opacity .4s;
     z-index: -1;
   }
   #brookside-img {
-    width: 40%;
+    width: 30%;
     z-index: 2;
     height: 42.8vw;
-    top: 18%;
-    left: 50%;
-    .img-placeholder { height: 37vh;}
+    top: 28%;
+    left: 63%;
+    .img-placeholder { height: 26vw;}
   }
   #cups-img {
-    width: 90%;
+    width: 88%;
     top: 65%;
     z-index: 1;
     left: 10%;
-    .img-placeholder { height: 33vh;}
+    .img-placeholder { height: 31vw;}
     
   }
   #ML-img {
     width: 45%;
     top: 15%;
-    .img-placeholder { height: 33vh;}
+    .img-placeholder { height: 34vw;}
   }
   .grid {
     height: 100vw * $SVGHeightWidthRatio;
