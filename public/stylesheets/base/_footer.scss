@@ -64,3 +64,21 @@
     width: 25%;
   }
 }
+
+@media screen and (max-width:700px) {
+  .footer {
+    .address {
+      text-align: center;
+      padding-bottom: 2em;
+    }
+    .social-wrapper {
+      display: table-row;
+      text-align: center;
+    }
+  }
+  .post-footer {
+    img {
+      width: 70%;
+    }
+  }
+}

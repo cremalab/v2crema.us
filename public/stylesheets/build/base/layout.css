@@ -89,6 +89,16 @@
     cursor: pointer;
     width: 25%; }
 
+@media screen and (max-width: 700px) {
+  .footer .address {
+    text-align: center;
+    padding-bottom: 2em; }
+  .footer .social-wrapper {
+    display: table-row;
+    text-align: center; }
+  .post-footer img {
+    width: 70%; } }
+
 body {
   margin: 0;
   overflow-x: hidden; }
@@ -174,3 +184,6 @@ h1 {
 
 .-ltr {
   direction: ltr; }
+
+.-rtl {
+  direction: rtl; }
