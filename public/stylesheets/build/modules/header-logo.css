@@ -1,6 +1,7 @@
 .header-logo-wrapper {
   position: relative;
   width: 100%;
+  overflow: hidden;
   height: 100%; }
   .header-logo-wrapper h1 {
     position: absolute;
