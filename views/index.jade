@@ -7,14 +7,16 @@ block vars
   - var onHomePage = true
 
 block content
+
   .logo-wrapper
     include ./partials/home-video-logo.jade
-    
+ 
   #showcase1
     .cover-video
-    include ./partials/enterprise-svg.jade
+    
     .grid
-      .col
+      
+      .col.img-col
         .subtle-move(id="brookside-img" data-parallax="true" data-speed="0.2" data-direction="up")
           .img-lazy-wrapper
             .img-placeholder
@@ -32,7 +34,7 @@ block content
           h1 Helping enterprises innovate
           p Crema works outside the enterprise machine to move fast, prototype new ideas and test new product opportunities for brands looking to innovate within their industry. Having a website or app is no longer a differentiator in a competitive market. Companies must solve problems and create value to stand out in a crowded digital world. Crema ideates, builds and tests new ideas to find product-market fit.
           a(href="/enterprise-work")
-            button.mango-btn SEE OUT ENTERPRISE WORK
+            button.mango-btn SEE OUR ENTERPRISE WORK
 
   #showcase2
     .grid
@@ -74,8 +76,8 @@ block content
             img(data-src="/images/home/homepage/HH.jpg" class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  
 
 
-  #showcase3
-    include ./partials/internal-svg.jade
+  #showcase3  
+    
     .grid
       .col
         .subtle-move(id="score-img" data-parallax="true" data-speed="0.06" data-direction="up")

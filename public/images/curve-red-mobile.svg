@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="375px" height="872px" viewBox="0 0 375 872" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>6EA851C5-3A30-4357-96AF-3A892C612FC7</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="10.687859%" y1="80.3698297%" x2="78.8368418%" y2="8.30573479%" id="linearGradient-1">
+            <stop stop-color="#F254CE" offset="0%"></stop>
+            <stop stop-color="#F54747" offset="100%"></stop>
+        </linearGradient>
+        <path d="M375,0.0223851404 C337.387892,-1.28856677 284.772717,55.3697537 255.860643,67.6991963 C225.219128,80.7661518 185.450354,73.5667191 107.216701,54.6322406 C62.7771182,43.8767629 24.6483637,55.6479816 -2.61479727e-12,67.8243416 L-2.30926389e-14,806.668831 C13.7482287,813.542209 33.5452117,816.739883 61.8325688,809.893643 C140.066223,790.959165 167.828722,819.095913 218.057858,843.315017 C260.537886,863.797716 309.170494,881.116272 375,865.483618 L375,0.0223851404 L375,0.0223851404 Z" id="path-2"></path>
+    </defs>
+    <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-Work_Mobile" transform="translate(0.000000, -382.000000)">
+            <g id="Rectangle" transform="translate(0.000000, 382.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Combined-Shape" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

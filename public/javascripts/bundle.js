@@ -85,7 +85,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var bLazy = new _blazy2.default({
-	  successClass: 'img-fadein'
+	  successClass: 'img-fadein',
+	  offset: 0
 	});
 
 	//turn crema video off and on if on homepage

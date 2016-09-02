@@ -3,7 +3,8 @@ import 'waypoints/lib/noframework.waypoints.js'
 import Blazy from 'blazy'
 
  var bLazy = new Blazy({
-   successClass: 'img-fadein'
+   successClass: 'img-fadein',
+   offset: 0
  })
 
 //turn crema video off and on if on homepage
