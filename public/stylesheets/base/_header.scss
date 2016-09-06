@@ -12,7 +12,7 @@
 
     .links-nav {
       width: 40%;
-      min-width: 500px;
+      
       margin-right: 0;
       text-align: right;
       padding-right: 2em;
@@ -38,6 +38,12 @@
   }
   
 }
+@media screen and (min-width: 701px) {
+  .links-nav {
+    min-width: 500px;
+  }
+}
+
 
 @media screen and (max-width: 700px) {
   .header-nav {
@@ -49,7 +55,6 @@
         padding-right: initial;
         margin-right: auto; 
         width: 100%;
-        min-width: auto;
         text-align: center;
         a {
           font-size: 14px;
