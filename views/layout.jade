@@ -19,8 +19,11 @@ html
       .grid
         .col.-cremalogo
           if !onHomePage
-            a(href="/")
+            a(href="/" id="crema-logo-desktop")
               include ./partials/crema-logo-svg
+            #crema-mobile-color-logo
+              a(href="/")
+                img(src="/images/crema-logo-mobile-color.png")  
         .col.links-nav  
           a(href="/", title="What We Do") What we do
           a(href="/services", title="Services") Services

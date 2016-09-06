@@ -2,6 +2,13 @@ extends layout
 
 block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/home.css')
+  style.
+    @media screen and (max-width: 700px) {
+      .header-nav {
+        padding-top: 10px;
+        height: 50px;
+      } 
+    }
 
 block vars
   - var onHomePage = true

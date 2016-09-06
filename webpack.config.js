@@ -1,7 +1,8 @@
 module.exports = {
   entry: {
     bundle: ['./public/javascripts/entry.js'],
-    servicesMobile: ['./public/javascripts/services-mobile.js']
+    servicesMobile: ['./public/javascripts/services-mobile.js'],
+    expertiseB: ['./public/javascripts/expertise.js'],
     
   },
   output: {

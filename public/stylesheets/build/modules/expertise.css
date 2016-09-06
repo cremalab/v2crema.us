@@ -1,17 +1,19 @@
 .headline {
-  padding-top: 8em;
+  padding-top: 4em;
   color: white;
   text-align: center; }
   .headline h1 {
     margin-bottom: -20px;
     font-size: 48px; }
 
-#sq-red-svg {
-  width: 100vw;
-  min-width: 1340px;
+.expertise-header-svg {
   position: absolute;
-  top: 0;
-  z-index: -1; }
+  top: -11%;
+  width: 100vw;
+  height: 85vh;
+  z-index: -1;
+  background-size: cover;
+  background-image: url("../../../images/expertise/red-expertise-desktop.svg"); }
 
 .video-library {
   margin: 4em auto;
@@ -59,3 +61,16 @@
     font-family: 'Lato', sans-serif; }
   .medium-wrapper a:hover {
     color: #8CD8FD; }
+
+@media screen and (max-width: 700px) {
+  .expertise-header-svg {
+    height: 75vh;
+    top: auto;
+    background-image: url("../../../images/expertise/red-expertise-mobile.svg"); }
+  .headline {
+    width: 90%;
+    margin: auto;
+    padding-top: 2em; }
+    .headline h1 {
+      margin: auto;
+      font-size: 38px; } }

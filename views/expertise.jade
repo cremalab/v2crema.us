@@ -2,28 +2,29 @@ extends layout
 
 block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/expertise.css')
-  link(rel='stylesheet', href='http://dimsemenov-static.s3.amazonaws.com/dist/magnific-popup.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css')
 
 block vars
 
 block append scripts
-  script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js")
-  script(src="http://dimsemenov-static.s3.amazonaws.com/dist/jquery.magnific-popup.min.js")
+  
+  script( type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+  script( type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js")
   
 
 block content
-  include ./partials/sq-red-svg
+  .expertise-header-svg
   .headline
     h1 Explore our video library
     p It’s a place for us to share what we’re learning with you.
-
+  
   .video-library 
     .grid 
       .col
         .poster-img
           img(src="/images/expertise/vid-posters/crema-is.jpg")
         .subhead Crema Is 
-          a(class="expert-video" href="https://www.youtube.com/watch?v=JHWx7l91awo") Watch it
+          a(class="expert-video" id='vid1-e' href="https://www.youtube.com/watch?v=JHWx7l91awo" target="_blank") Watch it
       .col
         .poster-img
           img(src="/images/expertise/vid-posters/core-val.jpg")
@@ -84,11 +85,12 @@ block content
     a(href='')
       img(src='/images/expertise/see-meet-team@2x.png')
 
-  
-
   script.
-    $('.expert-video').magnificPopup({
+    
+    $('.video-library').magnificPopup({
+      delegate: 'a',
       type: 'iframe',
+      
       
       
       iframe: {
@@ -112,4 +114,5 @@ block content
       }
       
       
-    });
+    })    
+      
