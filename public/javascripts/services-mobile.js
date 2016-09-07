@@ -9,7 +9,7 @@ import 'magnific-popup'
 let serviceTextMobile = []
 let lastSlideIdx = 0
 $('.mobile-vid-wrapper').slick({
-  dots: true,
+  dots: false,
   speed: 300,
   centerMode: true,
   infinite: true

@@ -11157,7 +11157,7 @@
 
 	var lastSlideIdx = 0;
 	(0, _jquery2.default)('.mobile-vid-wrapper').slick({
-	  dots: true,
+	  dots: false,
 	  speed: 300,
 	  centerMode: true,
 	  infinite: true
