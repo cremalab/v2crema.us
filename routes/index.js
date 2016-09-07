@@ -12,13 +12,12 @@ let defaultTitles = [
     [ 'HipHire: Shifting Job Listing Services from Quantity to Quality', 'hiphire-shifting-job-listing-services-from-quantity-to-quality-f06351f115fc' ]
   ]
 function getLatestMedium() {
-  axios.get('https://medium.com/@cremalab/latest?format=json')
+  axios.get('https://medium.com/ideas-by-crema/latest?format=json')
     .then(function (res) {
-      // console.log(res.data)
-      let posts = JSON.parse(res.data.slice(16)).payload.references.Post
-      
+      let posts = JSON.parse(res.data.slice(16)).payload.posts
       for (let key in posts) {
         postTitles.push([posts[key].title, posts[key].uniqueSlug ])
+      
       }
       console.log(postTitles.length, 'Medium Posts Loaded')
     })

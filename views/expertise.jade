@@ -74,7 +74,7 @@ block content
   .medium-wrapper
     h1 Our Recent Medium articles
     each arr in mediumPosts
-      a(href="https://medium.com/@cremalab/#{arr[1]}") #{arr[0]}    
+      a(href="https://medium.com/@cremalab/#{arr[1]}" target="_blank") #{arr[0]}    
       
 
     
@@ -82,7 +82,7 @@ block content
 
   include ./partials/footer.jade
   .post-footer
-    a(href='')
+    a(href='/team')
       img(src='/images/expertise/see-meet-team@2x.png')
 
   script.

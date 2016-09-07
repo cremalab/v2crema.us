@@ -6,7 +6,9 @@
   .header-logo-wrapper h1 {
     position: absolute;
     z-index: 2;
-    bottom: 0;
+    bottom: 0vw;
+    text-align: center;
+    width: 90%;
     left: 50%;
     transform: translateX(-50%); }
   .header-logo-wrapper svg {
@@ -21,7 +23,7 @@
     mask: url(#mask); }
   .header-logo-wrapper video {
     position: absolute;
-    top: 0%;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 75vw;
@@ -40,7 +42,7 @@
       text-align: center; }
     .header-logo-wrapper svg {
       top: -45px;
-      height: 113%; }
+      height: 116%; }
     .header-logo-wrapper video {
       width: 96vw; } }
 

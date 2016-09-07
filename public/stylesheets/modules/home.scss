@@ -32,8 +32,8 @@ $transitionTimeFade: opacity .7s;
 
 .logo-wrapper {
   width: 100vw;
-  height: 50vh;
-  padding-top: 5em; 
+  height: 55vh;
+   
   }
 
 .img-fadein {
@@ -451,6 +451,14 @@ ul {
       
       }
 
+  }
+
+}
+
+
+@media screen and (min-width: 1024px) {
+  .logo-wrapper {
+    height: 60vh;
   }
 
 }

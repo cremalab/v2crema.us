@@ -16,8 +16,7 @@
 
 .logo-wrapper {
   width: 100vw;
-  height: 50vh;
-  padding-top: 5em; }
+  height: 55vh; }
 
 .img-fadein {
   opacity: 1 !important; }
@@ -356,3 +355,7 @@ ul {
       transition-delay: 2.1s; }
     #showcase3 #plaster-img .img-placeholder {
       height: 31vw; } }
+
+@media screen and (min-width: 1024px) {
+  .logo-wrapper {
+    height: 60vh; } }
