@@ -82,6 +82,10 @@ li h5 {
       text-align: right;
       transition: all .8s;
       vertical-align: middle; }
+      .values .col.left-nav .link-wrapper .first-value-link {
+        color: black; }
+        .values .col.left-nav .link-wrapper .first-value-link img {
+          opacity: 1; }
       .values .col.left-nav .link-wrapper a {
         cursor: pointer;
         display: block;
@@ -120,8 +124,10 @@ li h5 {
       padding: 5em; }
     .values .col.content .col.value-img {
       width: 40%; }
+      .values .col.content .col.value-img .img-trust {
+        max-width: 285px; }
       .values .col.content .col.value-img img {
-        width: 100%; }
+        width: 90%; }
 
 .join-team {
   width: 70vw;

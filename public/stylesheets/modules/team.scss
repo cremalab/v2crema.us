@@ -101,6 +101,10 @@ li h5 {
   .col.left-nav {
     width: 250px;
     .link-wrapper {
+      .first-value-link {
+        color: black;
+        img {opacity: 1}        
+      }
       text-align: right;
       transition: all .8s;
       vertical-align: middle; 
@@ -151,9 +155,9 @@ li h5 {
     }
     .col.value-img {
       width: 40%;
-      
+      .img-trust {max-width: 285px;}
       img {
-        width: 100%
+        width: 90%
       }
     }
   }
