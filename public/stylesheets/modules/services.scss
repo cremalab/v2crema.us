@@ -98,11 +98,12 @@
     left: calc(50% - 30px);
     transition: all .6s;
     z-index: 1;
-    animation-iteration-count: 30;
+    animation-iteration-count: 1;
     animation-timing-function: linear;
     animation-duration: 1.8s;
     // animation-name: crema-spinner;
   }
+
 
 .service-wrapper {
   display: table;
@@ -264,6 +265,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  .header-nav {
+    position: inherit;
+  }
   .service-nav  {
     display: none;
   }
@@ -280,36 +284,39 @@
       margin-left: auto;
     }
   }
+  .mfp-bg.mfp-ready {
+      opacity: 0;
+    }
+.mfp-wrap.mfp-close-btn-in.mfp-align-top.mfp-auto-cursor.mfp-ready > div > div.mfp-content {
+  box-shadow: 0px 50px 242px 3px rgba(0,0,0,0.56);
+}
 
   .mobile-services-wrapper {
     height: 100vh;
     width: 100vw;
-    padding-top: 10vh;
+    padding-top: 3vh;
     background: $servicesBlue;  
     text-align: center;
     overflow: hidden;
-
-    .mobile-vid-wrapper {
-      // width: 100%;
-      // height: 100%;
-    }
+    
     .slick-center{
       transform: scale(1.1);
       opacity: 1;
     }
-    
     .play-btn-svg {
-      transform: scale(.6);
+      width: 35px;
+      height: 35px;
+      top: calc(50% - 17px);
+      left: calc(50% - 17px);
     }
     .crema-spinner,
     .crema-spinner:after {
-      transform: scale(.6);
+      width: 50px;
+      height: 50px;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
     }
 
-    .slick-initialized .slick-slide {
-      // height: 35vh;
-      
-    }
   }
 
 
@@ -322,11 +329,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    iframe {
-      z-index: 1;
-      pointer-events: none;
+    img {
       width: 100%;
-      height:100%;
+      height: auto;
     }
   }
   .mobile-services-text-wrapper {
@@ -351,10 +356,6 @@
 
 /*sliding usecase divs under earch other*/
 @media screen and (max-width: 800px) {
-.landing-logos .logos {
-  
-
-}
   .landing-logos .logo {
     margin: 0; 
     width: 20vw;
@@ -389,9 +390,9 @@
 // testing loader 
 .crema-spinner,
 .crema-spinner:after {
+  position: absolute;
   width: 100px;
   height: 100px;
-  position: absolute;
   top: calc(50% - 50px);
   left: calc(50% - 50px);
   border-radius: 50%;
@@ -405,7 +406,7 @@
   border-right: 5px solid #ED7B84;
   border-bottom: 5px solid #7FB2D6;
   border-left: 5px solid #7EB77F;
-  animation-iteration-count:infinite;
+  animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-duration: 1.8s;
   transition: opacity .8s;

@@ -4,6 +4,7 @@ append styles
   link(href="/stylesheets/build/modules/services.css", rel="stylesheet")
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css')
 
 block append scripts
   //append mobile
@@ -108,7 +109,25 @@ block content
                 .crema-spinner
                 .smoothScrollPt#product-pt
                 <iframe id="test-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
-            .service-col.-text        
+            .service-col.-text      
+
+          .service
+            .service-col.vid
+              .videowrapper#product-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#early-pt
+                <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
+
+          .service#last-service
+            .service-col.vid
+              .videowrapper#early-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text  
+            
           
         .service-text-wrapper
           .service-text-fixed#innovation
@@ -141,41 +160,31 @@ block content
        
 
         
-          .service
-            .service-col.vid
-              .videowrapper#product-vid
-                include ./partials/btn-play-svg
-                .crema-spinner
-                .smoothScrollPt#early-pt
-                <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-            .service-col.-text
-
-          .service#last-service
-            .service-col.vid
-              .videowrapper#early-vid
-                include ./partials/btn-play-svg
-                .crema-spinner
-                <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-            .service-col.-text  
-          
+        
 
 
   .mobile-modal-vid          
   .mobile-services-wrapper 
     .mobile-vid-wrapper  
       
-      .mobile-service-vid#first-vid
-        include ./partials/btn-play-svg
-        .crema-spinner
-        <iframe src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&autoplay=0&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-      .mobile-service-vid#proto-vid     
-        include ./partials/btn-play-svg
-        .crema-spinner  
-        <iframe src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&autoplay=0&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-      .mobile-service-vid#branding-vid     
-        include ./partials/btn-play-svg
-        .crema-spinner  
-        <iframe src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&autoplay=0&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+      .mobile-service-vid
+        img(src="/images/expertise/vid-posters/crema-is.jpg")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner
+        
+      .mobile-service-vid
+        img(src="/images/expertise/vid-posters/golden-layer.jpg")     
+        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+        
+      .mobile-service-vid     
+        img(src="/images/expertise/vid-posters/crema-is.jpg")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+        
         
   
     .mobile-services-text-wrapper
@@ -228,7 +237,6 @@ block content
         document.write(mobileScript)
       } else {
         window.onresize = function(evt) {
-          console.log('marmarmt!')
           if(window.innerWidth < 801){
             element = document.createElement("script");
             element.type = "text/javascript";
