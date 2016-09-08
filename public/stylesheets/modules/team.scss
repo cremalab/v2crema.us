@@ -10,6 +10,17 @@
   }
 }
 
+.team-header-svg {
+  position: absolute;
+  top: 0%;
+  width: 100vw;
+  height: 80vh;
+  z-index: -1;
+  background-size: 100vw;
+  background-image: url('../../../images/blue-team-top-desktop.svg');
+  background-repeat: no-repeat;
+}
+
 #sq-blue-svg {
   width: 100vw;
   min-width: 1340px;
@@ -191,5 +202,56 @@ li h5 {
   }
   h1 {
     font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .team-header-svg {
+    top: 20%;
+    background-image: url('../../../images/blue-team-top-mobile.svg');
+  }
+  .headline {
+    padding-top: 2em;
+    h1 {
+      margin-bottom: -20px;
+      font-size: 36px;
+    }
+  }
+
+  .teamPhotoWrapper {
+    margin-top: 4em;
+    h3, h5 { max-width: 140px;}
+    img {
+      width: 140px;
+      height: auto;
+    }
+  }
+  .wonder-at-crema {
+    background: url('../../../images/blue-team-wonder-mobile.svg');
+    margin-top: 0;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 157vw;
+    min-height: 585px;
+    .img-wrapper {
+      margin: auto;
+      width: auto;
+    }
+    .col {
+      display: table-cell;
+      height: 100%;
+      h1 {
+        width: 90%;
+        margin: auto;
+        font-size: 1.6em;
+      }
+    }
+  }
+  #curve-blue-svg {
+    left: 0;
+    transform: translateY(-20%);
+  }
+  .values-wrapper h1 {
+    font-size: 32px;
   }
 }

@@ -75,7 +75,8 @@
       margin: auto;
       font-size: 38px; }
   .video-library .col {
-    width: 40vw; }
+    width: 40vw;
+    vertical-align: inherit; }
     .video-library .col .poster-img {
       box-shadow: none;
       width: auto;
