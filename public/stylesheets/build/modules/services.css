@@ -161,12 +161,12 @@
     vertical-align: middle; }
 
 .tech-wrapper {
+  text-align: center;
   background-color: #8cd8fd;
-  padding-top: 5em;
   position: relative; }
   .tech-wrapper h1 {
+    padding-top: 2em;
     margin-top: 0;
-    margin-left: 300px;
     color: white; }
 
 .landing-logos {

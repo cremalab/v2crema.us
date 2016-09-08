@@ -201,13 +201,13 @@
 }
 
 .tech-wrapper {
+  text-align: center;
   background-color: $lighBlue;
-  padding-top: 5em;
+  
   position: relative;
   h1 {
+    padding-top: 2em;
     margin-top: 0;
-    
-    margin-left: 300px;
     color: white
   }
 }

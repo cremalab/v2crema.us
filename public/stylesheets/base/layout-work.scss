@@ -75,22 +75,17 @@ h1 {
    width: 100%;
    height: 99.5%;
    color: white;
-
-   h1 {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     margin: -1em 0 0 0;
-     transform: translate(-50%, -50%);
-   }
-   button {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     margin: 1.75em 0 0 0;
-     transform: translate(-50%, -50%);
-   }
+   
  }
+
+ .centered {
+   text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h1 {margin: auto auto .5em auto;}
+   } 
 
 .img-fadein-work {
    opacity: 1 !important;
