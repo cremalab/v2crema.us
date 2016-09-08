@@ -4,24 +4,15 @@ block append styles
   link(rel='stylesheet', href='/stylesheets/build/modules/team.css')
 
 block vars
+
+append scripts 
+  script(src="/javascripts/teamB.js")
   
 
 block content
   include ./partials/sq-blue-svg
   .headline
-    h1 Meet the Team
-
-  script.
-    var hideNormal = function (el) {
-      var normalImgId = el + 'normal'
-      console.log(normalImgId)
-      document.getElementById(normalImgId).style.opacity = 0
-    } 
-    var showNormal = function (el) {
-      var normalImgId = el + 'normal'
-      console.log(normalImgId)
-      document.getElementById(normalImgId).style.opacity = 1
-    }  
+    h1 Meet the Team  
 
 
   ul.teamPhotoWrapper
@@ -98,6 +89,14 @@ block content
       img(src='/images//see-what-do@2x.png')
   
   script.
+    var hideNormal = function (el) {
+      var normalImgId = el + 'normal'
+      document.getElementById(normalImgId).style.opacity = 0
+    } 
+    var showNormal = function (el) {
+      var normalImgId = el + 'normal'
+      document.getElementById(normalImgId).style.opacity = 1
+    }
     var links = document.getElementsByClassName('link-wrapper')[0].getElementsByTagName('a')
     var content = document.getElementsByClassName('rel-wrapper')[0].getElementsByClassName('grid')
     function styleLinks(el) {

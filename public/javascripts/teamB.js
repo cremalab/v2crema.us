@@ -40,143 +40,17 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	module.exports = __webpack_require__(13);
 
 
 /***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	__webpack_require__(2);
-
-	__webpack_require__(7);
-
-	//This fades the entrie screen to white then restores it after 1.1s
-	var btns = document.getElementsByClassName('mango-btn');
-	var layoutWrapper = document.getElementsByClassName('layout-wrapper')[0];
-
-	//code that will run on all pages
-	Array.prototype.forEach.call(btns, function (btn) {
-	  btn.addEventListener('click', function () {
-	    console.log('fading...');
-	    layoutWrapper.style.opacity = 0;
-	    setTimeout(function () {
-	      layoutWrapper.style.opacity = 1;
-	    }, 1100);
-	  });
-	});
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(3);
-
-	__webpack_require__(5);
-
-	var _blazy = __webpack_require__(6);
-
-	var _blazy2 = _interopRequireDefault(_blazy);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var bLazy = new _blazy2.default({
-	  successClass: 'img-fadein',
-	  offset: 0
-	});
-
-	//turn crema video off and on if on homepage
-	if (document.getElementById('crema-vid-logo')) {
-	  (function () {
-	    var cremaVid = document.getElementById('crema-vid-logo');
-	    new Waypoint({
-	      element: document.getElementById('showcase1'),
-	      handler: function handler(direction) {
-	        if (direction == 'up') {
-	          cremaVid.play();
-	          console.log('play logo vid');
-	        } else {
-	          cremaVid.pause();
-	          console.log('pause logo vid');
-	        }
-	      }
-	    });
-	  })();
-	}
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _jquery = __webpack_require__(4);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function draw() {
-	  requestAnimationFrame(draw);
-	  scrollEvent();
-	  // setInterval(() => scrollEvent(), 2000)
-	}
-	draw();
-
-	function scrollEvent() {
-
-	  if (!is_touch_device()) {
-	    (function () {
-	      var sym = void 0;
-	      var viewportTop = (0, _jquery2.default)(window).scrollTop();
-	      var windowHeight = (0, _jquery2.default)(window).height();
-	      var viewportBottom = windowHeight + viewportTop;
-	      if ((0, _jquery2.default)(window).width()) (0, _jquery2.default)('[data-parallax="true"]').each(function () {
-	        // console.log('this', this)
-	        // console.log('this', $(this))
-	        if (isElementInViewport(this)) {
-	          var distance = viewportTop * (0, _jquery2.default)(this).attr('data-speed');
-	          if ((0, _jquery2.default)(this).attr('data-direction') === 'up') {
-	            sym = '-';
-	          } else {
-	            sym = '';
-	          }
-	          (0, _jquery2.default)(this).css('transform', 'translate3d(0, ' + sym + distance + 'px,0)');
-	        }
-	      });
-	    })();
-	  }
-	}
-
-	function is_touch_device() {
-	  return 'ontouchstart' in window // works on most browsers 
-	  || 'onmsgesturechange' in window; // works on ie10
-	}
-
-	function isElementInViewport(el) {
-
-	  //special bonus for those using jQuery
-	  if (typeof jQuery === 'function' && el instanceof jQuery) {
-	    el = el[0];
-	  }
-
-	  var rect = el.getBoundingClientRect();
-
-	  return rect.top >= -1200 && rect.left >= -250 && rect.bottom - 1200 <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-	  rect.right - 250 <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
-	  ;
-	}
-
-/***/ },
-/* 4 */
+/***/ 4:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9392,1303 +9266,1886 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
 
-	/*!
-	Waypoints - 4.0.0
-	Copyright © 2011-2015 Caleb Troughton
-	Licensed under the MIT license.
-	https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
-	*/
-	(function() {
-	  'use strict'
-
-	  var keyCounter = 0
-	  var allWaypoints = {}
-
-	  /* http://imakewebthings.com/waypoints/api/waypoint */
-	  function Waypoint(options) {
-	    if (!options) {
-	      throw new Error('No options passed to Waypoint constructor')
-	    }
-	    if (!options.element) {
-	      throw new Error('No element option passed to Waypoint constructor')
-	    }
-	    if (!options.handler) {
-	      throw new Error('No handler option passed to Waypoint constructor')
-	    }
-
-	    this.key = 'waypoint-' + keyCounter
-	    this.options = Waypoint.Adapter.extend({}, Waypoint.defaults, options)
-	    this.element = this.options.element
-	    this.adapter = new Waypoint.Adapter(this.element)
-	    this.callback = options.handler
-	    this.axis = this.options.horizontal ? 'horizontal' : 'vertical'
-	    this.enabled = this.options.enabled
-	    this.triggerPoint = null
-	    this.group = Waypoint.Group.findOrCreate({
-	      name: this.options.group,
-	      axis: this.axis
-	    })
-	    this.context = Waypoint.Context.findOrCreateByElement(this.options.context)
-
-	    if (Waypoint.offsetAliases[this.options.offset]) {
-	      this.options.offset = Waypoint.offsetAliases[this.options.offset]
-	    }
-	    this.group.add(this)
-	    this.context.add(this)
-	    allWaypoints[this.key] = this
-	    keyCounter += 1
-	  }
-
-	  /* Private */
-	  Waypoint.prototype.queueTrigger = function(direction) {
-	    this.group.queueTrigger(this, direction)
-	  }
-
-	  /* Private */
-	  Waypoint.prototype.trigger = function(args) {
-	    if (!this.enabled) {
-	      return
-	    }
-	    if (this.callback) {
-	      this.callback.apply(this, args)
-	    }
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/destroy */
-	  Waypoint.prototype.destroy = function() {
-	    this.context.remove(this)
-	    this.group.remove(this)
-	    delete allWaypoints[this.key]
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/disable */
-	  Waypoint.prototype.disable = function() {
-	    this.enabled = false
-	    return this
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/enable */
-	  Waypoint.prototype.enable = function() {
-	    this.context.refresh()
-	    this.enabled = true
-	    return this
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/next */
-	  Waypoint.prototype.next = function() {
-	    return this.group.next(this)
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/previous */
-	  Waypoint.prototype.previous = function() {
-	    return this.group.previous(this)
-	  }
-
-	  /* Private */
-	  Waypoint.invokeAll = function(method) {
-	    var allWaypointsArray = []
-	    for (var waypointKey in allWaypoints) {
-	      allWaypointsArray.push(allWaypoints[waypointKey])
-	    }
-	    for (var i = 0, end = allWaypointsArray.length; i < end; i++) {
-	      allWaypointsArray[i][method]()
-	    }
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/destroy-all */
-	  Waypoint.destroyAll = function() {
-	    Waypoint.invokeAll('destroy')
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/disable-all */
-	  Waypoint.disableAll = function() {
-	    Waypoint.invokeAll('disable')
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/enable-all */
-	  Waypoint.enableAll = function() {
-	    Waypoint.invokeAll('enable')
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/refresh-all */
-	  Waypoint.refreshAll = function() {
-	    Waypoint.Context.refreshAll()
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/viewport-height */
-	  Waypoint.viewportHeight = function() {
-	    return window.innerHeight || document.documentElement.clientHeight
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/viewport-width */
-	  Waypoint.viewportWidth = function() {
-	    return document.documentElement.clientWidth
-	  }
-
-	  Waypoint.adapters = []
-
-	  Waypoint.defaults = {
-	    context: window,
-	    continuous: true,
-	    enabled: true,
-	    group: 'default',
-	    horizontal: false,
-	    offset: 0
-	  }
-
-	  Waypoint.offsetAliases = {
-	    'bottom-in-view': function() {
-	      return this.context.innerHeight() - this.adapter.outerHeight()
-	    },
-	    'right-in-view': function() {
-	      return this.context.innerWidth() - this.adapter.outerWidth()
-	    }
-	  }
-
-	  window.Waypoint = Waypoint
-	}())
-	;(function() {
-	  'use strict'
-
-	  function requestAnimationFrameShim(callback) {
-	    window.setTimeout(callback, 1000 / 60)
-	  }
-
-	  var keyCounter = 0
-	  var contexts = {}
-	  var Waypoint = window.Waypoint
-	  var oldWindowLoad = window.onload
-
-	  /* http://imakewebthings.com/waypoints/api/context */
-	  function Context(element) {
-	    this.element = element
-	    this.Adapter = Waypoint.Adapter
-	    this.adapter = new this.Adapter(element)
-	    this.key = 'waypoint-context-' + keyCounter
-	    this.didScroll = false
-	    this.didResize = false
-	    this.oldScroll = {
-	      x: this.adapter.scrollLeft(),
-	      y: this.adapter.scrollTop()
-	    }
-	    this.waypoints = {
-	      vertical: {},
-	      horizontal: {}
-	    }
-
-	    element.waypointContextKey = this.key
-	    contexts[element.waypointContextKey] = this
-	    keyCounter += 1
-
-	    this.createThrottledScrollHandler()
-	    this.createThrottledResizeHandler()
-	  }
-
-	  /* Private */
-	  Context.prototype.add = function(waypoint) {
-	    var axis = waypoint.options.horizontal ? 'horizontal' : 'vertical'
-	    this.waypoints[axis][waypoint.key] = waypoint
-	    this.refresh()
-	  }
-
-	  /* Private */
-	  Context.prototype.checkEmpty = function() {
-	    var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
-	    var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
-	    if (horizontalEmpty && verticalEmpty) {
-	      this.adapter.off('.waypoints')
-	      delete contexts[this.key]
-	    }
-	  }
-
-	  /* Private */
-	  Context.prototype.createThrottledResizeHandler = function() {
-	    var self = this
-
-	    function resizeHandler() {
-	      self.handleResize()
-	      self.didResize = false
-	    }
-
-	    this.adapter.on('resize.waypoints', function() {
-	      if (!self.didResize) {
-	        self.didResize = true
-	        Waypoint.requestAnimationFrame(resizeHandler)
-	      }
-	    })
-	  }
-
-	  /* Private */
-	  Context.prototype.createThrottledScrollHandler = function() {
-	    var self = this
-	    function scrollHandler() {
-	      self.handleScroll()
-	      self.didScroll = false
-	    }
-
-	    this.adapter.on('scroll.waypoints', function() {
-	      if (!self.didScroll || Waypoint.isTouch) {
-	        self.didScroll = true
-	        Waypoint.requestAnimationFrame(scrollHandler)
-	      }
-	    })
-	  }
-
-	  /* Private */
-	  Context.prototype.handleResize = function() {
-	    Waypoint.Context.refreshAll()
-	  }
-
-	  /* Private */
-	  Context.prototype.handleScroll = function() {
-	    var triggeredGroups = {}
-	    var axes = {
-	      horizontal: {
-	        newScroll: this.adapter.scrollLeft(),
-	        oldScroll: this.oldScroll.x,
-	        forward: 'right',
-	        backward: 'left'
-	      },
-	      vertical: {
-	        newScroll: this.adapter.scrollTop(),
-	        oldScroll: this.oldScroll.y,
-	        forward: 'down',
-	        backward: 'up'
-	      }
-	    }
-
-	    for (var axisKey in axes) {
-	      var axis = axes[axisKey]
-	      var isForward = axis.newScroll > axis.oldScroll
-	      var direction = isForward ? axis.forward : axis.backward
-
-	      for (var waypointKey in this.waypoints[axisKey]) {
-	        var waypoint = this.waypoints[axisKey][waypointKey]
-	        var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
-	        var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
-	        var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
-	        var crossedBackward = !wasBeforeTriggerPoint && !nowAfterTriggerPoint
-	        if (crossedForward || crossedBackward) {
-	          waypoint.queueTrigger(direction)
-	          triggeredGroups[waypoint.group.id] = waypoint.group
-	        }
-	      }
-	    }
-
-	    for (var groupKey in triggeredGroups) {
-	      triggeredGroups[groupKey].flushTriggers()
-	    }
-
-	    this.oldScroll = {
-	      x: axes.horizontal.newScroll,
-	      y: axes.vertical.newScroll
-	    }
-	  }
-
-	  /* Private */
-	  Context.prototype.innerHeight = function() {
-	    /*eslint-disable eqeqeq */
-	    if (this.element == this.element.window) {
-	      return Waypoint.viewportHeight()
-	    }
-	    /*eslint-enable eqeqeq */
-	    return this.adapter.innerHeight()
-	  }
-
-	  /* Private */
-	  Context.prototype.remove = function(waypoint) {
-	    delete this.waypoints[waypoint.axis][waypoint.key]
-	    this.checkEmpty()
-	  }
-
-	  /* Private */
-	  Context.prototype.innerWidth = function() {
-	    /*eslint-disable eqeqeq */
-	    if (this.element == this.element.window) {
-	      return Waypoint.viewportWidth()
-	    }
-	    /*eslint-enable eqeqeq */
-	    return this.adapter.innerWidth()
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/context-destroy */
-	  Context.prototype.destroy = function() {
-	    var allWaypoints = []
-	    for (var axis in this.waypoints) {
-	      for (var waypointKey in this.waypoints[axis]) {
-	        allWaypoints.push(this.waypoints[axis][waypointKey])
-	      }
-	    }
-	    for (var i = 0, end = allWaypoints.length; i < end; i++) {
-	      allWaypoints[i].destroy()
-	    }
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/context-refresh */
-	  Context.prototype.refresh = function() {
-	    /*eslint-disable eqeqeq */
-	    var isWindow = this.element == this.element.window
-	    /*eslint-enable eqeqeq */
-	    var contextOffset = isWindow ? undefined : this.adapter.offset()
-	    var triggeredGroups = {}
-	    var axes
-
-	    this.handleScroll()
-	    axes = {
-	      horizontal: {
-	        contextOffset: isWindow ? 0 : contextOffset.left,
-	        contextScroll: isWindow ? 0 : this.oldScroll.x,
-	        contextDimension: this.innerWidth(),
-	        oldScroll: this.oldScroll.x,
-	        forward: 'right',
-	        backward: 'left',
-	        offsetProp: 'left'
-	      },
-	      vertical: {
-	        contextOffset: isWindow ? 0 : contextOffset.top,
-	        contextScroll: isWindow ? 0 : this.oldScroll.y,
-	        contextDimension: this.innerHeight(),
-	        oldScroll: this.oldScroll.y,
-	        forward: 'down',
-	        backward: 'up',
-	        offsetProp: 'top'
-	      }
-	    }
-
-	    for (var axisKey in axes) {
-	      var axis = axes[axisKey]
-	      for (var waypointKey in this.waypoints[axisKey]) {
-	        var waypoint = this.waypoints[axisKey][waypointKey]
-	        var adjustment = waypoint.options.offset
-	        var oldTriggerPoint = waypoint.triggerPoint
-	        var elementOffset = 0
-	        var freshWaypoint = oldTriggerPoint == null
-	        var contextModifier, wasBeforeScroll, nowAfterScroll
-	        var triggeredBackward, triggeredForward
-
-	        if (waypoint.element !== waypoint.element.window) {
-	          elementOffset = waypoint.adapter.offset()[axis.offsetProp]
-	        }
-
-	        if (typeof adjustment === 'function') {
-	          adjustment = adjustment.apply(waypoint)
-	        }
-	        else if (typeof adjustment === 'string') {
-	          adjustment = parseFloat(adjustment)
-	          if (waypoint.options.offset.indexOf('%') > - 1) {
-	            adjustment = Math.ceil(axis.contextDimension * adjustment / 100)
-	          }
-	        }
-
-	        contextModifier = axis.contextScroll - axis.contextOffset
-	        waypoint.triggerPoint = elementOffset + contextModifier - adjustment
-	        wasBeforeScroll = oldTriggerPoint < axis.oldScroll
-	        nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
-	        triggeredBackward = wasBeforeScroll && nowAfterScroll
-	        triggeredForward = !wasBeforeScroll && !nowAfterScroll
-
-	        if (!freshWaypoint && triggeredBackward) {
-	          waypoint.queueTrigger(axis.backward)
-	          triggeredGroups[waypoint.group.id] = waypoint.group
-	        }
-	        else if (!freshWaypoint && triggeredForward) {
-	          waypoint.queueTrigger(axis.forward)
-	          triggeredGroups[waypoint.group.id] = waypoint.group
-	        }
-	        else if (freshWaypoint && axis.oldScroll >= waypoint.triggerPoint) {
-	          waypoint.queueTrigger(axis.forward)
-	          triggeredGroups[waypoint.group.id] = waypoint.group
-	        }
-	      }
-	    }
-
-	    Waypoint.requestAnimationFrame(function() {
-	      for (var groupKey in triggeredGroups) {
-	        triggeredGroups[groupKey].flushTriggers()
-	      }
-	    })
-
-	    return this
-	  }
-
-	  /* Private */
-	  Context.findOrCreateByElement = function(element) {
-	    return Context.findByElement(element) || new Context(element)
-	  }
-
-	  /* Private */
-	  Context.refreshAll = function() {
-	    for (var contextId in contexts) {
-	      contexts[contextId].refresh()
-	    }
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/context-find-by-element */
-	  Context.findByElement = function(element) {
-	    return contexts[element.waypointContextKey]
-	  }
-
-	  window.onload = function() {
-	    if (oldWindowLoad) {
-	      oldWindowLoad()
-	    }
-	    Context.refreshAll()
-	  }
-
-	  Waypoint.requestAnimationFrame = function(callback) {
-	    var requestFn = window.requestAnimationFrame ||
-	      window.mozRequestAnimationFrame ||
-	      window.webkitRequestAnimationFrame ||
-	      requestAnimationFrameShim
-	    requestFn.call(window, callback)
-	  }
-	  Waypoint.Context = Context
-	}())
-	;(function() {
-	  'use strict'
-
-	  function byTriggerPoint(a, b) {
-	    return a.triggerPoint - b.triggerPoint
-	  }
-
-	  function byReverseTriggerPoint(a, b) {
-	    return b.triggerPoint - a.triggerPoint
-	  }
-
-	  var groups = {
-	    vertical: {},
-	    horizontal: {}
-	  }
-	  var Waypoint = window.Waypoint
-
-	  /* http://imakewebthings.com/waypoints/api/group */
-	  function Group(options) {
-	    this.name = options.name
-	    this.axis = options.axis
-	    this.id = this.name + '-' + this.axis
-	    this.waypoints = []
-	    this.clearTriggerQueues()
-	    groups[this.axis][this.name] = this
-	  }
-
-	  /* Private */
-	  Group.prototype.add = function(waypoint) {
-	    this.waypoints.push(waypoint)
-	  }
-
-	  /* Private */
-	  Group.prototype.clearTriggerQueues = function() {
-	    this.triggerQueues = {
-	      up: [],
-	      down: [],
-	      left: [],
-	      right: []
-	    }
-	  }
-
-	  /* Private */
-	  Group.prototype.flushTriggers = function() {
-	    for (var direction in this.triggerQueues) {
-	      var waypoints = this.triggerQueues[direction]
-	      var reverse = direction === 'up' || direction === 'left'
-	      waypoints.sort(reverse ? byReverseTriggerPoint : byTriggerPoint)
-	      for (var i = 0, end = waypoints.length; i < end; i += 1) {
-	        var waypoint = waypoints[i]
-	        if (waypoint.options.continuous || i === waypoints.length - 1) {
-	          waypoint.trigger([direction])
-	        }
-	      }
-	    }
-	    this.clearTriggerQueues()
-	  }
-
-	  /* Private */
-	  Group.prototype.next = function(waypoint) {
-	    this.waypoints.sort(byTriggerPoint)
-	    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
-	    var isLast = index === this.waypoints.length - 1
-	    return isLast ? null : this.waypoints[index + 1]
-	  }
-
-	  /* Private */
-	  Group.prototype.previous = function(waypoint) {
-	    this.waypoints.sort(byTriggerPoint)
-	    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
-	    return index ? this.waypoints[index - 1] : null
-	  }
-
-	  /* Private */
-	  Group.prototype.queueTrigger = function(waypoint, direction) {
-	    this.triggerQueues[direction].push(waypoint)
-	  }
-
-	  /* Private */
-	  Group.prototype.remove = function(waypoint) {
-	    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
-	    if (index > -1) {
-	      this.waypoints.splice(index, 1)
-	    }
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/first */
-	  Group.prototype.first = function() {
-	    return this.waypoints[0]
-	  }
-
-	  /* Public */
-	  /* http://imakewebthings.com/waypoints/api/last */
-	  Group.prototype.last = function() {
-	    return this.waypoints[this.waypoints.length - 1]
-	  }
-
-	  /* Private */
-	  Group.findOrCreate = function(options) {
-	    return groups[options.axis][options.name] || new Group(options)
-	  }
-
-	  Waypoint.Group = Group
-	}())
-	;(function() {
-	  'use strict'
-
-	  var Waypoint = window.Waypoint
-
-	  function isWindow(element) {
-	    return element === element.window
-	  }
-
-	  function getWindow(element) {
-	    if (isWindow(element)) {
-	      return element
-	    }
-	    return element.defaultView
-	  }
-
-	  function NoFrameworkAdapter(element) {
-	    this.element = element
-	    this.handlers = {}
-	  }
-
-	  NoFrameworkAdapter.prototype.innerHeight = function() {
-	    var isWin = isWindow(this.element)
-	    return isWin ? this.element.innerHeight : this.element.clientHeight
-	  }
-
-	  NoFrameworkAdapter.prototype.innerWidth = function() {
-	    var isWin = isWindow(this.element)
-	    return isWin ? this.element.innerWidth : this.element.clientWidth
-	  }
-
-	  NoFrameworkAdapter.prototype.off = function(event, handler) {
-	    function removeListeners(element, listeners, handler) {
-	      for (var i = 0, end = listeners.length - 1; i < end; i++) {
-	        var listener = listeners[i]
-	        if (!handler || handler === listener) {
-	          element.removeEventListener(listener)
-	        }
-	      }
-	    }
-
-	    var eventParts = event.split('.')
-	    var eventType = eventParts[0]
-	    var namespace = eventParts[1]
-	    var element = this.element
-
-	    if (namespace && this.handlers[namespace] && eventType) {
-	      removeListeners(element, this.handlers[namespace][eventType], handler)
-	      this.handlers[namespace][eventType] = []
-	    }
-	    else if (eventType) {
-	      for (var ns in this.handlers) {
-	        removeListeners(element, this.handlers[ns][eventType] || [], handler)
-	        this.handlers[ns][eventType] = []
-	      }
-	    }
-	    else if (namespace && this.handlers[namespace]) {
-	      for (var type in this.handlers[namespace]) {
-	        removeListeners(element, this.handlers[namespace][type], handler)
-	      }
-	      this.handlers[namespace] = {}
-	    }
-	  }
-
-	  /* Adapted from jQuery 1.x offset() */
-	  NoFrameworkAdapter.prototype.offset = function() {
-	    if (!this.element.ownerDocument) {
-	      return null
-	    }
-
-	    var documentElement = this.element.ownerDocument.documentElement
-	    var win = getWindow(this.element.ownerDocument)
-	    var rect = {
-	      top: 0,
-	      left: 0
-	    }
-
-	    if (this.element.getBoundingClientRect) {
-	      rect = this.element.getBoundingClientRect()
-	    }
-
-	    return {
-	      top: rect.top + win.pageYOffset - documentElement.clientTop,
-	      left: rect.left + win.pageXOffset - documentElement.clientLeft
-	    }
-	  }
-
-	  NoFrameworkAdapter.prototype.on = function(event, handler) {
-	    var eventParts = event.split('.')
-	    var eventType = eventParts[0]
-	    var namespace = eventParts[1] || '__default'
-	    var nsHandlers = this.handlers[namespace] = this.handlers[namespace] || {}
-	    var nsTypeList = nsHandlers[eventType] = nsHandlers[eventType] || []
-
-	    nsTypeList.push(handler)
-	    this.element.addEventListener(eventType, handler)
-	  }
-
-	  NoFrameworkAdapter.prototype.outerHeight = function(includeMargin) {
-	    var height = this.innerHeight()
-	    var computedStyle
-
-	    if (includeMargin && !isWindow(this.element)) {
-	      computedStyle = window.getComputedStyle(this.element)
-	      height += parseInt(computedStyle.marginTop, 10)
-	      height += parseInt(computedStyle.marginBottom, 10)
-	    }
-
-	    return height
-	  }
-
-	  NoFrameworkAdapter.prototype.outerWidth = function(includeMargin) {
-	    var width = this.innerWidth()
-	    var computedStyle
-
-	    if (includeMargin && !isWindow(this.element)) {
-	      computedStyle = window.getComputedStyle(this.element)
-	      width += parseInt(computedStyle.marginLeft, 10)
-	      width += parseInt(computedStyle.marginRight, 10)
-	    }
-
-	    return width
-	  }
-
-	  NoFrameworkAdapter.prototype.scrollLeft = function() {
-	    var win = getWindow(this.element)
-	    return win ? win.pageXOffset : this.element.scrollLeft
-	  }
-
-	  NoFrameworkAdapter.prototype.scrollTop = function() {
-	    var win = getWindow(this.element)
-	    return win ? win.pageYOffset : this.element.scrollTop
-	  }
-
-	  NoFrameworkAdapter.extend = function() {
-	    var args = Array.prototype.slice.call(arguments)
-
-	    function merge(target, obj) {
-	      if (typeof target === 'object' && typeof obj === 'object') {
-	        for (var key in obj) {
-	          if (obj.hasOwnProperty(key)) {
-	            target[key] = obj[key]
-	          }
-	        }
-	      }
-
-	      return target
-	    }
-
-	    for (var i = 1, end = args.length; i < end; i++) {
-	      merge(args[0], args[i])
-	    }
-	    return args[0]
-	  }
-
-	  NoFrameworkAdapter.inArray = function(element, array, i) {
-	    return array == null ? -1 : array.indexOf(element, i)
-	  }
-
-	  NoFrameworkAdapter.isEmptyObject = function(obj) {
-	    /* eslint no-unused-vars: 0 */
-	    for (var name in obj) {
-	      return false
-	    }
-	    return true
-	  }
-
-	  Waypoint.adapters.push({
-	    name: 'noframework',
-	    Adapter: NoFrameworkAdapter
-	  })
-	  Waypoint.Adapter = NoFrameworkAdapter
-	}())
-	;
-
-/***/ },
-/* 6 */
+/***/ 10:
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  hey, [be]Lazy.js - v1.6.2 - 2016.05.09
-	  A fast, small and dependency free lazy load script (https://github.com/dinbror/blazy)
-	  (c) Bjoern Klinggaard - @bklinggaard - http://dinbror.dk/blazy
-	*/
-	;
-	(function(root, blazy) {
-	    if (true) {
-	        // AMD. Register bLazy as an anonymous module
-	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (blazy), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof exports === 'object') {
-	        // Node. Does not work with strict CommonJS, but
-	        // only CommonJS-like environments that support module.exports,
-	        // like Node.
-	        module.exports = blazy();
-	    } else {
-	        // Browser globals. Register bLazy on window
-	        root.Blazy = blazy();
-	    }
-	})(this, function() {
-	    'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! Magnific Popup - v1.1.0 - 2016-02-20
+	* http://dimsemenov.com/plugins/magnific-popup/
+	* Copyright (c) 2016 Dmitry Semenov; */
+	;(function (factory) { 
+	if (true) { 
+	 // AMD. Register as an anonymous module. 
+	 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(4)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); 
+	 } else if (typeof exports === 'object') { 
+	 // Node/CommonJS 
+	 factory(require('jquery')); 
+	 } else { 
+	 // Browser globals 
+	 factory(window.jQuery || window.Zepto); 
+	 } 
+	 }(function($) { 
 
-	    //private vars
-	    var _source, _viewport, _isRetina, _attrSrc = 'src',
-	        _attrSrcset = 'srcset';
+	/*>>core*/
+	/**
+	 * 
+	 * Magnific Popup Core JS file
+	 * 
+	 */
 
-	    // constructor
-	    return function Blazy(options) {
-	        //IE7- fallback for missing querySelectorAll support
-	        if (!document.querySelectorAll) {
-	            var s = document.createStyleSheet();
-	            document.querySelectorAll = function(r, c, i, j, a) {
-	                a = document.all, c = [], r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
-	                for (i = r.length; i--;) {
-	                    s.addRule(r[i], 'k:v');
-	                    for (j = a.length; j--;) a[j].currentStyle.k && c.push(a[j]);
-	                    s.removeRule(0);
+
+	/**
+	 * Private static constants
+	 */
+	var CLOSE_EVENT = 'Close',
+		BEFORE_CLOSE_EVENT = 'BeforeClose',
+		AFTER_CLOSE_EVENT = 'AfterClose',
+		BEFORE_APPEND_EVENT = 'BeforeAppend',
+		MARKUP_PARSE_EVENT = 'MarkupParse',
+		OPEN_EVENT = 'Open',
+		CHANGE_EVENT = 'Change',
+		NS = 'mfp',
+		EVENT_NS = '.' + NS,
+		READY_CLASS = 'mfp-ready',
+		REMOVING_CLASS = 'mfp-removing',
+		PREVENT_CLOSE_CLASS = 'mfp-prevent-close';
+
+
+	/**
+	 * Private vars 
+	 */
+	/*jshint -W079 */
+	var mfp, // As we have only one instance of MagnificPopup object, we define it locally to not to use 'this'
+		MagnificPopup = function(){},
+		_isJQ = !!(window.jQuery),
+		_prevStatus,
+		_window = $(window),
+		_document,
+		_prevContentType,
+		_wrapClasses,
+		_currPopupType;
+
+
+	/**
+	 * Private functions
+	 */
+	var _mfpOn = function(name, f) {
+			mfp.ev.on(NS + name + EVENT_NS, f);
+		},
+		_getEl = function(className, appendTo, html, raw) {
+			var el = document.createElement('div');
+			el.className = 'mfp-'+className;
+			if(html) {
+				el.innerHTML = html;
+			}
+			if(!raw) {
+				el = $(el);
+				if(appendTo) {
+					el.appendTo(appendTo);
+				}
+			} else if(appendTo) {
+				appendTo.appendChild(el);
+			}
+			return el;
+		},
+		_mfpTrigger = function(e, data) {
+			mfp.ev.triggerHandler(NS + e, data);
+
+			if(mfp.st.callbacks) {
+				// converts "mfpEventName" to "eventName" callback and triggers it if it's present
+				e = e.charAt(0).toLowerCase() + e.slice(1);
+				if(mfp.st.callbacks[e]) {
+					mfp.st.callbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
+				}
+			}
+		},
+		_getCloseBtn = function(type) {
+			if(type !== _currPopupType || !mfp.currTemplate.closeBtn) {
+				mfp.currTemplate.closeBtn = $( mfp.st.closeMarkup.replace('%title%', mfp.st.tClose ) );
+				_currPopupType = type;
+			}
+			return mfp.currTemplate.closeBtn;
+		},
+		// Initialize Magnific Popup only when called at least once
+		_checkInstance = function() {
+			if(!$.magnificPopup.instance) {
+				/*jshint -W020 */
+				mfp = new MagnificPopup();
+				mfp.init();
+				$.magnificPopup.instance = mfp;
+			}
+		},
+		// CSS transition detection, http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
+		supportsTransitions = function() {
+			var s = document.createElement('p').style, // 's' for style. better to create an element if body yet to exist
+				v = ['ms','O','Moz','Webkit']; // 'v' for vendor
+
+			if( s['transition'] !== undefined ) {
+				return true; 
+			}
+				
+			while( v.length ) {
+				if( v.pop() + 'Transition' in s ) {
+					return true;
+				}
+			}
+					
+			return false;
+		};
+
+
+
+	/**
+	 * Public functions
+	 */
+	MagnificPopup.prototype = {
+
+		constructor: MagnificPopup,
+
+		/**
+		 * Initializes Magnific Popup plugin. 
+		 * This function is triggered only once when $.fn.magnificPopup or $.magnificPopup is executed
+		 */
+		init: function() {
+			var appVersion = navigator.appVersion;
+			mfp.isLowIE = mfp.isIE8 = document.all && !document.addEventListener;
+			mfp.isAndroid = (/android/gi).test(appVersion);
+			mfp.isIOS = (/iphone|ipad|ipod/gi).test(appVersion);
+			mfp.supportsTransition = supportsTransitions();
+
+			// We disable fixed positioned lightbox on devices that don't handle it nicely.
+			// If you know a better way of detecting this - let me know.
+			mfp.probablyMobile = (mfp.isAndroid || mfp.isIOS || /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent) );
+			_document = $(document);
+
+			mfp.popupsCache = {};
+		},
+
+		/**
+		 * Opens popup
+		 * @param  data [description]
+		 */
+		open: function(data) {
+
+			var i;
+
+			if(data.isObj === false) { 
+				// convert jQuery collection to array to avoid conflicts later
+				mfp.items = data.items.toArray();
+
+				mfp.index = 0;
+				var items = data.items,
+					item;
+				for(i = 0; i < items.length; i++) {
+					item = items[i];
+					if(item.parsed) {
+						item = item.el[0];
+					}
+					if(item === data.el[0]) {
+						mfp.index = i;
+						break;
+					}
+				}
+			} else {
+				mfp.items = $.isArray(data.items) ? data.items : [data.items];
+				mfp.index = data.index || 0;
+			}
+
+			// if popup is already opened - we just update the content
+			if(mfp.isOpen) {
+				mfp.updateItemHTML();
+				return;
+			}
+			
+			mfp.types = []; 
+			_wrapClasses = '';
+			if(data.mainEl && data.mainEl.length) {
+				mfp.ev = data.mainEl.eq(0);
+			} else {
+				mfp.ev = _document;
+			}
+
+			if(data.key) {
+				if(!mfp.popupsCache[data.key]) {
+					mfp.popupsCache[data.key] = {};
+				}
+				mfp.currTemplate = mfp.popupsCache[data.key];
+			} else {
+				mfp.currTemplate = {};
+			}
+
+
+
+			mfp.st = $.extend(true, {}, $.magnificPopup.defaults, data ); 
+			mfp.fixedContentPos = mfp.st.fixedContentPos === 'auto' ? !mfp.probablyMobile : mfp.st.fixedContentPos;
+
+			if(mfp.st.modal) {
+				mfp.st.closeOnContentClick = false;
+				mfp.st.closeOnBgClick = false;
+				mfp.st.showCloseBtn = false;
+				mfp.st.enableEscapeKey = false;
+			}
+			
+
+			// Building markup
+			// main containers are created only once
+			if(!mfp.bgOverlay) {
+
+				// Dark overlay
+				mfp.bgOverlay = _getEl('bg').on('click'+EVENT_NS, function() {
+					mfp.close();
+				});
+
+				mfp.wrap = _getEl('wrap').attr('tabindex', -1).on('click'+EVENT_NS, function(e) {
+					if(mfp._checkIfClose(e.target)) {
+						mfp.close();
+					}
+				});
+
+				mfp.container = _getEl('container', mfp.wrap);
+			}
+
+			mfp.contentContainer = _getEl('content');
+			if(mfp.st.preloader) {
+				mfp.preloader = _getEl('preloader', mfp.container, mfp.st.tLoading);
+			}
+
+
+			// Initializing modules
+			var modules = $.magnificPopup.modules;
+			for(i = 0; i < modules.length; i++) {
+				var n = modules[i];
+				n = n.charAt(0).toUpperCase() + n.slice(1);
+				mfp['init'+n].call(mfp);
+			}
+			_mfpTrigger('BeforeOpen');
+
+
+			if(mfp.st.showCloseBtn) {
+				// Close button
+				if(!mfp.st.closeBtnInside) {
+					mfp.wrap.append( _getCloseBtn() );
+				} else {
+					_mfpOn(MARKUP_PARSE_EVENT, function(e, template, values, item) {
+						values.close_replaceWith = _getCloseBtn(item.type);
+					});
+					_wrapClasses += ' mfp-close-btn-in';
+				}
+			}
+
+			if(mfp.st.alignTop) {
+				_wrapClasses += ' mfp-align-top';
+			}
+
+		
+
+			if(mfp.fixedContentPos) {
+				mfp.wrap.css({
+					overflow: mfp.st.overflowY,
+					overflowX: 'hidden',
+					overflowY: mfp.st.overflowY
+				});
+			} else {
+				mfp.wrap.css({ 
+					top: _window.scrollTop(),
+					position: 'absolute'
+				});
+			}
+			if( mfp.st.fixedBgPos === false || (mfp.st.fixedBgPos === 'auto' && !mfp.fixedContentPos) ) {
+				mfp.bgOverlay.css({
+					height: _document.height(),
+					position: 'absolute'
+				});
+			}
+
+			
+
+			if(mfp.st.enableEscapeKey) {
+				// Close on ESC key
+				_document.on('keyup' + EVENT_NS, function(e) {
+					if(e.keyCode === 27) {
+						mfp.close();
+					}
+				});
+			}
+
+			_window.on('resize' + EVENT_NS, function() {
+				mfp.updateSize();
+			});
+
+
+			if(!mfp.st.closeOnContentClick) {
+				_wrapClasses += ' mfp-auto-cursor';
+			}
+			
+			if(_wrapClasses)
+				mfp.wrap.addClass(_wrapClasses);
+
+
+			// this triggers recalculation of layout, so we get it once to not to trigger twice
+			var windowHeight = mfp.wH = _window.height();
+
+			
+			var windowStyles = {};
+
+			if( mfp.fixedContentPos ) {
+	            if(mfp._hasScrollBar(windowHeight)){
+	                var s = mfp._getScrollbarSize();
+	                if(s) {
+	                    windowStyles.marginRight = s;
 	                }
-	                return c;
-	            };
-	        }
-
-	        //options and helper vars
-	        var scope = this;
-	        var util = scope._util = {};
-	        util.elements = [];
-	        util.destroyed = true;
-	        scope.options = options || {};
-	        scope.options.error = scope.options.error || false;
-	        scope.options.offset = scope.options.offset || 100;
-	        scope.options.success = scope.options.success || false;
-	        scope.options.selector = scope.options.selector || '.b-lazy';
-	        scope.options.separator = scope.options.separator || '|';
-	        scope.options.container = scope.options.container ? document.querySelectorAll(scope.options.container) : false;
-	        scope.options.errorClass = scope.options.errorClass || 'b-error';
-	        scope.options.breakpoints = scope.options.breakpoints || false; // obsolete
-	        scope.options.loadInvisible = scope.options.loadInvisible || false;
-	        scope.options.successClass = scope.options.successClass || 'b-loaded';
-	        scope.options.validateDelay = scope.options.validateDelay || 25;
-	        scope.options.saveViewportOffsetDelay = scope.options.saveViewportOffsetDelay || 50;
-	        scope.options.srcset = scope.options.srcset || 'data-srcset';
-	        scope.options.src = _source = scope.options.src || 'data-src';
-	        _isRetina = window.devicePixelRatio > 1;
-	        _viewport = {};
-	        _viewport.top = 0 - scope.options.offset;
-	        _viewport.left = 0 - scope.options.offset;
-
-
-	        /* public functions
-	         ************************************/
-	        scope.revalidate = function() {
-	            initialize(this);
-	        };
-	        scope.load = function(elements, force) {
-	            var opt = this.options;
-	            if (elements.length === undefined) {
-	                loadElement(elements, force, opt);
-	            } else {
-	                each(elements, function(element) {
-	                    loadElement(element, force, opt);
-	                });
-	            }
-	        };
-	        scope.destroy = function() {
-	            var self = this;
-	            var util = self._util;
-	            if (self.options.container) {
-	                each(self.options.container, function(object) {
-	                    unbindEvent(object, 'scroll', util.validateT);
-	                });
-	            }
-	            unbindEvent(window, 'scroll', util.validateT);
-	            unbindEvent(window, 'resize', util.validateT);
-	            unbindEvent(window, 'resize', util.saveViewportOffsetT);
-	            util.count = 0;
-	            util.elements.length = 0;
-	            util.destroyed = true;
-	        };
-
-	        //throttle, ensures that we don't call the functions too often
-	        util.validateT = throttle(function() {
-	            validate(scope);
-	        }, scope.options.validateDelay, scope);
-	        util.saveViewportOffsetT = throttle(function() {
-	            saveViewportOffset(scope.options.offset);
-	        }, scope.options.saveViewportOffsetDelay, scope);
-	        saveViewportOffset(scope.options.offset);
-
-	        //handle multi-served image src (obsolete)
-	        each(scope.options.breakpoints, function(object) {
-	            if (object.width >= window.screen.width) {
-	                _source = object.src;
-	                return false;
-	            }
-	        });
-
-	        // start lazy load
-	        setTimeout(function() {
-	            initialize(scope);
-	        }); // "dom ready" fix
-
-	    };
-
-
-	    /* Private helper functions
-	     ************************************/
-	    function initialize(self) {
-	        var util = self._util;
-	        // First we create an array of elements to lazy load
-	        util.elements = toArray(self.options.selector);
-	        util.count = util.elements.length;
-	        // Then we bind resize and scroll events if not already binded
-	        if (util.destroyed) {
-	            util.destroyed = false;
-	            if (self.options.container) {
-	                each(self.options.container, function(object) {
-	                    bindEvent(object, 'scroll', util.validateT);
-	                });
-	            }
-	            bindEvent(window, 'resize', util.saveViewportOffsetT);
-	            bindEvent(window, 'resize', util.validateT);
-	            bindEvent(window, 'scroll', util.validateT);
-	        }
-	        // And finally, we start to lazy load.
-	        validate(self);
-	    }
-
-	    function validate(self) {
-	        var util = self._util;
-	        for (var i = 0; i < util.count; i++) {
-	            var element = util.elements[i];
-	            if (elementInView(element) || hasClass(element, self.options.successClass)) {
-	                self.load(element);
-	                util.elements.splice(i, 1);
-	                util.count--;
-	                i--;
 	            }
 	        }
-	        if (util.count === 0) {
-	            self.destroy();
-	        }
-	    }
 
-	    function elementInView(ele) {
-	        var rect = ele.getBoundingClientRect();
-	        return (
-	            // Intersection
-	            rect.right >= _viewport.left && rect.bottom >= _viewport.top && rect.left <= _viewport.right && rect.top <= _viewport.bottom
-	        );
-	    }
+			if(mfp.fixedContentPos) {
+				if(!mfp.isIE7) {
+					windowStyles.overflow = 'hidden';
+				} else {
+					// ie7 double-scroll bug
+					$('body, html').css('overflow', 'hidden');
+				}
+			}
 
-	    function loadElement(ele, force, options) {
-	        // if element is visible, not loaded or forced
-	        if (!hasClass(ele, options.successClass) && (force || options.loadInvisible || (ele.offsetWidth > 0 && ele.offsetHeight > 0))) {
-	            var dataSrc = ele.getAttribute(_source) || ele.getAttribute(options.src); // fallback to default 'data-src'
-	            if (dataSrc) {
-	                var dataSrcSplitted = dataSrc.split(options.separator);
-	                var src = dataSrcSplitted[_isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
-	                var isImage = equal(ele, 'img');
-	                // Image or background image
-	                if (isImage || ele.src === undefined) {
-	                    var img = new Image();
-	                    // using EventListener instead of onerror and onload
-	                    // due to bug introduced in chrome v50 
-	                    // (https://productforums.google.com/forum/#!topic/chrome/p51Lk7vnP2o)
-	                    var onErrorHandler = function() {
-	                        if (options.error) options.error(ele, "invalid");
-	                        addClass(ele, options.errorClass);
-	                        unbindEvent(img, 'error', onErrorHandler);
-	                        unbindEvent(img, 'load', onLoadHandler);
-	                    };
-	                    var onLoadHandler = function() {
-	                        // Is element an image
-	                        if (isImage) {
-	                            setSrc(ele, src); //src
-	                            handleSource(ele, _attrSrcset, options.srcset); //srcset
-	                            //picture element
-	                            var parent = ele.parentNode;
-	                            if (parent && equal(parent, 'picture')) {
-	                                each(parent.getElementsByTagName('source'), function(source) {
-	                                    handleSource(source, _attrSrcset, options.srcset);
-	                                });
-	                            }
-	                        // or background-image
-	                        } else {
-	                            ele.style.backgroundImage = 'url("' + src + '")';
-	                        }
-	                        itemLoaded(ele, options);
-	                        unbindEvent(img, 'load', onLoadHandler);
-	                        unbindEvent(img, 'error', onErrorHandler);
-	                    };
-	                    bindEvent(img, 'error', onErrorHandler);
-	                    bindEvent(img, 'load', onLoadHandler);
-	                    setSrc(img, src); //preload
-	                } else { // An item with src like iframe, unity, simpelvideo etc
-	                    setSrc(ele, src);
-	                    itemLoaded(ele, options);
-	                }
-	            } else {
-	                // video with child source
-	                if (equal(ele, 'video')) {
-	                    each(ele.getElementsByTagName('source'), function(source) {
-	                        handleSource(source, _attrSrc, options.src);
-	                    });
-	                    ele.load();
-	                    itemLoaded(ele, options);
-	                } else {
-	                    if (options.error) options.error(ele, "missing");
-	                    addClass(ele, options.errorClass);
-	                }
-	            }
-	        }
-	    }
+			
+			
+			var classesToadd = mfp.st.mainClass;
+			if(mfp.isIE7) {
+				classesToadd += ' mfp-ie7';
+			}
+			if(classesToadd) {
+				mfp._addClassToMFP( classesToadd );
+			}
 
-	    function itemLoaded(ele, options) {
-	        addClass(ele, options.successClass);
-	        if (options.success) options.success(ele);
-	        // cleanup markup, remove data source attributes
-	        ele.removeAttribute(options.src);
-	        each(options.breakpoints, function(object) {
-	            ele.removeAttribute(object.src);
-	        });
-	    }
+			// add content
+			mfp.updateItemHTML();
 
-	    function setSrc(ele, src) {
-	        ele[_attrSrc] = src;
-	    }
+			_mfpTrigger('BuildControls');
 
-	    function handleSource(ele, attr, dataAttr) {
-	        var dataSrc = ele.getAttribute(dataAttr);
-	        if (dataSrc) {
-	            ele[attr] = dataSrc;
-	            ele.removeAttribute(dataAttr);
-	        }
-	    }
+			// remove scrollbar, add margin e.t.c
+			$('html').css(windowStyles);
+			
+			// add everything to DOM
+			mfp.bgOverlay.add(mfp.wrap).prependTo( mfp.st.prependTo || $(document.body) );
 
-	    function equal(ele, str) {
-	        return ele.nodeName.toLowerCase() === str;
-	    }
+			// Save last focused element
+			mfp._lastFocusedEl = document.activeElement;
+			
+			// Wait for next cycle to allow CSS transition
+			setTimeout(function() {
+				
+				if(mfp.content) {
+					mfp._addClassToMFP(READY_CLASS);
+					mfp._setFocus();
+				} else {
+					// if content is not defined (not loaded e.t.c) we add class only for BG
+					mfp.bgOverlay.addClass(READY_CLASS);
+				}
+				
+				// Trap the focus in popup
+				_document.on('focusin' + EVENT_NS, mfp._onFocusIn);
 
-	    function hasClass(ele, className) {
-	        return (' ' + ele.className + ' ').indexOf(' ' + className + ' ') !== -1;
-	    }
+			}, 16);
 
-	    function addClass(ele, className) {
-	        if (!hasClass(ele, className)) {
-	            ele.className += ' ' + className;
-	        }
-	    }
+			mfp.isOpen = true;
+			mfp.updateSize(windowHeight);
+			_mfpTrigger(OPEN_EVENT);
 
-	    function toArray(selector) {
-	        var array = [];
-	        var nodelist = document.querySelectorAll(selector);
-	        for (var i = nodelist.length; i--; array.unshift(nodelist[i])) {}
-	        return array;
-	    }
+			return data;
+		},
 
-	    function saveViewportOffset(offset) {
-	        _viewport.bottom = (window.innerHeight || document.documentElement.clientHeight) + offset;
-	        _viewport.right = (window.innerWidth || document.documentElement.clientWidth) + offset;
-	    }
+		/**
+		 * Closes the popup
+		 */
+		close: function() {
+			if(!mfp.isOpen) return;
+			_mfpTrigger(BEFORE_CLOSE_EVENT);
 
-	    function bindEvent(ele, type, fn) {
-	        if (ele.attachEvent) {
-	            ele.attachEvent && ele.attachEvent('on' + type, fn);
-	        } else {
-	            ele.addEventListener(type, fn, false);
-	        }
-	    }
+			mfp.isOpen = false;
+			// for CSS3 animation
+			if(mfp.st.removalDelay && !mfp.isLowIE && mfp.supportsTransition )  {
+				mfp._addClassToMFP(REMOVING_CLASS);
+				setTimeout(function() {
+					mfp._close();
+				}, mfp.st.removalDelay);
+			} else {
+				mfp._close();
+			}
+		},
 
-	    function unbindEvent(ele, type, fn) {
-	        if (ele.detachEvent) {
-	            ele.detachEvent && ele.detachEvent('on' + type, fn);
-	        } else {
-	            ele.removeEventListener(type, fn, false);
-	        }
-	    }
+		/**
+		 * Helper for close() function
+		 */
+		_close: function() {
+			_mfpTrigger(CLOSE_EVENT);
 
-	    function each(object, fn) {
-	        if (object && fn) {
-	            var l = object.length;
-	            for (var i = 0; i < l && fn(object[i], i) !== false; i++) {}
-	        }
-	    }
+			var classesToRemove = REMOVING_CLASS + ' ' + READY_CLASS + ' ';
 
-	    function throttle(fn, minDelay, scope) {
-	        var lastCall = 0;
-	        return function() {
-	            var now = +new Date();
-	            if (now - lastCall < minDelay) {
-	                return;
-	            }
-	            lastCall = now;
-	            fn.apply(scope, arguments);
-	        };
-	    }
+			mfp.bgOverlay.detach();
+			mfp.wrap.detach();
+			mfp.container.empty();
+
+			if(mfp.st.mainClass) {
+				classesToRemove += mfp.st.mainClass + ' ';
+			}
+
+			mfp._removeClassFromMFP(classesToRemove);
+
+			if(mfp.fixedContentPos) {
+				var windowStyles = {marginRight: ''};
+				if(mfp.isIE7) {
+					$('body, html').css('overflow', '');
+				} else {
+					windowStyles.overflow = '';
+				}
+				$('html').css(windowStyles);
+			}
+			
+			_document.off('keyup' + EVENT_NS + ' focusin' + EVENT_NS);
+			mfp.ev.off(EVENT_NS);
+
+			// clean up DOM elements that aren't removed
+			mfp.wrap.attr('class', 'mfp-wrap').removeAttr('style');
+			mfp.bgOverlay.attr('class', 'mfp-bg');
+			mfp.container.attr('class', 'mfp-container');
+
+			// remove close button from target element
+			if(mfp.st.showCloseBtn &&
+			(!mfp.st.closeBtnInside || mfp.currTemplate[mfp.currItem.type] === true)) {
+				if(mfp.currTemplate.closeBtn)
+					mfp.currTemplate.closeBtn.detach();
+			}
+
+
+			if(mfp.st.autoFocusLast && mfp._lastFocusedEl) {
+				$(mfp._lastFocusedEl).focus(); // put tab focus back
+			}
+			mfp.currItem = null;	
+			mfp.content = null;
+			mfp.currTemplate = null;
+			mfp.prevHeight = 0;
+
+			_mfpTrigger(AFTER_CLOSE_EVENT);
+		},
+		
+		updateSize: function(winHeight) {
+
+			if(mfp.isIOS) {
+				// fixes iOS nav bars https://github.com/dimsemenov/Magnific-Popup/issues/2
+				var zoomLevel = document.documentElement.clientWidth / window.innerWidth;
+				var height = window.innerHeight * zoomLevel;
+				mfp.wrap.css('height', height);
+				mfp.wH = height;
+			} else {
+				mfp.wH = winHeight || _window.height();
+			}
+			// Fixes #84: popup incorrectly positioned with position:relative on body
+			if(!mfp.fixedContentPos) {
+				mfp.wrap.css('height', mfp.wH);
+			}
+
+			_mfpTrigger('Resize');
+
+		},
+
+		/**
+		 * Set content of popup based on current index
+		 */
+		updateItemHTML: function() {
+			var item = mfp.items[mfp.index];
+
+			// Detach and perform modifications
+			mfp.contentContainer.detach();
+
+			if(mfp.content)
+				mfp.content.detach();
+
+			if(!item.parsed) {
+				item = mfp.parseEl( mfp.index );
+			}
+
+			var type = item.type;
+
+			_mfpTrigger('BeforeChange', [mfp.currItem ? mfp.currItem.type : '', type]);
+			// BeforeChange event works like so:
+			// _mfpOn('BeforeChange', function(e, prevType, newType) { });
+
+			mfp.currItem = item;
+
+			if(!mfp.currTemplate[type]) {
+				var markup = mfp.st[type] ? mfp.st[type].markup : false;
+
+				// allows to modify markup
+				_mfpTrigger('FirstMarkupParse', markup);
+
+				if(markup) {
+					mfp.currTemplate[type] = $(markup);
+				} else {
+					// if there is no markup found we just define that template is parsed
+					mfp.currTemplate[type] = true;
+				}
+			}
+
+			if(_prevContentType && _prevContentType !== item.type) {
+				mfp.container.removeClass('mfp-'+_prevContentType+'-holder');
+			}
+
+			var newContent = mfp['get' + type.charAt(0).toUpperCase() + type.slice(1)](item, mfp.currTemplate[type]);
+			mfp.appendContent(newContent, type);
+
+			item.preloaded = true;
+
+			_mfpTrigger(CHANGE_EVENT, item);
+			_prevContentType = item.type;
+
+			// Append container back after its content changed
+			mfp.container.prepend(mfp.contentContainer);
+
+			_mfpTrigger('AfterChange');
+		},
+
+
+		/**
+		 * Set HTML content of popup
+		 */
+		appendContent: function(newContent, type) {
+			mfp.content = newContent;
+
+			if(newContent) {
+				if(mfp.st.showCloseBtn && mfp.st.closeBtnInside &&
+					mfp.currTemplate[type] === true) {
+					// if there is no markup, we just append close button element inside
+					if(!mfp.content.find('.mfp-close').length) {
+						mfp.content.append(_getCloseBtn());
+					}
+				} else {
+					mfp.content = newContent;
+				}
+			} else {
+				mfp.content = '';
+			}
+
+			_mfpTrigger(BEFORE_APPEND_EVENT);
+			mfp.container.addClass('mfp-'+type+'-holder');
+
+			mfp.contentContainer.append(mfp.content);
+		},
+
+
+		/**
+		 * Creates Magnific Popup data object based on given data
+		 * @param  {int} index Index of item to parse
+		 */
+		parseEl: function(index) {
+			var item = mfp.items[index],
+				type;
+
+			if(item.tagName) {
+				item = { el: $(item) };
+			} else {
+				type = item.type;
+				item = { data: item, src: item.src };
+			}
+
+			if(item.el) {
+				var types = mfp.types;
+
+				// check for 'mfp-TYPE' class
+				for(var i = 0; i < types.length; i++) {
+					if( item.el.hasClass('mfp-'+types[i]) ) {
+						type = types[i];
+						break;
+					}
+				}
+
+				item.src = item.el.attr('data-mfp-src');
+				if(!item.src) {
+					item.src = item.el.attr('href');
+				}
+			}
+
+			item.type = type || mfp.st.type || 'inline';
+			item.index = index;
+			item.parsed = true;
+			mfp.items[index] = item;
+			_mfpTrigger('ElementParse', item);
+
+			return mfp.items[index];
+		},
+
+
+		/**
+		 * Initializes single popup or a group of popups
+		 */
+		addGroup: function(el, options) {
+			var eHandler = function(e) {
+				e.mfpEl = this;
+				mfp._openClick(e, el, options);
+			};
+
+			if(!options) {
+				options = {};
+			}
+
+			var eName = 'click.magnificPopup';
+			options.mainEl = el;
+
+			if(options.items) {
+				options.isObj = true;
+				el.off(eName).on(eName, eHandler);
+			} else {
+				options.isObj = false;
+				if(options.delegate) {
+					el.off(eName).on(eName, options.delegate , eHandler);
+				} else {
+					options.items = el;
+					el.off(eName).on(eName, eHandler);
+				}
+			}
+		},
+		_openClick: function(e, el, options) {
+			var midClick = options.midClick !== undefined ? options.midClick : $.magnificPopup.defaults.midClick;
+
+
+			if(!midClick && ( e.which === 2 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey ) ) {
+				return;
+			}
+
+			var disableOn = options.disableOn !== undefined ? options.disableOn : $.magnificPopup.defaults.disableOn;
+
+			if(disableOn) {
+				if($.isFunction(disableOn)) {
+					if( !disableOn.call(mfp) ) {
+						return true;
+					}
+				} else { // else it's number
+					if( _window.width() < disableOn ) {
+						return true;
+					}
+				}
+			}
+
+			if(e.type) {
+				e.preventDefault();
+
+				// This will prevent popup from closing if element is inside and popup is already opened
+				if(mfp.isOpen) {
+					e.stopPropagation();
+				}
+			}
+
+			options.el = $(e.mfpEl);
+			if(options.delegate) {
+				options.items = el.find(options.delegate);
+			}
+			mfp.open(options);
+		},
+
+
+		/**
+		 * Updates text on preloader
+		 */
+		updateStatus: function(status, text) {
+
+			if(mfp.preloader) {
+				if(_prevStatus !== status) {
+					mfp.container.removeClass('mfp-s-'+_prevStatus);
+				}
+
+				if(!text && status === 'loading') {
+					text = mfp.st.tLoading;
+				}
+
+				var data = {
+					status: status,
+					text: text
+				};
+				// allows to modify status
+				_mfpTrigger('UpdateStatus', data);
+
+				status = data.status;
+				text = data.text;
+
+				mfp.preloader.html(text);
+
+				mfp.preloader.find('a').on('click', function(e) {
+					e.stopImmediatePropagation();
+				});
+
+				mfp.container.addClass('mfp-s-'+status);
+				_prevStatus = status;
+			}
+		},
+
+
+		/*
+			"Private" helpers that aren't private at all
+		 */
+		// Check to close popup or not
+		// "target" is an element that was clicked
+		_checkIfClose: function(target) {
+
+			if($(target).hasClass(PREVENT_CLOSE_CLASS)) {
+				return;
+			}
+
+			var closeOnContent = mfp.st.closeOnContentClick;
+			var closeOnBg = mfp.st.closeOnBgClick;
+
+			if(closeOnContent && closeOnBg) {
+				return true;
+			} else {
+
+				// We close the popup if click is on close button or on preloader. Or if there is no content.
+				if(!mfp.content || $(target).hasClass('mfp-close') || (mfp.preloader && target === mfp.preloader[0]) ) {
+					return true;
+				}
+
+				// if click is outside the content
+				if(  (target !== mfp.content[0] && !$.contains(mfp.content[0], target))  ) {
+					if(closeOnBg) {
+						// last check, if the clicked element is in DOM, (in case it's removed onclick)
+						if( $.contains(document, target) ) {
+							return true;
+						}
+					}
+				} else if(closeOnContent) {
+					return true;
+				}
+
+			}
+			return false;
+		},
+		_addClassToMFP: function(cName) {
+			mfp.bgOverlay.addClass(cName);
+			mfp.wrap.addClass(cName);
+		},
+		_removeClassFromMFP: function(cName) {
+			this.bgOverlay.removeClass(cName);
+			mfp.wrap.removeClass(cName);
+		},
+		_hasScrollBar: function(winHeight) {
+			return (  (mfp.isIE7 ? _document.height() : document.body.scrollHeight) > (winHeight || _window.height()) );
+		},
+		_setFocus: function() {
+			(mfp.st.focus ? mfp.content.find(mfp.st.focus).eq(0) : mfp.wrap).focus();
+		},
+		_onFocusIn: function(e) {
+			if( e.target !== mfp.wrap[0] && !$.contains(mfp.wrap[0], e.target) ) {
+				mfp._setFocus();
+				return false;
+			}
+		},
+		_parseMarkup: function(template, values, item) {
+			var arr;
+			if(item.data) {
+				values = $.extend(item.data, values);
+			}
+			_mfpTrigger(MARKUP_PARSE_EVENT, [template, values, item] );
+
+			$.each(values, function(key, value) {
+				if(value === undefined || value === false) {
+					return true;
+				}
+				arr = key.split('_');
+				if(arr.length > 1) {
+					var el = template.find(EVENT_NS + '-'+arr[0]);
+
+					if(el.length > 0) {
+						var attr = arr[1];
+						if(attr === 'replaceWith') {
+							if(el[0] !== value[0]) {
+								el.replaceWith(value);
+							}
+						} else if(attr === 'img') {
+							if(el.is('img')) {
+								el.attr('src', value);
+							} else {
+								el.replaceWith( $('<img>').attr('src', value).attr('class', el.attr('class')) );
+							}
+						} else {
+							el.attr(arr[1], value);
+						}
+					}
+
+				} else {
+					template.find(EVENT_NS + '-'+key).html(value);
+				}
+			});
+		},
+
+		_getScrollbarSize: function() {
+			// thx David
+			if(mfp.scrollbarSize === undefined) {
+				var scrollDiv = document.createElement("div");
+				scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
+				document.body.appendChild(scrollDiv);
+				mfp.scrollbarSize = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+				document.body.removeChild(scrollDiv);
+			}
+			return mfp.scrollbarSize;
+		}
+
+	}; /* MagnificPopup core prototype end */
+
+
+
+
+	/**
+	 * Public static functions
+	 */
+	$.magnificPopup = {
+		instance: null,
+		proto: MagnificPopup.prototype,
+		modules: [],
+
+		open: function(options, index) {
+			_checkInstance();
+
+			if(!options) {
+				options = {};
+			} else {
+				options = $.extend(true, {}, options);
+			}
+
+			options.isObj = true;
+			options.index = index || 0;
+			return this.instance.open(options);
+		},
+
+		close: function() {
+			return $.magnificPopup.instance && $.magnificPopup.instance.close();
+		},
+
+		registerModule: function(name, module) {
+			if(module.options) {
+				$.magnificPopup.defaults[name] = module.options;
+			}
+			$.extend(this.proto, module.proto);
+			this.modules.push(name);
+		},
+
+		defaults: {
+
+			// Info about options is in docs:
+			// http://dimsemenov.com/plugins/magnific-popup/documentation.html#options
+
+			disableOn: 0,
+
+			key: null,
+
+			midClick: false,
+
+			mainClass: '',
+
+			preloader: true,
+
+			focus: '', // CSS selector of input to focus after popup is opened
+
+			closeOnContentClick: false,
+
+			closeOnBgClick: true,
+
+			closeBtnInside: true,
+
+			showCloseBtn: true,
+
+			enableEscapeKey: true,
+
+			modal: false,
+
+			alignTop: false,
+
+			removalDelay: 0,
+
+			prependTo: null,
+
+			fixedContentPos: 'auto',
+
+			fixedBgPos: 'auto',
+
+			overflowY: 'auto',
+
+			closeMarkup: '<button title="%title%" type="button" class="mfp-close">&#215;</button>',
+
+			tClose: 'Close (Esc)',
+
+			tLoading: 'Loading...',
+
+			autoFocusLast: true
+
+		}
+	};
+
+
+
+	$.fn.magnificPopup = function(options) {
+		_checkInstance();
+
+		var jqEl = $(this);
+
+		// We call some API method of first param is a string
+		if (typeof options === "string" ) {
+
+			if(options === 'open') {
+				var items,
+					itemOpts = _isJQ ? jqEl.data('magnificPopup') : jqEl[0].magnificPopup,
+					index = parseInt(arguments[1], 10) || 0;
+
+				if(itemOpts.items) {
+					items = itemOpts.items[index];
+				} else {
+					items = jqEl;
+					if(itemOpts.delegate) {
+						items = items.find(itemOpts.delegate);
+					}
+					items = items.eq( index );
+				}
+				mfp._openClick({mfpEl:items}, jqEl, itemOpts);
+			} else {
+				if(mfp.isOpen)
+					mfp[options].apply(mfp, Array.prototype.slice.call(arguments, 1));
+			}
+
+		} else {
+			// clone options obj
+			options = $.extend(true, {}, options);
+
+			/*
+			 * As Zepto doesn't support .data() method for objects
+			 * and it works only in normal browsers
+			 * we assign "options" object directly to the DOM element. FTW!
+			 */
+			if(_isJQ) {
+				jqEl.data('magnificPopup', options);
+			} else {
+				jqEl[0].magnificPopup = options;
+			}
+
+			mfp.addGroup(jqEl, options);
+
+		}
+		return jqEl;
+	};
+
+	/*>>core*/
+
+	/*>>inline*/
+
+	var INLINE_NS = 'inline',
+		_hiddenClass,
+		_inlinePlaceholder,
+		_lastInlineElement,
+		_putInlineElementsBack = function() {
+			if(_lastInlineElement) {
+				_inlinePlaceholder.after( _lastInlineElement.addClass(_hiddenClass) ).detach();
+				_lastInlineElement = null;
+			}
+		};
+
+	$.magnificPopup.registerModule(INLINE_NS, {
+		options: {
+			hiddenClass: 'hide', // will be appended with `mfp-` prefix
+			markup: '',
+			tNotFound: 'Content not found'
+		},
+		proto: {
+
+			initInline: function() {
+				mfp.types.push(INLINE_NS);
+
+				_mfpOn(CLOSE_EVENT+'.'+INLINE_NS, function() {
+					_putInlineElementsBack();
+				});
+			},
+
+			getInline: function(item, template) {
+
+				_putInlineElementsBack();
+
+				if(item.src) {
+					var inlineSt = mfp.st.inline,
+						el = $(item.src);
+
+					if(el.length) {
+
+						// If target element has parent - we replace it with placeholder and put it back after popup is closed
+						var parent = el[0].parentNode;
+						if(parent && parent.tagName) {
+							if(!_inlinePlaceholder) {
+								_hiddenClass = inlineSt.hiddenClass;
+								_inlinePlaceholder = _getEl(_hiddenClass);
+								_hiddenClass = 'mfp-'+_hiddenClass;
+							}
+							// replace target inline element with placeholder
+							_lastInlineElement = el.after(_inlinePlaceholder).detach().removeClass(_hiddenClass);
+						}
+
+						mfp.updateStatus('ready');
+					} else {
+						mfp.updateStatus('error', inlineSt.tNotFound);
+						el = $('<div>');
+					}
+
+					item.inlineElement = el;
+					return el;
+				}
+
+				mfp.updateStatus('ready');
+				mfp._parseMarkup(template, {}, item);
+				return template;
+			}
+		}
 	});
 
+	/*>>inline*/
+
+	/*>>ajax*/
+	var AJAX_NS = 'ajax',
+		_ajaxCur,
+		_removeAjaxCursor = function() {
+			if(_ajaxCur) {
+				$(document.body).removeClass(_ajaxCur);
+			}
+		},
+		_destroyAjaxRequest = function() {
+			_removeAjaxCursor();
+			if(mfp.req) {
+				mfp.req.abort();
+			}
+		};
+
+	$.magnificPopup.registerModule(AJAX_NS, {
+
+		options: {
+			settings: null,
+			cursor: 'mfp-ajax-cur',
+			tError: '<a href="%url%">The content</a> could not be loaded.'
+		},
+
+		proto: {
+			initAjax: function() {
+				mfp.types.push(AJAX_NS);
+				_ajaxCur = mfp.st.ajax.cursor;
+
+				_mfpOn(CLOSE_EVENT+'.'+AJAX_NS, _destroyAjaxRequest);
+				_mfpOn('BeforeChange.' + AJAX_NS, _destroyAjaxRequest);
+			},
+			getAjax: function(item) {
+
+				if(_ajaxCur) {
+					$(document.body).addClass(_ajaxCur);
+				}
+
+				mfp.updateStatus('loading');
+
+				var opts = $.extend({
+					url: item.src,
+					success: function(data, textStatus, jqXHR) {
+						var temp = {
+							data:data,
+							xhr:jqXHR
+						};
+
+						_mfpTrigger('ParseAjax', temp);
+
+						mfp.appendContent( $(temp.data), AJAX_NS );
+
+						item.finished = true;
+
+						_removeAjaxCursor();
+
+						mfp._setFocus();
+
+						setTimeout(function() {
+							mfp.wrap.addClass(READY_CLASS);
+						}, 16);
+
+						mfp.updateStatus('ready');
+
+						_mfpTrigger('AjaxContentAdded');
+					},
+					error: function() {
+						_removeAjaxCursor();
+						item.finished = item.loadError = true;
+						mfp.updateStatus('error', mfp.st.ajax.tError.replace('%url%', item.src));
+					}
+				}, mfp.st.ajax.settings);
+
+				mfp.req = $.ajax(opts);
+
+				return '';
+			}
+		}
+	});
+
+	/*>>ajax*/
+
+	/*>>image*/
+	var _imgInterval,
+		_getTitle = function(item) {
+			if(item.data && item.data.title !== undefined)
+				return item.data.title;
+
+			var src = mfp.st.image.titleSrc;
+
+			if(src) {
+				if($.isFunction(src)) {
+					return src.call(mfp, item);
+				} else if(item.el) {
+					return item.el.attr(src) || '';
+				}
+			}
+			return '';
+		};
+
+	$.magnificPopup.registerModule('image', {
+
+		options: {
+			markup: '<div class="mfp-figure">'+
+						'<div class="mfp-close"></div>'+
+						'<figure>'+
+							'<div class="mfp-img"></div>'+
+							'<figcaption>'+
+								'<div class="mfp-bottom-bar">'+
+									'<div class="mfp-title"></div>'+
+									'<div class="mfp-counter"></div>'+
+								'</div>'+
+							'</figcaption>'+
+						'</figure>'+
+					'</div>',
+			cursor: 'mfp-zoom-out-cur',
+			titleSrc: 'title',
+			verticalFit: true,
+			tError: '<a href="%url%">The image</a> could not be loaded.'
+		},
+
+		proto: {
+			initImage: function() {
+				var imgSt = mfp.st.image,
+					ns = '.image';
+
+				mfp.types.push('image');
+
+				_mfpOn(OPEN_EVENT+ns, function() {
+					if(mfp.currItem.type === 'image' && imgSt.cursor) {
+						$(document.body).addClass(imgSt.cursor);
+					}
+				});
+
+				_mfpOn(CLOSE_EVENT+ns, function() {
+					if(imgSt.cursor) {
+						$(document.body).removeClass(imgSt.cursor);
+					}
+					_window.off('resize' + EVENT_NS);
+				});
+
+				_mfpOn('Resize'+ns, mfp.resizeImage);
+				if(mfp.isLowIE) {
+					_mfpOn('AfterChange', mfp.resizeImage);
+				}
+			},
+			resizeImage: function() {
+				var item = mfp.currItem;
+				if(!item || !item.img) return;
+
+				if(mfp.st.image.verticalFit) {
+					var decr = 0;
+					// fix box-sizing in ie7/8
+					if(mfp.isLowIE) {
+						decr = parseInt(item.img.css('padding-top'), 10) + parseInt(item.img.css('padding-bottom'),10);
+					}
+					item.img.css('max-height', mfp.wH-decr);
+				}
+			},
+			_onImageHasSize: function(item) {
+				if(item.img) {
+
+					item.hasSize = true;
+
+					if(_imgInterval) {
+						clearInterval(_imgInterval);
+					}
+
+					item.isCheckingImgSize = false;
+
+					_mfpTrigger('ImageHasSize', item);
+
+					if(item.imgHidden) {
+						if(mfp.content)
+							mfp.content.removeClass('mfp-loading');
+
+						item.imgHidden = false;
+					}
+
+				}
+			},
+
+			/**
+			 * Function that loops until the image has size to display elements that rely on it asap
+			 */
+			findImageSize: function(item) {
+
+				var counter = 0,
+					img = item.img[0],
+					mfpSetInterval = function(delay) {
+
+						if(_imgInterval) {
+							clearInterval(_imgInterval);
+						}
+						// decelerating interval that checks for size of an image
+						_imgInterval = setInterval(function() {
+							if(img.naturalWidth > 0) {
+								mfp._onImageHasSize(item);
+								return;
+							}
+
+							if(counter > 200) {
+								clearInterval(_imgInterval);
+							}
+
+							counter++;
+							if(counter === 3) {
+								mfpSetInterval(10);
+							} else if(counter === 40) {
+								mfpSetInterval(50);
+							} else if(counter === 100) {
+								mfpSetInterval(500);
+							}
+						}, delay);
+					};
+
+				mfpSetInterval(1);
+			},
+
+			getImage: function(item, template) {
+
+				var guard = 0,
+
+					// image load complete handler
+					onLoadComplete = function() {
+						if(item) {
+							if (item.img[0].complete) {
+								item.img.off('.mfploader');
+
+								if(item === mfp.currItem){
+									mfp._onImageHasSize(item);
+
+									mfp.updateStatus('ready');
+								}
+
+								item.hasSize = true;
+								item.loaded = true;
+
+								_mfpTrigger('ImageLoadComplete');
+
+							}
+							else {
+								// if image complete check fails 200 times (20 sec), we assume that there was an error.
+								guard++;
+								if(guard < 200) {
+									setTimeout(onLoadComplete,100);
+								} else {
+									onLoadError();
+								}
+							}
+						}
+					},
+
+					// image error handler
+					onLoadError = function() {
+						if(item) {
+							item.img.off('.mfploader');
+							if(item === mfp.currItem){
+								mfp._onImageHasSize(item);
+								mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src) );
+							}
+
+							item.hasSize = true;
+							item.loaded = true;
+							item.loadError = true;
+						}
+					},
+					imgSt = mfp.st.image;
+
+
+				var el = template.find('.mfp-img');
+				if(el.length) {
+					var img = document.createElement('img');
+					img.className = 'mfp-img';
+					if(item.el && item.el.find('img').length) {
+						img.alt = item.el.find('img').attr('alt');
+					}
+					item.img = $(img).on('load.mfploader', onLoadComplete).on('error.mfploader', onLoadError);
+					img.src = item.src;
+
+					// without clone() "error" event is not firing when IMG is replaced by new IMG
+					// TODO: find a way to avoid such cloning
+					if(el.is('img')) {
+						item.img = item.img.clone();
+					}
+
+					img = item.img[0];
+					if(img.naturalWidth > 0) {
+						item.hasSize = true;
+					} else if(!img.width) {
+						item.hasSize = false;
+					}
+				}
+
+				mfp._parseMarkup(template, {
+					title: _getTitle(item),
+					img_replaceWith: item.img
+				}, item);
+
+				mfp.resizeImage();
+
+				if(item.hasSize) {
+					if(_imgInterval) clearInterval(_imgInterval);
+
+					if(item.loadError) {
+						template.addClass('mfp-loading');
+						mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src) );
+					} else {
+						template.removeClass('mfp-loading');
+						mfp.updateStatus('ready');
+					}
+					return template;
+				}
+
+				mfp.updateStatus('loading');
+				item.loading = true;
+
+				if(!item.hasSize) {
+					item.imgHidden = true;
+					template.addClass('mfp-loading');
+					mfp.findImageSize(item);
+				}
+
+				return template;
+			}
+		}
+	});
+
+	/*>>image*/
+
+	/*>>zoom*/
+	var hasMozTransform,
+		getHasMozTransform = function() {
+			if(hasMozTransform === undefined) {
+				hasMozTransform = document.createElement('p').style.MozTransform !== undefined;
+			}
+			return hasMozTransform;
+		};
+
+	$.magnificPopup.registerModule('zoom', {
+
+		options: {
+			enabled: false,
+			easing: 'ease-in-out',
+			duration: 300,
+			opener: function(element) {
+				return element.is('img') ? element : element.find('img');
+			}
+		},
+
+		proto: {
+
+			initZoom: function() {
+				var zoomSt = mfp.st.zoom,
+					ns = '.zoom',
+					image;
+
+				if(!zoomSt.enabled || !mfp.supportsTransition) {
+					return;
+				}
+
+				var duration = zoomSt.duration,
+					getElToAnimate = function(image) {
+						var newImg = image.clone().removeAttr('style').removeAttr('class').addClass('mfp-animated-image'),
+							transition = 'all '+(zoomSt.duration/1000)+'s ' + zoomSt.easing,
+							cssObj = {
+								position: 'fixed',
+								zIndex: 9999,
+								left: 0,
+								top: 0,
+								'-webkit-backface-visibility': 'hidden'
+							},
+							t = 'transition';
+
+						cssObj['-webkit-'+t] = cssObj['-moz-'+t] = cssObj['-o-'+t] = cssObj[t] = transition;
+
+						newImg.css(cssObj);
+						return newImg;
+					},
+					showMainContent = function() {
+						mfp.content.css('visibility', 'visible');
+					},
+					openTimeout,
+					animatedImg;
+
+				_mfpOn('BuildControls'+ns, function() {
+					if(mfp._allowZoom()) {
+
+						clearTimeout(openTimeout);
+						mfp.content.css('visibility', 'hidden');
+
+						// Basically, all code below does is clones existing image, puts in on top of the current one and animated it
+
+						image = mfp._getItemToZoom();
+
+						if(!image) {
+							showMainContent();
+							return;
+						}
+
+						animatedImg = getElToAnimate(image);
+
+						animatedImg.css( mfp._getOffset() );
+
+						mfp.wrap.append(animatedImg);
+
+						openTimeout = setTimeout(function() {
+							animatedImg.css( mfp._getOffset( true ) );
+							openTimeout = setTimeout(function() {
+
+								showMainContent();
+
+								setTimeout(function() {
+									animatedImg.remove();
+									image = animatedImg = null;
+									_mfpTrigger('ZoomAnimationEnded');
+								}, 16); // avoid blink when switching images
+
+							}, duration); // this timeout equals animation duration
+
+						}, 16); // by adding this timeout we avoid short glitch at the beginning of animation
+
+
+						// Lots of timeouts...
+					}
+				});
+				_mfpOn(BEFORE_CLOSE_EVENT+ns, function() {
+					if(mfp._allowZoom()) {
+
+						clearTimeout(openTimeout);
+
+						mfp.st.removalDelay = duration;
+
+						if(!image) {
+							image = mfp._getItemToZoom();
+							if(!image) {
+								return;
+							}
+							animatedImg = getElToAnimate(image);
+						}
+
+						animatedImg.css( mfp._getOffset(true) );
+						mfp.wrap.append(animatedImg);
+						mfp.content.css('visibility', 'hidden');
+
+						setTimeout(function() {
+							animatedImg.css( mfp._getOffset() );
+						}, 16);
+					}
+
+				});
+
+				_mfpOn(CLOSE_EVENT+ns, function() {
+					if(mfp._allowZoom()) {
+						showMainContent();
+						if(animatedImg) {
+							animatedImg.remove();
+						}
+						image = null;
+					}
+				});
+			},
+
+			_allowZoom: function() {
+				return mfp.currItem.type === 'image';
+			},
+
+			_getItemToZoom: function() {
+				if(mfp.currItem.hasSize) {
+					return mfp.currItem.img;
+				} else {
+					return false;
+				}
+			},
+
+			// Get element postion relative to viewport
+			_getOffset: function(isLarge) {
+				var el;
+				if(isLarge) {
+					el = mfp.currItem.img;
+				} else {
+					el = mfp.st.zoom.opener(mfp.currItem.el || mfp.currItem);
+				}
+
+				var offset = el.offset();
+				var paddingTop = parseInt(el.css('padding-top'),10);
+				var paddingBottom = parseInt(el.css('padding-bottom'),10);
+				offset.top -= ( $(window).scrollTop() - paddingTop );
+
+
+				/*
+
+				Animating left + top + width/height looks glitchy in Firefox, but perfect in Chrome. And vice-versa.
+
+				 */
+				var obj = {
+					width: el.width(),
+					// fix Zepto height+padding issue
+					height: (_isJQ ? el.innerHeight() : el[0].offsetHeight) - paddingBottom - paddingTop
+				};
+
+				// I hate to do this, but there is no another option
+				if( getHasMozTransform() ) {
+					obj['-moz-transform'] = obj['transform'] = 'translate(' + offset.left + 'px,' + offset.top + 'px)';
+				} else {
+					obj.left = offset.left;
+					obj.top = offset.top;
+				}
+				return obj;
+			}
+
+		}
+	});
+
+
+
+	/*>>zoom*/
+
+	/*>>iframe*/
+
+	var IFRAME_NS = 'iframe',
+		_emptyPage = '//about:blank',
+
+		_fixIframeBugs = function(isShowing) {
+			if(mfp.currTemplate[IFRAME_NS]) {
+				var el = mfp.currTemplate[IFRAME_NS].find('iframe');
+				if(el.length) {
+					// reset src after the popup is closed to avoid "video keeps playing after popup is closed" bug
+					if(!isShowing) {
+						el[0].src = _emptyPage;
+					}
+
+					// IE8 black screen bug fix
+					if(mfp.isIE8) {
+						el.css('display', isShowing ? 'block' : 'none');
+					}
+				}
+			}
+		};
+
+	$.magnificPopup.registerModule(IFRAME_NS, {
+
+		options: {
+			markup: '<div class="mfp-iframe-scaler">'+
+						'<div class="mfp-close"></div>'+
+						'<iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe>'+
+					'</div>',
+
+			srcAction: 'iframe_src',
+
+			// we don't care and support only one default type of URL by default
+			patterns: {
+				youtube: {
+					index: 'youtube.com',
+					id: 'v=',
+					src: '//www.youtube.com/embed/%id%?autoplay=1'
+				},
+				vimeo: {
+					index: 'vimeo.com/',
+					id: '/',
+					src: '//player.vimeo.com/video/%id%?autoplay=1'
+				},
+				gmaps: {
+					index: '//maps.google.',
+					src: '%id%&output=embed'
+				}
+			}
+		},
+
+		proto: {
+			initIframe: function() {
+				mfp.types.push(IFRAME_NS);
+
+				_mfpOn('BeforeChange', function(e, prevType, newType) {
+					if(prevType !== newType) {
+						if(prevType === IFRAME_NS) {
+							_fixIframeBugs(); // iframe if removed
+						} else if(newType === IFRAME_NS) {
+							_fixIframeBugs(true); // iframe is showing
+						}
+					}// else {
+						// iframe source is switched, don't do anything
+					//}
+				});
+
+				_mfpOn(CLOSE_EVENT + '.' + IFRAME_NS, function() {
+					_fixIframeBugs();
+				});
+			},
+
+			getIframe: function(item, template) {
+				var embedSrc = item.src;
+				var iframeSt = mfp.st.iframe;
+
+				$.each(iframeSt.patterns, function() {
+					if(embedSrc.indexOf( this.index ) > -1) {
+						if(this.id) {
+							if(typeof this.id === 'string') {
+								embedSrc = embedSrc.substr(embedSrc.lastIndexOf(this.id)+this.id.length, embedSrc.length);
+							} else {
+								embedSrc = this.id.call( this, embedSrc );
+							}
+						}
+						embedSrc = this.src.replace('%id%', embedSrc );
+						return false; // break;
+					}
+				});
+
+				var dataObj = {};
+				if(iframeSt.srcAction) {
+					dataObj[iframeSt.srcAction] = embedSrc;
+				}
+				mfp._parseMarkup(template, dataObj, item);
+
+				mfp.updateStatus('ready');
+
+				return template;
+			}
+		}
+	});
+
+
+
+	/*>>iframe*/
+
+	/*>>gallery*/
+	/**
+	 * Get looped index depending on number of slides
+	 */
+	var _getLoopedId = function(index) {
+			var numSlides = mfp.items.length;
+			if(index > numSlides - 1) {
+				return index - numSlides;
+			} else  if(index < 0) {
+				return numSlides + index;
+			}
+			return index;
+		},
+		_replaceCurrTotal = function(text, curr, total) {
+			return text.replace(/%curr%/gi, curr + 1).replace(/%total%/gi, total);
+		};
+
+	$.magnificPopup.registerModule('gallery', {
+
+		options: {
+			enabled: false,
+			arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
+			preload: [0,2],
+			navigateByImgClick: true,
+			arrows: true,
+
+			tPrev: 'Previous (Left arrow key)',
+			tNext: 'Next (Right arrow key)',
+			tCounter: '%curr% of %total%'
+		},
+
+		proto: {
+			initGallery: function() {
+
+				var gSt = mfp.st.gallery,
+					ns = '.mfp-gallery';
+
+				mfp.direction = true; // true - next, false - prev
+
+				if(!gSt || !gSt.enabled ) return false;
+
+				_wrapClasses += ' mfp-gallery';
+
+				_mfpOn(OPEN_EVENT+ns, function() {
+
+					if(gSt.navigateByImgClick) {
+						mfp.wrap.on('click'+ns, '.mfp-img', function() {
+							if(mfp.items.length > 1) {
+								mfp.next();
+								return false;
+							}
+						});
+					}
+
+					_document.on('keydown'+ns, function(e) {
+						if (e.keyCode === 37) {
+							mfp.prev();
+						} else if (e.keyCode === 39) {
+							mfp.next();
+						}
+					});
+				});
+
+				_mfpOn('UpdateStatus'+ns, function(e, data) {
+					if(data.text) {
+						data.text = _replaceCurrTotal(data.text, mfp.currItem.index, mfp.items.length);
+					}
+				});
+
+				_mfpOn(MARKUP_PARSE_EVENT+ns, function(e, element, values, item) {
+					var l = mfp.items.length;
+					values.counter = l > 1 ? _replaceCurrTotal(gSt.tCounter, item.index, l) : '';
+				});
+
+				_mfpOn('BuildControls' + ns, function() {
+					if(mfp.items.length > 1 && gSt.arrows && !mfp.arrowLeft) {
+						var markup = gSt.arrowMarkup,
+							arrowLeft = mfp.arrowLeft = $( markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left') ).addClass(PREVENT_CLOSE_CLASS),
+							arrowRight = mfp.arrowRight = $( markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right') ).addClass(PREVENT_CLOSE_CLASS);
+
+						arrowLeft.click(function() {
+							mfp.prev();
+						});
+						arrowRight.click(function() {
+							mfp.next();
+						});
+
+						mfp.container.append(arrowLeft.add(arrowRight));
+					}
+				});
+
+				_mfpOn(CHANGE_EVENT+ns, function() {
+					if(mfp._preloadTimeout) clearTimeout(mfp._preloadTimeout);
+
+					mfp._preloadTimeout = setTimeout(function() {
+						mfp.preloadNearbyImages();
+						mfp._preloadTimeout = null;
+					}, 16);
+				});
+
+
+				_mfpOn(CLOSE_EVENT+ns, function() {
+					_document.off(ns);
+					mfp.wrap.off('click'+ns);
+					mfp.arrowRight = mfp.arrowLeft = null;
+				});
+
+			},
+			next: function() {
+				mfp.direction = true;
+				mfp.index = _getLoopedId(mfp.index + 1);
+				mfp.updateItemHTML();
+			},
+			prev: function() {
+				mfp.direction = false;
+				mfp.index = _getLoopedId(mfp.index - 1);
+				mfp.updateItemHTML();
+			},
+			goTo: function(newIndex) {
+				mfp.direction = (newIndex >= mfp.index);
+				mfp.index = newIndex;
+				mfp.updateItemHTML();
+			},
+			preloadNearbyImages: function() {
+				var p = mfp.st.gallery.preload,
+					preloadBefore = Math.min(p[0], mfp.items.length),
+					preloadAfter = Math.min(p[1], mfp.items.length),
+					i;
+
+				for(i = 1; i <= (mfp.direction ? preloadAfter : preloadBefore); i++) {
+					mfp._preloadItem(mfp.index+i);
+				}
+				for(i = 1; i <= (mfp.direction ? preloadBefore : preloadAfter); i++) {
+					mfp._preloadItem(mfp.index-i);
+				}
+			},
+			_preloadItem: function(index) {
+				index = _getLoopedId(index);
+
+				if(mfp.items[index].preloaded) {
+					return;
+				}
+
+				var item = mfp.items[index];
+				if(!item.parsed) {
+					item = mfp.parseEl( index );
+				}
+
+				_mfpTrigger('LazyLoad', item);
+
+				if(item.type === 'image') {
+					item.img = $('<img class="mfp-img" />').on('load.mfploader', function() {
+						item.hasSize = true;
+					}).on('error.mfploader', function() {
+						item.hasSize = true;
+						item.loadError = true;
+						_mfpTrigger('LazyLoadError', item);
+					}).attr('src', item.src);
+				}
+
+
+				item.preloaded = true;
+			}
+		}
+	});
+
+	/*>>gallery*/
+
+	/*>>retina*/
+
+	var RETINA_NS = 'retina';
+
+	$.magnificPopup.registerModule(RETINA_NS, {
+		options: {
+			replaceSrc: function(item) {
+				return item.src.replace(/\.\w+$/, function(m) { return '@2x' + m; });
+			},
+			ratio: 1 // Function or number.  Set to 1 to disable.
+		},
+		proto: {
+			initRetina: function() {
+				if(window.devicePixelRatio > 1) {
+
+					var st = mfp.st.retina,
+						ratio = st.ratio;
+
+					ratio = !isNaN(ratio) ? ratio : ratio();
+
+					if(ratio > 1) {
+						_mfpOn('ImageHasSize' + '.' + RETINA_NS, function(e, item) {
+							item.img.css({
+								'max-width': item.img[0].naturalWidth / ratio,
+								'width': '100%'
+							});
+						});
+						_mfpOn('ElementParse' + '.' + RETINA_NS, function(e, item) {
+							item.src = st.replaceSrc(item, ratio);
+						});
+					}
+				}
+
+			}
+		}
+	});
+
+	/*>>retina*/
+	 _checkInstance(); }));
+
 /***/ },
-/* 7 */
+
+/***/ 13:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(5);
+	var _jquery = __webpack_require__(4);
 
-	var _smoothScroll = __webpack_require__(8);
+	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _smoothScroll2 = _interopRequireDefault(_smoothScroll);
-
-	var _blazy = __webpack_require__(6);
-
-	var _blazy2 = _interopRequireDefault(_blazy);
+	__webpack_require__(10);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	if (document.getElementById('services-links') && window.innerWidth > 800) {
-	  (function () {
-	    var addPlayBtnListeners = function addPlayBtnListeners(className) {
-	      var btns = document.getElementsByClassName(className);
-	      for (var i = 0; i < btns.length; i++) {
-	        btns[i].addEventListener('click', initServiceVideo.bind(btns[i]));
-	      }
-	    };
-
-	    var initServiceVideo = function initServiceVideo(iframeId) {
-	      console.log(this.id);
-	      var vid = this.getElementsByTagName('iframe')[0];
-	      var btn = this.getElementsByClassName('play-btn-svg')[0];
-	      var spinner = this.getElementsByClassName('crema-spinner')[0];
-	      btn.style.zIndex = 0;
-	      btn.style.animationName = 'crema-spinner-rev';
-	      spinner.style.animationName = 'crema-spinner';
-	      spinner.style.opacity = 1;
-	      console.log(btn);
-	      if (!vid.dataset.added) {
-	        vid.src = vid.dataset.src;
-	        vid.dataset.added = 'true';
-	      }
-	    };
-
-	    var wayptOffset = function wayptOffset() {
-	      if (window.innerHeight > 910) return window.innerHeight * .87;else return window.innerHeight * .75;
-	    };
-
-	    var styleLinks = function styleLinks(el) {
-	      for (var i = 0; i < links.length; i++) {
-	        links[i].style.color = '#afafaf';
-	        links[i].getElementsByTagName('img')[0].style.opacity = 0;
-	      }
-	      el.style.color = 'black';
-	      el.getElementsByTagName('img')[0].style.opacity = 1;
-	    };
-
-	    var fadeText = function fadeText(upId, downId, upLink, downLink, direction, iframeId) {
-	      if (direction == 'up') {
-	        console.log('Direction: ' + direction + ' show ' + upId);
-	        styleLinks(document.getElementById(upLink));
-	        document.getElementById(upId).style.opacity = 1;
-	        document.getElementById(downId).style.opacity = 0;
-	      } else {
-	        console.log('Direction: ' + direction + ' show ' + downId);
-	        // if (iframeId) initServiceVideo(iframeId)
-	        styleLinks(document.getElementById(downLink));
-	        document.getElementById(upId).style.opacity = 0;
-	        // document.getElementById(downId).style.opacity = 1
-	      }
-	    };
-
-	    var fadeTextIn = function fadeTextIn(upId, downId, direction) {
-	      if (direction === 'up') {
-	        // document.getElementById(upId).style.opacity = 1
-	      } else {
-	        document.getElementById(downId).style.opacity = 1;
-	      }
-	    };
-
-	    _smoothScroll2.default.init();
-
-	    addPlayBtnListeners('videowrapper');
-
-	    var links = document.getElementById('services-links').getElementsByTagName('a');
-
-
-	    new Waypoint({
-	      element: document.getElementById('proto-vid'),
-	      handler: function handler(direction) {
-	        fadeText('innovation', 'prototyping', 'service-inno-a', 'service-proto-a', direction, 'proto-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('proto-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('innovation', 'prototyping', direction);
-	      },
-	      offset: 200
-	    });
-
-	    new Waypoint({
-	      element: document.getElementById('branding-vid'),
-	      handler: function handler(direction) {
-	        fadeText('prototyping', 'branding', 'service-proto-a', 'service-branding-a', direction, 'branding-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('branding-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('prototyping', 'branding', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('ux-vid'),
-	      handler: function handler(direction) {
-	        fadeText('branding', 'ux', 'service-branding-a', 'service-ux-a', direction, 'ux-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('ux-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('branding', 'ux', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('api-vid'),
-	      handler: function handler(direction) {
-	        fadeText('ux', 'api', 'service-ux-a', 'service-api-a', direction, 'api-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('api-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('ux', 'api', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('mobile-vid'),
-	      handler: function handler(direction) {
-	        fadeText('api', 'mobile', 'service-api-a', 'service-mobile-a', direction, 'mobile-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('mobile-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('api', 'mobile', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('test-vid'),
-	      handler: function handler(direction) {
-	        fadeText('mobile', 'test', 'service-mobile-a', 'service-test-a', direction, 'test-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('test-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('mobile', 'test', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('product-vid'),
-	      handler: function handler(direction) {
-	        fadeText('test', 'product', 'service-test-a', 'service-product-a', direction, 'product-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('product-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('test', 'product', direction);
-	      },
-	      offset: 100
-	    });
-	    new Waypoint({
-	      element: document.getElementById('early-vid'),
-	      handler: function handler(direction) {
-	        fadeText('product', 'early', 'service-product-a', 'service-early-a', direction, 'early-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    new Waypoint({
-	      element: document.getElementById('early-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('product', 'early', direction);
-	      },
-	      offset: 100
-	    });
-	    //final way point
-	    new Waypoint({
-	      element: document.getElementById('fade-links-text'),
-	      handler: function handler(direction) {
-
-	        if (direction == 'up') {
-	          document.getElementById('services-links').style.opacity = 1;
-	          document.getElementById('early').style.opacity = 1;
-	        } else {
-	          document.getElementById('services-links').style.opacity = 0;
-	          document.getElementById('early').style.opacity = 0;
-	        }
-	      },
-	      offset: window.innerHeight < 905 ? window.innerHeight * .75 : window.innerHeight * .65
-	    });
-	  })();
-	}
-
-	//SERVICES Page
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! smooth-scroll v9.2.0 | (c) 2016 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
-	!function(e,t){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t(e)), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=t(e):e.smoothScroll=t(e)}("undefined"!=typeof global?global:this.window||this.global,function(e){"use strict";var t,n,r,o,a,c={},i="querySelector"in document&&"addEventListener"in e,u={selector:"[data-scroll]",selectorHeader:"[data-scroll-header]",speed:500,easing:"easeInOutCubic",offset:0,updateURL:!0,callback:function(){}},l=function(){var e={},t=!1,n=0,r=arguments.length;"[object Boolean]"===Object.prototype.toString.call(arguments[0])&&(t=arguments[0],n++);for(var o=function(n){for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t&&"[object Object]"===Object.prototype.toString.call(n[r])?e[r]=l(!0,e[r],n[r]):e[r]=n[r])};r>n;n++){var a=arguments[n];o(a)}return e},s=function(e){return Math.max(e.scrollHeight,e.offsetHeight,e.clientHeight)},f=function(e,t){var n,r,o=t.charAt(0),a="classList"in document.documentElement;for("["===o&&(t=t.substr(1,t.length-2),n=t.split("="),n.length>1&&(r=!0,n[1]=n[1].replace(/"/g,"").replace(/'/g,"")));e&&e!==document&&1===e.nodeType;e=e.parentNode){if("."===o)if(a){if(e.classList.contains(t.substr(1)))return e}else if(new RegExp("(^|\\s)"+t.substr(1)+"(\\s|$)").test(e.className))return e;if("#"===o&&e.id===t.substr(1))return e;if("["===o&&e.hasAttribute(n[0])){if(!r)return e;if(e.getAttribute(n[0])===n[1])return e}if(e.tagName.toLowerCase()===t)return e}return null};c.escapeCharacters=function(e){"#"===e.charAt(0)&&(e=e.substr(1));for(var t,n=String(e),r=n.length,o=-1,a="",c=n.charCodeAt(0);++o<r;){if(t=n.charCodeAt(o),0===t)throw new InvalidCharacterError("Invalid character: the input contains U+0000.");a+=t>=1&&31>=t||127==t||0===o&&t>=48&&57>=t||1===o&&t>=48&&57>=t&&45===c?"\\"+t.toString(16)+" ":t>=128||45===t||95===t||t>=48&&57>=t||t>=65&&90>=t||t>=97&&122>=t?n.charAt(o):"\\"+n.charAt(o)}return"#"+a};var d=function(e,t){var n;return"easeInQuad"===e&&(n=t*t),"easeOutQuad"===e&&(n=t*(2-t)),"easeInOutQuad"===e&&(n=.5>t?2*t*t:-1+(4-2*t)*t),"easeInCubic"===e&&(n=t*t*t),"easeOutCubic"===e&&(n=--t*t*t+1),"easeInOutCubic"===e&&(n=.5>t?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1),"easeInQuart"===e&&(n=t*t*t*t),"easeOutQuart"===e&&(n=1- --t*t*t*t),"easeInOutQuart"===e&&(n=.5>t?8*t*t*t*t:1-8*--t*t*t*t),"easeInQuint"===e&&(n=t*t*t*t*t),"easeOutQuint"===e&&(n=1+--t*t*t*t*t),"easeInOutQuint"===e&&(n=.5>t?16*t*t*t*t*t:1+16*--t*t*t*t*t),n||t},m=function(e,t,n){var r=0;if(e.offsetParent)do r+=e.offsetTop,e=e.offsetParent;while(e);return r=Math.max(r-t-n,0),Math.min(r,p()-h())},h=function(){return Math.max(document.documentElement.clientHeight,window.innerHeight||0)},p=function(){return Math.max(e.document.body.scrollHeight,e.document.documentElement.scrollHeight,e.document.body.offsetHeight,e.document.documentElement.offsetHeight,e.document.body.clientHeight,e.document.documentElement.clientHeight)},g=function(e){return e&&"object"==typeof JSON&&"function"==typeof JSON.parse?JSON.parse(e):{}},b=function(t,n){e.history.pushState&&(n||"true"===n)&&"file:"!==e.location.protocol&&e.history.pushState(null,null,[e.location.protocol,"//",e.location.host,e.location.pathname,e.location.search,t].join(""))},v=function(e){return null===e?0:s(e)+e.offsetTop};c.animateScroll=function(n,c,i){var s=g(c?c.getAttribute("data-options"):null),f=l(t||u,i||{},s),h="[object Number]"===Object.prototype.toString.call(n)?!0:!1,y=h?null:"#"===n?e.document.documentElement:e.document.querySelector(n);if(h||y){var O=e.pageYOffset;r||(r=e.document.querySelector(f.selectorHeader)),o||(o=v(r));var S,I,H=h?n:m(y,o,parseInt(f.offset,10)),E=H-O,j=p(),w=0;h||b(n,f.updateURL);var C=function(t,r,o){var a=e.pageYOffset;(t==r||a==r||e.innerHeight+a>=j)&&(clearInterval(o),h||y.focus(),f.callback(n,c))},L=function(){w+=16,S=w/parseInt(f.speed,10),S=S>1?1:S,I=O+E*d(f.easing,S),e.scrollTo(0,Math.floor(I)),C(I,H,a)},A=function(){clearInterval(a),a=setInterval(L,16)};0===e.pageYOffset&&e.scrollTo(0,0),A()}};var y=function(e){if(0===e.button&&!e.metaKey&&!e.ctrlKey){var n=f(e.target,t.selector);if(n&&"a"===n.tagName.toLowerCase()){if(n.origin!==location.origin||n.pathname!==location.pathname)return;e.preventDefault();var r=c.escapeCharacters(n.hash);c.animateScroll(r,n,t)}}},O=function(e){n||(n=setTimeout(function(){n=null,o=v(r)},66))};return c.destroy=function(){t&&(e.document.removeEventListener("click",y,!1),e.removeEventListener("resize",O,!1),t=null,n=null,r=null,o=null,a=null)},c.init=function(n){i&&(c.destroy(),t=l(u,n||{}),r=e.document.querySelector(t.selectorHeader),o=v(r),e.document.addEventListener("click",y,!1),r&&e.addEventListener("resize",O,!1))},c});
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
 /***/ }
-/******/ ]);
+
+/******/ });
