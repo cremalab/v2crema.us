@@ -74,12 +74,31 @@ li h5 {
   margin-top: -12em;
   h1 {
     color: white;
-    
+  }
+  .img-wrapper {
+    position: relative;
+    width: 65vw;
+    margin: -4em auto auto auto;
+    max-width: 1200px;
+    .play-btn-svg {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: calc(50% - 35px);
+      left: calc(50% - 35px);
+    }
+    .crema-spinner,
+    .crema-spinner:after {
+      width: 100px;
+      height: 100px;
+      opacity: .8;
+      top: calc(50% - 54px);
+      left: calc(50% - 55px);
+    }
+
   }
   img {
-    width: 65vw;
-    margin-top: -4em;
-    max-width: 1200px;
+    width: 100%;
   }
 }
 

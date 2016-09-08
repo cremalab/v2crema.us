@@ -59,10 +59,26 @@ li h5 {
   margin-top: -12em; }
   .wonder-at-crema h1 {
     color: white; }
-  .wonder-at-crema img {
+  .wonder-at-crema .img-wrapper {
+    position: relative;
     width: 65vw;
-    margin-top: -4em;
+    margin: -4em auto auto auto;
     max-width: 1200px; }
+    .wonder-at-crema .img-wrapper .play-btn-svg {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: calc(50% - 35px);
+      left: calc(50% - 35px); }
+    .wonder-at-crema .img-wrapper .crema-spinner,
+    .wonder-at-crema .img-wrapper .crema-spinner:after {
+      width: 100px;
+      height: 100px;
+      opacity: .8;
+      top: calc(50% - 54px);
+      left: calc(50% - 55px); }
+  .wonder-at-crema img {
+    width: 100%; }
 
 .values-wrapper {
   width: 85vw;

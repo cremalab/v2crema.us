@@ -1,7 +1,10 @@
 extends layout
 
-block append styles
+append styles
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css')
+  link(href="/stylesheets/build/base/crema-spinner.css", rel="stylesheet")
   link(rel='stylesheet', href='/stylesheets/build/modules/team.css')
+  
 
 block vars
 
@@ -28,7 +31,11 @@ block content
     include ./partials/curve-blue-svg.jade
     .col 
       h1 Wonder what it’s like to work at Crema?
-      img(src='/images/work-at-crema.png')
+      .img-wrapper
+        a(href="https://www.youtube.com/watch?v=YQAJXBv3LKc" class="team-culture-video")
+          img(src='/images/work-at-crema.png')
+          include ./partials/btn-play-svg
+          .crema-spinner
 
   .values-wrapper
     h1 We will create the best solutions that solve problems and better lives
