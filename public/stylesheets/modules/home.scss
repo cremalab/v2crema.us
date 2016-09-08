@@ -57,7 +57,12 @@ $transitionTimeFade: opacity .7s;
   background: linear-gradient(135deg, rgba(139,246,254,1) 0%, rgba(147,82,252,1) 100%);
 }  
 
-
+#showcase1,#showcase2,#showcase3 {
+  img {
+    transition: $transitionTimeFade; 
+    transition-delay: .5s
+  }
+}
 
 // First block ENTERPRISE
 #showcase1 {
@@ -76,15 +81,13 @@ $transitionTimeFade: opacity .7s;
     height: 42.8vw;
     top: 28%;
     left: 63%;
-    // img { transition-delay: 1s;}
     .img-placeholder { height: 26vw;}
   }
   #cups-img {
     width: 88%;
     top: 65%;
     z-index: 1;
-    left: 10%;
-    // img { transition-delay: 1.3s;}
+    left: 10%; 
     .img-placeholder { height: 31vw;}
     
   }
@@ -98,7 +101,7 @@ $transitionTimeFade: opacity .7s;
     .col {
       img {
         opacity: 0;
-        transition: $transitionTimeFade;
+        
         width: 100%;
         // top: 100px;
         position: absolute;
@@ -121,21 +124,21 @@ $transitionTimeFade: opacity .7s;
     top: 0;
     right: 8%;
     z-index: 1;
-    img { transition-delay: 1.5s;}
+    
     .img-placeholder { height: 34vw;}
   }
   #tilr-img {
     width: 90%;
     top: 60%;
     right: 3%;
-    img { transition-delay: 1s;}
+    
     .img-placeholder { height: 27vw;}
   }
   #throttle-img {
     width: 30%;
     top: 40%;
     left: -1%;
-    img { transition-delay: 1s;}
+    
     .img-placeholder { height: 25vw;}
   }
   
@@ -144,7 +147,7 @@ $transitionTimeFade: opacity .7s;
     right: 0;
     top: 81%;
     z-index: 1;
-    img { transition-delay: 1s;}
+    
     .img-placeholder { height: 19vw;}
     
   }
@@ -152,7 +155,7 @@ $transitionTimeFade: opacity .7s;
     width: 67%;
     bottom: -20%;
     right: 25%;
-    img { transition-delay: 1s;}
+    
     .img-placeholder { height: 21vw;}
     
   }
@@ -160,7 +163,7 @@ $transitionTimeFade: opacity .7s;
     width: 35%;
     top: 104%;
     right: 0;
-    img { transition-delay: 1.2s;}
+    
     .img-placeholder { height: 29vw;}
   }
   
@@ -171,8 +174,6 @@ $transitionTimeFade: opacity .7s;
     width: 100%;
     position: absolute;
     opacity: 0;
-    transition: $transitionTimeFade;
-    
   }
   h1 {
     color: black;
@@ -186,14 +187,14 @@ $transitionTimeFade: opacity .7s;
     top: 22%;
     width: 93%;
     left: 3%;
-    img { transition-delay: 1s;}
+    
     .img-placeholder { height: 28vw;}
   }
   #str-plain-img {
     width: 37%;
     bottom: 5%;
     right: 36%;
-    img { transition-delay: 1.4s;}
+    
     .img-placeholder { height: 32vw;}
     
   }
@@ -201,7 +202,7 @@ $transitionTimeFade: opacity .7s;
     width: 39%;
     right: 0%;
     bottom: 15%;
-    img { transition-delay: 1.8s;}
+    
     .img-placeholder { height: 34vw;}
     
   }
@@ -209,7 +210,7 @@ $transitionTimeFade: opacity .7s;
     width: 75%;
     bottom: 25%;
     left: 5%;
-    img { transition-delay: 2.1s;}
+    
     .img-placeholder { height: 31vw;}
     
     }
@@ -233,7 +234,6 @@ $transitionTimeFade: opacity .7s;
     width: 100%;
     position: absolute;
     opacity: 0;
-    transition: $transitionTimeFade;
   }
 }
 
@@ -390,7 +390,7 @@ ul {
         right: 20%;
         top: 51%;
         z-index: 0;
-        img { transition-delay: 1s;}
+        
         .img-placeholder { height: 19vw;}
       }
       #pc-img {
@@ -438,7 +438,7 @@ ul {
       width: 21%;
       top: 15%;
       right: 4%;
-      img { transition-delay: 1.8s;}
+      
       .img-placeholder { height: 34vw;}
       
     }
@@ -446,7 +446,7 @@ ul {
       width: 45%;
       top: 43%;
       left: 23%;
-      img { transition-delay: 2.1s;}
+      
       .img-placeholder { height: 31vw;}
       
       }
