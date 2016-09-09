@@ -1,7 +1,7 @@
 @import '../base/_colors';
 
 .headline {
-  padding-top: 8em;
+  padding-top: 6em;
   color: white;
   text-align: center;
   h1 {
@@ -21,13 +21,6 @@
   background-repeat: no-repeat;
 }
 
-#sq-blue-svg {
-  width: 100vw;
-  min-width: 1340px;
-  position: absolute;
-  top: 0;
-  z-index: -1;
-}
 
 ul {
   margin: 3em auto;
@@ -83,8 +76,13 @@ li h5 {
   width: 100vw;
   height: 88vw;
   margin-top: -12em;
+  background-image: url('../../../images/blue-team-wonder-desktop.svg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  
   h1 {
     color: white;
+    margin-top: 2em;
   }
   .img-wrapper {
     position: relative;
@@ -193,6 +191,73 @@ li h5 {
   }
 }
 
+
+@media screen and (max-width: 1200px) {
+  .values { 
+    max-width: 100vw;
+    overflow-x: scroll;
+    .col.left-nav {
+      display: none;
+    }
+    .col.content {
+      display: block;
+      width: 100vw;
+      overflow-x: scroll;
+      .rel-wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 690vw;
+      }
+      .value { 
+        display: inline-block;
+        width: 95vw;
+        height: 100vh;
+        padding: 2em;
+        margin-right: 6em;
+      }
+      .grid {
+        
+        display: table;
+        width: 100%;
+        position: static;
+        opacity: 1;
+      }
+      .col {
+        width: 90%;
+        padding: 0;
+      
+      }
+      .col.value-img.trust {
+        width: 40%;
+      }
+      .col.value-img {
+        width: 75%;
+        .img-trust {max-width: 285px;}
+        img {
+          width: 90%
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .values .col.content {
+    background-image: linear-gradient(0deg, #f154ce, #f44848); 
+    .grid {
+      padding-top: 12vh;
+      .col {
+        h1 { 
+          padding-top: 4vh; 
+          font-size:2em;
+        }
+        p {font-size: 16px;}
+
+      } 
+    }
+  }
+}
+
 .join-team {
   width: 70vw;
   text-align: center;
@@ -202,6 +267,13 @@ li h5 {
   }
   h1 {
     font-size: 36px;
+  }
+}
+
+
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+  .team-header-svg {
+    background-size: 130vw;
   }
 }
 
