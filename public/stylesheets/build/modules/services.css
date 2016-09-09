@@ -42,7 +42,7 @@
   background-color: #907dfc; }
 
 #first-vid {
-  background-image: url("/images/expertise/vid-posters/crema-is.jpg"); }
+  background-image: url("/images/services/vid-posters/1_strategy.png"); }
 
 #first-service {
   transform: translateY(13%);
@@ -55,28 +55,28 @@
   height: 85vh; }
 
 #proto-vid {
-  background-image: url("/images/expertise/vid-posters/golden-layer.jpg"); }
+  background-image: url("/images/services/vid-posters/2_prototyping.png"); }
 
 #branding-vid {
-  background-image: url("/images/expertise/vid-posters/core-val.jpg"); }
+  background-image: url("/images/services/vid-posters/3_branding.png"); }
 
 #ux-vid {
-  background-image: url("/images/services/poster-vid3.png"); }
+  background-image: url("/images/services/vid-posters/4_ux.png"); }
 
 #api-vid {
-  background-image: url("/images/services/poster-vid4.png"); }
+  background-image: url("/images/services/vid-posters/5_api.png"); }
 
 #mobile-vid {
-  background-image: url("/images/services/poster-vid5.png"); }
+  background-image: url("/images/services/vid-posters/6_mobile.png"); }
 
 #test-vid {
-  background-image: url("/images/services/poster-vid3.png"); }
+  background-image: url("/images/services/vid-posters/7_testing.png"); }
 
 #product-vid {
-  background-image: url("/images/services/poster-vid4.png"); }
+  background-image: url("/images/services/vid-posters/8_launch.png"); }
 
 #early-vid {
-  background-image: url("/images/services/poster-vid5.png"); }
+  background-image: url("/images/services/vid-posters/9_customer.png"); }
 
 .play-btn-svg {
   position: absolute;
@@ -90,6 +90,9 @@
   animation-timing-function: linear;
   animation-duration: 1.8s; }
 
+.play-btn-svg, .crema-spinner {
+  display: none; }
+
 .service-wrapper {
   display: table;
   margin: 0 auto;
@@ -101,7 +104,7 @@
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    background-size: contain;
+    background-size: cover;
     background-repeat: none;
     background-position-y: center; }
     .service-wrapper .videowrapper .smoothScrollPt {
@@ -219,6 +222,16 @@
   height: 100vh;
   z-index: -1; }
 
+@media screen and (min-width: 801px) and (max-width: 1150px) {
+  .service-nav {
+    width: 255px; }
+  .services-left {
+    width: 220px; }
+  .service-text-fixed {
+    width: 33%; }
+  .service-nav .link-wrapper {
+    padding-right: 1.5em; } }
+
 @media screen and (max-width: 800px) {
   .header-nav {
     position: inherit; }
@@ -260,7 +273,6 @@
       left: calc(50% - 30px); }
   .mobile-service-vid {
     width: 60vw;
-    height: 50vh;
     margin: 3em 6vw;
     text-align: center;
     position: relative;
