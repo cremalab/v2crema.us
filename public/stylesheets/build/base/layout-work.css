@@ -106,7 +106,9 @@ h1 {
 @media screen and (max-width: 450px) {
   h1 {
     font-size: 33px; }
-  .work-img-wrapper .adidas, .work-img-wrapper .space-center {
+  .work-img-wrapper .adidas, .work-img-wrapper .space-center, .work-img-wrapper .zoomin, .work-img-wrapper .neighborly {
     margin-bottom: 9em; }
+  .work-img-wrapper .eln {
+    margin-bottom: 14em; }
   .hover-work-by-crema {
     top: 95%; } }
