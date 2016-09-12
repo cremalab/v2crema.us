@@ -2,6 +2,7 @@
 import './home.js'
 import './services.js'
 
+/*
 //This fades the entrie screen to white then restores it after 1.1s
 let btns = document.getElementsByClassName('mango-btn')
 let layoutWrapper = document.getElementsByClassName('layout-wrapper')[0]
@@ -13,6 +14,8 @@ Array.prototype.forEach.call(btns, (btn) => {
     layoutWrapper.style.opacity = 0
     setTimeout(function() {
       layoutWrapper.style.opacity = 1
-    }, 1100)
+    }, 2100)
   })
 })
+
+*/

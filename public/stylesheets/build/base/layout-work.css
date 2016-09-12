@@ -64,6 +64,7 @@ h1 {
 
 .centered {
   text-align: center;
+  width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -81,3 +82,31 @@ h1 {
   z-index: -1;
   background: #e2e2e2;
   background: linear-gradient(135deg, #8bf6fe 0%, #9352fc 100%); }
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 36px;
+    width: 95%; }
+  .work-img-wrapper .work-by-crema {
+    margin-bottom: 12em; }
+  .hover-work-by-crema {
+    top: 90%;
+    opacity: 1;
+    background-color: transparent; }
+    .hover-work-by-crema h1 {
+      color: black;
+      font-size: 28px; }
+  .centered {
+    top: 23%;
+    left: initial;
+    transform: initial; }
+  .work-content .post-footer img {
+    width: 75%; } }
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 33px; }
+  .work-img-wrapper .adidas, .work-img-wrapper .space-center {
+    margin-bottom: 9em; }
+  .hover-work-by-crema {
+    top: 95%; } }

@@ -57,21 +57,6 @@
 
 	__webpack_require__(7);
 
-	//This fades the entrie screen to white then restores it after 1.1s
-	var btns = document.getElementsByClassName('mango-btn');
-	var layoutWrapper = document.getElementsByClassName('layout-wrapper')[0];
-
-	//code that will run on all pages
-	Array.prototype.forEach.call(btns, function (btn) {
-	  btn.addEventListener('click', function () {
-	    console.log('fading...');
-	    layoutWrapper.style.opacity = 0;
-	    setTimeout(function () {
-	      layoutWrapper.style.opacity = 1;
-	    }, 1100);
-	  });
-	});
-
 /***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
