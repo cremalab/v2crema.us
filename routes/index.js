@@ -45,7 +45,7 @@ function makeRelativeImgPaths(absUrl, relativeUrl) {
 }
 var techImgPaths = [] 
 var techSubs = [
-  'Android', 'Angular', 'Apple', 'Monkey C', 'CSS', 'HTML5', 'Java', 'Javascript', 'Node', 'Rails', 'React', 'Redux', 'Ruby', 'Swift'
+  'Android', 'Angular', 'IOS', 'Monkey C', 'CSS', 'HTML5', 'Java', 'Javascript', 'Node', 'Rails', 'React', 'Redux', 'Ruby', 'Swift'
 ]
 makeRelativeImgPaths('./public/images/services/tech-logos', '/images/services/tech-logos/').then(logos => techImgPaths = logos)
 var integrationImgPaths = []

@@ -111,7 +111,7 @@ block content
     var links = document.getElementsByClassName('link-wrapper')[0].getElementsByTagName('a')
     var content = document.getElementsByClassName('rel-wrapper')[0].getElementsByClassName('grid')
     function styleLinks(el) {
-      for (let i = 0; i < links.length; i++) {
+      for (var i = 0; i < links.length; i++) {
         links[i].style.color = '#afafaf'
         links[i].getElementsByTagName('img')[0].style.opacity = 0
         content[i].style.opacity = 0   
