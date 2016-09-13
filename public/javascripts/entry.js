@@ -17,5 +17,4 @@ Array.prototype.forEach.call(btns, (btn) => {
     }, 2100)
   })
 })
-
 */

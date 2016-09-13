@@ -459,6 +459,23 @@ ul {
 @media screen and (min-width: 1024px) {
   .logo-wrapper {
     height: 60vh;
+    .header-logo-wrapper {
+        h1 { bottom: 4vw}
+      }
+  }
+
+}
+@media screen and (min-width: 1400px)  {
+  .logo-wrapper {
+    .header-logo-wrapper {
+        h1 { bottom: 2vw}
+      }
+
+  }
+}
+@media screen and (min-width: 701px) and (max-width: 1024px) and (min-height: 900px) {
+  .logo-wrapper {
+    height: 35vh;
   }
 
 }

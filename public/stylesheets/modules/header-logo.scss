@@ -20,6 +20,7 @@
         width: 100%;
         height: 107%;
         position:absolute;
+        transform: scale(1.3);
     }
 
     svg mask rect {
@@ -33,11 +34,11 @@
 
     video {
         position: absolute;
-        top: 0;
+        top: 52%;
         left: 50%;
-        transform: translateX(-50%);
-        width: 75vw;
-        height: auto;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: 90%;
         z-index: -3;
         overflow: hidden;
     }
@@ -56,24 +57,31 @@
          text-align: center;
      }
      svg {
+         transform: scale(1.25);
          top: -45px;
-         height: 116%;
-
+         
      }
-     video {
-         width: 96vw;
-     }
+     
  }   
 }
 
 @media screen and (max-width: 350px) {
- .header-logo-wrapper {
-    svg {
-        top: -45px;
-        height: 105%;
-    }
-    video {
-        width: 96vw;
-    }
+    .header-logo-wrapper {
+        svg {
+            top: -45px;
+            height: 105%;
+        }
+        video {
+            top: 35%;
+        }
     }   
 }
+
+@media screen and (max-width: 650px) and (min-height: 950px) {
+  .header-logo-wrapper {
+      video {
+          width: 90%;
+          height: auto;
+      }
+  }  
+} 

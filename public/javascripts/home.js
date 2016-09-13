@@ -8,8 +8,20 @@ import Blazy from 'blazy'
  })
 
 //turn crema video off and on if on homepage
-if (document.getElementById('crema-vid-logo') ) {
+if (document.getElementById('crema-vid-mask') ) {
   let cremaVid = document.getElementById('crema-vid-logo')
+   
+  window.addEventListener('resize', () => {
+    let vidMask = document.getElementById('video-size')
+    
+    
+    cremaVid.style.height = `${vidMask.clientHeight -20}px`
+    cremaVid.style.width = `${vidMask.clientWidth -20}px`
+    console.log(cremaVid.clientHeight, cremaVid.clientWidth)
+
+  })
+  
+  
   new Waypoint({
       element: document.getElementById('showcase1'),
       handler: function(direction) {
