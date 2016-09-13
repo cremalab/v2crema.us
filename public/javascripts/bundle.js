@@ -78,19 +78,17 @@
 	  offset: 0
 	});
 
-	//turn crema video off and on if on homepage
 	if (document.getElementById('crema-vid-mask')) {
 	  (function () {
+	    //resize home page video
 	    var cremaVid = document.getElementById('crema-vid-logo');
-
 	    window.addEventListener('resize', function () {
 	      var vidMask = document.getElementById('video-size');
-
 	      cremaVid.style.height = vidMask.clientHeight - 20 + 'px';
 	      cremaVid.style.width = vidMask.clientWidth - 20 + 'px';
-	      console.log(cremaVid.clientHeight, cremaVid.clientWidth);
 	    });
 
+	    //turn crema video off and on if on homepage  
 	    new Waypoint({
 	      element: document.getElementById('showcase1'),
 	      handler: function handler(direction) {

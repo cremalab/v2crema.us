@@ -7,21 +7,17 @@ import Blazy from 'blazy'
    offset: 0
  })
 
-//turn crema video off and on if on homepage
+
 if (document.getElementById('crema-vid-mask') ) {
+  //resize home page video
   let cremaVid = document.getElementById('crema-vid-logo')
-   
   window.addEventListener('resize', () => {
     let vidMask = document.getElementById('video-size')
-    
-    
     cremaVid.style.height = `${vidMask.clientHeight -20}px`
     cremaVid.style.width = `${vidMask.clientWidth -20}px`
-    console.log(cremaVid.clientHeight, cremaVid.clientWidth)
-
   })
   
-  
+  //turn crema video off and on if on homepage  
   new Waypoint({
       element: document.getElementById('showcase1'),
       handler: function(direction) {
