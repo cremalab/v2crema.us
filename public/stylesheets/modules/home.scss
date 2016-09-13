@@ -1,60 +1,109 @@
-$SVGHeightWidthRatio: .85;
-$transitionTimeFade: opacity .4s;
+@import '../base/_colors';
+
+$SVGHeightWidthRatio: .90;
+$transitionTimeFade: opacity .7s;
+
+.svg-wrapper { 
+  svg {
+    position: absolute;
+    z-index: -1;
+  } 
+  .mobile-svg {
+    display: none;
+  }
+}
+.grid {
+  background-size: cover;
+  background-repeat: no-repeat;
+  .img-col {
+    img {
+      box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.16);
+    }
+  }
+  .col {
+    width: 50%;
+    position: relative;
+    
+  }
+}
+
+
+
 
 .logo-wrapper {
   width: 100vw;
-  height: 50vh; 
+  height: 55vh;
+   
   }
 
 .img-fadein {
   opacity: 1 !important;
+}
+
+.subtle-move {
+  position: absolute;
+}
+
+.img-lazy-wrapper {
+  position: relative;
+}
+
+.img-placeholder {
+  width: 100%;
+  position: absolute;
+  height: 42vw;
+  z-index: 0;
+  box-shadow: 0px 0px 42px 3px rgba(0,0,0,0.26);
+  background: linear-gradient(135deg, rgba(139,246,254,1) 0%, rgba(147,82,252,1) 100%);
 }  
+
+#showcase1,#showcase2,#showcase3 {
+  img {
+    transition: $transitionTimeFade; 
+    transition-delay: .5s
+  }
+}
 
 // First block ENTERPRISE
 #showcase1 {
   width: 100vw;
   position: relative;
- 
+  .grid {
+    background-image: url("../../../images/curve-red-desktop.svg");
+  }
   h1 {
     color: white;
   }
-  .cover-video {
-    z-index: -2;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #fff;
-  }
-  svg {
-    position: absolute;
-    z-index: -1;
-  }
+
   #brookside-img {
-   width: 57%;
-    top: 18%;
-    left: 50%;
+    width: 30%;
     z-index: 2;
+    height: 42.8vw;
+    top: 28%;
+    left: 63%;
+    .img-placeholder { height: 26vw;}
   }
   #cups-img {
-    width: 100%;
+    width: 88%;
     top: 65%;
     z-index: 1;
+    left: 10%; 
+    .img-placeholder { height: 31vw;}
     
   }
   #ML-img {
-    width: 50%;
+    width: 45%;
     top: 15%;
+    .img-placeholder { height: 34vw;}
   }
   .grid {
     height: 100vw * $SVGHeightWidthRatio;
     .col {
-      width: 50%;
-      position: relative;
       img {
         opacity: 0;
-        transition: $transitionTimeFade;
+        
         width: 100%;
-        top: 100px;
+        // top: 100px;
         position: absolute;
       }
       .showcase-text {
@@ -71,48 +120,53 @@ $transitionTimeFade: opacity .4s;
   height: 75vw;
 
   #tilr-mobile-img {
-    width: 49%;
+    width: 39%;
     top: 0;
-    right: 0%;
+    right: 8%;
     z-index: 1;
+    
+    .img-placeholder { height: 34vw;}
   }
   #tilr-img {
-    width: 100%;
+    width: 90%;
     top: 60%;
-    transition-delay: .2s;
+    right: 3%;
+    
+    .img-placeholder { height: 27vw;}
   }
   #throttle-img {
-    width: 40%;
+    width: 30%;
     top: 40%;
-    left: -5%;
-    transition-delay: .5s;
+    left: -1%;
+    
+    .img-placeholder { height: 25vw;}
   }
   
   #neighborly-img {
     width: 61%;
     right: 0;
-    top: 71%;
+    top: 81%;
     z-index: 1;
-    transition-delay: .7s;
+    
+    .img-placeholder { height: 19vw;}
+    
   }
   #pc-img {
     width: 67%;
-    bottom: -50%;
+    bottom: -20%;
     right: 25%;
-    transition-delay: .8s;
+    
+    .img-placeholder { height: 21vw;}
+    
   }
   #hiphire-img {
-    width: 50%;
-    top: 94%;
+    width: 35%;
+    top: 104%;
     right: 0;
-    transition-delay: 1s;
+    
+    .img-placeholder { height: 29vw;}
   }
-  .grid {
-  }
-  .col {
-    width: 50%;
-    position: relative;
-  }
+  
   .showcase-text {
     padding: 0 5% 0 10%; 
   }
@@ -120,8 +174,6 @@ $transitionTimeFade: opacity .4s;
     width: 100%;
     position: absolute;
     opacity: 0;
-    transition: $transitionTimeFade;
-    
   }
   h1 {
     color: black;
@@ -131,38 +183,40 @@ $transitionTimeFade: opacity .4s;
 // Third Block Internal
 #showcase3 {
   position: relative;
-  #internal-gradient{
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-  }
-  svg {
-    position: absolute;
-    z-index: -1;
-  }
   #score-img {
-    top: 26%;
+    top: 22%;
+    width: 93%;
+    left: 3%;
+    
+    .img-placeholder { height: 28vw;}
   }
   #str-plain-img {
-    width: 50%;
-    bottom: -35%;
-    right: 14%;
+    width: 37%;
+    bottom: 5%;
+    right: 36%;
+    
+    .img-placeholder { height: 32vw;}
     
   }
   #str-img {
-    width: 50%;
-    right: -10%;
-    bottom: -30%;
+    width: 39%;
+    right: 0%;
+    bottom: 15%;
+    
+    .img-placeholder { height: 34vw;}
     
   }
   #plaster-img {
     width: 75%;
-    bottom: -11%;
-    left: -5%;
-    transition-delay: .6s;
+    bottom: 25%;
+    left: 5%;
+    
+    .img-placeholder { height: 31vw;}
+    
     }
   .grid {
-    height: 100vw * $SVGHeightWidthRatio; 
+    height: 100vw * $SVGHeightWidthRatio;
+    background-image: url("../../../images/curve-blue-desktop.svg"); 
   }
 
   .col {
@@ -180,7 +234,6 @@ $transitionTimeFade: opacity .4s;
     width: 100%;
     position: absolute;
     opacity: 0;
-    transition: $transitionTimeFade;
   }
 }
 
@@ -193,14 +246,18 @@ ul {
 // Logos home page
 .landing-logos {
   text-align: center;
+  background: white;
   max-width: 90vw;
-  overflow: scroll;
+  overflow: hidden;
+  margin: 1em auto;
+
 }
 .landing-logos ul {
   margin: 3em auto;
   text-align: center;
   display: inline-block;
   max-width: 100vw;
+  padding: 0;
 }
 .landing-logos ul li {
   display: inline-block;
@@ -237,20 +294,188 @@ ul {
 
 /*sliding usecase divs under earch other*/
 @media screen and (max-width: 500px) {
-.landing-logos .logos {
-  overflow: scroll;
-}
   .landing-logos .logo {
+    width: 90px;
     margin-left: .11em;
     margin-right: .11em;
-    display: table-cell;
+    img  {
+      width: 100%;
+      height: auto;
+    }
     vertical-align: middle;
   }
+}
 
-  .landing-logos ul {
-    display: table;
+
+
+
+@media screen and (max-width: 700px) {
+  .logo-wrapper {
+    padding-top: 0;
+    height: 40vh;
+  }
+  
+  .svg-wrapper {  
+    .desktop-svg  {
+      visibility: 0;
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    
+    .mobile-svg {
+      display: block;
+    }
+  }
+  h1 {
+    font-size: 1.65em;
+  }
+  #showcase1 {
+    .grid {
+      background: url("../../../images/curve-red-mobile.svg") no-repeat;
+      background-size: cover;
+      min-height: 975px;
+      .col {
+       width: 100%;
+    }
+    }
+    .img-col {
+      height: 55vh;
+      min-height: 300px;
+    }
+    #brookside-img {
+      width: 25%;
+      top: 10%;
+    
+    }
+    #cups-img {
+      top: 30%;
+      width: 85%;
+    }
+    #ML-img {
+      width: 40%;
+      top: 5%;
+    } 
+  }
+
+  #showcase2 {
+    height:200vw;
+    .grid {
+      direction: inherit;
+      .img-col {
+        min-height: 300px;
+        height: 55vh;
+      }
+      .col {
+        
+        width: 100%;
+      }
+      #tilr-mobile-img {
+        width: 24%;
+        top: -3%;
+        left: 5%;
+      }
+      #tilr-img {
+        width: 70%;
+        top: 10%;
+        right: 10%; 
+      }
+      #throttle-img {
+        width: 20%;
+        top: 50%;
+        left: 6%; 
+      }
+      #neighborly-img {
+        width: 51%;
+        right: 20%;
+        top: 51%;
+        z-index: 0;
+        
+        .img-placeholder { height: 19vw;}
+      }
+      #pc-img {
+        width: 47%;
+        top: 40%;
+        right: 0%;
+      }
+      #hiphire-img {
+        width: 25%;
+        top:-7%;
+        right: 5%; 
+      } 
+    }
+  }
+
+  #showcase3 {
+    
+    .grid {
+      height: 130vh;
+      background: url("../../../images/curve-blue-mobile.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      .img-col {
+        height: 55vh;
+        
+        min-height: 300px; 
+      }
+      .col {
+        width: 100%;    
+      }
+    }
+
+    #score-img {
+      top: 30%;
+      width: 55%;
+      left: 0;
+      .img-placeholder { height: 31vw;}
+    }
+    #str-plain-img {
+      width: 20%;
+      top: 22%;
+      right: 20%;
+    }
+    #str-img {
+      width: 21%;
+      top: 15%;
+      right: 4%;
+      
+      .img-placeholder { height: 34vw;}
+      
+    }
+    #plaster-img {
+      width: 45%;
+      top: 43%;
+      left: 23%;
+      
+      .img-placeholder { height: 31vw;}
+      
+      }
+
   }
 
 }
 
 
+@media screen and (min-width: 1024px) {
+  .logo-wrapper {
+    height: 60vh;
+    .header-logo-wrapper {
+        h1 { bottom: 4vw}
+      }
+  }
+
+}
+@media screen and (min-width: 1400px)  {
+  .logo-wrapper {
+    .header-logo-wrapper {
+        h1 { bottom: 2vw}
+      }
+
+  }
+}
+@media screen and (min-width: 701px) and (max-width: 1024px) and (min-height: 900px) {
+  .logo-wrapper {
+    height: 35vh;
+  }
+
+}

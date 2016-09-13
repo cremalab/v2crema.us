@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="375px" height="585px" viewBox="0 0 375 585" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>42ED7B39-D369-4C74-9F4A-9C789B496114</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="13.9159367%" y1="28.6874626%" x2="76.3517744%" y2="75.7498601%" id="linearGradient-1">
+            <stop stop-color="#8BF6FE" offset="0%"></stop>
+            <stop stop-color="#9252FC" offset="100%"></stop>
+        </linearGradient>
+        <path d="M1.16118217,0.898199616 C38.8234657,-8.19269638 95.8604522,54.4145823 126.379889,67.4294783 C156.899326,80.4443743 196.509658,73.2736246 274.431624,54.4145823 C315.11166,44.5690079 350.482328,53.6753846 375,64.6289462 L375.000018,525.149337 C371.191655,524.557757 367.205833,523.767495 363.034662,522.757968 C285.112696,503.898926 257.460804,531.923575 207.431784,556.04619 C157.402765,580.168804 98.8060237,599.885218 13.4563662,566.149076 C8.52827968,564.201152 4.05484891,561.090204 -2.29358172e-13,556.957031 L-2.29358178e-13,1.30511765 C0.383945918,1.12831283 0.770998984,0.992381765 1.16118217,0.898199616 Z" id="path-2"></path>
+    </defs>
+    <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-Team_Mobile" transform="translate(0.000000, -2582.000000)">
+            <g id="Rectangle-4" transform="translate(187.500000, 2874.500000) scale(-1, 1) translate(-187.500000, -2874.500000) translate(0.000000, 2582.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Combined-Shape" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

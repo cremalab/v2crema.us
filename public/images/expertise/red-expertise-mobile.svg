@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="375px" height="360px" viewBox="0 0 375 360" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>99704025-3126-4167-A58F-5DC93F54952F</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M-2.07762696e-11,294.516503 C10.2375023,294.737056 21.9613285,293.490207 35.3755782,290.243627 C123.739088,268.857473 155.096333,300.637425 211.829241,327.99247 C256.727324,349.641088 307.710452,368.160293 375,355.982545 L375,0 L-1.79412041e-13,0 L-1.79412041e-13,294.516503 L-2.07762696e-11,294.516503 Z" id="path-1"></path>
+    </defs>
+    <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="-Expertise_Mobile" transform="translate(0.000000, -131.000000)">
+            <g id="Rectangle-7" transform="translate(0.000000, 131.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Combined-Shape" fill="#FC5277" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

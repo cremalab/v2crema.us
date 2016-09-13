@@ -1,9 +1,24 @@
 extends layout
 
 append styles
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css')
   link(href="/stylesheets/build/modules/services.css", rel="stylesheet")
+  link(href="/stylesheets/build/base/crema-spinner.css", rel="stylesheet")
 
+block append scripts
+  //append mobile
+  
+  
+  
+  
+  
 block content
+  //- .svg-wrapper
+  //-   include ./partials/enterprise-svg
+
+    
   .service-nav
     .link-wrapper#services-links
       a(data-scroll href='#inno-pt' id='service-inno-a') Innovation strategy
@@ -14,44 +29,234 @@ block content
         img(src='/images/services/service/oval-2.png')
       a(data-scroll href='#ux-pt' id='service-ux-a') User experience design
         img(src='/images/services/service/oval-2.png')
+      //-new stuff    
+      a(data-scroll href='#api-pt' id='service-api-a') Web application API development
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#mobile-pt' id='service-mobile-a') Mobile and wearable development
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#test-pt', id='service-test-a') Usability testing
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#product-pt' id='service-product-a') Product launch strategy
+        img(src='/images/services/service/oval-2.png')
+      a(data-scroll href='#early-pt' id='service-early-a') Early customer development
+        img(src='/images/services/service/oval-2.png')    
+      //-new stuff  
   .blue-bg
     .service-wrapper#inno-pt
       .services-left
-      .services-right
-        .service#first-service
-          .service-col.vid
-            .videowrapper
-              .smoothScrollPt#proto-pt
-              <iframe src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        //- used to push services right to the right
+      .services-right 
+        
+        //- start video content
+        .services-vid-wrapper
+          .service#first-service
+            .service-col.vid
+              .videowrapper#first-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#proto-pt
+                <iframe src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
               
-          .service-col.-text#innovation
-            h1 Innovation strategy
-            p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
+          .service
+            .service-col.vid
+              .videowrapper#proto-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#branding-pt
+                <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
+              
+          .service
+            .service-col.vid
+              .videowrapper#branding-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#ux-pt
+                <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text        
+          
+          .service
+            .service-col.vid
+              .videowrapper#ux-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#api-pt
+                <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
+          
+          .service
+            .service-col.vid
+              .videowrapper#api-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#mobile-pt
+                <iframe id="api-iframe" src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
+              
+          .service
+            .service-col.vid
+              .videowrapper#mobile-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#test-pt
+                <iframe id='mobile-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
+              
+          .service
+            .service-col.vid
+              .videowrapper#test-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#product-pt
+                <iframe id="test-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text      
+
+          .service
+            .service-col.vid
+              .videowrapper#product-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                .smoothScrollPt#early-pt
+                <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text
+
+          .service#last-service
+            .service-col.vid
+              .videowrapper#early-vid
+                include ./partials/btn-play-svg
+                .crema-spinner
+                <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            .service-col.-text  
             
-        .service
-          .service-col.vid
-            .videowrapper#proto-vid
-              .smoothScrollPt#branding-pt
-              <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/SD8OKGImkLY?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-          .service-col.-text#prototyping
+          
+        .service-text-wrapper
+          .service-text-fixed#innovation
+            h1 Innovation strategy
+            p We'll unpack your idea and align our teams to the problem you're solving and the solution needed to create and test it quickly.  Together, we'll consider all possibilities, arriving at a strategic direction forward for your business. We'll look at the short-term launch and validation of your product alongside the long-term business opportunity and growth plan.  
+          .service-text-fixed#prototyping
             h1 Concept prototyping
-            p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
-        .service
-          .service-col.vid
-            .videowrapper#branding-vid
-              .smoothScrollPt#ux-pt
-              <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
-          .service-col.-text#branding
+            p We help you validate your product concept before you build it.  Rapid prototyping with click-through designs will help us iterate on your idea to find both a viable solution and a validated product experience.  Our prototypes aim to align internal and external stakeholders, as well as collect feedback from early adopters. 
+          .service-text-fixed#branding
             h1 Product Branding
-            p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.     
-        .service#last-service
-          .service-col.vid
-            .videowrapper#ux-vid
-              <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/SD8OKGImkLY" frameborder="0" allowfullscreen></iframe>
-          .service-col.-text#ux
+            p A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  Your branding should be consistent across all mediums, and be unique to the personality and purpose of the solution. Our designers will work with you to give your product a voice and style you are extremely proud of.  
+          .service-text-fixed#ux    
+            h1 User experience design
+            p  We'll work to craft an experience that delights the user and enhances the value of the solution you are creating.  Our designers consider each feature's user interface, as well as the interactive moments that guide the person through the product.  Our aim is is delight users and provide them value.      
+          .service-text-fixed#api    
+            h1 Web application API development
+            p  Our in-house development team will collaborate with you to create web application that is ready to scale.  We use modern open source technology for API development in order to provide the most extensible platforms across devices and integrations. There's no cubes in our office. Strategy, design and development disciplines work together from product start to finish.  
+          .service-text-fixed#mobile    
+            h1 Mobile and wearable development
+            p  Designing wearable app experiences is about considering a customer's daily life and the context for which they'll interact with the wearable experience.  Our in-house developers work to connect mobile platforms to serve people in ways unique to their life on the go.  We've got a few under our belt with AccuWeather and Adidas.   
+          .service-text-fixed#test    
+            h1 Usability testing
+            p  We work with you to test the usability and overall concept of your product early and often.  We believe that our product assumptions must be validated with real people to make sure that it provides the greatest possible value.   
+          .service-text-fixed#product    
+            h1 Product launch strategy
+            p  We align product development and branding to the sales and marketing aspects of your business.  Our team works with you to make sure that the product development and marketing/sales efforts inform each other to ensure alignment in private and public releases. 
+          .service-text-fixed#early    
             h1 Early customer development
-            p Our designers will work with you to give your product a voice and style through product branding. A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  You branding should be consistent across all mediums, and be unique to the personality and purpose of the solution.
-  .tech-wrapper 
+            p  When launching a new product, your early customers are the building blocks for success.  They are your sounding board and your ambassadors to jump-start the scaling process.  As a team we will engage and incentivize your early customers to gather feedback and spread the word about the solutions we are bringing to life.       
+       
+
+        
+        
+
+
+  .mobile-modal-vid          
+  .mobile-services-wrapper 
+    .mobile-vid-wrapper  
+      
+      .mobile-service-vid
+        img(src="/images/services/vid-posters/1_strategy.png")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner
+        
+      .mobile-service-vid
+        img(src="/images/services/vid-posters/2_prototyping.png")     
+        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+        
+      .mobile-service-vid     
+        img(src="/images/services/vid-posters/3_branding.png")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+      
+      .mobile-service-vid
+        img(src="/images/services/vid-posters/4_ux.png")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner
+        
+      .mobile-service-vid
+        img(src="/images/services/vid-posters/5_api.png")     
+        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+        
+      .mobile-service-vid     
+        img(src="/images/services/vid-posters/6_mobile.png")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+      
+      .mobile-service-vid
+        img(src="/images/services/vid-posters/7_testing.png")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner
+        
+      .mobile-service-vid
+        img(src="/images/services/vid-posters/8_launch.png")     
+        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+        
+      .mobile-service-vid     
+        img(src="/images/services/vid-posters/9_customer.png")
+        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+          include ./partials/btn-play-svg
+          .crema-spinner  
+        
+        
+  
+    .mobile-services-text-wrapper
+      .service-text-mobile
+        h1 Innovation strategy
+        p We'll unpack your idea and align our teams to the problem you're solving and the solution needed to create and test it quickly.  Together, we'll consider all possibilities, arriving at a strategic direction forward for your business. We'll look at the short-term launch and validation of your product alongside the long-term business opportunity and growth plan.  
+      .service-text-mobile
+        h1 Concept prototyping
+        p We help you validate your product concept before you build it.  Rapid prototyping with click-through designs will help us iterate on your idea to find both a viable solution and a validated product experience.  Our prototypes aim to align internal and external stakeholders, as well as collect feedback from early adopters.
+      .service-text-mobile
+        h1 Product Branding
+        p A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  Your branding should be consistent across all mediums, and be unique to the personality and purpose of the solution. Our designers will work with you to give your product a voice and style you are extremely proud of.
+      .service-text-mobile    
+        h1 User experience design
+        p  We'll work to craft an experience that delights the user and enhances the value of the solution you are creating.  Our designers consider each feature's user interface, as well as the interactive moments that guide the person through the product.  Our aim is is delight users and provide them value.      
+      .service-text-mobile
+        h1 Web application API development
+        p  Our in-house development team will collaborate with you to create web application that is ready to scale.  We use modern open source technology for API development in order to provide the most extensible platforms across devices and integrations. There's no cubes in our office. Strategy, design and development disciplines work together from product start to finish.  
+      .service-text-mobile   
+        h1 Mobile and wearable development
+        p  Designing wearable app experiences is about considering a customer's daily life and the context for which they'll interact with the wearable experience.  Our in-house developers work to connect mobile platforms to serve people in ways unique to their life on the go.  We've got a few under our belt with AccuWeather and Adidas.   
+      .service-text-mobile  
+        h1 Usability testing
+        p  We work with you to test the usability and overall concept of your product early and often.  We believe that our product assumptions must be validated with real people to make sure that it provides the greatest possible value.   
+      .service-text-mobile  
+        h1 Product launch strategy
+        p  We align product development and branding to the sales and marketing aspects of your business.  Our team works with you to make sure that the product development and marketing/sales efforts inform each other to ensure alignment in private and public releases. 
+      .service-text-mobile   
+        h1 Early customer development
+        p  When launching a new product, your early customers are the building blocks for success.  They are your sounding board and your ambassadors to jump-start the scaling process.  As a team we will engage and incentivize your early customers to gather feedback and spread the word about the solutions we are bringing to life.            
+
+
+
+
+  .tech-wrapper#fade-links-text 
     h1 Tech Stack
     //- displaying comapany logos 
     //- routes/index.js is reading file names from './public/images/logos/client-logos';
@@ -70,3 +275,34 @@ block content
           li.logo 
             img(src='#{integrationFileNames[idx]}')
             p #{integrationSubs[idx]}
+
+          
+  include ./partials/footer
+  .post-footer
+    a(href='expertise')
+      img(src='/images/services/see-our-expertise.png')
+
+   
+  script.
+    var mobileScript = '<script type="text/javascript" src="/javascripts/servicesMobile.js"><\/script>'
+    var element
+    var parent = document.body
+    console.log(window.innerWidth)
+    if(window.innerWidth < 801){
+        document.write(mobileScript)
+      } else {
+        window.onresize = function(evt) {
+          if(window.innerWidth < 801){
+            element = document.createElement("script");
+            element.type = "text/javascript";
+            element.src  = '/javascripts/servicesMobile.js';
+            parent.appendChild(element);
+            window.onresize = null
+          }
+      }
+    }
+    
+
+    
+    
+    

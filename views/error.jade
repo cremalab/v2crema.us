@@ -1,6 +1,49 @@
 extends layout
 
+append styles
+  style. 
+    .top-curve {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+      height: 35vh;
+      transform: rotate(180deg);
+      background: url('../../../images/blue-team-wonder-mobile.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .full-width {
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      
+    }
+    .full-width h1 { 
+      font-size: 72px;
+      padding-top: 1em;
+      }
+    h2 {
+      color: black;
+      font-size: 48px;
+      padding-bottom: 1em;
+      font-family: 'Spartan', sans-serif;
+      }
+    @media (min-width: 950px) {
+      .top-curve {
+        height: 45vh;
+      }
+    }  
+    
+
+
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .top-curve
+  .full-width
+    h1 404
+    h2 Page Not Found
+
+
+  include ./partials/footer.jade
+  
+  

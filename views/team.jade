@@ -1,0 +1,125 @@
+extends layout
+
+append styles
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css')
+  link(href="/stylesheets/build/base/crema-spinner.css", rel="stylesheet")
+  link(rel='stylesheet', href='/stylesheets/build/modules/team.css')
+  
+
+block vars
+
+append scripts 
+  script(src="/javascripts/teamB.js")
+  
+
+block content
+  .team-header-svg
+  .headline
+    h1 Meet the Team  
+
+
+  ul.teamPhotoWrapper
+    -for (var idx = 0; idx <numberOfPhotos; idx+=2)
+      li(onmouseover='hideNormal(#{idx})', onmouseleave='showNormal(#{idx})')
+        img(src='#{teamPhotos[idx]}', id='silly-img')
+        img(src='#{teamPhotos[idx+1]}', id="#{idx+'normal'}", )
+        h3 #{teamNameTitles[idx]}
+        h5 #{teamNameTitles[idx+1]}
+
+    
+  .grid.wonder-at-crema
+    .col 
+      h1 Wonder what it’s like to work at Crema?
+      .img-wrapper
+        a(href="https://www.youtube.com/watch?v=YQAJXBv3LKc" class="team-culture-video")
+          img(src='/images/work-at-crema.png')
+          include ./partials/btn-play-svg
+          //- .crema-spinner
+
+  .values-wrapper
+    h1 We will create the best solutions that solve problems and better lives
+  .grid.values
+    .col.left-nav
+      .link-wrapper
+        a(onclick='styleLinks(this)' class="first-value-link" data-idx='0') Trust
+          img(src='/images/services/service/oval-2.png')
+        a(onclick='styleLinks(this)' data-idx='1') Constant Improvement
+          img(src='/images/services/service/oval-2.png')
+        a(onclick='styleLinks(this)' data-idx='2') Collaboration
+          img(src='/images/services/service/oval-2.png')
+        a(onclick='styleLinks(this)' data-idx='3') Results
+          img(src='/images/services/service/oval-2.png')
+        a(onclick='styleLinks(this)' data-idx='4') Generosity
+          img(src='/images/services/service/oval-2.png')
+    .col.content
+      .rel-wrapper
+        .value
+          .grid(style="opacity:1")
+            .col.value-img.trust
+              img( class="img-trust" src="/images/values/trust.png")
+            .col
+              h1 Trust
+              p Our team works to earn the trust of our clients and vendors. We don’t take it lightly. At the end of the day, we want to lead our clients to the best possible outcome for their business.
+        .value
+          .grid
+            .col.value-img
+              img(src="/images/values/improve.png")
+            .col
+              h1 Constant Improvement
+              p We constantly improve ourselves, our product experiences, and our company.
+        .value
+          .grid
+            .col.value-img
+              img(src="/images/values/collaboration@2x.png")
+            .col
+              h1 Collaboration
+              p We believe that a truly great product experience is only as good as the team that creates it. We become and extension of your team and you become an extension of ours.
+        .value
+          .grid
+            .col.value-img
+              img(src="/images/values/results@2x.png")
+            .col
+              h1 Results
+              p We desire to build product experiences that move people, solve problems for our clients, and ultimately create measurable value for the customers they serve.        
+        .value
+          .grid
+            .col.value-img
+              img(src="/images/values/generosity@2x.png")
+            .col
+              h1 Generosity
+              p We desire to be generous with our time, talents, and efforts to get the right things done for the good of others
+
+  .join-team
+    h1 Join our team
+    p Results based culture, competitive benefits, ongoing learning, and in the heart of Kansas City. We’re growing, so come on board!
+  
+  
+  include ./partials/footer.jade
+  .post-footer
+    a(href='/')
+      img(src='/images//see-what-do@2x.png')
+  
+  script.
+    var hideNormal = function (el) {
+      var normalImgId = el + 'normal'
+      document.getElementById(normalImgId).style.opacity = 0
+    } 
+    var showNormal = function (el) {
+      var normalImgId = el + 'normal'
+      document.getElementById(normalImgId).style.opacity = 1
+    }
+    var links = document.getElementsByClassName('link-wrapper')[0].getElementsByTagName('a')
+    var content = document.getElementsByClassName('rel-wrapper')[0].getElementsByClassName('grid')
+    function styleLinks(el) {
+      for (var i = 0; i < links.length; i++) {
+        links[i].style.color = '#afafaf'
+        links[i].getElementsByTagName('img')[0].style.opacity = 0
+        content[i].style.opacity = 0   
+      }
+      el.style.color = 'black' 
+      el.getElementsByTagName('img')[0].style.opacity = 1
+      content[el.dataset.idx].style.opacity = 1 
+    }            
+
+
+  

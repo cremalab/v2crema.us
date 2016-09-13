@@ -1,9 +1,12 @@
-$servicesBlue: #907dfc;
-$lighBlue: #8cd8fd;
-$servicesLinkGrey: #afafaf;
+@import '../base/_colors';
 
 .header-nav {
   position: fixed;
+}
+
+.svg-wrapper {
+  position: fixed;
+  width: 100vw;
 }
 
 .service-nav {
@@ -15,17 +18,19 @@ $servicesLinkGrey: #afafaf;
   width: 300px;
   background-color: white;
   .link-wrapper {
+    transition: all .8s;
     display: table-cell;
     vertical-align: middle;
     padding-right: 2em; 
   }
   a {
-    color: $servicesLinkGrey;
     display: block;
+    padding: 5px;
     font-size: 16px;
     line-height: 1.9;
     font-family: 'Lato', sans-serif;
     text-align: right;
+    color: $servicesLinkGrey;
     direction: rtl;
     transition: .5s;
     img {
@@ -35,7 +40,6 @@ $servicesLinkGrey: #afafaf;
   }
   a:hover {
     transform: scale(1.05)
-        
   }
   #service-inno-a {
     img {opacity: 1}
@@ -45,31 +49,71 @@ $servicesLinkGrey: #afafaf;
 .blue-bg {
   background-color: $servicesBlue;
 }
+
+#first-vid {
+    background-image: url('/images/services/vid-posters/1_strategy.png')
+}
+#first-service {
+  transform: translateY(13%);
+  height: 80vh;
+  .smoothScrollPt {
+    // so smooth scroll will line up
+    bottom: -30%;
+  }
+}
+#last-service {
+  transform: translateY(-13%);
+  height: 85vh;
+}
+#proto-vid {
+  background-image: url('/images/services/vid-posters/2_prototyping.png')
+}
+#branding-vid {
+  background-image: url('/images/services/vid-posters/3_branding.png')
+}
+#ux-vid {
+  background-image: url('/images/services/vid-posters/4_ux.png')
+}
+#api-vid {
+  background-image: url('/images/services/vid-posters/5_api.png')
+}
+#mobile-vid {
+  background-image: url('/images/services/vid-posters/6_mobile.png')
+}
+#test-vid {
+  background-image: url('/images/services/vid-posters/7_testing.png')
+}
+#product-vid {
+  background-image: url('/images/services/vid-posters/8_launch.png')
+}
+#early-vid {
+  background-image: url('/images/services/vid-posters/9_customer.png')
+}
+
+.play-btn-svg {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    transition: all .6s;
+    z-index: 1;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-duration: 1.8s;
+    // animation-name: crema-spinner;
+  }
+
+  //remove when vids are here
+  .play-btn-svg, .crema-spinner {
+    display: none;
+  }
+
+
 .service-wrapper {
   display: table;
   margin: 0 auto;
   background-color: $servicesBlue;
-  #first-service {
-    transform: translateY(13%);
-    height: 80vh;
-    .smoothScrollPt {
-      // so smooth scroll will line up
-      bottom: -30%;
-    }
-  }
-  #last-service {
-    transform: translateY(-13%);
-    height: 85vh;
-  }
-  #proto-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
-  #branding-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
-  #ux-vid {
-    background-image: url('/images/services/service/poster-vid2.png')
-  }
 
   .videowrapper {
     float: none;
@@ -80,12 +124,17 @@ $servicesLinkGrey: #afafaf;
     // padding-top: 25px;
     height: 0;
     background-size: cover;
+    background-repeat: none;
+    background-position-y: center;
     .smoothScrollPt {
       position: absolute;
       opacity: 0;
       bottom: 0;
       height: 10%;
       width: 100%;
+    }
+    .play-btn-svg:hover {
+      transform: scale(1.1);
     }
   }
   .videowrapper iframe {
@@ -94,9 +143,29 @@ $servicesLinkGrey: #afafaf;
     left: 0;
     width: 100%;
     height: 100%;
-}
+  }
 
 }
+
+.service-text-fixed {
+  position: fixed;
+  color: white;
+  top: 50%;
+  right: 0;
+  max-width: 550px;
+  width: 35%;
+  transition: all .8s;
+  padding-right: 2em;
+  opacity: 0;
+  transform: translateY(-50%);
+}
+#innovation {
+  opacity: 1;
+
+}
+
+
+
 
 .services-left {
   display: table-cell;
@@ -107,8 +176,9 @@ $servicesLinkGrey: #afafaf;
   display: table-cell;
   padding-left: 2em;
   max-width: 1200px;
+  width: calc(100vw - 300px);
 
-
+  
   .service {
     display: table;
     height: 60vh;
@@ -123,11 +193,6 @@ $servicesLinkGrey: #afafaf;
   img {
     width: 95%;
   }
-  #innovation {
-    opacity: 1;
-    
-
-  }
   .vid {
     padding-right: 25px;
   }
@@ -141,13 +206,13 @@ $servicesLinkGrey: #afafaf;
 }
 
 .tech-wrapper {
+  text-align: center;
   background-color: $lighBlue;
-  padding-top: 5em;
+  
   position: relative;
   h1 {
+    padding-top: 2em;
     margin-top: 0;
-    
-    margin-left: 300px;
     color: white
   }
 }
@@ -156,7 +221,6 @@ $servicesLinkGrey: #afafaf;
 .landing-logos {
   text-align: center;
   max-width: 100vw;
-  overflow: scroll;
 }
 .landing-logos ul {
   margin: 3em auto;
@@ -197,22 +261,148 @@ $servicesLinkGrey: #afafaf;
   100% { margin-left: 0; }
 }
 
-/*sliding usecase divs under earch other*/
-@media screen and (max-width: 500px) {
-.landing-logos .logos {
-  overflow: scroll;
+.mobile-modal-vid {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
+
+@media screen and (min-width:801px) and (max-width: 1150px) {
+  .service-nav {
+    width: 255px;
+  }
+  .services-left {
+    width: 220px;
+  }
+  .service-text-fixed {
+    width: 33%;
+  }
+  .service-nav .link-wrapper {
+    padding-right: 1.5em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header-nav {
+    position: inherit;
+  }
+  .service-nav  {
+    display: none;
+  }
+  .blue-bg {
+    display: none;
+  }
+
+  .tech-wrapper {
+    width: 100vw;
+    overflow: hidden;
+    text-align: left;
+    h1 {
+      width: 90%;
+      margin-left: auto;
+    }
+  }
+  .mfp-bg.mfp-ready {
+      opacity: 0;
+    }
+.mfp-wrap.mfp-close-btn-in.mfp-align-top.mfp-auto-cursor.mfp-ready > div > div.mfp-content {
+  box-shadow: 0px 50px 242px 3px rgba(0,0,0,0.56);
+}
+
+  .mobile-services-wrapper {
+    height: 100vh;
+    width: 100vw;
+    padding-top: 3vh;
+    background: $servicesBlue;  
+    text-align: center;
+    overflow: hidden;
+    
+    .slick-center{
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    .play-btn-svg {
+      width: 35px;
+      height: 35px;
+      top: calc(50% - 17px);
+      left: calc(50% - 17px);
+    }
+    .crema-spinner,
+    .crema-spinner:after {
+      width: 50px;
+      height: 50px;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
+    }
+
+  }
+
+
+  .mobile-service-vid {
+    width: 60vw;
+    // height: 50vh;
+    margin: 3em 6vw;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .mobile-services-text-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 50vh;
+
+    .service-text-mobile {
+      position: absolute;
+      opacity: 0;
+      text-align: left;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      width: 90%;
+     
+    }
+  }
+}
+
+
+
+/*sliding usecase divs under earch other*/
+@media screen and (max-width: 800px) {
   .landing-logos .logo {
-    margin-left: .11em;
-    margin-right: .11em;
-    display: table-cell;
+    margin: 0; 
+    width: 20vw;
+    height: 20vh;
     vertical-align: middle;
+    img { max-width: 100%;}
   }
 
   .landing-logos ul {
-    display: table;
+    padding: 0;
+    list-style-type: none;
   }
 
 }
+  
+
+@media screen and (min-width: 801px) {
+  .mobile-services-wrapper {
+    display: none;
+  }
+}
+
+// MOBILE
+@media screen and (min-width: 1450px) {
+  .service-text-fixed {
+    margin-right: 4vw;
+  }
+}
+
 
 

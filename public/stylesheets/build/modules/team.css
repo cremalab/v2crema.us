@@ -1,0 +1,255 @@
+.headline {
+  padding-top: 6em;
+  color: white;
+  text-align: center; }
+  .headline h1 {
+    margin-bottom: -20px;
+    font-size: 48px; }
+
+.team-header-svg {
+  position: absolute;
+  top: 0%;
+  width: 100vw;
+  height: 80vh;
+  z-index: -1;
+  background-size: 100vw;
+  background-image: url("../../../images/blue-team-top-desktop.svg");
+  background-repeat: no-repeat; }
+
+ul {
+  margin: 3em auto;
+  margin-top: 6em;
+  text-align: center;
+  margin-left: -1.5em;
+  display: inline-block;
+  max-width: 100vw; }
+  ul #silly-img {
+    position: absolute;
+    z-index: -1;
+    box-shadow: 0px 0px 42px 3px rgba(0, 0, 0, 0.2); }
+  ul img {
+    width: 250px;
+    height: 250px;
+    padding: 0;
+    margin: 0;
+    z-index: 5; }
+
+ul li {
+  display: inline-block;
+  padding: 1em; }
+
+li h3 {
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.8;
+  font-family: 'Spartan',sans-serif; }
+
+li h5 {
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: -10px;
+  font-family: 'Lato', sans-serif;
+  text-align: left; }
+
+#curve-blue-svg {
+  position: absolute;
+  z-index: -1; }
+
+.wonder-at-crema {
+  text-align: center;
+  width: 100vw;
+  height: 88vw;
+  margin-top: -12em;
+  background-image: url("../../../images/blue-team-wonder-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .wonder-at-crema h1 {
+    color: white;
+    margin-top: 2em; }
+  .wonder-at-crema .img-wrapper {
+    position: relative;
+    width: 65vw;
+    margin: -4em auto auto auto;
+    max-width: 1200px; }
+    .wonder-at-crema .img-wrapper .play-btn-svg {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: calc(50% - 35px);
+      left: calc(50% - 35px); }
+    .wonder-at-crema .img-wrapper .crema-spinner,
+    .wonder-at-crema .img-wrapper .crema-spinner:after {
+      width: 100px;
+      height: 100px;
+      opacity: .8;
+      top: calc(50% - 54px);
+      left: calc(50% - 55px); }
+  .wonder-at-crema img {
+    width: 100%; }
+
+.values-wrapper {
+  width: 85vw;
+  text-align: center;
+  margin: 5em auto; }
+  .values-wrapper h1 {
+    margin: 3.5em auto;
+    font-size: 48px;
+    font-family: 'Spartan'; }
+
+.values {
+  height: 100vh;
+  width: 100%; }
+  .values .col.left-nav {
+    width: 250px; }
+    .values .col.left-nav .link-wrapper {
+      text-align: right;
+      transition: all .8s;
+      vertical-align: middle; }
+      .values .col.left-nav .link-wrapper .first-value-link {
+        color: black; }
+        .values .col.left-nav .link-wrapper .first-value-link img {
+          opacity: 1; }
+      .values .col.left-nav .link-wrapper a {
+        cursor: pointer;
+        display: block;
+        padding-right: 2em;
+        margin-bottom: 2em;
+        color: #afafaf;
+        direction: rtl;
+        font-family: 'Lato', sans-serif;
+        transition: .5s; }
+        .values .col.left-nav .link-wrapper a img {
+          opacity: 0;
+          padding-right: 5px; }
+  .values .col.content {
+    color: white;
+    width: calc(100% - 250px);
+    background-image: linear-gradient(60deg, #f154ce, #f44848); }
+    .values .col.content .rel-wrapper {
+      position: relative;
+      height: 100vh; }
+    .values .col.content p {
+      font-family: 'Lato';
+      font-size: 24px;
+      line-height: 1.5; }
+    .values .col.content h1 {
+      font-family: 'Spartan';
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 1.1; }
+    .values .col.content .grid {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      transition: all .6s; }
+    .values .col.content .col {
+      width: 60%;
+      padding: 5em; }
+    .values .col.content .col.value-img {
+      width: 40%; }
+      .values .col.content .col.value-img .img-trust {
+        max-width: 285px; }
+      .values .col.content .col.value-img img {
+        width: 90%; }
+
+@media screen and (max-width: 1200px) {
+  .values {
+    max-width: 100vw;
+    overflow-x: scroll; }
+    .values .col.left-nav {
+      display: none; }
+    .values .col.content {
+      display: block;
+      width: 100vw;
+      overflow-x: scroll; }
+      .values .col.content .rel-wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 690vw; }
+      .values .col.content .value {
+        display: inline-block;
+        width: 95vw;
+        height: 100vh;
+        padding: 2em;
+        margin-right: 6em; }
+      .values .col.content .grid {
+        display: table;
+        width: 100%;
+        position: static;
+        opacity: 1; }
+      .values .col.content .col {
+        width: 90%;
+        padding: 0; }
+      .values .col.content .col.value-img.trust {
+        width: 40%; }
+      .values .col.content .col.value-img {
+        width: 75%; }
+        .values .col.content .col.value-img .img-trust {
+          max-width: 285px; }
+        .values .col.content .col.value-img img {
+          width: 90%; } }
+
+@media screen and (max-width: 700px) {
+  li h3 {
+    font-size: 12px; }
+  .values .col.content {
+    background-image: linear-gradient(0deg, #f154ce, #f44848); }
+    .values .col.content .grid {
+      padding-top: 12vh; }
+      .values .col.content .grid .col h1 {
+        padding-top: 4vh;
+        font-size: 2em; }
+      .values .col.content .grid .col p {
+        font-size: 16px; } }
+
+.join-team {
+  width: 70vw;
+  text-align: center;
+  margin: 7em auto; }
+  .join-team p {
+    font-size: 20px; }
+  .join-team h1 {
+    font-size: 36px; }
+
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+  .team-header-svg {
+    background-size: 130vw; } }
+
+@media screen and (max-width: 700px) {
+  .team-header-svg {
+    top: 23%;
+    background-image: url("../../../images/blue-team-top-mobile.svg"); }
+  .headline {
+    padding-top: 2em; }
+    .headline h1 {
+      margin-bottom: -20px;
+      font-size: 36px; }
+  .teamPhotoWrapper {
+    margin-top: 4em; }
+    .teamPhotoWrapper h3, .teamPhotoWrapper h5 {
+      max-width: 140px; }
+    .teamPhotoWrapper img {
+      width: 140px;
+      height: auto; }
+  .wonder-at-crema {
+    background: url("../../../images/blue-team-wonder-mobile.svg");
+    margin-top: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 157vw;
+    min-height: 585px; }
+    .wonder-at-crema .img-wrapper {
+      margin: auto;
+      width: auto; }
+    .wonder-at-crema .col {
+      display: table-cell;
+      height: 100%; }
+      .wonder-at-crema .col h1 {
+        width: 90%;
+        margin: auto;
+        font-size: 1.6em; }
+  #curve-blue-svg {
+    left: 0;
+    transform: translateY(-20%); }
+  .values-wrapper h1 {
+    font-size: 32px; } }

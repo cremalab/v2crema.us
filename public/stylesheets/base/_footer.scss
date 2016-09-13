@@ -2,6 +2,7 @@
   width: 100%;
   text-align: center;
   padding: 5vw 0;
+  position: relative;
   background-color: $coral;
   .footer-content{
     width: 90%;
@@ -55,8 +56,33 @@
 .post-footer {
   text-align: center;
   width: 100%;
+  position: relative;
+  background-color: white;
   padding: 50px 0;
   img {
+    cursor: pointer;
     width: 25%;
+  }
+}
+
+@media screen and (max-width:700px) {
+  .footer {
+    .address {
+      text-align: center;
+      padding-bottom: 2em;
+    }
+    .social-wrapper {
+      display: table-row;
+      text-align: center;
+    }
+    button {
+      margin: 1.5em auto;
+      display: block;
+    }
+  }
+  .post-footer {
+    img {
+      width: 70%;
+    }
   }
 }

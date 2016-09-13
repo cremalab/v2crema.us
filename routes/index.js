@@ -2,6 +2,33 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var path = require('path')
+var axios = require('axios')
+
+
+let postTitles =[]
+let defaultTitles = [
+    [ 'Cremalab Presents: Innovation Lab','cremalab-presents-innovation-lab-46b21dcacf4b' ],
+    [ 'Top 5 reasons to launch your product with a creative agency', 'top-5-reasons-to-launch-your-product-with-a-creative-agency-17bc37352c1e' ],
+    [ 'HipHire: Shifting Job Listing Services from Quantity to Quality', 'hiphire-shifting-job-listing-services-from-quantity-to-quality-f06351f115fc' ]
+  ]
+function getLatestMedium() {
+  axios.get('https://medium.com/ideas-by-crema/latest?format=json')
+    .then(function (res) {
+      let posts = JSON.parse(res.data.slice(16)).payload.posts
+      for (let key in posts) {
+        postTitles.push([posts[key].title, posts[key].uniqueSlug ])
+      
+      }
+      console.log(postTitles.length, 'Medium Posts Loaded')
+    })
+    .catch(function (error) {
+      console.log(error)
+      postTitles = defaultTitles
+    })
+}
+getLatestMedium()
+setInterval( getLatestMedium, 1000 * 1000 * 86 ) // refresh medium links 1 time per day. 
+
 
 // returns array of image paths when given abs url to directory
 //default
@@ -18,7 +45,7 @@ function makeRelativeImgPaths(absUrl, relativeUrl) {
 }
 var techImgPaths = [] 
 var techSubs = [
-  'Android', 'Angular', 'Apple', 'Monkey C', 'CSS', 'HTML5', 'Java', 'Javascript', 'Node', 'Rails', 'React', 'Redux', 'Ruby', 'Swift'
+  'Android', 'Angular', 'IOS', 'Monkey C', 'CSS', 'HTML5', 'Java', 'Javascript', 'Node', 'Rails', 'React', 'Redux', 'Ruby', 'Swift'
 ]
 makeRelativeImgPaths('./public/images/services/tech-logos', '/images/services/tech-logos/').then(logos => techImgPaths = logos)
 var integrationImgPaths = []
@@ -55,12 +82,13 @@ var teamNameTitles = fs.readFileSync('public/images/team-names-titles.txt').toSt
 console.log(teamNameTitles.length, 'Team Titles Loaded Sucessfully')
 
 
+// ////// // Routes // ////// // 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Crema.us', logoFileNames: logoFileNames })
 })
 
-/* GET home page. */
 router.get('/services', function(req, res, next) {
     res.render('services', { 
       title: 'Crema.us',
@@ -71,8 +99,34 @@ router.get('/services', function(req, res, next) {
       integrationSubs: integrationSubs,
       integrationNum: integrationSubs.length
     })
-  
-  
 })
+
+router.get('/expertise', function(req, res, next) {
+  res.render('expertise', { title: 'Crema.us - Expertise', mediumPosts: postTitles })
+})
+
+router.get('/team', function(req, res, next) {
+  res.render('team', {
+    title: 'Crema.us - Team',
+    teamPhotos: teamPhotos,
+    numberOfPhotos: teamPhotos.length,
+    teamNameTitles: teamNameTitles
+  })
+  console.log(`Serving ${teamPhotos.length} team photos to /team`)
+})
+
+
+// Work Galleries
+router.get('/enterprise-work', function(req, res, next) {
+  res.render('partials/work-modals/enterprise', { title: 'Crema.us - Enterprise Work'})
+})
+router.get('/innovative-work', function(req, res, next) {
+  res.render('partials/work-modals/innovative', { title: 'Crema.us - Innovative Ventures'})
+})
+router.get('/our-work', function(req, res, next) {
+  res.render('partials/work-modals/crafting', { title: 'Crema.us - Our Products'})
+})
+
+
 
 module.exports = router

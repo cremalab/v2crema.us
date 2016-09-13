@@ -15,7 +15,7 @@ gulp.task('loadjs', function() {
 })
 
 gulp.task('loadjade', function() {
-  return gulp.src('views/*.jade')
+  return gulp.src('views/**/*.jade')
     .pipe(livereload())
 })
 
@@ -31,6 +31,6 @@ gulp.task('watch', function() {
     livereload.listen();
     gulp.watch('public/javascripts/*.js', ['loadjs'])
     gulp.watch('public/stylesheets/**/*.scss', ['loadcss'])
-    gulp.watch('views/*.jade', ['loadjade'])
+    gulp.watch('views/**/*.jade', ['loadjade'])
     gulp.watch('views/partials/*.jade', ['loadjade'])
 })
