@@ -206,14 +206,14 @@ li h5 {
       .rel-wrapper {
         overflow-x: scroll;
         overflow-y: hidden;
-        width: 690vw;
+        // width: 690vw;
       }
       .value { 
         display: inline-block;
         width: 95vw;
         height: 100vh;
         padding: 2em;
-        margin-right: 6em;
+        // margin-right: 6em;
       }
       .grid {
         
@@ -223,7 +223,8 @@ li h5 {
         opacity: 1;
       }
       .col {
-        width: 90%;
+        
+        width: 60%;
         padding: 0;
       
       }
@@ -231,13 +232,18 @@ li h5 {
         width: 40%;
       }
       .col.value-img {
-        width: 75%;
+        width: 50%;
+        text-align: center;
         .img-trust {max-width: 285px;}
         img {
-          width: 90%
+          margin: 0 auto;
+          width: 60%
         }
       }
     }
+  }
+  .slick-next:before {
+    content: url('../../../images/right-arrow.svg')
   }
 }
 
@@ -245,12 +251,21 @@ li h5 {
   li h3 {
     font-size: 12px;
   }
+  .align-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
   
   .values .col.content {
     background-image: linear-gradient(0deg, #f154ce, #f44848); 
     .grid {
-      padding-top: 12vh;
+      // padding-top: 12vh;
       .col {
+        img {
+          vertical-align: middle;
+        }
+        height: 50vh;
         h1 { 
           padding-top: 4vh; 
           font-size:2em;
@@ -259,6 +274,9 @@ li h5 {
 
       } 
     }
+  }
+  .slick-slide img {
+    display: initial;
   }
 }
 

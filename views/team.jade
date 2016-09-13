@@ -2,6 +2,8 @@ extends layout
 
 append styles
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css')
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
   link(href="/stylesheets/build/base/crema-spinner.css", rel="stylesheet")
   link(rel='stylesheet', href='/stylesheets/build/modules/team.css')
   
@@ -56,6 +58,7 @@ block content
         .value
           .grid(style="opacity:1")
             .col.value-img.trust
+              span(class="align-helper")
               img( class="img-trust" src="/images/values/trust.png")
             .col
               h1 Trust
@@ -63,6 +66,7 @@ block content
         .value
           .grid
             .col.value-img
+              span(class="align-helper")
               img(src="/images/values/improve.png")
             .col
               h1 Constant Improvement
@@ -70,6 +74,7 @@ block content
         .value
           .grid
             .col.value-img
+              span(class="align-helper")
               img(src="/images/values/collaboration@2x.png")
             .col
               h1 Collaboration
@@ -77,6 +82,7 @@ block content
         .value
           .grid
             .col.value-img
+              span(class="align-helper")
               img(src="/images/values/results@2x.png")
             .col
               h1 Results
@@ -84,6 +90,7 @@ block content
         .value
           .grid
             .col.value-img
+              span(class="align-helper")
               img(src="/images/values/generosity@2x.png")
             .col
               h1 Generosity

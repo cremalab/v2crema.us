@@ -164,43 +164,53 @@ li h5 {
       overflow-x: scroll; }
       .values .col.content .rel-wrapper {
         overflow-x: scroll;
-        overflow-y: hidden;
-        width: 690vw; }
+        overflow-y: hidden; }
       .values .col.content .value {
         display: inline-block;
         width: 95vw;
         height: 100vh;
-        padding: 2em;
-        margin-right: 6em; }
+        padding: 2em; }
       .values .col.content .grid {
         display: table;
         width: 100%;
         position: static;
         opacity: 1; }
       .values .col.content .col {
-        width: 90%;
+        width: 60%;
         padding: 0; }
       .values .col.content .col.value-img.trust {
         width: 40%; }
       .values .col.content .col.value-img {
-        width: 75%; }
+        width: 50%;
+        text-align: center; }
         .values .col.content .col.value-img .img-trust {
           max-width: 285px; }
         .values .col.content .col.value-img img {
-          width: 90%; } }
+          margin: 0 auto;
+          width: 60%; }
+  .slick-next:before {
+    content: url("../../../images/right-arrow.svg"); } }
 
 @media screen and (max-width: 700px) {
   li h3 {
     font-size: 12px; }
+  .align-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle; }
   .values .col.content {
     background-image: linear-gradient(0deg, #f154ce, #f44848); }
-    .values .col.content .grid {
-      padding-top: 12vh; }
+    .values .col.content .grid .col {
+      height: 50vh; }
+      .values .col.content .grid .col img {
+        vertical-align: middle; }
       .values .col.content .grid .col h1 {
         padding-top: 4vh;
         font-size: 2em; }
       .values .col.content .grid .col p {
-        font-size: 16px; } }
+        font-size: 16px; }
+  .slick-slide img {
+    display: initial; } }
 
 .join-team {
   width: 70vw;
