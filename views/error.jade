@@ -1,11 +1,49 @@
 extends layout
 
+append styles
+  style. 
+    .top-curve {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+      height: 35vh;
+      transform: rotate(180deg);
+      background: url('../../../images/blue-team-wonder-mobile.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .full-width {
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      
+    }
+    .full-width h1 { 
+      font-size: 72px;
+      padding-top: 1em;
+      }
+    h2 {
+      color: black;
+      font-size: 48px;
+      padding-bottom: 1em;
+      font-family: 'Spartan', sans-serif;
+      }
+    @media (min-width: 950px) {
+      
+    }  
+    @media (min-width: 1250px) {
+      
+    }
+
+
 block content
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  h1 oh no We need to design a 404 page!
-  img(src='http://s3.favim.com/orig/46/adorable-bunnies-sleeping-cute-Favim.com-411174.jpg')
-  h2= error.status
-  pre #{error.stack}
+  .top-curve
+  .full-width
+    h1 404
+    h2 Page Not Found
+
+
+  include ./partials/footer.jade
+  
+  
