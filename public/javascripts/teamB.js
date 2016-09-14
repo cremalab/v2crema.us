@@ -14051,20 +14051,41 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var slickAdded = false;
+	function initSlick() {
+	  slickAdded = true;
+	  console.log('added slick');
+	  (0, _jquery2.default)('.rel-wrapper').slick({
+	    speed: 300
+	  });
+	  var arrow = document.getElementById('value-right-arrow');
+	  //add back in for kaley if wanted
+	  // $('.rel-wrapper').on('swipe', function(event, slick, direction){
+	  //   console.log(slick.currentSlide, arrow)
+	  //   if (slick.currentSlide != 0) 
+	  //     arrow.style.opacity = 0
+	  //   else  
+	  //     arrow.style.opacity = .7
+	  // })
+	}
+
+	function unslick() {
+	  slickAdded = false;
+	  console.log('removed slick');
+	  (0, _jquery2.default)('.rel-wrapper').slick('unslick');
+	}
+
 	(0, _jquery2.default)(document).ready(function () {
-	  if (window.innerWidth < 1201) {
-	    (0, _jquery2.default)('.rel-wrapper').slick({
-	      speed: 300
-	    });
-	  } else {
-	    window.onresize = function () {
-	      if (window.innerWidth < 1201) {
-	        (0, _jquery2.default)('.rel-wrapper').slick({
-	          speed: 300
-	        });
-	      }
-	    };
-	  }
+	  // load slick if needed and add listener 
+	  if (window.innerWidth < 1201) initSlick();
+
+	  window.onresize = function () {
+	    if (window.innerWidth < 1201 && !slickAdded) {
+	      initSlick();
+	    } else if (window.innerWidth > 1200 && slickAdded) {
+	      unslick();
+	    }
+	  };
 
 	  (0, _jquery2.default)('.team-culture-video').magnificPopup({
 	    type: 'iframe',

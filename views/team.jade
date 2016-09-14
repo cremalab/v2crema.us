@@ -54,9 +54,11 @@ block content
         a(onclick='styleLinks(this)' data-idx='4') Generosity
           img(src='/images/services/service/oval-2.png')
     .col.content
+      //- add this guy back in depending on kaley opinions
+      //- img(src="./images/right-arrow.svg" id="value-right-arrow")
       .rel-wrapper
         .value
-          .grid(style="opacity:1")
+          .grid(style="opacity:1").first-value-grid
             .col.value-img.trust
               span(class="align-helper")
               img( class="img-trust" src="/images/values/trust.png")

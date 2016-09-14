@@ -161,7 +161,8 @@ li h5 {
     .values .col.content {
       display: block;
       width: 100vw;
-      overflow-x: scroll; }
+      overflow-x: scroll;
+      position: relative; }
       .values .col.content .rel-wrapper {
         overflow-x: scroll;
         overflow-y: hidden; }
@@ -170,6 +171,16 @@ li h5 {
         width: 95vw;
         height: 100vh;
         padding: 2em; }
+      .values .col.content .grid.first-value-grid {
+        position: relative; }
+      .values .col.content #value-right-arrow {
+        display: initial;
+        position: absolute;
+        top: 37%;
+        transition: .3s;
+        opacity: .7;
+        right: 5%;
+        width: 5vw; }
       .values .col.content .grid {
         display: table;
         width: 100%;
@@ -188,8 +199,14 @@ li h5 {
         .values .col.content .col.value-img img {
           margin: 0 auto;
           width: 60%; }
+  .slick-next {
+    right: 8%;
+    top: 38%; }
   .slick-next:before {
     content: url("../../../images/right-arrow.svg"); } }
+
+#value-right-arrow {
+  display: none; }
 
 @media screen and (max-width: 700px) {
   li h3 {
@@ -198,16 +215,28 @@ li h5 {
     display: inline-block;
     height: 100%;
     vertical-align: middle; }
+  .slick-next {
+    right: 3%;
+    top: 38%;
+    width: 60px;
+    height: 40px; }
   .values .col.content {
     background-image: linear-gradient(0deg, #f154ce, #f44848); }
-    .values .col.content .grid .col {
+    .values .col.content #value-right-arrow {
+      width: 8vw;
+      top: 30%; }
+    .values .col.content .grid .col, .values .col.content .grid .col.value-img {
+      width: 90%;
       height: 50vh; }
-      .values .col.content .grid .col img {
-        vertical-align: middle; }
-      .values .col.content .grid .col h1 {
+      .values .col.content .grid .col img, .values .col.content .grid .col.value-img img {
+        vertical-align: middle;
+        width: 80%; }
+      .values .col.content .grid .col .img-trust, .values .col.content .grid .col.value-img .img-trust {
+        width: 70%; }
+      .values .col.content .grid .col h1, .values .col.content .grid .col.value-img h1 {
         padding-top: 4vh;
         font-size: 2em; }
-      .values .col.content .grid .col p {
+      .values .col.content .grid .col p, .values .col.content .grid .col.value-img p {
         font-size: 16px; }
   .slick-slide img {
     display: initial; } }

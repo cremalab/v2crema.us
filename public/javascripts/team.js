@@ -2,20 +2,47 @@ import $ from 'jquery'
 import 'slick-carousel'
 import 'magnific-popup'
 
-$(document).ready( () => {  
-  if(window.innerWidth < 1201) {
-    $('.rel-wrapper').slick({
+
+var slickAdded = false
+function initSlick() {
+  slickAdded = true
+  console.log('added slick')
+  $('.rel-wrapper').slick({
       speed: 300,
-    })
-  } else {
-    window.onresize = function() {
-      if ( window.innerWidth < 1201) {
-        $('.rel-wrapper').slick({
-        speed: 300,
-      })
-      }
+  })
+  let arrow = document.getElementById('value-right-arrow')
+  //add back in for kaley if wanted
+  // $('.rel-wrapper').on('swipe', function(event, slick, direction){
+  //   console.log(slick.currentSlide, arrow)
+  //   if (slick.currentSlide != 0) 
+  //     arrow.style.opacity = 0
+  //   else  
+  //     arrow.style.opacity = .7
+  // })
+}
+
+function unslick() {
+  slickAdded = false
+  console.log('removed slick')
+  $('.rel-wrapper').slick('unslick')
+}
+
+
+$(document).ready( () => {  
+  // load slick if needed and add listener 
+  if(window.innerWidth < 1201) 
+    initSlick()
+  
+  window.onresize = function() {
+    if ( window.innerWidth < 1201 && !slickAdded ) { 
+      initSlick()
+    }
+    else if( window.innerWidth > 1200 && slickAdded ) {
+      unslick()
     }
   }
+    
+  
 
   $('.team-culture-video').magnificPopup({
         type: 'iframe',
