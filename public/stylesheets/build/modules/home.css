@@ -234,7 +234,9 @@ ul {
 @media screen and (max-width: 700px) {
   .logo-wrapper {
     padding-top: 0;
-    height: 40vh; }
+    height: 40vh;
+    display: flex;
+    justify-content: center; }
   .svg-wrapper .desktop-svg {
     visibility: 0;
     display: none;

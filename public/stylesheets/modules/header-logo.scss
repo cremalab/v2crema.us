@@ -44,27 +44,30 @@
     }
     
 }
-
-@media screen and (max-width: 700px) {
- .header-logo-wrapper {
-     width: 100vw;
-     height: 40vh;
-     
-     h1 {
-         width: 80%;
-         font-size: 1.5em;
-        bottom: .5em;
-         text-align: center;
-     }
-     svg {
-         transform: scale(1.25);
-         top: -45px;
-         
-     }
-     
- }   
+.header-logo-mobile {
+    display: none;
 }
 
+@media screen and (max-width: 700px) {
+    .header-logo-wrapper {
+        display: none;
+    }
+    
+    .header-logo-mobile {
+        display: block;
+        text-align: center;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        img {
+            width: 90%;
+        }
+        .vertical-center {
+            align-self: center;
+        }
+    }
+}
 @media screen and (max-width: 350px) {
     .header-logo-wrapper {
         svg {
