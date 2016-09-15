@@ -249,12 +249,12 @@ ul {
   #showcase1 .grid {
     background: url("../../../images/curve-red-mobile.svg") no-repeat;
     background-size: cover;
-    min-height: 975px; }
+    min-height: 1000px; }
     #showcase1 .grid .col {
       width: 100%; }
   #showcase1 .img-col {
     height: 55vh;
-    min-height: 300px; }
+    min-height: 90vw; }
   #showcase1 #brookside-img {
     width: 25%;
     top: 10%; }
@@ -265,11 +265,12 @@ ul {
     width: 40%;
     top: 5%; }
   #showcase2 {
-    height: 200vw; }
+    height: 200vw;
+    display: initial; }
     #showcase2 .grid {
       direction: inherit; }
       #showcase2 .grid .img-col {
-        min-height: 300px;
+        min-height: 95vw;
         height: 55vh; }
       #showcase2 .grid .col {
         width: 100%; }
@@ -302,12 +303,13 @@ ul {
         right: 5%; }
   #showcase3 .grid {
     height: 130vh;
+    min-height: 900px;
     background: url("../../../images/curve-blue-mobile.svg");
     background-repeat: no-repeat;
     background-size: cover; }
     #showcase3 .grid .img-col {
       height: 55vh;
-      min-height: 300px; }
+      min-height: 90vw; }
     #showcase3 .grid .col {
       width: 100%; }
   #showcase3 #score-img {
@@ -333,15 +335,15 @@ ul {
     #showcase3 #plaster-img .img-placeholder {
       height: 31vw; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 700px) and (max-height: 420px) {
+  #showcase1 .grid {
+    min-height: 1100px; } }
+
+@media screen and (min-width: 1300px) {
   .logo-wrapper {
     height: 60vh; }
     .logo-wrapper .header-logo-wrapper h1 {
-      bottom: 4vw; } }
-
-@media screen and (min-width: 1400px) {
-  .logo-wrapper .header-logo-wrapper h1 {
-    bottom: 2vw; } }
+      bottom: 2vw; } }
 
 @media screen and (min-width: 701px) and (max-width: 1024px) and (min-height: 900px) {
   .logo-wrapper {

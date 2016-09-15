@@ -36,7 +36,10 @@
   #crema-logo-desktop {
     display: none; }
   #crema-mobile-color-logo {
-    text-align: center; }
+    text-align: center;
+    height: 60px; }
+    #crema-mobile-color-logo img {
+      height: 100%; }
   .header-nav {
     padding-top: 20px;
     height: 125px;
@@ -116,6 +119,14 @@
   .footer .social-wrapper {
     display: table-row;
     text-align: center; }
+    .footer .social-wrapper a {
+      display: inline-block;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 25px;
+      height: 30px; }
+      .footer .social-wrapper a img {
+        height: 100%; }
   .footer button {
     margin: 1.5em auto;
     display: block; }

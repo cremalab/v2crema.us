@@ -336,14 +336,14 @@ ul {
     .grid {
       background: url("../../../images/curve-red-mobile.svg") no-repeat;
       background-size: cover;
-      min-height: 975px;
+      min-height: 1000px;
       .col {
        width: 100%;
     }
     }
     .img-col {
       height: 55vh;
-      min-height: 300px;
+      min-height: 90vw;
     }
     #brookside-img {
       width: 25%;
@@ -362,10 +362,11 @@ ul {
 
   #showcase2 {
     height:200vw;
+    display: initial;
     .grid {
       direction: inherit;
       .img-col {
-        min-height: 300px;
+        min-height: 95vw;
         height: 55vh;
       }
       .col {
@@ -412,13 +413,14 @@ ul {
     
     .grid {
       height: 130vh;
+      min-height: 900px;
       background: url("../../../images/curve-blue-mobile.svg");
       background-repeat: no-repeat;
       background-size: cover;
       .img-col {
         height: 55vh;
         
-        min-height: 300px; 
+        min-height: 90vw; 
       }
       .col {
         width: 100%;    
@@ -457,24 +459,24 @@ ul {
 
 }
 
+@media screen and (max-width: 700px) and (max-height: 420px) {
+  #showcase1 {
+    .grid {
+      min-height: 1100px;
+    }
+  }
+}
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1300px) {
   .logo-wrapper {
     height: 60vh;
     .header-logo-wrapper {
-        h1 { bottom: 4vw}
-      }
-  }
-
-}
-@media screen and (min-width: 1400px)  {
-  .logo-wrapper {
-    .header-logo-wrapper {
         h1 { bottom: 2vw}
       }
-
   }
+
 }
+
 @media screen and (min-width: 701px) and (max-width: 1024px) and (min-height: 900px) {
   .logo-wrapper {
     height: 35vh;

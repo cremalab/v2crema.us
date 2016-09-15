@@ -11202,7 +11202,6 @@
 
 	function addPlayBtnListeners(className) {
 	  var btns = document.getElementsByClassName(className);
-	  console.log(btns);
 	  for (var i = 0; i < btns.length; i++) {
 	    btns[i].addEventListener('click', initServiceVideo.bind(btns[i]));
 	  }

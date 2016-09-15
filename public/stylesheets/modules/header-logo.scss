@@ -65,8 +65,13 @@
         }
         .vertical-center {
             align-self: center;
+            img {max-width: 400px;}
         }
     }
+}
+
+@media screen and (max-width: 700px) and (max-height: 420px) {
+    .header-nav {margin-bottom: 1em;}
 }
 @media screen and (max-width: 350px) {
     .header-logo-wrapper {

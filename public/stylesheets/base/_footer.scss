@@ -74,6 +74,15 @@
     .social-wrapper {
       display: table-row;
       text-align: center;
+      a {
+        display: inline-block;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 25px;
+        height: 30px;
+        img { height:100%;}
+      }
+    
     }
     button {
       margin: 1.5em auto;

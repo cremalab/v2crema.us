@@ -61,7 +61,6 @@ $('.mobile-vid-wrapper').magnificPopup({
 
 function addPlayBtnListeners(className) {
     let btns = document.getElementsByClassName(className)
-    console.log(btns)
     for (let i =0; i < btns.length; i++){
       btns[i].addEventListener('click', initServiceVideo.bind(btns[i]))  
     } 
