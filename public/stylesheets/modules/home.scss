@@ -60,7 +60,6 @@ $transitionTimeFade: opacity .7s;
 #showcase1,#showcase2,#showcase3 {
   img {
     transition: $transitionTimeFade; 
-    transition-delay: .5s
   }
 }
 
@@ -155,7 +154,6 @@ $transitionTimeFade: opacity .7s;
     width: 67%;
     bottom: -20%;
     right: 25%;
-    
     .img-placeholder { height: 21vw;}
     
   }

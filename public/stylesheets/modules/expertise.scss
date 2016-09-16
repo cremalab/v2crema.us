@@ -26,6 +26,7 @@
   margin: 4em auto;
   text-align: center;
   .col {
+    a:hover { color: black;}
     position: relative;
     display: inline-table;
     margin: 2em 1em;
@@ -46,7 +47,7 @@
       font-weight: bold;
       line-height: 1.5;
 
-      a {
+      .faux-link {
         display: block;
         font-family: Lato;
         font-size: 14px;
@@ -55,11 +56,8 @@
         color: $mango;
         cursor: pointer;
       }
-      a:hover {
-        color: $linkBlue;
-      }
     }
-  
+    
   }
 }
 

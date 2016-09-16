@@ -36,8 +36,7 @@
   background: linear-gradient(135deg, #8bf6fe 0%, #9352fc 100%); }
 
 #showcase1 img, #showcase2 img, #showcase3 img {
-  transition: opacity 0.7s;
-  transition-delay: .5s; }
+  transition: opacity 0.7s; }
 
 #showcase1 {
   width: 100vw;
