@@ -15,8 +15,12 @@ function getLatestMedium() {
   axios.get('https://medium.com/ideas-by-crema/latest?format=json')
     .then(function (res) {
       let posts = JSON.parse(res.data.slice(16)).payload.posts
+      let maxArticles = 0
       for (let key in posts) {
+        if (maxArticles > 4)
+          break
         postTitles.push([posts[key].title, posts[key].uniqueSlug ])
+        maxArticles++
       
       }
       console.log(postTitles.length, 'Medium Posts Loaded')
