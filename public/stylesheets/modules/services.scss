@@ -155,7 +155,7 @@
   max-width: 550px;
   width: 35%;
   transition: all .8s;
-  padding-right: 2em;
+  padding-right: 3vw;
   opacity: 0;
   transform: translateY(-50%);
 }
@@ -174,7 +174,7 @@
 
 .services-right {
   display: table-cell;
-  padding-left: 2em;
+  padding-left: 3em;
   max-width: 1200px;
   width: calc(100vw - 300px);
 
