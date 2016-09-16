@@ -79,7 +79,7 @@ li h5 {
   background-image: url('../../../images/blue-team-wonder-desktop.svg');
   background-repeat: no-repeat;
   background-size: cover; 
-  
+  a {outline: none;}
   h1 {
     color: white;
     margin-top: 2em;
@@ -363,6 +363,8 @@ li h5 {
     .img-wrapper {
       margin: auto;
       width: auto;
+      
+     
     }
     .col {
       display: table-cell;

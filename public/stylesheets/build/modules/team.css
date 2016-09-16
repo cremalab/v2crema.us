@@ -63,6 +63,8 @@ li h5 {
   background-image: url("../../../images/blue-team-wonder-desktop.svg");
   background-repeat: no-repeat;
   background-size: cover; }
+  .wonder-at-crema a {
+    outline: none; }
   .wonder-at-crema h1 {
     color: white;
     margin-top: 2em; }
