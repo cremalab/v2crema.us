@@ -211,9 +211,16 @@
   
   position: relative;
   h1 {
-    padding-top: 2em;
+    font-size: 2.5em;
+    padding-top: 5em;
     margin-top: 0;
+    margin-bottom: -1em;
     color: white
+  }
+  .second-tech {
+    
+    padding-bottom: 6em;
+    h1 {padding-top: 1em;}
   }
 }
 
@@ -304,8 +311,14 @@
     overflow: hidden;
     text-align: left;
     h1 {
+      padding-top: 3em;
       width: 90%;
-      margin-left: auto;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .second-tech {
+      h1{padding-top: 1em;}
+      padding-bottom: 2em;
     }
   }
   .mfp-bg.mfp-ready {

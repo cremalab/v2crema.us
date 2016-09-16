@@ -268,13 +268,14 @@ block content
             img(src='#{logoFileNames[idx]}')
             p #{techSubs[idx]}
 
-    h1 Integrations       
-    .landing-logos
-      ul.logos
-        -for (var idx = 0; idx <integrationNum; idx++)
-          li.logo 
-            img(src='#{integrationFileNames[idx]}')
-            p #{integrationSubs[idx]}
+    .second-tech 
+      h1 Integrations       
+      .landing-logos
+        ul.logos
+          -for (var idx = 0; idx <integrationNum; idx++)
+            li.logo 
+              img(src='#{integrationFileNames[idx]}')
+              p #{integrationSubs[idx]}
 
           
   include ./partials/footer

@@ -168,9 +168,15 @@
   background-color: #8cd8fd;
   position: relative; }
   .tech-wrapper h1 {
-    padding-top: 2em;
+    font-size: 2.5em;
+    padding-top: 5em;
     margin-top: 0;
+    margin-bottom: -1em;
     color: white; }
+  .tech-wrapper .second-tech {
+    padding-bottom: 6em; }
+    .tech-wrapper .second-tech h1 {
+      padding-top: 1em; }
 
 .landing-logos {
   text-align: center;
@@ -247,8 +253,14 @@
     overflow: hidden;
     text-align: left; }
     .tech-wrapper h1 {
+      padding-top: 3em;
       width: 90%;
-      margin-left: auto; }
+      margin: 0 auto;
+      text-align: center; }
+    .tech-wrapper .second-tech {
+      padding-bottom: 2em; }
+      .tech-wrapper .second-tech h1 {
+        padding-top: 1em; }
   .mfp-bg.mfp-ready {
     opacity: 0; }
   .mfp-wrap.mfp-close-btn-in.mfp-align-top.mfp-auto-cursor.mfp-ready > div > div.mfp-content {
