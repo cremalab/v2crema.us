@@ -72,7 +72,7 @@
       width: 100%;
       position: absolute; }
     #showcase1 .grid .col .showcase-text {
-      transform: translateY(8vw);
+      transform: translateY(1.5vw);
       color: white;
       padding: 0 10% 0 5%; }
 
@@ -338,11 +338,21 @@ ul {
   #showcase1 .grid {
     min-height: 1100px; } }
 
+@media screen and (min-width: 701px) {
+  .showcase-text h1 {
+    font-size: 2.3em; }
+  .showcase-text p {
+    font-size: 18px; } }
+
 @media screen and (min-width: 1300px) {
   .logo-wrapper {
     height: 60vh; }
     .logo-wrapper .header-logo-wrapper h1 {
-      bottom: 2vw; } }
+      bottom: 2vw; }
+  .showcase-text h1 {
+    font-size: 2.5em; }
+  .showcase-text p {
+    font-size: 20px; } }
 
 @media screen and (min-width: 701px) and (max-width: 1024px) and (min-height: 900px) {
   .logo-wrapper {

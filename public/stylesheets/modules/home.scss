@@ -106,13 +106,14 @@ $transitionTimeFade: opacity .7s;
         position: absolute;
       }
       .showcase-text {
-        transform: translateY(8vw);
+        transform: translateY(1.5vw);
         color: white;
         padding: 0 10% 0 5%; 
       }
     } 
   }
 }
+
 
 // Second Block Venture
 #showcase2 {
@@ -465,6 +466,13 @@ ul {
   }
 }
 
+@media screen and (min-width: 701px) {
+  .showcase-text {
+    h1{font-size: 2.3em;}
+    p{font-size: 18px;}
+  }
+}
+
 @media screen and (min-width: 1300px) {
   .logo-wrapper {
     height: 60vh;
@@ -472,6 +480,12 @@ ul {
         h1 { bottom: 2vw}
       }
   }
+
+  .showcase-text {
+    h1 {font-size:2.5em;}
+    p{font-size: 20px;}
+  }
+  
 
 }
 
@@ -481,3 +495,4 @@ ul {
   }
 
 }
+
