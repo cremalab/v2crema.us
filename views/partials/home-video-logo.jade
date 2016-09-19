@@ -1,9 +1,11 @@
 head
   link(href="/stylesheets/build/modules/header-logo.css", rel="stylesheet")
+  
 
 .header-logo-mobile
   .vertical-center
-    img(src="./images/crema-logo-mobile-color.png")
+    img(id="flamingo-logo" src="./images/crema-logo-mobile-color.png")
+    //- img(src="./images/crema-logo@2x.png")
     h1 A product design team for you.
 
 .header-logo-wrapper#video-size
@@ -28,14 +30,24 @@ head
   <path d="M630.2,279.3c6.9-6.6,15-11.6,24.2-14.9c9.2-3.3,18.6-5,28.2-5c9.9,0,18.3,1.2,25.2,3.7c6.9,2.4,12.4,6.2,16.7,11.3c4.3,5.1,7.4,11.6,9.3,19.4c2,7.8,3,17,3,27.8v59.3h-35.4v-12.5h-0.7c-3,4.9-7.5,8.7-13.6,11.3c-6.1,2.7-12.6,4-19.7,4c-4.7,0-9.6-0.6-14.6-1.9c-5-1.3-9.6-3.3-13.8-6.1c-4.2-2.8-7.6-6.6-10.3-11.3c-2.7-4.7-4-10.5-4-17.5c0-8.5,2.3-15.4,7-20.6c4.6-5.2,10.6-9.2,18-12c7.3-2.8,15.5-4.7,24.4-5.7c9-0.9,17.7-1.4,26.2-1.4v-1.9c0-5.8-2-10.1-6.1-12.9c-4.1-2.8-9.1-4.1-15.1-4.1c2.9,0-10.8,1.2-15.9,3.5c-5.1,2.4-9.5,5.2-13.1,8.5L630.2,279.3z M701.3,329.6h-5c-4.3,0-8.5,0.2-12.9,0.6c-4.3,0.4-8.2,1.1-11.6,2.2c-3.4,1.1-6.2,2.7-8.4,4.8c-2.2,2.1-3.3,4.9-3.3,8.4c0,2.2,0.5,4.1,1.5,5.7c1,1.6,2.3,2.8,3.9,3.8c1.6,0.9,3.4,1.6,5.4,2c2,0.4,4,0.6,5.9,0.6c7.9,0,13.9-2.2,18.1-6.5c4.2-4.3,6.3-10.2,6.3-17.6V329.6z"/>
   </g>
   </svg>
-
   </mask>
   </defs>
   <rect x="0" y="-65" width="100%" height="135%"/>
   </svg>
-  
+
   <video id="crema-vid-logo" autoplay="true"   muted="muted" preload="auto" loop="loop">
   <source src="/images/Crema-Culture.mp4" type="video/mp4">
   </video>
+
+script.
+  //css masks don't work on ie or edge and has issues on Firefox
+  //http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+  var isFirefox = typeof InstallTrigger !== 'undefined';
+  var isIE = /*@cc_on!@*/false || !!document.documentMode;
+  var isEdge = !isIE && !!window.StyleMedia;
+  if (isFirefox || isIE || isEdge) {
+    document.getElementById('flamingo-logo').src = './images/crema-logo@2x.png'
+    document.write('<'+'link rel="stylesheet" href="/stylesheets/build/modules/header-logo-ie-ff-edge.css" />');
+  }
 
   
