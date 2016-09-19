@@ -203,7 +203,9 @@ li h5 {
           width: 60%; }
   .slick-next {
     right: 8%;
-    top: 38%; }
+    top: 30%;
+    width: 50px;
+    height: 40px; }
   .slick-next:before {
     content: url("../../../images/right-arrow.svg"); } }
 
