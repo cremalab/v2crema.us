@@ -17,3 +17,7 @@
     align-self: center; }
     .header-logo-mobile .vertical-center img {
       max-width: initial; }
+
+@media screen and (min-width: 1024px) {
+  .header-logo-mobile h1 {
+    padding-top: 1em; } }
