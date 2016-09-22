@@ -1,37 +1,21 @@
 var express = require('express')
 var router = express.Router()
 var fs = require('fs')
-var path = require('path')
-var axios = require('axios')
+var apiReqs = require('../utils/api-reqs.js')
 
 
-let postTitles =[]
-let defaultTitles = [
-    [ 'Cremalab Presents: Innovation Lab','cremalab-presents-innovation-lab-46b21dcacf4b' ],
-    [ 'Top 5 reasons to launch your product with a creative agency', 'top-5-reasons-to-launch-your-product-with-a-creative-agency-17bc37352c1e' ],
-    [ 'HipHire: Shifting Job Listing Services from Quantity to Quality', 'hiphire-shifting-job-listing-services-from-quantity-to-quality-f06351f115fc' ]
-  ]
-function getLatestMedium() {
-  axios.get('https://medium.com/ideas-by-crema/latest?format=json')
-    .then(function (res) {
-      let posts = JSON.parse(res.data.slice(16)).payload.posts
-      let maxArticles = 0
-      for (let key in posts) {
-        if (maxArticles > 4)
-          break
-        postTitles.push([posts[key].title, posts[key].uniqueSlug ])
-        maxArticles++
-      
-      }
-      console.log(postTitles.length, 'Medium Posts Loaded')
-    })
-    .catch(function (error) {
-      console.log(error)
-      postTitles = defaultTitles
-    })
+
+//Get api info once per day and make available to /expertise route 
+let postTitles = []
+let jobPostings = []
+function getApiInfo() {
+  apiReqs.getLatestMedium()
+    .then(titles => { postTitles = titles})
+  apiReqs.getJobPostings()
+    .then(jobs => {jobPostings = jobs})  
 }
-getLatestMedium()
-setInterval( getLatestMedium, 1000 * 1000 * 86 ) // refresh medium links 1 time per day. 
+getApiInfo()
+setInterval( getApiInfo, 1000 * 1000 * 86 ) // refresh api data 1 time per day. 
 
 
 // returns array of image paths when given abs url to directory
@@ -114,7 +98,8 @@ router.get('/team', function(req, res, next) {
     title: 'Crema.us - Team',
     teamPhotos: teamPhotos,
     numberOfPhotos: teamPhotos.length,
-    teamNameTitles: teamNameTitles
+    teamNameTitles: teamNameTitles,
+    jobPostings: jobPostings
   })
   console.log(`Serving ${teamPhotos.length} team photos to /team`)
 })

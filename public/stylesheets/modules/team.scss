@@ -1,5 +1,6 @@
 @import '../base/_colors';
 
+
 .headline {
   padding-top: 6em;
   color: white;
@@ -318,12 +319,30 @@ li h5 {
 .join-team {
   width: 70vw;
   text-align: center;
-  margin: 7em auto;
+  margin: 7em auto 0 auto;
   p {
     font-size: 20px
   }
   h1 {
     font-size: 36px;
+  }
+}
+
+.job-postings {
+  text-align: center;
+  width: 50%;
+  padding-bottom: 4em;
+  margin: 2em auto;
+  h1 {font-size:48px;}
+  a {
+    color: $mango;
+    margin: 2em auto 1.5em 0;
+    font-size: 24px;
+    display: block;
+    font-family: 'Lato', sans-serif;
+  }
+  a:hover {
+    color: $linkBlue;
   }
 }
 
@@ -384,5 +403,11 @@ li h5 {
   }
   .values-wrapper h1 {
     font-size: 32px;
+  }
+   .job-postings {
+    width: 90%;
+    text-align: center;
+    h1 {font-size: 36px;}
+    a {font-size: 18px;}
   }
 }

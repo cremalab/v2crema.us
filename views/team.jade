@@ -101,8 +101,15 @@ block content
   .join-team
     h1 Join our team
     p Results based culture, competitive benefits, ongoing learning, and in the heart of Kansas City. We’re growing, so come on board!
-  
-  
+    if jobPostings.length > 0
+      .job-postings
+        each arr in jobPostings
+          a(href="#{arr[1]}" target="_blank") #{arr[0]}
+    else
+      .job-postings
+        p Email <a href="mailto:info@cremalab.com" style="display:inline; font-size: 20px;"> info@cremalab.com</a> to inquire about open positions
+         
+    
   include ./partials/footer.jade
   .post-footer
     a(href='/')
