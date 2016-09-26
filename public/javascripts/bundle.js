@@ -10486,11 +10486,8 @@
 	      console.log(this.id);
 	      var vid = this.getElementsByTagName('iframe')[0];
 	      var btn = this.getElementsByClassName('play-btn-svg')[0];
-	      var spinner = this.getElementsByClassName('crema-spinner')[0];
 	      btn.style.zIndex = 0;
 	      btn.style.animationName = 'crema-spinner-rev';
-	      spinner.style.animationName = 'crema-spinner';
-	      spinner.style.opacity = 1;
 	      console.log(btn);
 	      if (!vid.dataset.added) {
 	        vid.src = vid.dataset.src;

@@ -8,6 +8,9 @@ append styles
   link(href="/stylesheets/build/base/crema-spinner.css", rel="stylesheet")
 
 block append scripts
+
+append vars
+  -var youtubePref = "?rel=0&controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1"
   
 block content  
   .service-nav
@@ -44,80 +47,80 @@ block content
             .service-col.vid
               .videowrapper#first-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#proto-pt
-                <iframe src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe src='' data-src="https://www.youtube.com/embed/fPctWgecUac#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text
               
           .service
             .service-col.vid
               .videowrapper#proto-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#branding-pt
-                <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe id='proto-iframe' src='' data-src="https://www.youtube.com/embed/Xb9XjS73LV4#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text
               
           .service
             .service-col.vid
               .videowrapper#branding-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#ux-pt
-                <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe id="branding-iframe" src='' data-src="https://www.youtube.com/embed/xh02kTB7T1w#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text        
           
           .service
             .service-col.vid
               .videowrapper#ux-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#api-pt
-                <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe id='ux-iframe' src='' data-src="https://www.youtube.com/embed/PBXsmhK-ZOU#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text
           
           .service
             .service-col.vid
               .videowrapper#api-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#mobile-pt
-                <iframe id="api-iframe" src='' data-src="https://www.youtube.com/embed/iS_UL80Ubfo?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe id="api-iframe" src='' data-src="https://www.youtube.com/embed/1ZI6cgvLtSA#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text
               
           .service
             .service-col.vid
               .videowrapper#mobile-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#test-pt
-                <iframe id='mobile-iframe' src='' data-src="https://www.youtube.com/embed/1HlBqBfDP8A?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe id='mobile-iframe' src='' data-src="https://www.youtube.com/embed/sPTHJIO4DGM#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text
               
           .service
             .service-col.vid
               .videowrapper#test-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#product-pt
-                <iframe id="test-iframe" src='' data-src="https://www.youtube.com/embed/YQAJXBv3LKc" frameborder="0" allowfullscreen></iframe>
+                <iframe id="test-iframe" src='' data-src="https://www.youtube.com/embed/XUn7n91qxTo#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text      
 
           .service
             .service-col.vid
               .videowrapper#product-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
+                 
                 .smoothScrollPt#early-pt
-                <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                <iframe id='product-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text
 
           .service#last-service
             .service-col.vid
               .videowrapper#early-vid
                 include ./partials/btn-play-svg
-                .crema-spinner
-                <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/bcrOSxvyu2U?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                 
+                <iframe id='early-iframe' src='' data-src="https://www.youtube.com/embed/AT4YoThRvKA#{youtubePref}" frameborder="0" allowfullscreen></iframe>
             .service-col.-text  
             
           
@@ -161,58 +164,56 @@ block content
       
       .mobile-service-vid
         img(src="/images/services/vid-posters/1_strategy.png")
-        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+        a(href="https://www.youtube.com/watch?v=fPctWgecUac")
           include ./partials/btn-play-svg
-          .crema-spinner
+          
         
       .mobile-service-vid
         img(src="/images/services/vid-posters/2_prototyping.png")     
-        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+        a(href="https://www.youtube.com/watch?v=Xb9XjS73LV4")
           include ./partials/btn-play-svg
-          .crema-spinner  
+            
         
       .mobile-service-vid     
         img(src="/images/services/vid-posters/3_branding.png")
-        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+        a(href="https://www.youtube.com/watch?v=xh02kTB7T1w")
           include ./partials/btn-play-svg
-          .crema-spinner  
+            
       
       .mobile-service-vid
         img(src="/images/services/vid-posters/4_ux.png")
-        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+        a(href="https://www.youtube.com/watch?v=PBXsmhK-ZOU")
           include ./partials/btn-play-svg
-          .crema-spinner
+          
         
       .mobile-service-vid
         img(src="/images/services/vid-posters/5_api.png")     
-        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+        a(href="https://www.youtube.com/watch?v=1ZI6cgvLtSA")
           include ./partials/btn-play-svg
-          .crema-spinner  
+          
         
       .mobile-service-vid     
         img(src="/images/services/vid-posters/6_mobile.png")
-        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+        a(href="https://www.youtube.com/watch?v=sPTHJIO4DGM")
           include ./partials/btn-play-svg
-          .crema-spinner  
+            
       
       .mobile-service-vid
         img(src="/images/services/vid-posters/7_testing.png")
-        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
+        a(href="https://www.youtube.com/watch?v=XUn7n91qxTo")
           include ./partials/btn-play-svg
-          .crema-spinner
+          
         
       .mobile-service-vid
         img(src="/images/services/vid-posters/8_launch.png")     
-        a(href="https://www.youtube.com/watch?v=w6HsV5jcHM4")
+        a(href="https://www.youtube.com/watch?v=bcrOSxvyu2U")
           include ./partials/btn-play-svg
-          .crema-spinner  
+          
         
       .mobile-service-vid     
         img(src="/images/services/vid-posters/9_customer.png")
-        a(href="https://www.youtube.com/watch?v=JHWx7l91awo")
-          include ./partials/btn-play-svg
-          .crema-spinner  
-        
+        a(href="https://www.youtube.com/watch?v=AT4YoThRvKA")
+          include ./partials/btn-play-svg          
         
   
     .mobile-services-text-wrapper

@@ -19,11 +19,8 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
     console.log(this.id)
     let vid = this.getElementsByTagName('iframe')[0]
     let btn = this.getElementsByClassName('play-btn-svg')[0]
-    let spinner = this.getElementsByClassName('crema-spinner')[0]
     btn.style.zIndex= 0
     btn.style.animationName = 'crema-spinner-rev'
-    spinner.style.animationName = 'crema-spinner'
-    spinner.style.opacity = 1
     console.log(btn)
     if (!vid.dataset.added) {
       vid.src = vid.dataset.src
