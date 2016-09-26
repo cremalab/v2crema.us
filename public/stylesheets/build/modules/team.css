@@ -248,11 +248,27 @@ li h5 {
 .join-team {
   width: 70vw;
   text-align: center;
-  margin: 7em auto; }
+  margin: 7em auto 0 auto; }
   .join-team p {
     font-size: 20px; }
   .join-team h1 {
     font-size: 36px; }
+
+.job-postings {
+  text-align: center;
+  width: 50%;
+  padding-bottom: 4em;
+  margin: 2em auto; }
+  .job-postings h1 {
+    font-size: 48px; }
+  .job-postings a {
+    color: #fcad2b;
+    margin: 2em auto 1.5em 0;
+    font-size: 24px;
+    display: block;
+    font-family: 'Lato', sans-serif; }
+  .job-postings a:hover {
+    color: #8CD8FD; }
 
 @media screen and (min-width: 701px) and (max-width: 1100px) {
   .team-header-svg {
@@ -295,4 +311,11 @@ li h5 {
     left: 0;
     transform: translateY(-20%); }
   .values-wrapper h1 {
-    font-size: 32px; } }
+    font-size: 32px; }
+  .job-postings {
+    width: 90%;
+    text-align: center; }
+    .job-postings h1 {
+      font-size: 36px; }
+    .job-postings a {
+      font-size: 18px; } }

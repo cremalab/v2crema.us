@@ -2,7 +2,7 @@
   position: relative;
   z-index: 5;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   height: 60px; }
   .header-nav .grid {
     position: absolute;
