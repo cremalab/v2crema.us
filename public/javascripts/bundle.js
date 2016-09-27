@@ -10515,21 +10515,20 @@
 	        document.getElementById(upId).style.opacity = 1;
 	        document.getElementById(downId).style.opacity = 0;
 	      } else {
-	        console.log('Direction: ' + direction + ' show ' + downId);
+	        console.log('Fade out Above: ' + upId);
 	        styleLinks(document.getElementById(downLink));
 	        document.getElementById(upId).style.opacity = 0;
 	      }
 	    };
 
 	    var fadeTextIn = function fadeTextIn(upId, downId, direction) {
-	      if (direction === 'up') {
-	        // document.getElementById(upId).style.opacity = 1
-	      } else {
+	      if (direction === 'down') {
+	        console.log('Fade in below: ' + downId);
 	        document.getElementById(downId).style.opacity = 1;
 	      }
 	    };
 
-	    //fade text out
+	    //These waypoints trigger the fade out then in of the text
 
 
 	    _smoothScroll2.default.init();
@@ -10541,116 +10540,74 @@
 	      element: document.getElementById('proto-vid'),
 	      handler: function handler(direction) {
 	        fadeText('innovation', 'prototyping', 'service-inno-a', 'service-proto-a', direction, 'proto-iframe');
-	      },
-	      offset: wayptOffset()
-	    });
-	    //fade text in for same service vid as above
-	    new Waypoint({
-	      element: document.getElementById('proto-pt'),
-	      handler: function handler(direction) {
 	        fadeTextIn('innovation', 'prototyping', direction);
 	      },
-	      offset: wayptOffset() * .4 //different offset for first one due to smooth scroll issue 
+	      offset: wayptOffset()
 	    });
 
 	    new Waypoint({
 	      element: document.getElementById('branding-vid'),
 	      handler: function handler(direction) {
 	        fadeText('prototyping', 'branding', 'service-proto-a', 'service-branding-a', direction, 'branding-iframe');
+	        fadeTextIn('prototyping', 'branding', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('branding-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('prototyping', 'branding', direction);
-	      },
-	      offset: wayptOffset() * .3
-	    });
+
 	    new Waypoint({
 	      element: document.getElementById('ux-vid'),
 	      handler: function handler(direction) {
 	        fadeText('branding', 'ux', 'service-branding-a', 'service-ux-a', direction, 'ux-iframe');
+	        fadeTextIn('branding', 'ux', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('ux-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('branding', 'ux', direction);
-	      },
-	      offset: wayptOffset() * .3
-	    });
+
 	    new Waypoint({
 	      element: document.getElementById('api-vid'),
 	      handler: function handler(direction) {
 	        fadeText('ux', 'api', 'service-ux-a', 'service-api-a', direction, 'api-iframe');
+	        fadeTextIn('ux', 'api', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('api-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('ux', 'api', direction);
-	      },
-	      offset: 100
-	    });
+
 	    new Waypoint({
 	      element: document.getElementById('mobile-vid'),
 	      handler: function handler(direction) {
 	        fadeText('api', 'mobile', 'service-api-a', 'service-mobile-a', direction, 'mobile-iframe');
+	        fadeTextIn('api', 'mobile', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('mobile-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('api', 'mobile', direction);
-	      },
-	      offset: 100
-	    });
+
 	    new Waypoint({
 	      element: document.getElementById('test-vid'),
 	      handler: function handler(direction) {
 	        fadeText('mobile', 'test', 'service-mobile-a', 'service-test-a', direction, 'test-iframe');
+	        fadeTextIn('mobile', 'test', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('test-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('mobile', 'test', direction);
-	      },
-	      offset: 100
-	    });
+
 	    new Waypoint({
 	      element: document.getElementById('product-vid'),
 	      handler: function handler(direction) {
 	        fadeText('test', 'product', 'service-test-a', 'service-product-a', direction, 'product-iframe');
+	        fadeTextIn('test', 'product', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('product-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('test', 'product', direction);
-	      },
-	      offset: 100
-	    });
+
 	    new Waypoint({
 	      element: document.getElementById('early-vid'),
 	      handler: function handler(direction) {
 	        fadeText('product', 'early', 'service-product-a', 'service-early-a', direction, 'early-iframe');
+	        fadeTextIn('product', 'early', direction);
 	      },
 	      offset: wayptOffset()
 	    });
-	    new Waypoint({
-	      element: document.getElementById('early-pt'),
-	      handler: function handler(direction) {
-	        fadeTextIn('product', 'early', direction);
-	      },
-	      offset: 100
-	    });
+
 	    //final way point
 	    new Waypoint({
 	      element: document.getElementById('fade-links-text'),

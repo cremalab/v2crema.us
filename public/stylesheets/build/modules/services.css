@@ -127,7 +127,7 @@
   right: 0;
   max-width: 550px;
   width: calc(50vw - 285px);
-  transition: all .8s;
+  transition: all .7s ease-out;
   opacity: 0;
   transform: translate(-2vw, -50%); }
 
