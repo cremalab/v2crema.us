@@ -31,8 +31,13 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
   }
 
   function wayptOffset() {
-    if (window.innerHeight > 910)
+    if (window.innerWidth > 1100)
+      return window.innerHeight * .6
+    else if (window.innerWidth > 1300)
+      return window.innerHeight * .7  
+    else if (window.innerHeight > 910)
       return window.innerHeight * .87
+      
     else
       return window.innerHeight * .75
   }
@@ -56,10 +61,8 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
       
     } else {
       console.log(`Direction: ${direction} show ${downId}` )
-      // if (iframeId) initServiceVideo(iframeId)
       styleLinks(document.getElementById(downLink))
       document.getElementById(upId).style.opacity = 0
-      // document.getElementById(downId).style.opacity = 1
     }
   }
 
@@ -71,20 +74,21 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
     }
   }
 
-
+    //fade text out
     new Waypoint({
-        element: document.getElementById('proto-vid'),
+        element: document.getElementById('proto-vid'), 
         handler: function(direction) {
           fadeText('innovation', 'prototyping', 'service-inno-a', 'service-proto-a', direction, 'proto-iframe')
         },
         offset: wayptOffset()  
     })
+    //fade text in for same service vid as above
     new Waypoint({
-        element: document.getElementById('proto-pt'),
+        element: document.getElementById('proto-pt'), 
         handler: function(direction) {
           fadeTextIn('innovation', 'prototyping', direction)
         },
-        offset: 200
+        offset: wayptOffset() * .4 //different offset for first one due to smooth scroll issue 
     })
 
     new Waypoint({
@@ -92,14 +96,14 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
         handler: function(direction) {
           fadeText('prototyping', 'branding', 'service-proto-a', 'service-branding-a', direction, 'branding-iframe')
         },
-        offset: wayptOffset()  
+        offset: wayptOffset() 
     })
     new Waypoint({
         element: document.getElementById('branding-pt'),
         handler: function(direction) {
           fadeTextIn('prototyping', 'branding', direction)
         },
-        offset: 100
+        offset: wayptOffset() * .3
     })
     new Waypoint({
         element: document.getElementById('ux-vid'),
@@ -113,7 +117,7 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
         handler: function(direction) {
           fadeTextIn('branding', 'ux', direction)
         },
-        offset: 100
+        offset: wayptOffset() * .3
     })
     new Waypoint({
         element: document.getElementById('api-vid'),

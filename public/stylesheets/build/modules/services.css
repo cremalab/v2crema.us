@@ -32,7 +32,7 @@
       opacity: 0;
       padding-right: 5px; }
   .service-nav a:hover {
-    transform: scale(1.05); }
+    color: #787878 !important; }
   .service-nav #service-inno-a {
     color: black; }
     .service-nav #service-inno-a img {
@@ -45,13 +45,13 @@
   background-image: url("/images/services/vid-posters/1_strategy.jpg"); }
 
 #first-service {
-  transform: translateY(13%);
+  transform: translate(4vw, 13%);
   height: 80vh; }
   #first-service .smoothScrollPt {
     bottom: -30%; }
 
 #last-service {
-  transform: translateY(-13%);
+  transform: translate(4vw, -13%);
   height: 85vh; }
 
 #proto-vid {
@@ -125,11 +125,10 @@
   top: 50%;
   right: 0;
   max-width: 550px;
-  width: 35%;
+  width: calc(50vw - 285px);
   transition: all .8s;
-  padding-right: 3vw;
   opacity: 0;
-  transform: translateY(-50%); }
+  transform: translate(-2vw, -50%); }
 
 #innovation {
   opacity: 1; }
@@ -140,24 +139,22 @@
 
 .services-right {
   display: table-cell;
-  padding-left: 3em;
-  max-width: 1200px;
-  width: calc(100vw - 300px); }
+  width: calc(100vw - 300px);
+  max-width: 1600px; }
   .services-right .service {
     display: table;
     height: 60vh;
-    width: 95%;
-    color: white; }
+    width: 100%;
+    color: white;
+    transform: translateX(4vw); }
     .services-right .service .-text {
       opacity: 0;
       transition: all .8s; }
   .services-right img {
     width: 95%; }
-  .services-right .vid {
-    padding-right: 25px; }
   .services-right .service-col {
     display: table-cell;
-    width: 50%;
+    width: calc(50vw - 300px);
     vertical-align: middle; }
 
 .tech-wrapper {
@@ -178,6 +175,8 @@
 .landing-logos {
   text-align: center;
   max-width: 100vw; }
+  .landing-logos p {
+    color: white; }
 
 .landing-logos ul {
   margin: 3em auto;
@@ -223,20 +222,6 @@
   width: 100vw;
   height: 100vh;
   z-index: -1; }
-
-@media screen and (min-width: 801px) and (max-width: 1150px) {
-  .service-nav {
-    width: 255px; }
-  .services-left {
-    width: 220px; }
-  .service-text-fixed {
-    width: 33%; }
-  .service-nav .link-wrapper {
-    padding-right: 1.5em; } }
-
-@media screen and (min-width: 950px) and (max-width: 1150px) {
-  .service-text-fixed {
-    width: 36%; } }
 
 @media screen and (max-width: 800px) {
   .header-nav {
@@ -324,9 +309,23 @@
   .mobile-services-wrapper {
     display: none; } }
 
-@media screen and (min-width: 1450px) {
+@media screen and (min-width: 801px) and (max-width: 950px) {
   .service-text-fixed {
-    margin-right: 4vw; } }
+    width: calc(50vw - 215px); }
+    .service-text-fixed h1 {
+      font-size: 1.5em; }
+    .service-text-fixed p {
+      font-size: 15px; }
+  #first-service, #last-service {
+    transform: translate(2.5vw, 13%); }
+  .services-right .service {
+    transform: translateX(2.5vw); } }
+
+@media screen and (min-width: 1600px) {
+  .service-text-fixed h1 {
+    font-size: 2.75em; }
+  .service-text-fixed p {
+    font-size: 20px; } }
 
 @media screen and (max-width: 800px) {
   #crema-logo-desktop {

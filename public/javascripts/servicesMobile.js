@@ -11210,9 +11210,7 @@
 	function initServiceVideo() {
 	  console.log('click');
 	  var btn = this.getElementsByClassName('play-btn-svg')[0];
-	  var spinner = this.getElementsByClassName('crema-spinner')[0];
 	  btn.style.animationName = 'crema-spinner-rev';
-	  spinner.style.animationName = 'crema-spinner';
 	}
 
 /***/ },

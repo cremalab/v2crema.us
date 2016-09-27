@@ -70,7 +70,5 @@ function addPlayBtnListeners(className) {
   function initServiceVideo(){
     console.log('click')
     let btn = this.getElementsByClassName('play-btn-svg')[0]
-    let spinner = this.getElementsByClassName('crema-spinner')[0]
     btn.style.animationName = 'crema-spinner-rev'
-    spinner.style.animationName = 'crema-spinner'
   }

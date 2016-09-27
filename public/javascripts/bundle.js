@@ -10496,7 +10496,7 @@
 	    };
 
 	    var wayptOffset = function wayptOffset() {
-	      if (window.innerHeight > 910) return window.innerHeight * .87;else return window.innerHeight * .75;
+	      if (window.innerWidth > 1100) return window.innerHeight * .6;else if (window.innerWidth > 1300) return window.innerHeight * .7;else if (window.innerHeight > 910) return window.innerHeight * .87;else return window.innerHeight * .75;
 	    };
 
 	    var styleLinks = function styleLinks(el) {
@@ -10516,10 +10516,8 @@
 	        document.getElementById(downId).style.opacity = 0;
 	      } else {
 	        console.log('Direction: ' + direction + ' show ' + downId);
-	        // if (iframeId) initServiceVideo(iframeId)
 	        styleLinks(document.getElementById(downLink));
 	        document.getElementById(upId).style.opacity = 0;
-	        // document.getElementById(downId).style.opacity = 1
 	      }
 	    };
 
@@ -10531,13 +10529,14 @@
 	      }
 	    };
 
+	    //fade text out
+
+
 	    _smoothScroll2.default.init();
 
 	    addPlayBtnListeners('videowrapper');
 
 	    var links = document.getElementById('services-links').getElementsByTagName('a');
-
-
 	    new Waypoint({
 	      element: document.getElementById('proto-vid'),
 	      handler: function handler(direction) {
@@ -10545,12 +10544,13 @@
 	      },
 	      offset: wayptOffset()
 	    });
+	    //fade text in for same service vid as above
 	    new Waypoint({
 	      element: document.getElementById('proto-pt'),
 	      handler: function handler(direction) {
 	        fadeTextIn('innovation', 'prototyping', direction);
 	      },
-	      offset: 200
+	      offset: wayptOffset() * .4 //different offset for first one due to smooth scroll issue 
 	    });
 
 	    new Waypoint({
@@ -10565,7 +10565,7 @@
 	      handler: function handler(direction) {
 	        fadeTextIn('prototyping', 'branding', direction);
 	      },
-	      offset: 100
+	      offset: wayptOffset() * .3
 	    });
 	    new Waypoint({
 	      element: document.getElementById('ux-vid'),
@@ -10579,7 +10579,7 @@
 	      handler: function handler(direction) {
 	        fadeTextIn('branding', 'ux', direction);
 	      },
-	      offset: 100
+	      offset: wayptOffset() * .3
 	    });
 	    new Waypoint({
 	      element: document.getElementById('api-vid'),

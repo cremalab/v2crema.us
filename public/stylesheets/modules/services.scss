@@ -39,7 +39,8 @@
     }
   }
   a:hover {
-    transform: scale(1.05)
+    color: rgb(120,120,120) !important;
+    // important because color is being set inline via services.js
   }
   #service-inno-a {
     img {opacity: 1}
@@ -54,7 +55,7 @@
     background-image: url('/images/services/vid-posters/1_strategy.jpg')
 }
 #first-service {
-  transform: translateY(13%);
+  transform: translate(4vw,13%);
   height: 80vh;
   .smoothScrollPt {
     // so smooth scroll will line up
@@ -62,7 +63,7 @@
   }
 }
 #last-service {
-  transform: translateY(-13%);
+  transform: translate(4vw,-13%);
   height: 85vh;
 }
 #proto-vid {
@@ -102,11 +103,6 @@
     animation-timing-function: linear;
     animation-duration: 1.8s;
     // animation-name: crema-spinner;
-  }
-
-  //remove when vids are here
-  .play-btn-svg, .crema-spinner {
-    // display: none;
   }
 
 
@@ -153,19 +149,16 @@
   top: 50%;
   right: 0;
   max-width: 550px;
-  width: 35%;
+  width: calc(50vw - 285px);
   transition: all .8s;
-  padding-right: 3vw;
+  
   opacity: 0;
-  transform: translateY(-50%);
+  transform: translate(-2vw, -50%);
 }
 #innovation {
   opacity: 1;
 
 }
-
-
-
 
 .services-left {
   display: table-cell;
@@ -174,16 +167,15 @@
 
 .services-right {
   display: table-cell;
-  padding-left: 3em;
-  max-width: 1200px;
   width: calc(100vw - 300px);
-
+  max-width: 1600px; 
   
   .service {
     display: table;
     height: 60vh;
-    width: 95%;
+    width: 100%;
     color: white;
+    transform: translateX(4vw);
     
     .-text {
       opacity: 0;
@@ -193,12 +185,9 @@
   img {
     width: 95%;
   }
-  .vid {
-    padding-right: 25px;
-  }
   .service-col {
     display: table-cell;
-    width: 50%;
+    width: calc(50vw - 300px);
     vertical-align: middle;
 
   }
@@ -228,6 +217,7 @@
 .landing-logos {
   text-align: center;
   max-width: 100vw;
+  p {color:white;}
 }
 .landing-logos ul {
   margin: 3em auto;
@@ -275,26 +265,6 @@
   z-index: -1;
 }
 
-@media screen and (min-width:801px) and (max-width: 1150px) {
-  .service-nav {
-    width: 255px;
-  }
-  .services-left {
-    width: 220px;
-  }
-  .service-text-fixed {
-    width: 33%;
-  }
-  .service-nav .link-wrapper {
-    padding-right: 1.5em;
-  }
-}
-@media screen and (min-width:950px) and (max-width: 1150px) {
-  .service-text-fixed {
-    width: 36%;
-  }
-}
-
 @media screen and (max-width: 800px) {
   .header-nav {
     position: inherit;
@@ -324,9 +294,9 @@
   .mfp-bg.mfp-ready {
       opacity: 0;
     }
-.mfp-wrap.mfp-close-btn-in.mfp-align-top.mfp-auto-cursor.mfp-ready > div > div.mfp-content {
-  box-shadow: 0px 50px 242px 3px rgba(0,0,0,0.56);
-}
+  .mfp-wrap.mfp-close-btn-in.mfp-align-top.mfp-auto-cursor.mfp-ready > div > div.mfp-content {
+    box-shadow: 0px 50px 242px 3px rgba(0,0,0,0.56);
+  }
 
   .mobile-services-wrapper {
     height: 100vh;
@@ -415,11 +385,29 @@
   }
 }
 
-// MOBILE
-@media screen and (min-width: 1450px) {
+
+@media screen and (min-width: 801px) and (max-width: 950px) {
   .service-text-fixed {
-    margin-right: 4vw;
+    width: calc(50vw - 215px);
+    h1 {font-size: 1.5em;}
+    p{font-size: 15px; }
   }
+
+  #first-service, #last-service {
+    transform: translate(2.5vw,13%);
+  }
+  .services-right {
+    .service {
+       transform: translateX(2.5vw);
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+   .service-text-fixed {
+     h1 {font-size: 2.75em;}
+     p{font-size: 20px;}
+   }
 }
 
 
