@@ -126,7 +126,8 @@
       position: absolute;
       opacity: 0;
       bottom: 0;
-      height: 10%;
+      height: 5vw;
+      max-height: 100px;
       width: 100%;
     }
     .play-btn-svg:hover {
@@ -393,13 +394,19 @@
     p{font-size: 15px; }
   }
 
-  #first-service, #last-service {
+  #first-service {
     transform: translate(2.5vw,13%);
+  }
+  #last-service {
+    transform: translate(2.5vw,-13%);
   }
   .services-right {
     .service {
        transform: translateX(2.5vw);
     }
+  }
+  .smoothScrollPt {
+    height: 2vw;
   }
 }
 

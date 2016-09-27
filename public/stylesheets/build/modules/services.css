@@ -108,7 +108,8 @@
       position: absolute;
       opacity: 0;
       bottom: 0;
-      height: 10%;
+      height: 5vw;
+      max-height: 100px;
       width: 100%; }
     .service-wrapper .videowrapper .play-btn-svg:hover {
       transform: scale(1.1); }
@@ -316,10 +317,14 @@
       font-size: 1.5em; }
     .service-text-fixed p {
       font-size: 15px; }
-  #first-service, #last-service {
+  #first-service {
     transform: translate(2.5vw, 13%); }
+  #last-service {
+    transform: translate(2.5vw, -13%); }
   .services-right .service {
-    transform: translateX(2.5vw); } }
+    transform: translateX(2.5vw); }
+  .smoothScrollPt {
+    height: 2vw; } }
 
 @media screen and (min-width: 1600px) {
   .service-text-fixed h1 {
