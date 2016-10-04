@@ -128,11 +128,11 @@
 #showcase3 {
   position: relative; }
   #showcase3 #score-img {
-    top: 22%;
+    top: 25%;
     width: 93%;
     left: 3%; }
     #showcase3 #score-img .img-placeholder {
-      height: 28vw; }
+      height: 25vw; }
   #showcase3 #str-plain-img {
     width: 37%;
     bottom: 5%;
@@ -316,7 +316,7 @@ ul {
     width: 55%;
     left: 0; }
     #showcase3 #score-img .img-placeholder {
-      height: 31vw; }
+      height: 29vw; }
   #showcase3 #str-plain-img {
     width: 20%;
     top: 22%;
