@@ -40,7 +40,7 @@ module.exports = {
         resolve( res.data.jobs.map(job => [job.title, job.url]) )
       })
       .catch( err => {
-        console.log(err)
+        console.log(`Workable API returned ${err.response.status} code. Do you have a token?`)
         resolve([])
       })
     })

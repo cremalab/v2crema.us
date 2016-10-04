@@ -1,3 +1,6 @@
+@import '../base/_colors';
+
+
 .close-modal {
   width: 100%;
   height: 4em;
@@ -32,8 +35,19 @@
 
 h1 {
   text-align: center;
-  margin: 1.5em auto 2em auto;
+  margin: 1.5em auto .1em auto;
   font-size: 48px;
+}
+
+.work-content {
+  text-align: center;
+  a {
+    color: $mango;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 2em;
+    }
+   a:hover {color: $linkBlue;}
 }
 
 .work-content .post-footer {
@@ -45,7 +59,7 @@ h1 {
 .work-img-wrapper {
  position: relative;
  width: 78%;
- margin: 0 auto;
+ margin: 4em auto 0 auto;
  min-height: 80vh;
  
  .work-by-crema {
