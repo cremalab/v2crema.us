@@ -44,6 +44,9 @@ h1 {
 .work-content .post-footer img {
   width: 50%; }
 
+.work-content .post-footer .digital-products-work-img {
+  width: 55%; }
+
 .work-img-wrapper {
   position: relative;
   width: 78%;
@@ -111,7 +114,9 @@ h1 {
     left: initial;
     transform: initial; }
   .work-content .post-footer img {
-    width: 75%; } }
+    width: 75%; }
+  .work-content .post-footer .digital-products-work-img {
+    width: 95%; } }
 
 @media screen and (max-width: 450px) {
   h1 {

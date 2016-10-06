@@ -1,6 +1,7 @@
 import './_home-parallax'
 import 'waypoints/lib/noframework.waypoints.js'
 import Blazy from 'blazy'
+var smoothScroll = require('smoothscroll');
 
  var bLazy = new Blazy({
    successClass: 'img-fadein',
@@ -30,6 +31,31 @@ if (document.getElementById('crema-vid-mask') ) {
         }
       },  
   })
+
+  let scrollEnt = document.getElementById('scroll-enterprise')
+  let enterprise = document.getElementById('ML-img')
+  let handleScrollEnt = function(event) {
+    event.preventDefault()
+    smoothScroll(enterprise)
+  }
+  scrollEnt.addEventListener('click',handleScrollEnt)
+  
+  let scrollInnovate = document.getElementById('scroll-innovate')
+  let innovate = document.getElementById('tilr-mobile-img')
+  let handleScrollInno = function(event) {
+    event.preventDefault()
+    smoothScroll(innovate, 800)
+  }
+  scrollInnovate.addEventListener('click',handleScrollInno)
+  
+  let scrollOur = document.getElementById('scroll-our')
+  let ourWork = document.getElementById('scroll-to-this-point')
+  let handleScrollOur = function(event) {
+    event.preventDefault()
+    smoothScroll(ourWork, 900)
+  }
+  scrollOur.addEventListener('click',handleScrollOur)
+  
 }
 
 

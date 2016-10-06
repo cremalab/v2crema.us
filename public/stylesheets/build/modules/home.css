@@ -18,6 +18,14 @@
   width: 100vw;
   height: 55vh; }
 
+.smoothScroll-work-links {
+  text-align: center; }
+  .smoothScroll-work-links a {
+    color: #fcad2b;
+    padding: 0 1em 0 1em; }
+  .smoothScroll-work-links a:hover {
+    color: #8CD8FD; }
+
 .img-fadein {
   opacity: 1 !important; }
 
@@ -334,11 +342,29 @@ ul {
     #showcase3 #plaster-img .img-placeholder {
       height: 31vw; } }
 
+@media screen and (max-width: 500px) {
+  .smoothScroll-work-links a {
+    display: block;
+    padding-bottom: 1.2em;
+    font-size: 15px; } }
+
 @media screen and (max-width: 700px) and (max-height: 420px) {
   #showcase1 .grid {
-    min-height: 1100px; } }
+    min-height: 1100px; }
+  .smoothScroll-work-links a {
+    font-size: 10px; } }
 
-@media screen and (min-width: 701px) {
+@media screen and (max-width: 899px) {
+  .showcase-text h1 {
+    font-size: 1.7em; }
+  .showcase-text p {
+    font-size: 15px; } }
+
+@media screen and (min-width: 900px) {
+  .logo-wrapper h1 {
+    font-size: 2.25em; }
+  .smoothScroll-work-links {
+    font-size: 20px; }
   .showcase-text h1 {
     font-size: 2.3em; }
   .showcase-text p {

@@ -17,7 +17,10 @@ block content
 
   .logo-wrapper
     include ./partials/home-video-logo.jade
- 
+  .smoothScroll-work-links
+    a(href="/" id="scroll-enterprise") Enterprise
+    a(href="/" id="scroll-innovate") New Ventures
+    a(href="/" id="scroll-our") Innovation Lab
   #showcase1
     .grid
       
@@ -82,9 +85,8 @@ block content
             button.mango-btn SEE OUR VENTURE WORK
 
   #showcase3  
-    
     .grid
-      
+      #scroll-to-this-point(style="position: absolute; top:10%;")
       .col.img-col
         .subtle-move(id="score-img" data-parallax="true" data-speed="0.06" data-direction="up")
           .img-lazy-wrapper
@@ -128,6 +130,6 @@ block content
   include ./partials/footer.jade
   .post-footer
     a(href='/services')
-      img(src='/images/home/see-our-services.png')
+      img(src='/images/footer/pic-links/services.png')
   
   
