@@ -35,6 +35,7 @@ $transitionTimeFade: opacity .7s;
 .smoothScroll-work-links {
   text-align: center;
   a {
+    font-family: 'Lato', sans-serif;
     color: $mango;
     padding: 0 1em 0 1em;
   }
@@ -484,7 +485,7 @@ ul {
     }
   }
   .smoothScroll-work-links {
-    a {font-size: 10px;}
+    a {font-size: 14px;}
   }
 }
 

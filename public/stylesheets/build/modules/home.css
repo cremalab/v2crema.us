@@ -21,6 +21,7 @@
 .smoothScroll-work-links {
   text-align: center; }
   .smoothScroll-work-links a {
+    font-family: 'Lato', sans-serif;
     color: #fcad2b;
     padding: 0 1em 0 1em; }
   .smoothScroll-work-links a:hover {
@@ -352,7 +353,7 @@ ul {
   #showcase1 .grid {
     min-height: 1100px; }
   .smoothScroll-work-links a {
-    font-size: 10px; } }
+    font-size: 14px; } }
 
 @media screen and (max-width: 899px) {
   .showcase-text h1 {
