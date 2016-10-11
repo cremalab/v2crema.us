@@ -55,7 +55,7 @@
 
 	__webpack_require__(2);
 
-	__webpack_require__(7);
+	__webpack_require__(8);
 
 /***/ },
 /* 2 */
@@ -73,7 +73,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var smoothScroll = __webpack_require__(14);
+	var smoothScroll = __webpack_require__(7);
 
 	var bLazy = new _blazy2.default({
 	  successClass: 'img-fadein',
@@ -10485,11 +10485,132 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, smoothScroll) {
+	  'use strict';
+
+	  // Support RequireJS and CommonJS/NodeJS module formats.
+	  // Attach smoothScroll to the `window` when executed as a <script>.
+
+	  // RequireJS
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (smoothScroll), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+	  // CommonJS
+	  } else if (typeof exports === 'object' && typeof module === 'object') {
+	    module.exports = smoothScroll();
+
+	  } else {
+	    root.smoothScroll = smoothScroll();
+	  }
+
+	})(this, function(){
+	'use strict';
+
+	// Do not initialize smoothScroll when running server side, handle it in client:
+	if (typeof window !== 'object') return;
+
+	// We do not want this script to be applied in browsers that do not support those
+	// That means no smoothscroll on IE9 and below.
+	if(document.querySelectorAll === void 0 || window.pageYOffset === void 0 || history.pushState === void 0) { return; }
+
+	// Get the top position of an element in the document
+	var getTop = function(element) {
+	    // return value of html.getBoundingClientRect().top ... IE : 0, other browsers : -pageYOffset
+	    if(element.nodeName === 'HTML') return -window.pageYOffset
+	    return element.getBoundingClientRect().top + window.pageYOffset;
+	}
+	// ease in out function thanks to:
+	// http://blog.greweb.fr/2012/02/bezier-curve-based-easing-functions-from-concept-to-implementation/
+	var easeInOutCubic = function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
+
+	// calculate the scroll position we should be in
+	// given the start and end point of the scroll
+	// the time elapsed from the beginning of the scroll
+	// and the total duration of the scroll (default 500ms)
+	var position = function(start, end, elapsed, duration) {
+	    if (elapsed > duration) return end;
+	    return start + (end - start) * easeInOutCubic(elapsed / duration); // <-- you can change the easing funtion there
+	    // return start + (end - start) * (elapsed / duration); // <-- this would give a linear scroll
+	}
+
+	// we use requestAnimationFrame to be called by the browser before every repaint
+	// if the first argument is an element then scroll to the top of this element
+	// if the first argument is numeric then scroll to this location
+	// if the callback exist, it is called when the scrolling is finished
+	// if context is set then scroll that element, else scroll window 
+	var smoothScroll = function(el, duration, callback, context){
+	    duration = duration || 500;
+	    context = context || window;
+	    var start = window.pageYOffset;
+
+	    if (typeof el === 'number') {
+	      var end = parseInt(el);
+	    } else {
+	      var end = getTop(el);
+	    }
+
+	    var clock = Date.now();
+	    var requestAnimationFrame = window.requestAnimationFrame ||
+	        window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
+	        function(fn){window.setTimeout(fn, 15);};
+
+	    var step = function(){
+	        var elapsed = Date.now() - clock;
+	        if (context !== window) {
+	        	context.scrollTop = position(start, end, elapsed, duration);
+	        }
+	        else {
+	        	window.scroll(0, position(start, end, elapsed, duration));
+	        }
+
+	        if (elapsed > duration) {
+	            if (typeof callback === 'function') {
+	                callback(el);
+	            }
+	        } else {
+	            requestAnimationFrame(step);
+	        }
+	    }
+	    step();
+	}
+
+	var linkHandler = function(ev) {
+	    ev.preventDefault();
+
+	    if (location.hash !== this.hash) window.history.pushState(null, null, this.hash)
+	    // using the history api to solve issue #1 - back doesn't work
+	    // most browser don't update :target when the history api is used:
+	    // THIS IS A BUG FROM THE BROWSERS.
+	    // change the scrolling duration in this call
+	    smoothScroll(document.getElementById(this.hash.substring(1)), 500, function(el) {
+	        location.replace('#' + el.id)
+	        // this will cause the :target to be activated.
+	    });
+	}
+
+	// We look for all the internal links in the documents and attach the smoothscroll function
+	document.addEventListener("DOMContentLoaded", function () {
+	    var internal = document.querySelectorAll('a[href^="#"]:not([href="#"])'), a;
+	    for(var i=internal.length; a=internal[--i];){
+	        a.addEventListener("click", linkHandler, false);
+	    }
+	});
+
+	// return smoothscroll API
+	return smoothScroll;
+
+	});
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	__webpack_require__(5);
 
-	var _smoothScroll = __webpack_require__(8);
+	var _smoothScroll = __webpack_require__(9);
 
 	var _smoothScroll2 = _interopRequireDefault(_smoothScroll);
 
@@ -10655,138 +10776,12 @@
 	//SERVICES Page
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! smooth-scroll v9.2.0 | (c) 2016 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
 	!function(e,t){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t(e)), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=t(e):e.smoothScroll=t(e)}("undefined"!=typeof global?global:this.window||this.global,function(e){"use strict";var t,n,r,o,a,c={},i="querySelector"in document&&"addEventListener"in e,u={selector:"[data-scroll]",selectorHeader:"[data-scroll-header]",speed:500,easing:"easeInOutCubic",offset:0,updateURL:!0,callback:function(){}},l=function(){var e={},t=!1,n=0,r=arguments.length;"[object Boolean]"===Object.prototype.toString.call(arguments[0])&&(t=arguments[0],n++);for(var o=function(n){for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t&&"[object Object]"===Object.prototype.toString.call(n[r])?e[r]=l(!0,e[r],n[r]):e[r]=n[r])};r>n;n++){var a=arguments[n];o(a)}return e},s=function(e){return Math.max(e.scrollHeight,e.offsetHeight,e.clientHeight)},f=function(e,t){var n,r,o=t.charAt(0),a="classList"in document.documentElement;for("["===o&&(t=t.substr(1,t.length-2),n=t.split("="),n.length>1&&(r=!0,n[1]=n[1].replace(/"/g,"").replace(/'/g,"")));e&&e!==document&&1===e.nodeType;e=e.parentNode){if("."===o)if(a){if(e.classList.contains(t.substr(1)))return e}else if(new RegExp("(^|\\s)"+t.substr(1)+"(\\s|$)").test(e.className))return e;if("#"===o&&e.id===t.substr(1))return e;if("["===o&&e.hasAttribute(n[0])){if(!r)return e;if(e.getAttribute(n[0])===n[1])return e}if(e.tagName.toLowerCase()===t)return e}return null};c.escapeCharacters=function(e){"#"===e.charAt(0)&&(e=e.substr(1));for(var t,n=String(e),r=n.length,o=-1,a="",c=n.charCodeAt(0);++o<r;){if(t=n.charCodeAt(o),0===t)throw new InvalidCharacterError("Invalid character: the input contains U+0000.");a+=t>=1&&31>=t||127==t||0===o&&t>=48&&57>=t||1===o&&t>=48&&57>=t&&45===c?"\\"+t.toString(16)+" ":t>=128||45===t||95===t||t>=48&&57>=t||t>=65&&90>=t||t>=97&&122>=t?n.charAt(o):"\\"+n.charAt(o)}return"#"+a};var d=function(e,t){var n;return"easeInQuad"===e&&(n=t*t),"easeOutQuad"===e&&(n=t*(2-t)),"easeInOutQuad"===e&&(n=.5>t?2*t*t:-1+(4-2*t)*t),"easeInCubic"===e&&(n=t*t*t),"easeOutCubic"===e&&(n=--t*t*t+1),"easeInOutCubic"===e&&(n=.5>t?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1),"easeInQuart"===e&&(n=t*t*t*t),"easeOutQuart"===e&&(n=1- --t*t*t*t),"easeInOutQuart"===e&&(n=.5>t?8*t*t*t*t:1-8*--t*t*t*t),"easeInQuint"===e&&(n=t*t*t*t*t),"easeOutQuint"===e&&(n=1+--t*t*t*t*t),"easeInOutQuint"===e&&(n=.5>t?16*t*t*t*t*t:1+16*--t*t*t*t*t),n||t},m=function(e,t,n){var r=0;if(e.offsetParent)do r+=e.offsetTop,e=e.offsetParent;while(e);return r=Math.max(r-t-n,0),Math.min(r,p()-h())},h=function(){return Math.max(document.documentElement.clientHeight,window.innerHeight||0)},p=function(){return Math.max(e.document.body.scrollHeight,e.document.documentElement.scrollHeight,e.document.body.offsetHeight,e.document.documentElement.offsetHeight,e.document.body.clientHeight,e.document.documentElement.clientHeight)},g=function(e){return e&&"object"==typeof JSON&&"function"==typeof JSON.parse?JSON.parse(e):{}},b=function(t,n){e.history.pushState&&(n||"true"===n)&&"file:"!==e.location.protocol&&e.history.pushState(null,null,[e.location.protocol,"//",e.location.host,e.location.pathname,e.location.search,t].join(""))},v=function(e){return null===e?0:s(e)+e.offsetTop};c.animateScroll=function(n,c,i){var s=g(c?c.getAttribute("data-options"):null),f=l(t||u,i||{},s),h="[object Number]"===Object.prototype.toString.call(n)?!0:!1,y=h?null:"#"===n?e.document.documentElement:e.document.querySelector(n);if(h||y){var O=e.pageYOffset;r||(r=e.document.querySelector(f.selectorHeader)),o||(o=v(r));var S,I,H=h?n:m(y,o,parseInt(f.offset,10)),E=H-O,j=p(),w=0;h||b(n,f.updateURL);var C=function(t,r,o){var a=e.pageYOffset;(t==r||a==r||e.innerHeight+a>=j)&&(clearInterval(o),h||y.focus(),f.callback(n,c))},L=function(){w+=16,S=w/parseInt(f.speed,10),S=S>1?1:S,I=O+E*d(f.easing,S),e.scrollTo(0,Math.floor(I)),C(I,H,a)},A=function(){clearInterval(a),a=setInterval(L,16)};0===e.pageYOffset&&e.scrollTo(0,0),A()}};var y=function(e){if(0===e.button&&!e.metaKey&&!e.ctrlKey){var n=f(e.target,t.selector);if(n&&"a"===n.tagName.toLowerCase()){if(n.origin!==location.origin||n.pathname!==location.pathname)return;e.preventDefault();var r=c.escapeCharacters(n.hash);c.animateScroll(r,n,t)}}},O=function(e){n||(n=setTimeout(function(){n=null,o=v(r)},66))};return c.destroy=function(){t&&(e.document.removeEventListener("click",y,!1),e.removeEventListener("resize",O,!1),t=null,n=null,r=null,o=null,a=null)},c.init=function(n){i&&(c.destroy(),t=l(u,n||{}),r=e.document.querySelector(t.selectorHeader),o=v(r),e.document.addEventListener("click",y,!1),r&&e.addEventListener("resize",O,!1))},c});
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, smoothScroll) {
-	  'use strict';
-
-	  // Support RequireJS and CommonJS/NodeJS module formats.
-	  // Attach smoothScroll to the `window` when executed as a <script>.
-
-	  // RequireJS
-	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (smoothScroll), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-	  // CommonJS
-	  } else if (typeof exports === 'object' && typeof module === 'object') {
-	    module.exports = smoothScroll();
-
-	  } else {
-	    root.smoothScroll = smoothScroll();
-	  }
-
-	})(this, function(){
-	'use strict';
-
-	// Do not initialize smoothScroll when running server side, handle it in client:
-	if (typeof window !== 'object') return;
-
-	// We do not want this script to be applied in browsers that do not support those
-	// That means no smoothscroll on IE9 and below.
-	if(document.querySelectorAll === void 0 || window.pageYOffset === void 0 || history.pushState === void 0) { return; }
-
-	// Get the top position of an element in the document
-	var getTop = function(element) {
-	    // return value of html.getBoundingClientRect().top ... IE : 0, other browsers : -pageYOffset
-	    if(element.nodeName === 'HTML') return -window.pageYOffset
-	    return element.getBoundingClientRect().top + window.pageYOffset;
-	}
-	// ease in out function thanks to:
-	// http://blog.greweb.fr/2012/02/bezier-curve-based-easing-functions-from-concept-to-implementation/
-	var easeInOutCubic = function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
-
-	// calculate the scroll position we should be in
-	// given the start and end point of the scroll
-	// the time elapsed from the beginning of the scroll
-	// and the total duration of the scroll (default 500ms)
-	var position = function(start, end, elapsed, duration) {
-	    if (elapsed > duration) return end;
-	    return start + (end - start) * easeInOutCubic(elapsed / duration); // <-- you can change the easing funtion there
-	    // return start + (end - start) * (elapsed / duration); // <-- this would give a linear scroll
-	}
-
-	// we use requestAnimationFrame to be called by the browser before every repaint
-	// if the first argument is an element then scroll to the top of this element
-	// if the first argument is numeric then scroll to this location
-	// if the callback exist, it is called when the scrolling is finished
-	// if context is set then scroll that element, else scroll window 
-	var smoothScroll = function(el, duration, callback, context){
-	    duration = duration || 500;
-	    context = context || window;
-	    var start = window.pageYOffset;
-
-	    if (typeof el === 'number') {
-	      var end = parseInt(el);
-	    } else {
-	      var end = getTop(el);
-	    }
-
-	    var clock = Date.now();
-	    var requestAnimationFrame = window.requestAnimationFrame ||
-	        window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
-	        function(fn){window.setTimeout(fn, 15);};
-
-	    var step = function(){
-	        var elapsed = Date.now() - clock;
-	        if (context !== window) {
-	        	context.scrollTop = position(start, end, elapsed, duration);
-	        }
-	        else {
-	        	window.scroll(0, position(start, end, elapsed, duration));
-	        }
-
-	        if (elapsed > duration) {
-	            if (typeof callback === 'function') {
-	                callback(el);
-	            }
-	        } else {
-	            requestAnimationFrame(step);
-	        }
-	    }
-	    step();
-	}
-
-	var linkHandler = function(ev) {
-	    ev.preventDefault();
-
-	    if (location.hash !== this.hash) window.history.pushState(null, null, this.hash)
-	    // using the history api to solve issue #1 - back doesn't work
-	    // most browser don't update :target when the history api is used:
-	    // THIS IS A BUG FROM THE BROWSERS.
-	    // change the scrolling duration in this call
-	    smoothScroll(document.getElementById(this.hash.substring(1)), 500, function(el) {
-	        location.replace('#' + el.id)
-	        // this will cause the :target to be activated.
-	    });
-	}
-
-	// We look for all the internal links in the documents and attach the smoothscroll function
-	document.addEventListener("DOMContentLoaded", function () {
-	    var internal = document.querySelectorAll('a[href^="#"]:not([href="#"])'), a;
-	    for(var i=internal.length; a=internal[--i];){
-	        a.addEventListener("click", linkHandler, false);
-	    }
-	});
-
-	// return smoothscroll API
-	return smoothScroll;
-
-	});
-
 
 /***/ }
 /******/ ]);
