@@ -145,21 +145,17 @@
 	function draw() {
 	  requestAnimationFrame(draw);
 	  scrollEvent();
-	  // setInterval(() => scrollEvent(), 2000)
 	}
 	draw();
 
 	function scrollEvent() {
-
-	  if (!is_touch_device()) {
+	  if (!is_small_device()) {
 	    (function () {
 	      var sym = void 0;
 	      var viewportTop = (0, _jquery2.default)(window).scrollTop();
 	      var windowHeight = (0, _jquery2.default)(window).height();
 	      var viewportBottom = windowHeight + viewportTop;
 	      if ((0, _jquery2.default)(window).width()) (0, _jquery2.default)('[data-parallax="true"]').each(function () {
-	        // console.log('this', this)
-	        // console.log('this', $(this))
 	        if (isElementInViewport(this)) {
 	          var distance = viewportTop * (0, _jquery2.default)(this).attr('data-speed');
 	          if ((0, _jquery2.default)(this).attr('data-direction') === 'up') {
@@ -174,13 +170,11 @@
 	  }
 	}
 
-	function is_touch_device() {
-	  return 'ontouchstart' in window // works on most browsers 
-	  || 'onmsgesturechange' in window; // works on ie10
+	function is_small_device() {
+	  return window.innerWidth < 701;
 	}
 
 	function isElementInViewport(el) {
-
 	  //special bonus for those using jQuery
 	  if (typeof jQuery === 'function' && el instanceof jQuery) {
 	    el = el[0];

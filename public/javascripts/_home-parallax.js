@@ -2,14 +2,12 @@ import $ from 'jquery'
 function draw() {
       requestAnimationFrame(draw)
       scrollEvent()
-      // setInterval(() => scrollEvent(), 2000)
 }
 draw()
 
  
 function scrollEvent(){
-  
-  if(!is_touch_device()){
+  if(!is_small_device()){
     let sym
     let viewportTop = $(window).scrollTop()
     let windowHeight = $(window).height()
@@ -17,25 +15,20 @@ function scrollEvent(){
     if($(window).width())
 
     $('[data-parallax="true"]').each(function(){
-      // console.log('this', this)
-      // console.log('this', $(this))
       if (isElementInViewport( this ) ) {
         let distance = viewportTop * $(this).attr('data-speed')
         if($(this).attr('data-direction') === 'up'){sym = '-' } else { sym = '' }
         $(this).css('transform','translate3d(0, ' + sym + distance +'px,0)')
       }
     })
-    
   }
 }   
  
-function is_touch_device() {
-  return 'ontouchstart' in window // works on most browsers 
-      || 'onmsgesturechange' in window // works on ie10
+function is_small_device() {
+  return window.innerWidth < 701
 }
 
 function isElementInViewport (el) {
-
     //special bonus for those using jQuery
     if (typeof jQuery === 'function' && el instanceof jQuery) {
         el = el[0]
