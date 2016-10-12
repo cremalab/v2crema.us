@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express')
 var path = require('path')
 var favicon = require('serve-favicon')
@@ -35,6 +36,9 @@ app.use(function(req, res, next) {
   err.status = 404
   next(err)
 })
+
+//setting locals
+app.locals.settings.env = process.env.SOCIAL_URL
 
 // error handlers
 
