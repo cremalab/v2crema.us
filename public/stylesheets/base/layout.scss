@@ -25,7 +25,9 @@ a {
   size: 14px;
   text-decoration: none;
   font-family: 'Spartan', sans-serif;
+  outline: none;
 }
+
 a:hover {
   color: $linkBlue;
 }

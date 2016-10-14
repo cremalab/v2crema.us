@@ -153,7 +153,8 @@ a {
   color: black;
   size: 14px;
   text-decoration: none;
-  font-family: 'Spartan', sans-serif; }
+  font-family: 'Spartan', sans-serif;
+  outline: none; }
 
 a:hover {
   color: #8CD8FD; }
