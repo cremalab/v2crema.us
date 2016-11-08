@@ -3,7 +3,9 @@ var router = express.Router()
 var fs = require('fs')
 var apiReqs = require('../utils/api-reqs.js')
 
-
+setTimeout(function() {
+  console.log('Make sure you are running: \n 1.  gulp watch \n 2.  npm run webpack')  
+}, 1500);
 
 //Get api info once per day and make available to /expertise route 
 let postTitles = []

@@ -9408,10 +9408,10 @@
 /***/ function(module, exports) {
 
 	/*!
-	Waypoints - 4.0.0
-	Copyright © 2011-2015 Caleb Troughton
+	Waypoints - 4.0.1
+	Copyright © 2011-2016 Caleb Troughton
 	Licensed under the MIT license.
-	https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
+	https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 	*/
 	(function() {
 	  'use strict'
@@ -9530,7 +9530,11 @@
 	  /* Public */
 	  /* http://imakewebthings.com/waypoints/api/enable-all */
 	  Waypoint.enableAll = function() {
-	    Waypoint.invokeAll('enable')
+	    Waypoint.Context.refreshAll()
+	    for (var waypointKey in allWaypoints) {
+	      allWaypoints[waypointKey].enabled = true
+	    }
+	    return this
 	  }
 
 	  /* Public */
@@ -9605,6 +9609,10 @@
 	    element.waypointContextKey = this.key
 	    contexts[element.waypointContextKey] = this
 	    keyCounter += 1
+	    if (!Waypoint.windowContext) {
+	      Waypoint.windowContext = true
+	      Waypoint.windowContext = new Context(window)
+	    }
 
 	    this.createThrottledScrollHandler()
 	    this.createThrottledResizeHandler()
@@ -9621,7 +9629,8 @@
 	  Context.prototype.checkEmpty = function() {
 	    var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
 	    var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
-	    if (horizontalEmpty && verticalEmpty) {
+	    var isWindow = this.element == this.element.window
+	    if (horizontalEmpty && verticalEmpty && !isWindow) {
 	      this.adapter.off('.waypoints')
 	      delete contexts[this.key]
 	    }
@@ -9690,6 +9699,9 @@
 
 	      for (var waypointKey in this.waypoints[axisKey]) {
 	        var waypoint = this.waypoints[axisKey][waypointKey]
+	        if (waypoint.triggerPoint === null) {
+	          continue
+	        }
 	        var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
 	        var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
 	        var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
@@ -9809,7 +9821,7 @@
 	        }
 
 	        contextModifier = axis.contextScroll - axis.contextOffset
-	        waypoint.triggerPoint = elementOffset + contextModifier - adjustment
+	        waypoint.triggerPoint = Math.floor(elementOffset + contextModifier - adjustment)
 	        wasBeforeScroll = oldTriggerPoint < axis.oldScroll
 	        nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
 	        triggeredBackward = wasBeforeScroll && nowAfterScroll
@@ -9863,6 +9875,7 @@
 	    }
 	    Context.refreshAll()
 	  }
+
 
 	  Waypoint.requestAnimationFrame = function(callback) {
 	    var requestFn = window.requestAnimationFrame ||
@@ -10158,7 +10171,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  hey, [be]Lazy.js - v1.6.2 - 2016.05.09
+	  hey, [be]Lazy.js - v1.8.2 - 2016.10.25
 	  A fast, small and dependency free lazy load script (https://github.com/dinbror/blazy)
 	  (c) Bjoern Klinggaard - @bklinggaard - http://dinbror.dk/blazy
 	*/
@@ -10180,8 +10193,7 @@
 	    'use strict';
 
 	    //private vars
-	    var _source, _viewport, _isRetina, _attrSrc = 'src',
-	        _attrSrcset = 'srcset';
+	    var _source, _viewport, _isRetina, _supportClosest, _attrSrc = 'src', _attrSrcset = 'srcset';
 
 	    // constructor
 	    return function Blazy(options) {
@@ -10207,18 +10219,21 @@
 	        scope.options = options || {};
 	        scope.options.error = scope.options.error || false;
 	        scope.options.offset = scope.options.offset || 100;
+	        scope.options.root = scope.options.root || document;
 	        scope.options.success = scope.options.success || false;
 	        scope.options.selector = scope.options.selector || '.b-lazy';
 	        scope.options.separator = scope.options.separator || '|';
-	        scope.options.container = scope.options.container ? document.querySelectorAll(scope.options.container) : false;
+	        scope.options.containerClass = scope.options.container;
+	        scope.options.container = scope.options.containerClass ? document.querySelectorAll(scope.options.containerClass) : false;
 	        scope.options.errorClass = scope.options.errorClass || 'b-error';
-	        scope.options.breakpoints = scope.options.breakpoints || false; // obsolete
+	        scope.options.breakpoints = scope.options.breakpoints || false;
 	        scope.options.loadInvisible = scope.options.loadInvisible || false;
 	        scope.options.successClass = scope.options.successClass || 'b-loaded';
 	        scope.options.validateDelay = scope.options.validateDelay || 25;
 	        scope.options.saveViewportOffsetDelay = scope.options.saveViewportOffsetDelay || 50;
 	        scope.options.srcset = scope.options.srcset || 'data-srcset';
 	        scope.options.src = _source = scope.options.src || 'data-src';
+	        _supportClosest = Element.prototype.closest;
 	        _isRetina = window.devicePixelRatio > 1;
 	        _viewport = {};
 	        _viewport.top = 0 - scope.options.offset;
@@ -10228,11 +10243,11 @@
 	        /* public functions
 	         ************************************/
 	        scope.revalidate = function() {
-	            initialize(this);
+	            initialize(scope);
 	        };
 	        scope.load = function(elements, force) {
 	            var opt = this.options;
-	            if (elements.length === undefined) {
+	            if (elements && elements.length === undefined) {
 	                loadElement(elements, force, opt);
 	            } else {
 	                each(elements, function(element) {
@@ -10240,11 +10255,10 @@
 	                });
 	            }
 	        };
-	        scope.destroy = function() {
-	            var self = this;
-	            var util = self._util;
-	            if (self.options.container) {
-	                each(self.options.container, function(object) {
+	        scope.destroy = function() {            
+	            var util = scope._util;
+	            if (scope.options.container) {
+	                each(scope.options.container, function(object) {
 	                    unbindEvent(object, 'scroll', util.validateT);
 	                });
 	            }
@@ -10286,7 +10300,7 @@
 	    function initialize(self) {
 	        var util = self._util;
 	        // First we create an array of elements to lazy load
-	        util.elements = toArray(self.options.selector);
+	        util.elements = toArray(self.options);
 	        util.count = util.elements.length;
 	        // Then we bind resize and scroll events if not already binded
 	        if (util.destroyed) {
@@ -10308,7 +10322,7 @@
 	        var util = self._util;
 	        for (var i = 0; i < util.count; i++) {
 	            var element = util.elements[i];
-	            if (elementInView(element) || hasClass(element, self.options.successClass)) {
+	            if (elementInView(element, self.options) || hasClass(element, self.options.successClass)) {
 	                self.load(element);
 	                util.elements.splice(i, 1);
 	                util.count--;
@@ -10320,22 +10334,55 @@
 	        }
 	    }
 
-	    function elementInView(ele) {
+	    function elementInView(ele, options) {
 	        var rect = ele.getBoundingClientRect();
-	        return (
-	            // Intersection
-	            rect.right >= _viewport.left && rect.bottom >= _viewport.top && rect.left <= _viewport.right && rect.top <= _viewport.bottom
-	        );
+
+	        if(options.container && _supportClosest){
+	            // Is element inside a container?
+	            var elementContainer = ele.closest(options.containerClass);
+	            if(elementContainer){
+	                var containerRect = elementContainer.getBoundingClientRect();
+	                // Is container in view?
+	                if(inView(containerRect, _viewport)){
+	                    var top = containerRect.top - options.offset;
+	                    var right = containerRect.right + options.offset;
+	                    var bottom = containerRect.bottom + options.offset;
+	                    var left = containerRect.left - options.offset;
+	                    var containerRectWithOffset = {
+	                        top: top > _viewport.top ? top : _viewport.top,
+	                        right: right < _viewport.right ? right : _viewport.right,
+	                        bottom: bottom < _viewport.bottom ? bottom : _viewport.bottom,
+	                        left: left > _viewport.left ? left : _viewport.left
+	                    };
+	                    // Is element in view of container?
+	                    return inView(rect, containerRectWithOffset);
+	                } else {
+	                    return false;
+	                }
+	            }
+	        }      
+	        return inView(rect, _viewport);
+	    }
+
+	    function inView(rect, viewport){
+	        // Intersection
+	        return rect.right >= viewport.left &&
+	               rect.bottom >= viewport.top && 
+	               rect.left <= viewport.right && 
+	               rect.top <= viewport.bottom;
 	    }
 
 	    function loadElement(ele, force, options) {
 	        // if element is visible, not loaded or forced
 	        if (!hasClass(ele, options.successClass) && (force || options.loadInvisible || (ele.offsetWidth > 0 && ele.offsetHeight > 0))) {
-	            var dataSrc = ele.getAttribute(_source) || ele.getAttribute(options.src); // fallback to default 'data-src'
+	            var dataSrc = getAttr(ele, _source) || getAttr(ele, options.src); // fallback to default 'data-src'
 	            if (dataSrc) {
 	                var dataSrcSplitted = dataSrc.split(options.separator);
 	                var src = dataSrcSplitted[_isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
+	                var srcset = getAttr(ele, options.srcset);
 	                var isImage = equal(ele, 'img');
+	                var parent = ele.parentNode;
+	                var isPicture = parent && equal(parent, 'picture');
 	                // Image or background image
 	                if (isImage || ele.src === undefined) {
 	                    var img = new Image();
@@ -10351,14 +10398,8 @@
 	                    var onLoadHandler = function() {
 	                        // Is element an image
 	                        if (isImage) {
-	                            setSrc(ele, src); //src
-	                            handleSource(ele, _attrSrcset, options.srcset); //srcset
-	                            //picture element
-	                            var parent = ele.parentNode;
-	                            if (parent && equal(parent, 'picture')) {
-	                                each(parent.getElementsByTagName('source'), function(source) {
-	                                    handleSource(source, _attrSrcset, options.srcset);
-	                                });
+	                            if(!isPicture) {
+	                                handleSources(ele, src, srcset);
 	                            }
 	                        // or background-image
 	                        } else {
@@ -10368,11 +10409,20 @@
 	                        unbindEvent(img, 'load', onLoadHandler);
 	                        unbindEvent(img, 'error', onErrorHandler);
 	                    };
+	                    
+	                    // Picture element
+	                    if (isPicture) {
+	                        img = ele; // Image tag inside picture element wont get preloaded
+	                        each(parent.getElementsByTagName('source'), function(source) {
+	                            handleSource(source, _attrSrcset, options.srcset);
+	                        });
+	                    }
 	                    bindEvent(img, 'error', onErrorHandler);
 	                    bindEvent(img, 'load', onLoadHandler);
-	                    setSrc(img, src); //preload
-	                } else { // An item with src like iframe, unity, simpelvideo etc
-	                    setSrc(ele, src);
+	                    handleSources(img, src, srcset); // Preload
+
+	                } else { // An item with src like iframe, unity games, simpel video etc
+	                    ele.src = src;
 	                    itemLoaded(ele, options);
 	                }
 	            } else {
@@ -10395,22 +10445,38 @@
 	        addClass(ele, options.successClass);
 	        if (options.success) options.success(ele);
 	        // cleanup markup, remove data source attributes
-	        ele.removeAttribute(options.src);
+	        removeAttr(ele, options.src);
+	        removeAttr(ele, options.srcset);
 	        each(options.breakpoints, function(object) {
-	            ele.removeAttribute(object.src);
+	            removeAttr(ele, object.src);
 	        });
 	    }
 
-	    function setSrc(ele, src) {
-	        ele[_attrSrc] = src;
+	    function handleSource(ele, attr, dataAttr) {
+	        var dataSrc = getAttr(ele, dataAttr);
+	        if (dataSrc) {
+	            setAttr(ele, attr, dataSrc);
+	            removeAttr(ele, dataAttr);
+	        }
 	    }
 
-	    function handleSource(ele, attr, dataAttr) {
-	        var dataSrc = ele.getAttribute(dataAttr);
-	        if (dataSrc) {
-	            ele[attr] = dataSrc;
-	            ele.removeAttribute(dataAttr);
+	    function handleSources(ele, src, srcset){
+	        if(srcset) {
+	            setAttr(ele, _attrSrcset, srcset); //srcset
 	        }
+	        ele.src = src; //src 
+	    }
+
+	    function setAttr(ele, attr, value){
+	        ele.setAttribute(attr, value);
+	    }
+
+	    function getAttr(ele, attr) {
+	        return ele.getAttribute(attr);
+	    }
+
+	    function removeAttr(ele, attr){
+	        ele.removeAttribute(attr); 
 	    }
 
 	    function equal(ele, str) {
@@ -10427,9 +10493,9 @@
 	        }
 	    }
 
-	    function toArray(selector) {
+	    function toArray(options) {
 	        var array = [];
-	        var nodelist = document.querySelectorAll(selector);
+	        var nodelist = (options.root).querySelectorAll(options.selector);
 	        for (var i = nodelist.length; i--; array.unshift(nodelist[i])) {}
 	        return array;
 	    }
@@ -10443,7 +10509,7 @@
 	        if (ele.attachEvent) {
 	            ele.attachEvent && ele.attachEvent('on' + type, fn);
 	        } else {
-	            ele.addEventListener(type, fn, false);
+	            ele.addEventListener(type, fn, { capture: false, passive: true });
 	        }
 	    }
 
@@ -10451,7 +10517,7 @@
 	        if (ele.detachEvent) {
 	            ele.detachEvent && ele.detachEvent('on' + type, fn);
 	        } else {
-	            ele.removeEventListener(type, fn, false);
+	            ele.removeEventListener(type, fn, { capture: false, passive: true });
 	        }
 	    }
 
@@ -10474,6 +10540,7 @@
 	        };
 	    }
 	});
+
 
 /***/ },
 /* 7 */
@@ -10773,8 +10840,8 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! smooth-scroll v9.2.0 | (c) 2016 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
-	!function(e,t){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t(e)), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=t(e):e.smoothScroll=t(e)}("undefined"!=typeof global?global:this.window||this.global,function(e){"use strict";var t,n,r,o,a,c={},i="querySelector"in document&&"addEventListener"in e,u={selector:"[data-scroll]",selectorHeader:"[data-scroll-header]",speed:500,easing:"easeInOutCubic",offset:0,updateURL:!0,callback:function(){}},l=function(){var e={},t=!1,n=0,r=arguments.length;"[object Boolean]"===Object.prototype.toString.call(arguments[0])&&(t=arguments[0],n++);for(var o=function(n){for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t&&"[object Object]"===Object.prototype.toString.call(n[r])?e[r]=l(!0,e[r],n[r]):e[r]=n[r])};r>n;n++){var a=arguments[n];o(a)}return e},s=function(e){return Math.max(e.scrollHeight,e.offsetHeight,e.clientHeight)},f=function(e,t){var n,r,o=t.charAt(0),a="classList"in document.documentElement;for("["===o&&(t=t.substr(1,t.length-2),n=t.split("="),n.length>1&&(r=!0,n[1]=n[1].replace(/"/g,"").replace(/'/g,"")));e&&e!==document&&1===e.nodeType;e=e.parentNode){if("."===o)if(a){if(e.classList.contains(t.substr(1)))return e}else if(new RegExp("(^|\\s)"+t.substr(1)+"(\\s|$)").test(e.className))return e;if("#"===o&&e.id===t.substr(1))return e;if("["===o&&e.hasAttribute(n[0])){if(!r)return e;if(e.getAttribute(n[0])===n[1])return e}if(e.tagName.toLowerCase()===t)return e}return null};c.escapeCharacters=function(e){"#"===e.charAt(0)&&(e=e.substr(1));for(var t,n=String(e),r=n.length,o=-1,a="",c=n.charCodeAt(0);++o<r;){if(t=n.charCodeAt(o),0===t)throw new InvalidCharacterError("Invalid character: the input contains U+0000.");a+=t>=1&&31>=t||127==t||0===o&&t>=48&&57>=t||1===o&&t>=48&&57>=t&&45===c?"\\"+t.toString(16)+" ":t>=128||45===t||95===t||t>=48&&57>=t||t>=65&&90>=t||t>=97&&122>=t?n.charAt(o):"\\"+n.charAt(o)}return"#"+a};var d=function(e,t){var n;return"easeInQuad"===e&&(n=t*t),"easeOutQuad"===e&&(n=t*(2-t)),"easeInOutQuad"===e&&(n=.5>t?2*t*t:-1+(4-2*t)*t),"easeInCubic"===e&&(n=t*t*t),"easeOutCubic"===e&&(n=--t*t*t+1),"easeInOutCubic"===e&&(n=.5>t?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1),"easeInQuart"===e&&(n=t*t*t*t),"easeOutQuart"===e&&(n=1- --t*t*t*t),"easeInOutQuart"===e&&(n=.5>t?8*t*t*t*t:1-8*--t*t*t*t),"easeInQuint"===e&&(n=t*t*t*t*t),"easeOutQuint"===e&&(n=1+--t*t*t*t*t),"easeInOutQuint"===e&&(n=.5>t?16*t*t*t*t*t:1+16*--t*t*t*t*t),n||t},m=function(e,t,n){var r=0;if(e.offsetParent)do r+=e.offsetTop,e=e.offsetParent;while(e);return r=Math.max(r-t-n,0),Math.min(r,p()-h())},h=function(){return Math.max(document.documentElement.clientHeight,window.innerHeight||0)},p=function(){return Math.max(e.document.body.scrollHeight,e.document.documentElement.scrollHeight,e.document.body.offsetHeight,e.document.documentElement.offsetHeight,e.document.body.clientHeight,e.document.documentElement.clientHeight)},g=function(e){return e&&"object"==typeof JSON&&"function"==typeof JSON.parse?JSON.parse(e):{}},b=function(t,n){e.history.pushState&&(n||"true"===n)&&"file:"!==e.location.protocol&&e.history.pushState(null,null,[e.location.protocol,"//",e.location.host,e.location.pathname,e.location.search,t].join(""))},v=function(e){return null===e?0:s(e)+e.offsetTop};c.animateScroll=function(n,c,i){var s=g(c?c.getAttribute("data-options"):null),f=l(t||u,i||{},s),h="[object Number]"===Object.prototype.toString.call(n)?!0:!1,y=h?null:"#"===n?e.document.documentElement:e.document.querySelector(n);if(h||y){var O=e.pageYOffset;r||(r=e.document.querySelector(f.selectorHeader)),o||(o=v(r));var S,I,H=h?n:m(y,o,parseInt(f.offset,10)),E=H-O,j=p(),w=0;h||b(n,f.updateURL);var C=function(t,r,o){var a=e.pageYOffset;(t==r||a==r||e.innerHeight+a>=j)&&(clearInterval(o),h||y.focus(),f.callback(n,c))},L=function(){w+=16,S=w/parseInt(f.speed,10),S=S>1?1:S,I=O+E*d(f.easing,S),e.scrollTo(0,Math.floor(I)),C(I,H,a)},A=function(){clearInterval(a),a=setInterval(L,16)};0===e.pageYOffset&&e.scrollTo(0,0),A()}};var y=function(e){if(0===e.button&&!e.metaKey&&!e.ctrlKey){var n=f(e.target,t.selector);if(n&&"a"===n.tagName.toLowerCase()){if(n.origin!==location.origin||n.pathname!==location.pathname)return;e.preventDefault();var r=c.escapeCharacters(n.hash);c.animateScroll(r,n,t)}}},O=function(e){n||(n=setTimeout(function(){n=null,o=v(r)},66))};return c.destroy=function(){t&&(e.document.removeEventListener("click",y,!1),e.removeEventListener("resize",O,!1),t=null,n=null,r=null,o=null,a=null)},c.init=function(n){i&&(c.destroy(),t=l(u,n||{}),r=e.document.querySelector(t.selectorHeader),o=v(r),e.document.addEventListener("click",y,!1),r&&e.addEventListener("resize",O,!1))},c});
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*! smooth-scroll v10.1.0 | (c) 2016 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */
+	!(function(e,t){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t(e)), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=t(e):e.smoothScroll=t(e)})("undefined"!=typeof global?global:this.window||this.global,(function(e){"use strict";var t,n,o,r,a,i,c,u={},l="querySelector"in document&&"addEventListener"in e,s={selector:"[data-scroll]",selectorHeader:null,speed:500,easing:"easeInOutCubic",offset:0,callback:function(){}},f=function(){var e={},t=!1,n=0,o=arguments.length;"[object Boolean]"===Object.prototype.toString.call(arguments[0])&&(t=arguments[0],n++);for(var r=function(n){for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t&&"[object Object]"===Object.prototype.toString.call(n[o])?e[o]=f(!0,e[o],n[o]):e[o]=n[o])};n<o;n++){var a=arguments[n];r(a)}return e},d=function(e){return Math.max(e.scrollHeight,e.offsetHeight,e.clientHeight)},h=function(e,t){var n,o,r=t.charAt(0),a="classList"in document.documentElement;for("["===r&&(t=t.substr(1,t.length-2),n=t.split("="),n.length>1&&(o=!0,n[1]=n[1].replace(/"/g,"").replace(/'/g,"")));e&&e!==document&&1===e.nodeType;e=e.parentNode){if("."===r)if(a){if(e.classList.contains(t.substr(1)))return e}else if(new RegExp("(^|\\s)"+t.substr(1)+"(\\s|$)").test(e.className))return e;if("#"===r&&e.id===t.substr(1))return e;if("["===r&&e.hasAttribute(n[0])){if(!o)return e;if(e.getAttribute(n[0])===n[1])return e}if(e.tagName.toLowerCase()===t)return e}return null},m=function(e){"#"===e.charAt(0)&&(e=e.substr(1));for(var t,n=String(e),o=n.length,r=-1,a="",i=n.charCodeAt(0);++r<o;){if(t=n.charCodeAt(r),0===t)throw new InvalidCharacterError("Invalid character: the input contains U+0000.");a+=t>=1&&t<=31||127==t||0===r&&t>=48&&t<=57||1===r&&t>=48&&t<=57&&45===i?"\\"+t.toString(16)+" ":t>=128||45===t||95===t||t>=48&&t<=57||t>=65&&t<=90||t>=97&&t<=122?n.charAt(r):"\\"+n.charAt(r)}return"#"+a},g=function(e,t){var n;return"easeInQuad"===e&&(n=t*t),"easeOutQuad"===e&&(n=t*(2-t)),"easeInOutQuad"===e&&(n=t<.5?2*t*t:-1+(4-2*t)*t),"easeInCubic"===e&&(n=t*t*t),"easeOutCubic"===e&&(n=--t*t*t+1),"easeInOutCubic"===e&&(n=t<.5?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1),"easeInQuart"===e&&(n=t*t*t*t),"easeOutQuart"===e&&(n=1- --t*t*t*t),"easeInOutQuart"===e&&(n=t<.5?8*t*t*t*t:1-8*--t*t*t*t),"easeInQuint"===e&&(n=t*t*t*t*t),"easeOutQuint"===e&&(n=1+--t*t*t*t*t),"easeInOutQuint"===e&&(n=t<.5?16*t*t*t*t*t:1+16*--t*t*t*t*t),n||t},p=function(e,t,n){var o=0;if(e.offsetParent)do o+=e.offsetTop,e=e.offsetParent;while(e);return o=Math.max(o-t-n,0),Math.min(o,v()-b())},b=function(){return Math.max(document.documentElement.clientHeight,e.innerHeight||0)},v=function(){return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight,document.body.clientHeight,document.documentElement.clientHeight)},y=function(e){return e&&"object"==typeof JSON&&"function"==typeof JSON.parse?JSON.parse(e):{}},O=function(e){return e?d(e)+e.offsetTop:0},H=function(t,n,o){o||(t.focus(),document.activeElement.id!==t.id&&(t.setAttribute("tabindex","-1"),t.focus(),t.style.outline="none"),e.scrollTo(0,n))};u.animateScroll=function(n,o,i){var u=y(o?o.getAttribute("data-options"):null),l=f(t||s,i||{},u),d="[object Number]"===Object.prototype.toString.call(n),h=d||!n.tagName?null:n;if(d||h){var m=e.pageYOffset;l.selectorHeader&&!r&&(r=document.querySelector(l.selectorHeader)),a||(a=O(r));var b,I,S=d?n:p(h,a,parseInt(l.offset,10)),E=S-m,A=v(),j=0,L=function(t,r,a){var i=e.pageYOffset;(t==r||i==r||e.innerHeight+i>=A)&&(clearInterval(a),H(n,r,d),l.callback(n,o))},w=function(){j+=16,b=j/parseInt(l.speed,10),b=b>1?1:b,I=m+E*g(l.easing,b),e.scrollTo(0,Math.floor(I)),L(I,S,c)},C=function(){clearInterval(c),c=setInterval(w,16)};0===e.pageYOffset&&e.scrollTo(0,0),C()}};var I=function(t){e.location.hash;n&&(n.id=n.getAttribute("data-scroll-id"),u.animateScroll(n,o),n=null,o=null)},S=function(r){if(0===r.button&&!r.metaKey&&!r.ctrlKey&&(o=h(r.target,t.selector),o&&"a"===o.tagName.toLowerCase()&&o.hostname===e.location.hostname&&o.pathname===e.location.pathname&&/#/.test(o.href))){var a=m(o.hash);if("#"===a){r.preventDefault(),n=document.body;var i=n.id?n.id:"smooth-scroll-top";return n.setAttribute("data-scroll-id",i),n.id="",void(e.location.hash.substring(1)===i?I():e.location.hash=i)}n=document.querySelector(a),n&&(n.setAttribute("data-scroll-id",n.id),n.id="",o.hash===e.location.hash&&(r.preventDefault(),I()))}},E=function(e){i||(i=setTimeout((function(){i=null,a=O(r)}),66))};return u.destroy=function(){t&&(document.removeEventListener("click",S,!1),e.removeEventListener("resize",E,!1),t=null,n=null,o=null,r=null,a=null,i=null,c=null)},u.init=function(n){l&&(u.destroy(),t=f(s,n||{}),r=t.selectorHeader?document.querySelector(t.selectorHeader):null,a=O(r),document.addEventListener("click",S,!1),e.addEventListener("hashchange",I,!1),r&&e.addEventListener("resize",E,!1))},u}));
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }
