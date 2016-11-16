@@ -1,0 +1,138 @@
+@import '../../base/_colors';
+
+
+.showcase-wrapper {
+  box-sizing: border-box;
+  position: relative;
+  background-image: linear-gradient(238deg, #8bf6fe, #9252fc);
+  height: 100vh;
+  overflow: hidden;
+  .taglines {
+    width: 45%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slides {
+    width: 55%;
+    /*transform: translateY(-10%);*/
+  }
+}
+
+@media (min-width:900px) {
+  .showcase-wrapper {
+    height: 120vh;
+  }
+}
+@media (min-width:1100px) {
+  .showcase-wrapper {
+    height: 140vh;
+  }
+}
+
+.showcase {
+  transition: all 1s;
+}
+.nav {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  
+}
+
+
+.showcase-mask-top {
+  position: absolute;
+  z-index: 2;
+  top: -.1%;
+}
+
+.showcase-mask-bottom {
+  position: absolute;
+  z-index: 2;
+  bottom: -.5%;
+}
+
+.tagline {
+  width: 90%;
+  color: white;
+  margin-left:2em;
+  h1 {font-size:2.5em;}
+  p{font-size: 20px;}
+}
+
+.slide {
+  .grid {
+    display: block;
+    transform: translateY(21%);
+    }
+
+  .right {
+    transform: translateY(10vh); 
+
+  }
+}
+#case-title {
+  color: black;
+    font-family: "Spartan";
+    padding: 15px; 
+}
+
+
+
+
+.card {
+  box-shadow: -1px 2px 10px -3px rgba(0,0,0,0.75);
+  width: 295px;
+  min-height: 200px;
+  background: white;
+  margin: 2em .5em 2em .5em;
+  img {
+    width:100%;
+    height: auto;
+  }
+  p {
+    padding-top: 20px;
+    color: $servicesLinkGrey;
+  }
+  h1 { 
+    color: $warmCoral;
+    padding-bottom: 40px;
+    }
+  p,h1 {
+    margin-left:20px;
+  }
+
+}
+
+
+.dot {
+  transform: translate3d(0, 0, 0);
+  position: relative;
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin: 1em;
+  border: solid #5a99d4;
+  box-shadow: 0 0 0 0 #f0f0f0, 0 0 0 0 rgba(90, 153, 212, 0.7);
+  border-radius: 100%;
+  background: transparent;
+  cursor: pointer;
+  transform: translate3d(0, 0, 0);
+}
+.pulse {
+  animation: pulse 2s infinite cubic-bezier(0.66, 0.33, 0, 1);
+}
+.pulse-btn:hover {
+  animation-play-state: paused;
+}
+.clicked {
+  background:#5a99d4;
+}
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 12px transparent, 0 0 0 24px rgba(90, 153, 212, 0);
+  }
+}

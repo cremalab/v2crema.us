@@ -1,15 +1,51 @@
+import $ from 'jquery'
 import './_home-parallax'
 import 'waypoints/lib/noframework.waypoints.js'
 import Blazy from 'blazy'
-var smoothScroll = require('smoothscroll');
+import 'slick-carousel'
 
  var bLazy = new Blazy({
    successClass: 'img-fadein',
    offset: 0
  })
 
+$(document).ready(()=>{
+   
+  //  $('.showcase').slick({
+  //   vertical:true,    
+  //   dots:false,
+  //   infinite: true,
+  //   slidesToShow:2
+  // });
 
-if (document.getElementById('crema-vid-mask') ) {
+
+  
+
+  $('#slide-btn-0').click(() => {
+    $('#showcase').css('transform', "translateY(0)")
+    $('#slide-btn-1 > div').removeClass('clicked')
+    $('#slide-btn-2 > div').removeClass('clicked')
+    $('#slide-btn-0 > div').addClass('clicked')
+  })
+  $('#slide-btn-1').click(() => {
+    $('#showcase').css('transform', "translateY(-33.3%)")
+    $('#slide-btn-0 > div').removeClass('clicked')
+    $('#slide-btn-2 > div').removeClass('clicked')
+    $('#slide-btn-1 > div').addClass('clicked')
+    $('#slide-btn-1 > div').removeClass('pulse')
+  })
+  $('#slide-btn-2').click(() => {
+    $('#showcase').css('transform', "translateY(-66.6%)")
+    $('#slide-btn-0 > div').removeClass('clicked')
+    $('#slide-btn-1 > div').removeClass('clicked')
+    $('#slide-btn-2 > div').addClass('clicked')
+    $('#slide-btn-1 > div').removeClass('pulse')
+  })
+
+
+
+
+
   //resize home page video
   let cremaVid = document.getElementById('crema-vid-logo')
   window.addEventListener('resize', () => {
@@ -19,44 +55,22 @@ if (document.getElementById('crema-vid-mask') ) {
   })
   
   //turn crema video off and on if on homepage  
-  new Waypoint({
-      element: document.getElementById('showcase1'),
-      handler: function(direction) {
-        if (direction == 'up') {
-          cremaVid.play()
-          console.log('play logo vid')
-        } else {
-          cremaVid.pause()
-          console.log('pause logo vid')
-        }
-      },  
-  })
+  // new Waypoint({
+  //     element: document.getElementById('showcase1'),
+  //     handler: function(direction) {
+  //       if (direction == 'up') {
+  //         cremaVid.play()
+  //         console.log('play logo vid')
+  //       } else {
+  //         cremaVid.pause()
+  //         console.log('pause logo vid')
+  //       }
+  //     },  
+  // })
 
-  let scrollEnt = document.getElementById('scroll-enterprise')
-  let enterprise = document.getElementById('ML-img')
-  let handleScrollEnt = function(event) {
-    event.preventDefault()
-    smoothScroll(enterprise)
-  }
-  scrollEnt.addEventListener('click',handleScrollEnt)
   
-  let scrollInnovate = document.getElementById('scroll-innovate')
-  let innovate = document.getElementById('tilr-mobile-img')
-  let handleScrollInno = function(event) {
-    event.preventDefault()
-    smoothScroll(innovate, 800)
-  }
-  scrollInnovate.addEventListener('click',handleScrollInno)
+})
   
-  let scrollOur = document.getElementById('scroll-our')
-  let ourWork = document.getElementById('scroll-to-this-point')
-  let handleScrollOur = function(event) {
-    event.preventDefault()
-    smoothScroll(ourWork, 900)
-  }
-  scrollOur.addEventListener('click',handleScrollOur)
-  
-}
 
 
 

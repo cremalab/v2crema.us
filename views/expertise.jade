@@ -7,9 +7,7 @@ block append styles
 block vars
 
 block append scripts
-  
-  script( type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js")
-  script( type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js")
+  script( type="text/javascript" src="javascripts/build/expertiseB.js")
   <script src="//a.mailmunch.co/app/v1/site.js" id="mailmunch-script" data-mailmunch-site-id="270591" async="async"></script>
   
 
@@ -51,24 +49,14 @@ block content
             img(src="/images/expertise/vid-posters/define-mvp.jpg")
           .subhead Defining the MVP
             .faux-link Watch it
-      //- .col
-      //-   a(class="expert-video" href="https://www.youtube.com/watch?v=QiKhruyWfD4") 
-      //-     .poster-img
-      //-       img(src="/images/expertise/vid-posters/feedback-loops.jpg")
-      //-     .subhead Feedback Loops in Design  
-      //-       .faux-link Watch it  
+      
       .col
         a(class="expert-video" href="https://www.youtube.com/watch?v=9zJL6I_1mIE")
           .poster-img
             img(src="/images/expertise/vid-posters/golden-layer.jpg")
           .subhead Arriving at the Golden Layer 
             .faux-link Watch it
-      //- .col
-      //-   a(class="expert-video" href="https://www.youtube.com/watch?v=vhAt__lwYx8")
-      //-     .poster-img
-      //-       img(src="/images/expertise/vid-posters/good-apps.jpg")
-      //-     .subhead Why Good Apps Fail 
-      //-       .faux-link Watch it
+      
       .col
         a(class="expert-video" href="https://www.youtube.com/watch?v=uNrVaUNp7L4")
           .poster-img
@@ -81,12 +69,6 @@ block content
             img(src="/images/expertise/vid-posters/design-proto.png")
           .subhead Designing Prototypes 
             .faux-link Watch it
-      //- .col
-        //- a(class="expert-video" href="https://www.youtube.com/watch?v=9S05mlfC6V4")
-        //-   .poster-img
-        //-     img(src="/images/expertise/vid-posters/user-testing.jpg")
-        //-   .subhead Benefits of User Testing 
-        //-     .faux-link Watch it
 
   .medium-wrapper
     h1 Our Recent Medium articles
@@ -94,42 +76,7 @@ block content
       a(href="https://medium.com/@cremalab/#{arr[1]}" target="_blank") #{arr[0]}    
       
 
-    
-    
-
   include ./partials/footer.jade
   .post-footer
     a(href='/team')
       img(src='/images/footer/pic-links/team.png')
-
-  script.
-    
-    $('.video-library').magnificPopup({
-      delegate: 'a',
-      type: 'iframe',
-      
-      
-      
-      iframe: {
-        markup: '<div class="mfp-iframe-scaler">'+
-                  '<div class="mfp-close"></div>'+
-                  '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-                '</div>', // HTML markup of popup, `mfp-close` will be replaced by the close button
-
-        patterns: {
-          youtube: {
-            index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
-
-            id: 'v=', // String that splits URL in a two parts, second part should be %id%
-            // Or null - full URL will be returned
-            // Or a function that should return %id%, for example:
-            // id: function(url) { return 'parsed id'; }
-
-            src: '//www.youtube.com/embed/%id%?controls=0&modestbranding=1&showinfo=0&iv_load_policy=3&enablejsapi=1?controls=0&modestbranding=1&autoplay=1&showinfo=0&iv_load_policy=3&enablejsapi=1' // URL that will be set as a source for iframe.
-          }
-        }
-      }
-      
-      
-    })    
-      

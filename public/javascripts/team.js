@@ -10,15 +10,6 @@ function initSlick() {
   $('.rel-wrapper').slick({
       speed: 300,
   })
-  let arrow = document.getElementById('value-right-arrow')
-  //add back in for kaley if wanted
-  // $('.rel-wrapper').on('swipe', function(event, slick, direction){
-  //   console.log(slick.currentSlide, arrow)
-  //   if (slick.currentSlide != 0) 
-  //     arrow.style.opacity = 0
-  //   else  
-  //     arrow.style.opacity = .7
-  // })
 }
 
 function unslick() {
@@ -41,7 +32,6 @@ $(document).ready( () => {
       unslick()
     }
   }
-    
   
 
   $('.team-culture-video').magnificPopup({
@@ -64,4 +54,5 @@ $(document).ready( () => {
         }
       })    
     
+
 })

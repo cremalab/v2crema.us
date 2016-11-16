@@ -277,10 +277,10 @@ block content
 
    
   script.
-    var mobileScript = '<script type="text/javascript" src="/javascripts/servicesMobile.js"><\/script>'
+    var mobileScript = '<script type="text/javascript" src="/javascripts/build/servicesMobile.js"><\/script>'
     var element
     var parent = document.body
-    console.log(window.innerWidth)
+    //- console.log(window.innerWidth)
     if(window.innerWidth < 801){
         document.write(mobileScript)
       } else {
@@ -288,7 +288,7 @@ block content
           if(window.innerWidth < 801){
             element = document.createElement("script");
             element.type = "text/javascript";
-            element.src  = '/javascripts/servicesMobile.js';
+            element.src  = '/javascripts/build/servicesMobile.js';
             parent.appendChild(element);
             window.onresize = null
           }

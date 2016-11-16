@@ -76,7 +76,7 @@ console.log(teamNameTitles.length, 'Team Titles Loaded Sucessfully')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Crema.us', logoFileNames: logoFileNames })
+  res.render('home', { title: 'Crema.us', logoFileNames: logoFileNames })
 })
 
 router.get('/services', function(req, res, next) {
