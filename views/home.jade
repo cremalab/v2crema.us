@@ -26,85 +26,86 @@ block content
 
     .showcase-mask-top
       include ./partials/homepage/showcase-curve-top.jade
-    .taglines  
+    .taglines#stop-scroll  
       .tagline
         h1 A startup team for hire.
         p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
-    .grid
-      .col
-        //-  just for spacing
-      .slides.col
-        .showcase#showcase
-          .slide(id="slide1")
-            .grid
-              .left.col
-                .card
-                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/adidas-sq.jpg")
-                  #case-title Adidas
-                a(href="/")
+    #cards-wrapper
+      .grid
+        .col
+          //-  just for spacing
+        .slides.col
+          .showcase#showcase
+            .slide(id="slide1")
+              .grid
+                .left.col
+                  .card#first-card
+                    img(src="https://s3.amazonaws.com/hiphire.com/homepage/adidas-sq.jpg")
+                    #case-title Adidas
+                  a(href="/")
+                    .card
+                      p Ideas by Crema
+                      h1 Failing fast, Failing often
+                  .card
+                    img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
+                    #case-title Endurance Lending Network
+                .right.col
+                  .card 
+                    p Ideas by Crema
+                    h1 8 Reasons User Experience Designers will <3 Principle for Mac
+                  .card
+                    img(src="/images/work/tilr.jpg")
+                    #case-title tilr
+                  .card
+                    p Ideas by Crema
+                    h1 The Future of Collaboration 
+            
+              .grid
+                .left.col
+                  .card
+                    img(src="/images/work/laborchart.jpg")
+                    #case-title Labor Chart
                   .card
                     p Ideas by Crema
                     h1 Failing fast, Failing often
-                .card
-                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
-                  #case-title Endurance Lending Network
-              .right.col
-                .card 
-                  p Ideas by Crema
-                  h1 8 Reasons User Experience Designers will <3 Principle for Mac
-                .card
-                  img(src="/images/work/tilr.jpg")
-                  #case-title tilr
-                .card
-                  p Ideas by Crema
-                  h1 The Future of Collaboration 
-          .slide
-            .grid
-              .left.col
-                .card
-                  img(src="/images/work/laborchart.jpg")
-                  #case-title Labor Chart
-                .card
-                  p Ideas by Crema
-                  h1 Failing fast, Failing often
-                .card
-                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
-                  #case-title Endurance Lending Network
-              .right.col
-                .card 
-                  p Ideas by Crema
-                  h1 Scoring the office with a Chatbot in Slack
-                .card
-                  img(src="/images/work/stringsc.png")
-                  #case-title String
-                .card 
-                  p Ideas by Crema
-                  a(href="/")
-                    h1 Tips to manage your team better with Asana
-          .slide
-            .grid
-              .left.col
-                .card
-                  img(src="/images/work/sbsc.png")
-                  #case-title Scorebot
-                .card
-                  p Ideas by Crema
-                  a(href="/")
-                    h1 Failing fast, Failing often
-                .card
-                  img(src="/images/work/space-center.jpg")
-                  #case-title Space Center
-              .right.col
-                .card 
-                  p Ideas by Crema
-                  h1 8 Reasons User Experience Designers will <3 Principle for Mac
-                .card 
-                  img(src="/images/work/zoomin.jpg")
-                  #case-title Zoomin
-                .card 
-                  p Ideas by Crema
-                  a(href="/")
-                    h1 Tips to manage your team better with Asana
+                  .card
+                    img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
+                    #case-title Endurance Lending Network
+                .right.col
+                  .card 
+                    p Ideas by Crema
+                    h1 Scoring the office with a Chatbot in Slack
+                  .card
+                    img(src="/images/work/stringsc.png")
+                    #case-title String
+                  .card 
+                    p Ideas by Crema
+                    a(href="/")
+                      h1 Tips to manage your team better with Asana
+            
+              .grid
+                .left.col
+                  .card
+                    img(src="/images/work/sbsc.png")
+                    #case-title Scorebot
+                  .card
+                    p Ideas by Crema
+                    a(href="/")
+                      h1 Failing fast, Failing often
+                  .card
+                    img(src="/images/work/space-center.jpg")
+                    #case-title Space Center
+                .right.col
+                  .card 
+                    p Ideas by Crema
+                    h1 8 Reasons User Experience Designers will <3 Principle for Mac
+                  .card 
+                    img(src="/images/work/zoomin.jpg")
+                    #case-title Zoomin
+                  .card 
+                    p Ideas by Crema
+                    a(href="/")
+                      h1 Tips to manage your team better with Asana
     .nav
       .ul
         .li(id="slide-btn-0").dot-wrapper
@@ -115,7 +116,7 @@ block content
           .dot
 
       
-    .showcase-mask-bottom
+    .showcase-mask-bottom#bottom-cards
       include ./partials/homepage/showcase-curve-bottom.jade        
   //- displaying comapany logos 
   //- routes/index.js is reading file names from './public/images/logos/client-logos';

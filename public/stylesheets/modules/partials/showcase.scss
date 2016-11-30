@@ -20,6 +20,12 @@
   }
 }
 
+#cards-wrapper {
+  /*overflow-x: scroll;*/
+    height: 144vh;
+    transition: all 1s;
+}
+
 @media (min-width:900px) {
   .showcase-wrapper {
     height: 120vh;
