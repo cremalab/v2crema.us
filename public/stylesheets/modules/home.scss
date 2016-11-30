@@ -74,3 +74,54 @@ $transitionTimeFade: opacity .7s;
   }
 }
 
+
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover; 
+}
+
+.banner-wrapper {
+  height: 55vh;
+  position: relative;
+}
+
+.banner-logo {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+}
+
+.banner-mask {
+  /*margin-bottom: -.6%; */
+  position: absolute;
+  bottom: -5%;
+}
+
+.banner-subtext {
+  height: 100%;
+  background: white;
+  margin-top: -.7%;
+  p {
+    font-size: 22px;
+    line-height: 44px;
+    span {
+      color: #f254ca;
+      display: block;
+    }
+    width: 50%;
+    margin-left: 3em;
+    padding-top: 4em;
+  }
+}

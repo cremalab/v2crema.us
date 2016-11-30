@@ -10490,29 +10490,6 @@
 	    (0, _jquery2.default)('#slide-btn-2 > div').addClass('clicked');
 	    (0, _jquery2.default)('#slide-btn-1 > div').removeClass('pulse');
 	  });
-
-	  //resize home page video
-	  var cremaVid = document.getElementById('crema-vid-logo');
-	  window.addEventListener('resize', function () {
-	    var vidMask = document.getElementById('video-size');
-	    cremaVid.style.height = vidMask.clientHeight - 20 + 'px';
-	    cremaVid.style.width = vidMask.clientWidth - 20 + 'px';
-	  });
-
-	  //turn crema video off and on if on homepage  
-	  // new Waypoint({
-	  //     element: document.getElementById('showcase1'),
-	  //     handler: function(direction) {
-	  //       if (direction == 'up') {
-	  //         cremaVid.play()
-	  //         console.log('play logo vid')
-	  //       } else {
-	  //         cremaVid.pause()
-	  //         console.log('pause logo vid')
-	  //       }
-	  //     },  
-	  // })
-
 	});
 
 /***/ },
