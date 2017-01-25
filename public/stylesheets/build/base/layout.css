@@ -151,10 +151,15 @@ body {
 
 a {
   color: white;
-  size: 14px;
+  size: 18px;
   text-decoration: none;
-  font-family: 'Spartan', sans-serif;
-  outline: none; }
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal; }
 
 a:hover {
   color: #8CD8FD; }

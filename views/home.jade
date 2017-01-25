@@ -21,14 +21,28 @@ block vars
 block content
   include ./partials/homepage/banner.jade
   
+
   .showcase-wrapper
 
-    .showcase-mask-top
+    #showcase-mask-top.showcase-mask-top-start
       include ./partials/homepage/showcase-curve-top.jade
-    .taglines#stop-scroll  
-      .tagline
-        h1 A startup team for hire.
-        p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+    .taglines.taglines-start#taglines
+      .tagline-relative-wrapper
+        .tagline#tagline-1
+          h1 A startup team for hire.
+          p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+          a(href="https://cremalab.typeform.com/to/daFqwI" target="_blank")
+           button.mango-btn  SEE OUR TEAM
+        .tagline#tagline-2.-opacity-0
+          h1 We create and bring new products to market.
+          p Crema is a creative agency that provides business strategy, design, user experience and technology services to new ventures and some of the world's most innovative organizations.
+          a(href="https://cremalab.typeform.com/to/daFqwI" target="_blank")
+          button.mango-btn  SEE OUR WORK
+        .tagline#tagline-3.-opacity-0
+          h1 We turn good ideas into great product experiences.
+          p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+          a(href="https://cremalab.typeform.com/to/daFqwI" target="_blank")
+          button.mango-btn  GET IN TOUCH
     #cards-wrapper
       .grid
         .col
@@ -59,7 +73,7 @@ block content
                     p Ideas by Crema
                     h1 The Future of Collaboration 
             
-              .grid
+              .grid#showcase-section-2
                 .left.col
                   .card
                     img(src="/images/work/laborchart.jpg")
@@ -82,7 +96,7 @@ block content
                     a(href="/")
                       h1 Tips to manage your team better with Asana
             
-              .grid
+              .grid#showcase-section-3
                 .left.col
                   .card
                     img(src="/images/work/sbsc.png")
@@ -105,6 +119,7 @@ block content
                     p Ideas by Crema
                     a(href="/")
                       h1 Tips to manage your team better with Asana
+                .spacer(style="height:270px;width:100%;")
     .nav
       .ul
         .li(id="slide-btn-0").dot-wrapper
@@ -115,7 +130,7 @@ block content
           .dot
 
       
-    .showcase-mask-bottom#bottom-cards
+    #showcase-mask-bot.showcase-mask-bot-start
       include ./partials/homepage/showcase-curve-bottom.jade        
   //- displaying comapany logos 
   //- routes/index.js is reading file names from './public/images/logos/client-logos';

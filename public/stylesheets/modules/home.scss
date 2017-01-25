@@ -6,6 +6,7 @@
 $SVGHeightWidthRatio: .90;
 $transitionTimeFade: opacity .7s;
 
+* { box-sizing: border-box;}
 .svg-wrapper { 
   svg {
     position: absolute;
@@ -95,12 +96,20 @@ video#bgvid {
 .banner-wrapper {
   height: 55vh;
   position: relative;
+  .grid {
+    position: absolute;
+    .text {
+      font-family: 'Spartan', sans-serif;
+      font-size: 18px;
+      padding-top: 4em;
+      line-height: .9;
+      text-align: left;
+      color: #ffffff;
+    }
+  }
 }
 
 .banner-logo {
-  position: absolute;
-  top: 35%;
-  transform: translateY(-50%);
 }
 
 .banner-mask {
@@ -115,7 +124,7 @@ video#bgvid {
   margin-top: -.7%;
   p {
     font-size: 22px;
-    line-height: 44px;
+    line-height: 44px; 
     span {
       color: #f254ca;
       display: block;
@@ -123,5 +132,6 @@ video#bgvid {
     width: 50%;
     margin-left: 3em;
     padding-top: 4em;
+    color: $servicesLinkGrey;
   }
 }

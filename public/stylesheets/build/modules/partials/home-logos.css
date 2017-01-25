@@ -6,9 +6,9 @@ ul {
 .landing-logos {
   text-align: center;
   background: white;
-  max-width: 90vw;
+  max-width: 100vw;
   overflow: hidden;
-  margin: 1em auto; }
+  padding: 1em; }
 
 .landing-logos ul {
   margin: 3em auto;
@@ -29,7 +29,6 @@ ul {
 .landing-logos .logo {
   width: 135px;
   height: 65px;
-  /*background-color: teal;*/
   margin: 1em;
   vertical-align: middle; }
 

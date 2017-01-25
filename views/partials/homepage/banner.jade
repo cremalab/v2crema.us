@@ -1,14 +1,19 @@
 
 .banner-wrapper
-  <video id="bgvid" muted="muted" autoplay="true"  preload="auto" loop="loop">
+  <video id="bgvid" muted="muted"    preload="auto" loop="loop">
   <source src="/images/Crema-Culture.mp4" type="video/mp4">
   </video>
 
   .banner-mask
     include ./video-mask-svg.jade
-.banner-logo
-  include ./banner-logo-svg.jade
-
+  .grid
+    .col
+      .banner-logo
+        include ./banner-logo-svg.jade
+    .col.text
+      h1 Strategy
+      h1 Design
+      h1 Development
 
 
 .banner-subtext 
