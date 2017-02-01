@@ -1,0 +1,35 @@
+body {
+  background: #fc5277; }
+
+.contact-details {
+  padding-top: 3em;
+  margin: 0 auto;
+  width: 33vw;
+  text-align: center; }
+
+.title h1 {
+  font-size: 3em;
+  margin-bottom: .1em; }
+
+.title p {
+  font-family: 'Spartan', sans-serif;
+  margin-top: 0;
+  font-size: 20px; }
+
+.details {
+  color: white; }
+  .details p {
+    font-size: 1.6em;
+    padding: 1em 0; }
+
+.footer {
+  background: transparent;
+  padding: 0; }
+  .footer .footer-content .grid .social-wrapper {
+    text-align: center; }
+  .footer .footer-content .grid .address {
+    display: none; }
+
+@media screen and (max-width: 850px) {
+  .contact-details {
+    width: 80vw; } }

@@ -106,6 +106,11 @@ router.get('/team', function(req, res, next) {
   console.log(`Serving ${teamPhotos.length} team photos to /team`)
 })
 
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { title: 'Crema.us - Contact'})
+})
+
+
 
 // Work Galleries
 router.get('/enterprise-work', function(req, res, next) {

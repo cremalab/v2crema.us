@@ -31,10 +31,10 @@ video#bgvid {
 }
 
 .banner-wrapper {
-  height: 55vh;
   position: relative;
   .grid {
-    position: absolute;
+    position: relative;
+    padding-bottom: 8em;
     .text {
       font-family: 'Spartan', sans-serif;
       font-size: 18px;
@@ -99,7 +99,7 @@ video#bgvid {
         position: fixed;
         min-width: 100%;
         top: 0;
-        height: 65vh;
+        height: 100%;
         z-index: -100;
         background: url('/images/home/homepage/home-page-vid-poster.jpg');
         background-size: cover;
@@ -133,6 +133,9 @@ video#bgvid {
 }
 
 @media screen and (min-width: 701px) { 
+  .banner-wrapper {
+    padding-top: 7em; 
+  }
   .showcase-mobile-wrapper {
     display: none;
   }

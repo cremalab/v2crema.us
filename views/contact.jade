@@ -1,0 +1,22 @@
+extends layout
+
+block append styles
+  link(rel='stylesheet', href='/stylesheets/build/modules/contact.css')
+
+block append scripts
+
+block vars
+
+block content
+  .contact-wrapper
+    .contact-details
+      .title
+        h1 Contact us
+        p Want to get in touch? Here's how!
+      .details
+        a(href="mailto:hello@cremalab.com")
+          p hello@cremalab.com
+        p 816.465.3456
+        p 1815 Central St. KC, MO 64108  
+
+  include ./partials/footer.jade
