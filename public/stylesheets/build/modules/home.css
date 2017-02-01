@@ -88,9 +88,6 @@ ul {
 .-opacity-0 {
   opacity: 0; }
 
-.-translate-100-up {
-  transform: translateY(-150%); }
-
 .tagline-animate {
   animation: tagline-out 1s 1; }
 
@@ -122,29 +119,30 @@ ul {
   z-index: 2; }
   #showcase-mask-top svg {
     width: 100vw;
-    height: 24vh; }
+    height: 24vh;
+    display: block; }
 
 .showcase-mask-bot-start {
   position: absolute;
   top: 100vh;
-  margin-bottom: -.3%;
-  transform: translateY(-97%); }
+  transform: translateY(-100%); }
 
 .showcase-mask-bot-scroll {
   position: fixed;
-  transform: translateY(-97%);
+  transform: translateY(-100%);
   top: 100vh; }
 
 .showcase-mask-bot-end {
   position: absolute;
-  bottom: 0;
-  margin-bottom: -.5%; }
+  bottom: 0; }
 
 #showcase-mask-bot {
   z-index: 2; }
   #showcase-mask-bot svg {
     width: 100vw;
-    height: 22vh; }
+    height: auto;
+    transform: rotate(180deg);
+    display: block; }
 
 .slide .grid {
   display: block;
@@ -161,7 +159,6 @@ ul {
 .card {
   box-shadow: -1px 2px 10px -3px rgba(0, 0, 0, 0.75);
   width: 255px;
-  min-height: 200px;
   background: white;
   margin: 2em .5em 2em .5em; }
   .card img {
@@ -184,52 +181,83 @@ ul {
     opacity: 0;
     transform: translateY(-100%); } }
 
-* {
-  box-sizing: border-box; }
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover; }
 
-.svg-wrapper svg {
-  position: absolute;
-  z-index: -1; }
+.banner-wrapper {
+  height: 55vh;
+  position: relative; }
+  .banner-wrapper .grid {
+    position: absolute; }
+    .banner-wrapper .grid .text {
+      font-family: 'Spartan', sans-serif;
+      font-size: 18px;
+      line-height: .9;
+      text-align: left;
+      color: #ffffff;
+      transform: translateY(2vw);
+      text-shadow: 1px 1px 30px rgba(0, 0, 0, 0.4); }
 
-.svg-wrapper .mobile-svg {
-  display: none; }
+@media screen and (min-width: 1400px) {
+  .banner-wrapper .grid .text {
+    transform: translate(-3vw, 1.5vw); } }
 
-.logo-wrapper {
-  width: 100vw;
-  height: 55vh; }
+@media screen and (max-width: 1150px) {
+  .showcase-wrapper .slides {
+    transform: translate(0, 6.5%); }
+  .card {
+    width: 200px; } }
 
-.img-fadein {
-  opacity: 1 !important; }
+@media screen and (max-width: 900px) {
+  #slide1 .col {
+    display: block; }
+  .card {
+    width: 250px;
+    margin: 0 auto; }
+  .slide .right {
+    transform: translateY(0); }
+  .showcase-wrapper .slides {
+    transform: translate(0, 3.5%); } }
 
 @media screen and (max-width: 700px) {
-  .logo-wrapper {
-    padding-top: 0;
-    height: 40vh;
-    display: flex;
-    justify-content: center; }
-  .svg-wrapper .desktop-svg {
-    visibility: 0;
-    display: none;
-    width: 0;
-    height: 0; }
-  .svg-wrapper .mobile-svg {
-    display: block; }
-  h1 {
-    font-size: 1.65em; } }
+  .showcase-wrapper {
+    display: none; }
+  .showcase-mobile-wrapper {
+    background: white; }
+  .showcase-mobile {
+    background: url(../../../images/blue-team-wonder-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250vh; }
+  .taglines-mobile {
+    padding-top: 15em; }
+  .tagline-mobile {
+    margin: 0 auto;
+    width: 90%;
+    padding-bottom: 6em;
+    text-align: center;
+    color: white; }
+    .tagline-mobile p {
+      font-size: 16px;
+      font-family: 'Lato', sans-serif; } }
 
-@media screen and (min-width: 900px) {
-  .logo-wrapper h1 {
-    font-size: 2.25em; } }
+svg {
+  display: block; }
 
-@media screen and (min-width: 1300px) {
-  .logo-wrapper {
-    height: 60vh; }
-    .logo-wrapper .header-logo-wrapper h1 {
-      bottom: 2vw; } }
-
-@media screen and (min-width: 701px) and (max-width: 1024px) and (min-height: 900px) {
-  .logo-wrapper {
-    height: 35vh; } }
+* {
+  box-sizing: border-box; }
 
 video#bgvid {
   position: fixed;
@@ -244,7 +272,6 @@ video#bgvid {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  background: url(polina.jpg) no-repeat;
   background-size: cover; }
 
 .banner-wrapper {
@@ -255,27 +282,59 @@ video#bgvid {
     .banner-wrapper .grid .text {
       font-family: 'Spartan', sans-serif;
       font-size: 18px;
-      padding-top: 4em;
       line-height: .9;
       text-align: left;
-      color: #ffffff; }
+      color: #ffffff;
+      transform: translateY(2vw); }
+
+@media screen and (min-width: 1400px) {
+  .banner-wrapper .grid .text {
+    transform: translate(-3vw, 1.5vw); } }
+
+.banner-logo svg {
+  width: 55vw;
+  display: block; }
 
 .banner-mask {
-  /*margin-bottom: -.6%; */
   position: absolute;
-  bottom: -5%; }
+  bottom: 0; }
 
 .banner-subtext {
   height: 100%;
-  background: white;
-  margin-top: -.7%; }
+  background: white; }
   .banner-subtext p {
     font-size: 22px;
     line-height: 44px;
-    width: 50%;
+    padding-bottom: 3em;
+    margin-top: 0;
+    width: 65%;
     margin-left: 3em;
     padding-top: 4em;
     color: #afafaf; }
     .banner-subtext p span {
       color: #f254ca;
       display: block; }
+
+@media (max-width: 950px) {
+  .banner-subtext p {
+    width: 80%; } }
+
+@media screen and (max-width: 700px) {
+  .banner-wrapper .grid .col {
+    text-align: center; }
+    .banner-wrapper .grid .col .banner-logo {
+      padding-top: 2.5em; }
+      .banner-wrapper .grid .col .banner-logo svg {
+        width: 82vw;
+        margin: 0 auto; }
+  .banner-wrapper .grid .text {
+    font-size: 14px; }
+  .banner-subtext {
+    margin: 0 auto; }
+    .banner-subtext p {
+      font-size: 16px;
+      line-height: 20px; } }
+
+@media screen and (min-width: 701px) {
+  .showcase-mobile-wrapper {
+    display: none; } }

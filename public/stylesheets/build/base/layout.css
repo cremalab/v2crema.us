@@ -102,16 +102,6 @@
     .footer .social-wrapper img {
       margin: 0 10px; }
 
-.post-footer {
-  text-align: center;
-  width: 100%;
-  position: relative;
-  background-color: white;
-  padding: 50px 0; }
-  .post-footer img {
-    cursor: pointer;
-    width: 25%; }
-
 @media screen and (max-width: 700px) {
   .footer .address {
     text-align: center;
@@ -129,9 +119,7 @@
         height: 100%; }
   .footer button {
     margin: 1.5em auto;
-    display: block; }
-  .post-footer img {
-    width: 70%; } }
+    display: block; } }
 
 body {
   margin: 0;

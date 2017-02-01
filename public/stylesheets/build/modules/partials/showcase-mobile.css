@@ -1,0 +1,21 @@
+@media screen and (max-width: 700px) {
+  .showcase-wrapper {
+    display: none; }
+  .showcase-mobile-wrapper {
+    background: white; }
+  .showcase-mobile {
+    background: url(../../../images/blue-team-wonder-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250vh; }
+  .taglines-mobile {
+    padding-top: 15em; }
+  .tagline-mobile {
+    margin: 0 auto;
+    width: 90%;
+    padding-bottom: 6em;
+    text-align: center;
+    color: white; }
+    .tagline-mobile p {
+      font-size: 16px;
+      font-family: 'Lato', sans-serif; } }

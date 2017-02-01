@@ -53,18 +53,6 @@
   }
 }
 
-.post-footer {
-  text-align: center;
-  width: 100%;
-  position: relative;
-  background-color: white;
-  padding: 50px 0;
-  img {
-    cursor: pointer;
-    width: 25%;
-  }
-}
-
 @media screen and (max-width:700px) {
   .footer {
     .address {
@@ -87,11 +75,6 @@
     button {
       margin: 1.5em auto;
       display: block;
-    }
-  }
-  .post-footer {
-    img {
-      width: 70%;
     }
   }
 }

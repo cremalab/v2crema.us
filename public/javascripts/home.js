@@ -33,7 +33,6 @@ $(document).ready(()=>{
         bot_mask.classList.add('showcase-mask-bot-scroll')
         taglines.classList.remove('taglines-start')
         taglines.classList.add('taglines-scroll')
-        console.log('cards-wrapper: Down')
       } else {
         top_mask.classList.remove('showcase-mask-top-scroll')
         top_mask.classList.add('showcase-mask-top-start')
@@ -41,7 +40,6 @@ $(document).ready(()=>{
         bot_mask.classList.add('showcase-mask-bot-start')
         taglines.classList.remove('taglines-scroll')
         taglines.classList.add('taglines-start')
-        console.log('cards-wrapper: Up')
       }
     }  
   })
@@ -57,7 +55,6 @@ $(document).ready(()=>{
         bot_mask.classList.add('showcase-mask-bot-end')
         taglines.classList.remove('taglines-scroll')
         taglines.classList.add('taglines-end')
-        console.log('cards-wrapper: Down')
       } else {
         top_mask.classList.remove('showcase-mask-top-end')
         top_mask.classList.add('showcase-mask-top-scroll')
@@ -65,7 +62,6 @@ $(document).ready(()=>{
         bot_mask.classList.add('showcase-mask-bot-scroll')
         taglines.classList.remove('taglines-end')
         taglines.classList.add('taglines-scroll')
-        console.log('cards-wrapper: Up')
       }
     },
     offset: window.innerHeight  
@@ -78,11 +74,9 @@ $(document).ready(()=>{
       let tagline_2 = document.getElementById('tagline-2')
       if (direction == 'down') {
         tagline_1.classList.add('-opacity-0')
-        tagline_1.classList.add('-translate-100-up')
         tagline_2.classList.remove('-opacity-0')
       } else {
         tagline_1.classList.remove('-opacity-0')
-        tagline_1.classList.remove('-translate-100-up')
         tagline_2.classList.add('-opacity-0')
       }
     },
@@ -97,11 +91,9 @@ $(document).ready(()=>{
       let tagline_3 = document.getElementById('tagline-3')
       if (direction == 'down') {
         tagline_2.classList.add('-opacity-0')
-        tagline_2.classList.add('-translate-100-up')
         tagline_3.classList.remove('-opacity-0')
       } else {
         tagline_2.classList.remove('-opacity-0')
-        tagline_2.classList.remove('-translate-100-up')
         tagline_3.classList.add('-opacity-0')
       }
     },

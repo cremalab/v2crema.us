@@ -1,0 +1,100 @@
+
+.showcase-wrapper
+  #showcase-mask-top.showcase-mask-top-start
+    include ./showcase-curve-top.jade
+  .taglines.taglines-start#taglines
+    .tagline-relative-wrapper
+      .tagline#tagline-1
+        h1 A startup team for hire.
+        p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+        a(href="https://cremalab.typeform.com/to/daFqwI" target="_blank")
+          button.mango-btn  SEE OUR TEAM
+      .tagline#tagline-2.-opacity-0
+        h1 We create and bring new products to market.
+        p Crema is a creative agency that provides business strategy, design, user experience and technology services to new ventures and some of the world's most innovative organizations.
+        a(href="https://cremalab.typeform.com/to/daFqwI" target="_blank")
+          button.mango-btn  SEE OUR WORK
+      .tagline#tagline-3.-opacity-0
+        h1 We turn good ideas into great product experiences.
+        p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+        a(href="https://cremalab.typeform.com/to/daFqwI" target="_blank")
+          button.mango-btn  GET IN TOUCH
+  #cards-wrapper
+    .grid
+      .col
+        //-  just for spacing
+      .slides.col
+        .showcase#showcase
+          .slide(id="slide1")
+            .grid
+              .left.col
+                .card#first-card
+                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/adidas-sq.jpg")
+                  #case-title Adidas
+                a(href="/")
+                  .card
+                    p Ideas by Crema
+                    h1 Failing fast, Failing often
+                .card
+                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
+                  #case-title Endurance Lending Network
+              .right.col
+                .card 
+                  p Ideas by Crema
+                  h1 8 Reasons User Experience Designers will <3 Principle for Mac
+                .card
+                  img(src="/images/work/tilr.jpg")
+                  #case-title tilr
+                .card
+                  p Ideas by Crema
+                  h1 The Future of Collaboration 
+          
+            .grid#showcase-section-2
+              .left.col
+                .card
+                  img(src="/images/work/laborchart.jpg")
+                  #case-title Labor Chart
+                .card
+                  p Ideas by Crema
+                  h1 Failing fast, Failing often
+                .card
+                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
+                  #case-title Endurance Lending Network
+              .right.col
+                .card 
+                  p Ideas by Crema
+                  h1 Scoring the office with a Chatbot in Slack
+                .card
+                  img(src="/images/work/stringsc.png")
+                  #case-title String
+                .card 
+                  p Ideas by Crema
+                  a(href="/")
+                    h1 Tips to manage your team better with Asana
+          
+            .grid#showcase-section-3
+              .left.col
+                .card
+                  img(src="/images/work/sbsc.png")
+                  #case-title Scorebot
+                .card
+                  p Ideas by Crema
+                  a(href="/")
+                    h1 Failing fast, Failing often
+                .card
+                  img(src="/images/work/space-center.jpg")
+                  #case-title Space Center
+              .right.col
+                .card 
+                  p Ideas by Crema
+                  h1 8 Reasons User Experience Designers will <3 Principle for Mac
+                .card 
+                  img(src="/images/work/zoomin.jpg")
+                  #case-title Zoomin
+                .card 
+                  p Ideas by Crema
+                  a(href="/")
+                    h1 Tips to manage your team better with Asana
+              .spacer(style="height:270px;width:100%;")
+  #showcase-mask-bot.showcase-mask-bot-start
+    include ./showcase-curve-bottom.jade 
