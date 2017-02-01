@@ -74,7 +74,7 @@
   z-index: 2; }
   #showcase-mask-top svg {
     width: 100vw;
-    height: 24vh;
+    height: 21vh;
     display: block; }
 
 .showcase-mask-bot-start {
@@ -92,6 +92,7 @@
   bottom: 0; }
 
 #showcase-mask-bot {
+  display: flex;
   z-index: 2; }
   #showcase-mask-bot svg {
     width: 100vw;
@@ -102,9 +103,6 @@
 .slide .grid {
   display: block;
   transform: translateX(3vw); }
-
-.slide .right {
-  transform: translateY(10vh); }
 
 #case-title {
   color: black;
@@ -151,31 +149,21 @@ video#bgvid {
   transform: translateX(-50%) translateY(-50%);
   background-size: cover; }
 
-.banner-wrapper {
-  height: 55vh;
-  position: relative; }
-  .banner-wrapper .grid {
-    position: absolute; }
-    .banner-wrapper .grid .text {
-      font-family: 'Spartan', sans-serif;
-      font-size: 18px;
-      line-height: .9;
-      text-align: left;
-      color: #ffffff;
-      transform: translateY(2vw);
-      text-shadow: 1px 1px 30px rgba(0, 0, 0, 0.4); }
-
-@media screen and (min-width: 1400px) {
-  .banner-wrapper .grid .text {
-    transform: translate(-3vw, 1.5vw); } }
+video[poster] {
+  width: 100vw;
+  height: auto; }
 
 @media screen and (max-width: 1150px) {
+  #showcase-mask-top svg {
+    height: 18vh; }
   .showcase-wrapper .slides {
     transform: translate(0, 6.5%); }
   .card {
     width: 200px; } }
 
 @media screen and (max-width: 900px) {
+  #showcase-mask-top svg {
+    height: 12vh; }
   #slide1 .col {
     display: block; }
   .card {

@@ -1,13 +1,5 @@
 import $ from 'jquery'
-import './_home-parallax'
 import 'waypoints/lib/noframework.waypoints.js'
-import Blazy from 'blazy'
-import 'slick-carousel'
-
- var bLazy = new Blazy({
-   successClass: 'img-fadein',
-   offset: 0
- })
 
 $(document).ready(()=>{
   let top_mask  = document.getElementById('showcase-mask-top')
@@ -15,13 +7,6 @@ $(document).ready(()=>{
   let taglines = document.getElementById('taglines')
   let tagline_1 = document.getElementById('tagline-1')
    
-  //  $('.showcase').slick({
-  //   vertical:true,    
-  //   dots:false,
-  //   infinite: true,
-  //   slidesToShow:2
-  // });
-
   // top-showcase-mask waypoint
   new Waypoint({
     element: document.getElementById('cards-wrapper'), 
@@ -66,9 +51,10 @@ $(document).ready(()=>{
     },
     offset: window.innerHeight  
   })
+  
   // First triger to change language
   new Waypoint({
-    element: document.getElementById('showcase-section-2'), 
+    element: document.getElementById('trigger-copy-change-1'), 
     handler: function(direction) {
       let tagline_1 = document.getElementById('tagline-1')
       let tagline_2 = document.getElementById('tagline-2')
@@ -80,12 +66,12 @@ $(document).ready(()=>{
         tagline_2.classList.add('-opacity-0')
       }
     },
-    offset: window.innerHeight * .5  
+    // offset: window.innerHeight * .5  
   })
-  // Second triger to change language
   
+  // Second triger to change language
   new Waypoint({
-    element: document.getElementById('showcase-section-3'), 
+    element: document.getElementById('trigger-copy-change-2'), 
     handler: function(direction) {
       let tagline_2 = document.getElementById('tagline-2')
       let tagline_3 = document.getElementById('tagline-3')
@@ -97,10 +83,7 @@ $(document).ready(()=>{
         tagline_3.classList.add('-opacity-0')
       }
     },
-    offset: window.innerHeight * .5  
+    // offset: window.innerHeight * .5  
   })
 
-
-
-  
 })

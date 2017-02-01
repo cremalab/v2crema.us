@@ -58,9 +58,6 @@
  opacity: 0; 
 }
 
-// // .-translate-100-up {
-// //   transform: translateY(-150%)
-// }
 .tagline-animate {
   animation: tagline-out 1s 1;
 }
@@ -69,7 +66,6 @@
 #cards-wrapper {
     transition: all 1s;
 }
-
 
 .showcase {
   transition: all 1s;
@@ -97,7 +93,7 @@
 #showcase-mask-top {
   svg {
     width: 100vw;
-    height: 24vh;
+    height: 21vh;
     display: block;
   }
   z-index: 2;
@@ -119,6 +115,7 @@
 }
 
 #showcase-mask-bot {
+  display: flex;
   svg {
     width: 100vw;
     height: auto;
@@ -135,7 +132,6 @@
     transform: translateX(3vw);
     }
   .right {
-    transform: translateY(10vh); 
 
   }
 }
@@ -199,34 +195,17 @@ video#bgvid {
     transform: translateX(-50%) translateY(-50%);
     background-size: cover; 
 }
-
-.banner-wrapper {
-  height: 55vh;
-  position: relative;
-  .grid {
-    position: absolute;
-    .text {
-      font-family: 'Spartan', sans-serif;
-      font-size: 18px;
-      line-height: .9;
-      text-align: left;
-      color: #ffffff;
-      transform: translateY(2vw);
-      text-shadow: 1px 1px 30px rgba(0, 0, 0, 0.4);
-    }
-  }
-}
-@media screen and (min-width: 1400px) {
-  .banner-wrapper{
-    .grid{
-      .text {
-        transform: translate(-3vw,1.5vw)
-      }
-    }
-  }
+video[poster] {
+  width: 100vw;
+  height: auto;
 }
 
 @media screen and (max-width: 1150px) {
+  #showcase-mask-top {
+    svg {
+      height: 18vh;
+    }
+  }
   .showcase-wrapper {
     .slides {
       transform: translate(0, 6.5%); 
@@ -238,6 +217,11 @@ video#bgvid {
 }
 
 @media screen and (max-width: 900px) {
+  #showcase-mask-top {
+    svg {
+      height: 12vh;
+    }
+  }
   #slide1 .col {
     display: block;
   }

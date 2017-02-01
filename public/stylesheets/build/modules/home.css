@@ -119,7 +119,7 @@ ul {
   z-index: 2; }
   #showcase-mask-top svg {
     width: 100vw;
-    height: 24vh;
+    height: 21vh;
     display: block; }
 
 .showcase-mask-bot-start {
@@ -137,6 +137,7 @@ ul {
   bottom: 0; }
 
 #showcase-mask-bot {
+  display: flex;
   z-index: 2; }
   #showcase-mask-bot svg {
     width: 100vw;
@@ -147,9 +148,6 @@ ul {
 .slide .grid {
   display: block;
   transform: translateX(3vw); }
-
-.slide .right {
-  transform: translateY(10vh); }
 
 #case-title {
   color: black;
@@ -196,31 +194,21 @@ video#bgvid {
   transform: translateX(-50%) translateY(-50%);
   background-size: cover; }
 
-.banner-wrapper {
-  height: 55vh;
-  position: relative; }
-  .banner-wrapper .grid {
-    position: absolute; }
-    .banner-wrapper .grid .text {
-      font-family: 'Spartan', sans-serif;
-      font-size: 18px;
-      line-height: .9;
-      text-align: left;
-      color: #ffffff;
-      transform: translateY(2vw);
-      text-shadow: 1px 1px 30px rgba(0, 0, 0, 0.4); }
-
-@media screen and (min-width: 1400px) {
-  .banner-wrapper .grid .text {
-    transform: translate(-3vw, 1.5vw); } }
+video[poster] {
+  width: 100vw;
+  height: auto; }
 
 @media screen and (max-width: 1150px) {
+  #showcase-mask-top svg {
+    height: 18vh; }
   .showcase-wrapper .slides {
     transform: translate(0, 6.5%); }
   .card {
     width: 200px; } }
 
 @media screen and (max-width: 900px) {
+  #showcase-mask-top svg {
+    height: 12vh; }
   #slide1 .col {
     display: block; }
   .card {
@@ -237,16 +225,21 @@ video#bgvid {
   .showcase-mobile-wrapper {
     background: white; }
   .showcase-mobile {
-    background: url(../../../images/blue-team-wonder-mobile.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 250vh; }
+    position: relative; }
+    .showcase-mobile svg {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      height: 100%;
+      width: 100%; }
   .taglines-mobile {
-    padding-top: 15em; }
+    padding-top: 7em;
+    z-index: 1;
+    position: relative; }
   .tagline-mobile {
+    padding-bottom: 11em;
     margin: 0 auto;
     width: 90%;
-    padding-bottom: 6em;
     text-align: center;
     color: white; }
     .tagline-mobile p {
@@ -320,6 +313,17 @@ video#bgvid {
     width: 80%; } }
 
 @media screen and (max-width: 700px) {
+  .banner-wrapper .video-bg {
+    position: fixed;
+    min-width: 100%;
+    top: 0;
+    height: 65vh;
+    z-index: -100;
+    background: url("/images/home/homepage/home-page-vid-poster.jpg");
+    background-size: cover;
+    background-position-x: 40%; }
+  .banner-wrapper video {
+    display: none; }
   .banner-wrapper .grid .col {
     text-align: center; }
     .banner-wrapper .grid .col .banner-logo {
@@ -332,9 +336,12 @@ video#bgvid {
   .banner-subtext {
     margin: 0 auto; }
     .banner-subtext p {
-      font-size: 16px;
-      line-height: 20px; } }
+      margin: 0 auto; } }
 
 @media screen and (min-width: 701px) {
   .showcase-mobile-wrapper {
     display: none; } }
+
+@media screen and (max-width: 350px) {
+  .banner-wrapper .grid .col .banner-logo {
+    padding-top: 1.5em; } }
