@@ -13,6 +13,16 @@ svg {
 
 * { box-sizing: border-box;}
 
+.header-nav {
+  .grid {
+    .links-nav {
+      a, button {
+      color: white;
+      }
+    }
+  }
+} 
+
 
 video#bgvid { 
     position: fixed;
@@ -55,17 +65,21 @@ video#bgvid {
 @media screen and (min-width: 1400px) {
   .banner-wrapper{
     .grid{
+      padding-bottom: 12em;
       .text {
-        transform: translate(-3vw,0)
+        transform: translate(-3vw,30px)
       }
     }
   }
 }
 
 .banner-logo {
-  svg {
+  img {
+    margin-left: 25px; 
     width: 55vw;
+    max-width: 600px;
     display: block;
+     margin: 0 auto;
   }
 }
 
@@ -118,11 +132,10 @@ video#bgvid {
       .col {
         .banner-logo {
           padding-top: 2.5em;
-          svg {
-            width: 82vw;
+          img {
             margin: 0 auto;
           }
-          }
+        }
         text-align: center;
       }
       .text {

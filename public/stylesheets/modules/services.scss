@@ -426,23 +426,38 @@
   
   .header-nav {
     padding-top: 20px;
-    height: 125px;
+    height: 90px;
     max-width: 100vw;
     .grid {
+      .-cremalogo {
+        text-align: center;
+        padding-left: 0;
+        padding-bottom: .5em;
+        padding-top: 0.3em;
+      }  
+      #cremaLogoSVG {
+        margin: 0;
+      }
       .col {display: block}
       max-width: 100vw;
       .links-nav {
-        padding-top: 1.5em;
+        padding-top: .5em;
         padding-right: initial;
         margin-right: auto; 
         width: 100%;
         text-align: center;
-        a {
-          color: black;
+        a, button {
+          color: $servicesLinkGrey;
           font-size: 14px;
           padding-left: 10px;
           padding-right: 10px;
         }
+        button.mango-btn {
+         background: transparent; 
+        }
+        .-btn-nav {
+          padding: 0;
+        } 
       }
     }
   }  

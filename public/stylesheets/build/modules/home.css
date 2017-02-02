@@ -252,6 +252,9 @@ svg {
 * {
   box-sizing: border-box; }
 
+.header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
+  color: white; }
+
 video#bgvid {
   position: fixed;
   top: 50%;
@@ -288,12 +291,17 @@ video#bgvid {
       transform: translateY(2vw); }
 
 @media screen and (min-width: 1400px) {
-  .banner-wrapper .grid .text {
-    transform: translate(-3vw, 0); } }
+  .banner-wrapper .grid {
+    padding-bottom: 12em; }
+    .banner-wrapper .grid .text {
+      transform: translate(-3vw, 30px); } }
 
-.banner-logo svg {
+.banner-logo img {
+  margin-left: 25px;
   width: 55vw;
-  display: block; }
+  max-width: 600px;
+  display: block;
+  margin: 0 auto; }
 
 .banner-mask {
   position: absolute;
@@ -335,8 +343,7 @@ video#bgvid {
     text-align: center; }
     .banner-wrapper .grid .col .banner-logo {
       padding-top: 2.5em; }
-      .banner-wrapper .grid .col .banner-logo svg {
-        width: 82vw;
+      .banner-wrapper .grid .col .banner-logo img {
         margin: 0 auto; }
   .banner-wrapper .grid .text {
     font-size: 14px; }
