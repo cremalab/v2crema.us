@@ -289,7 +289,7 @@ video#bgvid {
 
 @media screen and (min-width: 1400px) {
   .banner-wrapper .grid .text {
-    transform: translate(-3vw, 1.5vw); } }
+    transform: translate(-3vw, 0); } }
 
 .banner-logo svg {
   width: 55vw;
