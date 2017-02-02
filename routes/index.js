@@ -110,6 +110,10 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Crema.us - Contact'})
 })
 
+router.get('/work', function(req, res, next) {
+  res.render('work', { title: 'Crema.us - Work'})
+})
+
 
 
 // Work Galleries

@@ -3,6 +3,17 @@
 body {
   background: $warmCoral;
 }
+
+.header-nav {
+    .grid {
+     .links-nav {
+       a, button {
+       color: black;
+
+       }
+     }
+    }
+  } 
 .contact-details {
   padding-top: 3em;
   margin: 0 auto;

@@ -1,0 +1,62 @@
+.header-nav .grid .links-nav a {
+  color: black; }
+
+.headline {
+  padding-top: 2em;
+  text-align: center; }
+  .headline h1 {
+    margin-bottom: 5px; }
+  .headline p {
+    margin-top: 0; }
+
+.work-showcase {
+  position: relative;
+  text-align: center;
+  margin-bottom: 5em;
+  margin-top: 3em; }
+  .work-showcase svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0; }
+
+.work {
+  position: relative;
+  z-index: 2;
+  width: 36vw;
+  height: 20vw;
+  display: inline-block;
+  margin: 2em; }
+
+.work-hover {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: rgba(143, 123, 252, 0.7);
+  opacity: 0;
+  transition: all .3s; }
+  .work-hover .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.work-hover:hover {
+  opacity: 1; }
+
+.one {
+  background: url("/images/work/stringsc.png");
+  background-size: cover; }
+
+.two {
+  background: url("/images/work/tilr.jpg");
+  background-size: cover; }
+
+.three {
+  background: url("/images/work/sbsc.png");
+  background-size: cover; }
+
+@media screen and (max-width: 700px) {
+  .header-nav .grid .links-nav a {
+    color: black; } }
