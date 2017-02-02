@@ -50,6 +50,25 @@ body {
 @media screen and (max-width: 900px) {
   .contact-details {
     width: 80vw;
-
   }
+}
+
+@media screen and (max-width: 700px) {
+  .contact-details {
+    padding-top: 2em;
+  }
+  .title  {
+    h1 {
+      font-size: 2em;
+      }
+    p {
+      font-size: 16px;
+    }
+  }
+  .details {
+    p {
+    font-size: 1.2em;
+    }
+  }
+
 }

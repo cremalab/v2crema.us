@@ -333,14 +333,6 @@
     font-size: 20px; } }
 
 @media screen and (max-width: 800px) {
-  #crema-logo-desktop {
-    display: none; }
-  #crema-mobile-color-logo {
-    text-align: center;
-    height: 60px;
-    display: inherit; }
-    #crema-mobile-color-logo img {
-      height: 100%; }
   .header-nav {
     padding-top: 20px;
     height: 125px;
