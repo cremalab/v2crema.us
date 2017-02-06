@@ -2,6 +2,19 @@ import $ from 'jquery'
 import 'waypoints/lib/noframework.waypoints.js'
 
 $(document).ready(()=>{
+  
+  let headerVideo = document.getElementById('bgvid') 
+  new Waypoint({
+    element: document.getElementById('trigger-video-off'), 
+    handler: function(direction) {
+      if (direction == 'down') {
+       headerVideo.pause()
+      } else {
+        headerVideo.play()
+      }
+    }
+  })
+  
   let top_mask  = document.getElementById('showcase-mask-top')
   let bot_mask  = document.getElementById('showcase-mask-bot')
   let taglines = document.getElementById('taglines')

@@ -10047,6 +10047,19 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(0, _jquery2.default)(document).ready(function () {
+
+	  var headerVideo = document.getElementById('bgvid');
+	  new Waypoint({
+	    element: document.getElementById('trigger-video-off'),
+	    handler: function handler(direction) {
+	      if (direction == 'down') {
+	        headerVideo.pause();
+	      } else {
+	        headerVideo.play();
+	      }
+	    }
+	  });
+
 	  var top_mask = document.getElementById('showcase-mask-top');
 	  var bot_mask = document.getElementById('showcase-mask-bot');
 	  var taglines = document.getElementById('taglines');

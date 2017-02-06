@@ -21,8 +21,8 @@
           button.mango-btn  GET IN TOUCH
   #cards-wrapper
     .grid
-      .col
-        //-  just for spacing
+      .col.col-taglines
+        //-  Tag lines from above will fill this space
       .slides.col
         .showcase#showcase
           .slide(id="slide1")
@@ -30,64 +30,45 @@
               .left.col
                 .card#first-card
                   img(src="https://s3.amazonaws.com/hiphire.com/homepage/adidas-sq.jpg")
-                  #case-title Adidas
-                a(href="/")
+                  #case-title Adidas - How we built a wearable experience for atheletes
+                a(href="https://medium.com/ideas-by-crema/the-crema-difference-45b43e6ae176#.9tkji8s9g" target="_blank")
                   .card
                     p Ideas by Crema
-                    h1 Failing fast, Failing often
-                .card#trigger-copy-change-1
-                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
-                  #case-title Endurance Lending Network
-                .card
-                  img(src="/images/work/laborchart.jpg")
-                  #case-title Labor Chart
-                .card
-                  p Ideas by Crema
-                  h1 Failing fast, Failing often
-                .card
-                  img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
-                  #case-title Endurance Lending Network  
-                .card
-                  img(src="/images/work/sbsc.png")
-                  #case-title Scorebot
-                .card#trigger-copy-change-2 
-                  p Ideas by Crema
-                  a(href="/")
-                    h1 Failing fast, Failing often  
-                 .card
-                  img(src="/images/work/space-center.jpg")
-                  #case-title Space Center    
+                    h1 The Crema Difference
+                a(href="https://medium.com/@cremalab/creating-a-peer-to-peer-lending-platform-that-went-global-the-story-of-endurance-lending-network-e77aeee5cdaa#.4u66byq1h" target="_blank")
+                  .card
+                    img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
+                    #case-title Endurance Lending Network - From concept to acquisition in 2 years  
+                a(href="http://www.getscorebot.com/" target="_blank")
+                  .card
+                    img(src="/images/work/sbsc.png")
+                    #case-title Scorebot - Scoring the office with a Chatbot in Slack
+                a(href="https://medium.com/ideas-by-crema/the-future-of-collaboration-dce33fe335ba#.hyon5vx3a" target="_blank")
+                  .card
+                    p Ideas by Crema
+                    h1 The Future of Collaboration 
               
               .right.col
-                .card
-                  p Ideas by Crema
-                  h1 8 Reasons User Experience Designers will <3 Principle for Mac
-                .card
-                  img(src="/images/work/tilr.jpg")
-                  #case-title tilr
-                .card
-                  p Ideas by Crema
-                  h1 The Future of Collaboration 
-                .card 
-                  p Ideas by Crema
-                  h1 Scoring the office with a Chatbot in Slack
-                .card
-                  img(src="/images/work/stringsc.png")
-                  #case-title String
-                .card 
-                  p Ideas by Crema
-                  a(href="/")
-                    h1 Tips to manage your team better with Asana
-                .card 
-                  p Ideas by Crema
-                  h1 8 Reasons User Experience Designers will <3 Principle for Mac
-                .card 
-                  img(src="/images/work/zoomin.jpg")
-                  #case-title Zoomin
-                .card 
-                  p Ideas by Crema
-                  a(href="/")
-                    h1 Tips to manage your team better with Asana
+                a(href="http://makesuccessfulapps.com/" target="_blank")
+                  .card
+                    p Ideas by Crema
+                    h1 Why simply products win
+                a(href="http://tilr.com" target="_blank")
+                  .card
+                    img(src="/images/home/showcase/showcase-card-tilr.jpg")
+                    #case-title tilr - on demand hiring
+                a(href="https://medium.com/ideas-by-crema/it-is-difficult-to-keep-it-simple-452d1fe24646#.42ve0e3kh" target="_blank")
+                  .card#trigger-copy-change-2 
+                    p Ideas by Crema
+                    h1 It is difficult to keep it simple
+                a(href="https://medium.com/@cremalab/how-we-built-a-marketplace-that-enables-farmers-to-list-and-rent-idle-farm-equipment-across-the-b4fe6dbeff9#.79q17clux" target="_blank")
+                  .card 
+                    img(src="/images/home/showcase/showcase-card-ml.jpg")
+                    #case-title Machinery Link - A marketplace to list and rent farm equipment
+                a(href="https://medium.com/@cremalab/3-ways-to-test-that-your-simple-product-idea-has-merit-fe60aef6ca68#.it2orvd3y" target="_blank")
+                  .card 
+                    p Ideas by Crema
+                    h1 3 Ways to Test That Your Simple Product Idea Has Merit
               .spacer(style="height:270px;width:100%;")
   #showcase-mask-bot.showcase-mask-bot-start
     include ./showcase-curve-bottom.jade 
