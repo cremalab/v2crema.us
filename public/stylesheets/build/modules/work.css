@@ -24,10 +24,11 @@
 .work {
   position: relative;
   z-index: 2;
-  width: 36vw;
-  height: 20vw;
+  width: 38vw;
+  height: 22vw;
   display: inline-block;
-  margin: 2em; }
+  margin: 1.2em;
+  box-shadow: 0px 0px 22px -3px rgba(0, 0, 0, 0.26); }
 
 .work-hover {
   height: 100%;
@@ -46,17 +47,40 @@
   opacity: 1; }
 
 .one {
-  background: url("/images/work/stringsc.png");
-  background-size: cover; }
-
-.two {
   background: url("/images/work/tilr.jpg");
   background-size: cover; }
 
-.three {
-  background: url("/images/work/sbsc.png");
+.two {
+  background: url("/images/work/laborchart.jpg");
   background-size: cover; }
 
+.three {
+  background: url("/images/work/eln@2x.jpg");
+  background-size: cover; }
+
+.four {
+  background: url("/images/work/1-m-c@2x.jpg");
+  background-size: cover; }
+
+.five {
+  background: url("/images/work/ml.jpg");
+  background-size: cover; }
+
+.six {
+  background: url("/images/work/work-hiphire.jpg");
+  background-size: cover; }
+
+@media screen and (max-width: 1000px) {
+  .work {
+    margin: 1em; }
+  .mango-btn {
+    width: 180px; } }
+
 @media screen and (max-width: 700px) {
+  .work {
+    width: 80vw;
+    height: 44vw;
+    display: block;
+    margin: 2em auto; }
   .header-nav .grid .links-nav a {
     color: black; } }
