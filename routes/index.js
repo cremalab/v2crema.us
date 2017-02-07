@@ -53,6 +53,7 @@ var logoFileNames = []
 fs.readdir(pathToLogos, function(err, names){
   if (err) console.log('Error returning logo filenames:', err)
   logoFileNames = names.map(logoName => relativePathToLogos + logoName)
+  logoFileNames = logoFileNames.filter( logoName => logoName.indexOf('.DS_Store') == -1)
   console.log(logoFileNames.length, 'Client logos loaded Sucessfully')
 })
 
@@ -64,6 +65,7 @@ var teamPhotos = []
 fs.readdir(pathToTeam, function(err, photos){
   if (err) console.log('Error returning team filenames:', err)
   teamPhotos = photos.map(photoName => relativeTeamPath + photoName)
+  teamPhotos = teamPhotos.filter( photoName => photoName.indexOf('.DS_Store') == -1)
   console.log(teamPhotos.length, 'Team Photos Loaded Sucessfully')
 })
 
