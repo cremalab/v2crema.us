@@ -355,11 +355,15 @@
         width: 100%;
         text-align: center; }
         .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
-          color: #afafaf;
           font-size: 14px;
+          color: #afafaf;
           padding-left: 10px;
           padding-right: 10px; }
         .header-nav .grid .links-nav button.mango-btn {
           background: transparent; }
         .header-nav .grid .links-nav .-btn-nav {
           padding: 0; } }
+
+@media screen and (max-width: 355px) {
+  .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
+    font-size: 12px; } }

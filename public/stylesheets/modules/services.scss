@@ -447,8 +447,8 @@
         width: 100%;
         text-align: center;
         a, button {
-          color: $servicesLinkGrey;
           font-size: 14px;
+          color: $servicesLinkGrey;
           padding-left: 10px;
           padding-right: 10px;
         }
@@ -461,4 +461,15 @@
       }
     }
   }  
+}
+
+@media screen and (max-width: 355px) {
+  .header-nav { .grid {
+    .links-nav {
+      a,button {
+        font-size: 12px;
+      }
+    }
+
+  }}
 }

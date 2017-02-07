@@ -65,11 +65,9 @@
         .header-nav .grid .links-nav .-btn-nav {
           padding: 0; } }
 
-@media screen and (max-width: 350px) {
-  .header-nav .grid .links-nav a {
-    font-size: 12px; }
-  .header-nav .grid .links-nav .-btn-nav {
-    font-size: 11px; } }
+@media screen and (max-width: 355px) {
+  .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
+    font-size: 12px; } }
 
 .footer {
   width: 100%;

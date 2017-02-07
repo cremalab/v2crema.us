@@ -90,17 +90,13 @@
   
 }
 
-@media screen and (max-width: 350px) {
-  .header-nav {
-    .grid {
-      .links-nav {
-        a {
-          font-size: 12px;
-        }
-       .-btn-nav {
-          font-size: 11px;
-        }   
+@media screen and (max-width: 355px) {
+  .header-nav { .grid {
+    .links-nav {
+      a,button {
+        font-size: 12px;
       }
     }
-  }
+
+  }}
 }
