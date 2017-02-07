@@ -119,7 +119,8 @@ ul {
   transform: translateY(97%); }
 
 #showcase-mask-top {
-  z-index: 2; }
+  z-index: 2;
+  position: sticky; }
   #showcase-mask-top svg {
     width: 100vw;
     height: 21vh;
@@ -127,8 +128,7 @@ ul {
 
 .showcase-mask-bot-start {
   position: absolute;
-  top: 100vh;
-  transform: translateY(-100%); }
+  bottom: 0; }
 
 .showcase-mask-bot-scroll {
   position: fixed;

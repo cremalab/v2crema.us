@@ -25,17 +25,17 @@ $(document).ready(()=>{
     element: document.getElementById('cards-wrapper'), 
     handler: function(direction) {
       if (direction == 'down') {
-        top_mask.classList.remove('showcase-mask-top-start')
-        top_mask.classList.add('showcase-mask-top-scroll')
-        bot_mask.classList.remove('showcase-mask-bot-start')
-        bot_mask.classList.add('showcase-mask-bot-scroll')
+        // top_mask.classList.remove('showcase-mask-top-start')
+        // top_mask.classList.add('showcase-mask-top-scroll')
+        // bot_mask.classList.remove('showcase-mask-bot-start')
+        // bot_mask.classList.add('showcase-mask-bot-scroll')
         taglines.classList.remove('taglines-start')
         taglines.classList.add('taglines-scroll')
       } else {
-        top_mask.classList.remove('showcase-mask-top-scroll')
-        top_mask.classList.add('showcase-mask-top-start')
-        bot_mask.classList.remove('showcase-mask-bot-scroll')
-        bot_mask.classList.add('showcase-mask-bot-start')
+        // top_mask.classList.remove('showcase-mask-top-scroll')
+        // top_mask.classList.add('showcase-mask-top-start')
+        // bot_mask.classList.remove('showcase-mask-bot-scroll')
+        // bot_mask.classList.add('showcase-mask-bot-start')
         taglines.classList.remove('taglines-scroll')
         taglines.classList.add('taglines-start')
       }
@@ -47,17 +47,17 @@ $(document).ready(()=>{
     element: document.getElementById('waypoints-logos'), 
     handler: function(direction) {
       if (direction == 'down') {
-        top_mask.classList.remove('showcase-mask-top-scroll')
-        top_mask.classList.add('showcase-mask-top-end')
+        // top_mask.classList.remove('showcase-mask-top-scroll')
+        // top_mask.classList.add('showcase-mask-top-end')
         bot_mask.classList.remove('showcase-mask-bot-scroll')
         bot_mask.classList.add('showcase-mask-bot-end')
         taglines.classList.remove('taglines-scroll')
         taglines.classList.add('taglines-end')
       } else {
-        top_mask.classList.remove('showcase-mask-top-end')
-        top_mask.classList.add('showcase-mask-top-scroll')
-        bot_mask.classList.remove('showcase-mask-bot-end')
-        bot_mask.classList.add('showcase-mask-bot-scroll')
+        // top_mask.classList.remove('showcase-mask-top-end')
+        // top_mask.classList.add('showcase-mask-top-scroll')
+        // bot_mask.classList.remove('showcase-mask-bot-end')
+        // bot_mask.classList.add('showcase-mask-bot-scroll')
         taglines.classList.remove('taglines-end')
         taglines.classList.add('taglines-scroll')
       }
