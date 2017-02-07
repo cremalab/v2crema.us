@@ -10141,6 +10141,22 @@
 	      }
 	    }
 	  });
+
+	  // third triger to change language
+	  new Waypoint({
+	    element: document.getElementById('trigger-copy-change-3'),
+	    handler: function handler(direction) {
+	      var tagline_3 = document.getElementById('tagline-3');
+	      var tagline_4 = document.getElementById('tagline-4');
+	      if (direction == 'down') {
+	        tagline_3.classList.add('-opacity-0');
+	        tagline_4.classList.remove('-opacity-0');
+	      } else {
+	        tagline_3.classList.remove('-opacity-0');
+	        tagline_4.classList.add('-opacity-0');
+	      }
+	    }
+	  });
 	});
 
 /***/ }

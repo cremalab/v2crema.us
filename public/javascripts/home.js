@@ -98,5 +98,22 @@ $(document).ready(()=>{
     },
     // offset: window.innerHeight * .5  
   })
+  
+  // third triger to change language
+  new Waypoint({
+    element: document.getElementById('trigger-copy-change-3'), 
+    handler: function(direction) {
+      let tagline_3 = document.getElementById('tagline-3')
+      let tagline_4 = document.getElementById('tagline-4')
+      if (direction == 'down') {
+        tagline_3.classList.add('-opacity-0')
+        tagline_4.classList.remove('-opacity-0')
+      } else {
+        tagline_3.classList.remove('-opacity-0')
+        tagline_4.classList.add('-opacity-0')
+      }
+    },
+    // offset: window.innerHeight * .5  
+  })
 
 })

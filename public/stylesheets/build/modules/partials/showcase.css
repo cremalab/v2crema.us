@@ -178,7 +178,7 @@ video[poster] {
     display: block; }
   .card {
     width: 250px;
-    margin: 0 auto; }
+    margin: 1em auto; }
   .slide .right {
     transform: translateY(0); }
   .showcase-wrapper .slides {
