@@ -55,7 +55,11 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 100%;
+    color: white;
     transform: translate(-50%,-50%);
+    h1 {margin-bottom: 0;}
+    p { margin-top: 0;}
   }
 }
 .work-hover:hover {
@@ -74,7 +78,7 @@
   background-size: cover;
 }
 .four {
-  background: url("/images/work/1-m-c@2x.jpg");
+  background: url("/images/work/work-1mc.jpg");
   background-size: cover;
 }
 .five {
@@ -104,6 +108,11 @@
   .mango-btn {
     width: 180px;
   }  
+  .work-hover {
+    .centered {
+      h1 {font-size: 1.5em;}
+    }
+  }
 }
 
 @media screen and (max-width: 700px) { 
@@ -121,6 +130,7 @@
     display: block;
     margin: 2em auto;
   }
+  
   .work-showcase {
     padding: 1em 0;
   }

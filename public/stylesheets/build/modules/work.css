@@ -43,7 +43,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 100%;
+    color: white;
     transform: translate(-50%, -50%); }
+    .work-hover .centered h1 {
+      margin-bottom: 0; }
+    .work-hover .centered p {
+      margin-top: 0; }
 
 .work-hover:hover {
   opacity: 1; }
@@ -61,7 +67,7 @@
   background-size: cover; }
 
 .four {
-  background: url("/images/work/1-m-c@2x.jpg");
+  background: url("/images/work/work-1mc.jpg");
   background-size: cover; }
 
 .five {
@@ -87,7 +93,9 @@
   .work {
     margin: 1em; }
   .mango-btn {
-    width: 180px; } }
+    width: 180px; }
+  .work-hover .centered h1 {
+    font-size: 1.5em; } }
 
 @media screen and (max-width: 700px) {
   .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
