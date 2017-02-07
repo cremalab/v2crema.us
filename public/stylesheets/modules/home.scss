@@ -85,7 +85,7 @@ video#bgvid {
 
 .banner-mask {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   svg {
     width: 100vw;
     height: auto;
