@@ -359,6 +359,7 @@ video#bgvid {
   z-index: 2;
   position: relative; }
   .banner-subtext p {
+    display: inline-block;
     font-size: 22px;
     line-height: 44px;
     padding-bottom: 3em;
