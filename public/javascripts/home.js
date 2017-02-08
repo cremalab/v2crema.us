@@ -22,6 +22,7 @@ $(document).ready(()=>{
   let tagline_2 = document.getElementById('tagline-2')
   let tagline_3 = document.getElementById('tagline-3')
   let tagline_4 = document.getElementById('tagline-4')
+  let triggerOffset = .3
    
   // top-showcase-mask waypoint
   new Waypoint({
@@ -46,7 +47,7 @@ $(document).ready(()=>{
         tagline_3.classList.remove('tagline-animate-in')
       }
     },
-    offset: window.innerHeight * .1  
+    offset: window.innerHeight * triggerOffset
   })
   new Waypoint({
     element: document.getElementById('trigger-copy-change-3'), 
@@ -59,7 +60,7 @@ $(document).ready(()=>{
         tagline_4.classList.remove('tagline-animate-in')
       }
     },
-    offset: window.innerHeight * .1  
+    offset: window.innerHeight * triggerOffset
   })
   new Waypoint({
     element: document.getElementById('trigger-copy-change-4'), 
@@ -72,7 +73,7 @@ $(document).ready(()=>{
         tagline_4.classList.remove('tagline-animate-in')
       }
     },
-    offset: window.innerHeight * .1  
+    offset: window.innerHeight * triggerOffset
   })
 
 

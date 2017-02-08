@@ -83,7 +83,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/services', function(req, res, next) {
     res.render('services', { 
-      title: 'Crema.us',
+      title: 'Crema.us - Services',
       logoFileNames: techImgPaths, 
       techSubs: techSubs,  
       techNum: techSubs.length,

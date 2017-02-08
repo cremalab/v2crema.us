@@ -10067,6 +10067,7 @@
 	  var tagline_2 = document.getElementById('tagline-2');
 	  var tagline_3 = document.getElementById('tagline-3');
 	  var tagline_4 = document.getElementById('tagline-4');
+	  var triggerOffset = .3;
 
 	  // top-showcase-mask waypoint
 	  new Waypoint({
@@ -10091,7 +10092,7 @@
 	        tagline_3.classList.remove('tagline-animate-in');
 	      }
 	    },
-	    offset: window.innerHeight * .1
+	    offset: window.innerHeight * triggerOffset
 	  });
 	  new Waypoint({
 	    element: document.getElementById('trigger-copy-change-3'),
@@ -10104,7 +10105,7 @@
 	        tagline_4.classList.remove('tagline-animate-in');
 	      }
 	    },
-	    offset: window.innerHeight * .1
+	    offset: window.innerHeight * triggerOffset
 	  });
 	  new Waypoint({
 	    element: document.getElementById('trigger-copy-change-4'),
@@ -10117,7 +10118,7 @@
 	        tagline_4.classList.remove('tagline-animate-in');
 	      }
 	    },
-	    offset: window.innerHeight * .1
+	    offset: window.innerHeight * triggerOffset
 	  });
 	});
 

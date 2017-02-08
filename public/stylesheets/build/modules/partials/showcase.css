@@ -181,6 +181,8 @@ video[poster] {
 @media screen and (max-width: 900px) {
   #showcase-mask-top svg, #showcase-mask-bot svg {
     height: 12vh; }
+  .showcase-copy-table {
+    height: 100%; }
   #slide1 .col {
     display: block; }
   .card {
