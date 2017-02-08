@@ -2,32 +2,60 @@
 .showcase-wrapper
   #showcase-mask-top.showcase-mask-top-start
     include ./showcase-curve-top.jade
-  .taglines.taglines-start#taglines
-    .tagline-relative-wrapper
-      .tagline#tagline-1
-        h1 A startup team for hire
-        p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
-        a(href="/services")
-          button.mango-btn  SEE OUR SERVICES
-      .tagline#tagline-2
-        h1 Speedboat to innovate
-        p Your company may move like a cruise ship; slow and steady and on course.  Our small teams explore new waters with agility and curiosity to find and test new digital landscapes.
-        a(href="/expertise" target="_blank")
-          button.mango-btn  SEE OUR EXPERTISE
-      .tagline#tagline-3
-        h1 Local design and development
-        p We work hard to keep our team close.  While our clients are all over the world, our strategists, managers, designers, and developers work side by side toward a common goal; the success of your idea.
-        a(href="/work")
-          button.mango-btn  SEE OUR WORK
-      .tagline#tagline-4
-        h1 Experiment and test all assumptions
-        p We believe in agile and lean principles.  Be curious. Solve real problems. Test early and often through surveys, prototypes, and iterative development. Pivot to find product-market fit. 
-        a(href="/work")
-          button.mango-btn  CHECK OUT OUR SERVICES
+  //- .taglines.taglines-start#taglines
+  //-   .tagline-relative-wrapper
+  //-     .tagline#tagline-1
+  //-       h1 A startup team for hire
+  //-       p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+  //-       a(href="/services")
+  //-         button.mango-btn  SEE OUR SERVICES
+  //-     .tagline#tagline-2
+  //-       h1 Speedboat to innovate
+  //-       p Your company may move like a cruise ship; slow and steady and on course.  Our small teams explore new waters with agility and curiosity to find and test new digital landscapes.
+  //-       a(href="/expertise" target="_blank")
+  //-         button.mango-btn  SEE OUR EXPERTISE
+  //-     .tagline#tagline-3
+  //-       h1 Local design and development
+  //-       p We work hard to keep our team close.  While our clients are all over the world, our strategists, managers, designers, and developers work side by side toward a common goal; the success of your idea.
+  //-       a(href="/work")
+  //-         button.mango-btn  SEE OUR WORK
+  //-     .tagline#tagline-4
+  //-       h1 Experiment and test all assumptions
+  //-       p We believe in agile and lean principles.  Be curious. Solve real problems. Test early and often through surveys, prototypes, and iterative development. Pivot to find product-market fit. 
+  //-       a(href="/work")
+  //-         button.mango-btn  CHECK OUT OUR SERVICES
   #cards-wrapper
     .grid#trigger-copy-change-1
       .col.col-taglines
-        //-  Tag lines from above will fill this space
+        .showcase-copy-table
+          .showcase-row
+            .col
+              .tagline#tagline-1
+                h1 Speedboat to innovate
+                p Your company may move like a cruise ship; slow and steady and on course.  Our small teams explore new waters with agility and curiosity to find and test new digital landscapes.
+                a(href="/expertise" target="_blank")
+                  button.mango-btn  See our expertise
+          .showcase-row#trigger-copy-change-2
+            .col
+              .tagline#tagline-2
+                h1 Local design and development
+                p We work hard to keep our team close.  While our clients are all over the world, our strategists, managers, designers, and developers work side by side toward a common goal; the success of your idea.
+                a(href="/work")
+                  button.mango-btn  Check out our work
+          .showcase-row#trigger-copy-change-3
+            .col
+              .tagline#tagline-3
+                h1 Experiment and test all assumptions
+                p We believe in agile and lean principles.  Be curious. Solve real problems. Test early and often through surveys, prototypes, and iterative development. Pivot to find product-market fit. 
+                a(href="/services")
+                  button.mango-btn  Check out our services
+          .showcase-row#trigger-copy-change-4
+            .col
+              .tagline#tagline-4
+                h1 A startup team for hire
+                p Our small teams think like entrepreneurs running experiements through prototyping, validating, pivoting, and developing from concept to scalable business.
+                a(href="/team")
+                  button.mango-btn  See our team
       .slides.col
         .showcase#showcase
           .slide(id="slide1")
@@ -41,7 +69,7 @@
                     p Ideas by Crema
                     h1 The Crema Difference
                 a(href="http://www.getscorebot.com/" target="_blank")
-                  .card#trigger-copy-change-2
+                  .card
                     img(src="/images/work/sbsc.png")
                     #case-title Scorebot - Scoring the office with a Chatbot in Slack
                 a(href="https://www.youtube.com/watch?v=JHWx7l91awo" target="_blank")
@@ -49,7 +77,7 @@
                     img(src="/images/home/showcase/showcase-card-cremais.jpg")
                     #case-title What is Crema? Watch the video
                 a(href="https://medium.com/@cremalab/creating-a-peer-to-peer-lending-platform-that-went-global-the-story-of-endurance-lending-network-e77aeee5cdaa#.4u66byq1h" target="_blank")
-                  .card#trigger-copy-change-3
+                  .card
                     img(src="https://s3.amazonaws.com/hiphire.com/homepage/eln-sq.jpg")
                     #case-title Endurance Lending Network - From concept to acquisition in 2 years  
                 a(href="https://medium.com/ideas-by-crema/the-future-of-collaboration-dce33fe335ba#.hyon5vx3a" target="_blank")
@@ -57,7 +85,7 @@
                     p Ideas by Crema
                     h1 The Future of Collaboration 
                 a(href="http://laborchart.com/" target="_blank")
-                  .card#trigger-copy-change-4
+                  .card
                     img(src="/images/home/showcase/showcase-card-laborchart.jpg")
                     #case-title Labor Chart - See it live
                 a(href="https://www.youtube.com/watch?v=vr9i-KEnBaM" target="_blank")
