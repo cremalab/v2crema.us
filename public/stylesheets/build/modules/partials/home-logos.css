@@ -8,7 +8,9 @@ ul {
   background: white;
   max-width: 100vw;
   overflow: hidden;
-  padding: 1em; }
+  padding: 1em;
+  z-index: 2;
+  position: relative; }
 
 .landing-logos ul {
   margin: 3em auto;

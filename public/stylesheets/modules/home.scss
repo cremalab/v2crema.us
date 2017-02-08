@@ -95,6 +95,8 @@ video#bgvid {
 .banner-subtext {
   height: 100%;
   background: white;
+  z-index: 2;
+  position: relative;
   p {
     font-size: 22px;
     line-height: 44px;

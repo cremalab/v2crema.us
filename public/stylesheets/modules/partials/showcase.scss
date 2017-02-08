@@ -11,7 +11,7 @@
     height: 50vh;
   }
   .taglines-start {
-    position: absolute;
+    position: fixed;
     top: 50vh;
     transform: translateY(-50%);  
   }
@@ -43,23 +43,75 @@
   width: 90%;
   color: white;
   margin-left:2em;
+  position: absolute;
+  // transform: translateY(-50%);
+  top: 0;
+  opacity: 0;
   h1 {font-size:2.1em;}
   p{
     font-size: 16px;
     font-family: 'Lato', sans-serif;
     }
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  transition: all 1s;
+
+  transition: opacity .5s, transform .7s ease-out;
 }
 
 .-opacity-0 {
  opacity: 0; 
 }
 
-.tagline-animate {
-  animation: tagline-out 1s 1;
+.tagline-animate-in-down {
+  transform: translateY(50%);
+  opacity: 100;
+  // animation: tagline-in-down 1s 1;
+}
+.tagline-animate-out {
+  transform: translateY(150%);
+  opacity: 0;
+
+}
+
+.tagline-animate-out-down {
+  transform: translateY(100%);
+  opacity: 100;
+}
+
+.tagline-animate-in-up {
+  transform: translateY(-50%);
+  opacity: 100;
+}
+.tagline-animate-out-up {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+@keyframes tagline-in-down {
+  0% {
+    opacity: 0; 
+    transform: translateY(-100%)
+  }
+  55% {opacity: 100;}
+  100% {
+    opacity: 100;
+    transform: translateY(-50%)
+  }
+}
+
+.tagline-animate-out-left {
+  opacity: 0;
+  transform: translate(-20%, 100%);
+  // animation: tagline-out-left 1s 1;
+}
+
+
+@keyframes tagline-out-left {
+  0% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-200%, -50%)
+  }
 }
 
 
@@ -102,7 +154,7 @@
 
 .showcase-mask-bot-start {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   // top: 100vh;
   // transform: translateY(-100%);
 }
@@ -113,7 +165,7 @@
 }
 .showcase-mask-bot-end {
   position: absolute;
-  bottom: -1px;
+  bottom: -2px;
 }
 
 
@@ -177,16 +229,6 @@
       box-shadow: -1px 12px 25px -2px rgba(100, 100, 100, 1);
 }
 
-@keyframes tagline-out {
-  0% {
-    opacity: 100;
-    
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100%)
-  }
-}
 
 
 video#bgvid { 
