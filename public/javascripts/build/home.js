@@ -10060,26 +10060,24 @@
 	    }
 	  });
 
-	  // // let top_mask  = document.getElementById('showcase-mask-top')
-	  // // let bot_mask  = document.getElementById('showcase-mask-bot')
-	  // // let taglines = document.getElementById('taglines')
 	  var tagline_1 = document.getElementById('tagline-1');
 	  var tagline_2 = document.getElementById('tagline-2');
 	  var tagline_3 = document.getElementById('tagline-3');
 	  var tagline_4 = document.getElementById('tagline-4');
-	  var triggerOffset = window.innerHeight * .3;
+	  var triggerOffset = window.innerHeight * .5;
 
 	  // top-showcase-mask waypoint
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-1'),
+	    element: tagline_1,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {
 	        tagline_1.classList.add('tagline-animate-in');
 	      } else {}
-	    }
+	    },
+	    offset: triggerOffset
 	  });
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-2'),
+	    element: tagline_2,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {
 	        tagline_2.classList.add('tagline-animate-in');
@@ -10089,7 +10087,7 @@
 	    offset: triggerOffset
 	  });
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-3'),
+	    element: tagline_3,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {
 	        tagline_3.classList.add('tagline-animate-in');
@@ -10099,7 +10097,7 @@
 	    offset: triggerOffset
 	  });
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-4'),
+	    element: tagline_4,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {
 	        tagline_4.classList.add('tagline-animate-in');
@@ -10109,46 +10107,42 @@
 	    offset: triggerOffset
 	  });
 
-	  // Going Up
+	  // Going Up //
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-1'),
+	    element: tagline_1,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {} else {
 	        tagline_1.classList.add('tagline-animate-in');
 	        tagline_2.classList.remove('tagline-animate-in');
 	      }
-	    },
-	    offset: -triggerOffset
+	    }
 	  });
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-2'),
+	    element: tagline_2,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {} else {
 	        tagline_2.classList.add('tagline-animate-in');
 	        tagline_3.classList.remove('tagline-animate-in');
 	      }
-	    },
-	    offset: -triggerOffset
+	    }
 	  });
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-3'),
+	    element: tagline_3,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {} else {
 	        tagline_3.classList.add('tagline-animate-in');
 	        tagline_4.classList.remove('tagline-animate-in');
 	      }
-	    },
-	    offset: -triggerOffset
+	    }
 	  });
 	  new Waypoint({
-	    element: document.getElementById('trigger-copy-change-4'),
+	    element: tagline_4,
 	    handler: function handler(direction) {
 	      if (direction == 'down') {} else {
 	        tagline_3.classList.add('tagline-animate-in');
 	        tagline_4.classList.remove('tagline-animate-in');
 	      }
-	    },
-	    offset: -triggerOffset * .5
+	    }
 	  });
 	});
 

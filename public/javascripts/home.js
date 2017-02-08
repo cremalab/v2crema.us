@@ -15,28 +15,26 @@ $(document).ready(()=>{
     }
   })
   
-  // // let top_mask  = document.getElementById('showcase-mask-top')
-  // // let bot_mask  = document.getElementById('showcase-mask-bot')
-  // // let taglines = document.getElementById('taglines')
   let tagline_1 = document.getElementById('tagline-1')
   let tagline_2 = document.getElementById('tagline-2')
   let tagline_3 = document.getElementById('tagline-3')
   let tagline_4 = document.getElementById('tagline-4')
-  let triggerOffset = window.innerHeight * .3
+  let triggerOffset = window.innerHeight * .5
    
   // top-showcase-mask waypoint
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-1'), 
+    element: tagline_1, 
     handler: function(direction) {
       if (direction == 'down') {
         tagline_1.classList.add('tagline-animate-in')
       } else {
         
       }
-    }  
+    },
+    offset: triggerOffset  
   })
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-2'), 
+    element: tagline_2, 
     handler: function(direction) {
       if (direction == 'down') {
         tagline_2.classList.add('tagline-animate-in')
@@ -48,7 +46,7 @@ $(document).ready(()=>{
     offset: triggerOffset
   })
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-3'), 
+    element: tagline_3,
     handler: function(direction) {
       if (direction == 'down') {
         tagline_3.classList.add('tagline-animate-in')
@@ -60,7 +58,7 @@ $(document).ready(()=>{
     offset: triggerOffset
   })
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-4'), 
+    element: tagline_4,
     handler: function(direction) {
       if (direction == 'down') {
         tagline_4.classList.add('tagline-animate-in')
@@ -73,9 +71,9 @@ $(document).ready(()=>{
   })
 
 
-  // Going Up
+  // Going Up //
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-1'), 
+    element: tagline_1, 
     handler: function(direction) {
       if (direction == 'down') {
 
@@ -84,10 +82,9 @@ $(document).ready(()=>{
         tagline_2.classList.remove('tagline-animate-in')
       }
     },
-    offset: -triggerOffset  
   })
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-2'), 
+    element: tagline_2, 
     handler: function(direction) {
       if (direction == 'down') {
       
@@ -96,10 +93,9 @@ $(document).ready(()=>{
         tagline_3.classList.remove('tagline-animate-in')
       }
     },
-    offset: -triggerOffset
   })
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-3'), 
+    element: tagline_3, 
     handler: function(direction) {
       if (direction == 'down') {
         
@@ -108,10 +104,9 @@ $(document).ready(()=>{
         tagline_4.classList.remove('tagline-animate-in')
       }
     },
-    offset: -triggerOffset
   })
   new Waypoint({
-    element: document.getElementById('trigger-copy-change-4'), 
+    element: tagline_4, 
     handler: function(direction) {
       if (direction == 'down') {
         
@@ -120,7 +115,6 @@ $(document).ready(()=>{
         tagline_4.classList.remove('tagline-animate-in')
       }
     },
-    offset: -triggerOffset *.5
   })
  
 })
