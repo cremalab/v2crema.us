@@ -171,11 +171,11 @@ p {
   font-weight: 300; }
 
 .mango-btn {
-  width: 253px;
+  padding: 0 16px;
   height: 48px;
   font-size: 14px;
   line-height: 1.4;
-  color: black;
+  color: white;
   position: relative;
   border: none;
   border-radius: 5px;

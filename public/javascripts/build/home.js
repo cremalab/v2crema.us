@@ -10067,7 +10067,7 @@
 	  var tagline_2 = document.getElementById('tagline-2');
 	  var tagline_3 = document.getElementById('tagline-3');
 	  var tagline_4 = document.getElementById('tagline-4');
-	  var triggerOffset = .3;
+	  var triggerOffset = window.innerHeight * .3;
 
 	  // top-showcase-mask waypoint
 	  new Waypoint({
@@ -10075,10 +10075,7 @@
 	    handler: function handler(direction) {
 	      if (direction == 'down') {
 	        tagline_1.classList.add('tagline-animate-in');
-	      } else {
-	        tagline_1.classList.add('tagline-animate-in');
-	        tagline_2.classList.remove('tagline-animate-in');
-	      }
+	      } else {}
 	    }
 	  });
 	  new Waypoint({
@@ -10087,12 +10084,9 @@
 	      if (direction == 'down') {
 	        tagline_2.classList.add('tagline-animate-in');
 	        tagline_1.classList.remove('tagline-animate-in');
-	      } else {
-	        tagline_2.classList.add('tagline-animate-in');
-	        tagline_3.classList.remove('tagline-animate-in');
-	      }
+	      } else {}
 	    },
-	    offset: window.innerHeight * triggerOffset
+	    offset: triggerOffset
 	  });
 	  new Waypoint({
 	    element: document.getElementById('trigger-copy-change-3'),
@@ -10100,12 +10094,9 @@
 	      if (direction == 'down') {
 	        tagline_3.classList.add('tagline-animate-in');
 	        tagline_2.classList.remove('tagline-animate-in');
-	      } else {
-	        tagline_3.classList.add('tagline-animate-in');
-	        tagline_4.classList.remove('tagline-animate-in');
-	      }
+	      } else {}
 	    },
-	    offset: window.innerHeight * triggerOffset
+	    offset: triggerOffset
 	  });
 	  new Waypoint({
 	    element: document.getElementById('trigger-copy-change-4'),
@@ -10113,12 +10104,51 @@
 	      if (direction == 'down') {
 	        tagline_4.classList.add('tagline-animate-in');
 	        tagline_3.classList.remove('tagline-animate-in');
-	      } else {
+	      } else {}
+	    },
+	    offset: triggerOffset
+	  });
+
+	  // Going Up
+	  new Waypoint({
+	    element: document.getElementById('trigger-copy-change-1'),
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_1.classList.add('tagline-animate-in');
+	        tagline_2.classList.remove('tagline-animate-in');
+	      }
+	    },
+	    offset: -triggerOffset
+	  });
+	  new Waypoint({
+	    element: document.getElementById('trigger-copy-change-2'),
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_2.classList.add('tagline-animate-in');
+	        tagline_3.classList.remove('tagline-animate-in');
+	      }
+	    },
+	    offset: -triggerOffset
+	  });
+	  new Waypoint({
+	    element: document.getElementById('trigger-copy-change-3'),
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
 	        tagline_3.classList.add('tagline-animate-in');
 	        tagline_4.classList.remove('tagline-animate-in');
 	      }
 	    },
-	    offset: window.innerHeight * triggerOffset
+	    offset: -triggerOffset
+	  });
+	  new Waypoint({
+	    element: document.getElementById('trigger-copy-change-4'),
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_3.classList.add('tagline-animate-in');
+	        tagline_4.classList.remove('tagline-animate-in');
+	      }
+	    },
+	    offset: -triggerOffset * .5
 	  });
 	});
 
