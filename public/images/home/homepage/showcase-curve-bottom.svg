@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="694px" viewBox="0 0 1440 694" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Botton Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0,691.632266 L0,26.2532972 C51.261407,42.3776851 118.941194,46.0454801 207.92704,24.5087051 C516.440719,-50.1592329 625.921875,60.7977683 824,156.305581 C990.895221,236.777856 1181.87256,304.865201 1440,244.411144 L1438.16617,693.44517 C1297.35411,693.44517 103.993207,691.632266 0,691.632266 Z" id="Botton-Shape" fill="#FFFFFF"></path>
+    </g>
+</svg>

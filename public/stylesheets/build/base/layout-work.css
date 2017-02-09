@@ -41,15 +41,6 @@ h1 {
   .work-content a:hover {
     color: #8CD8FD; }
 
-.work-content .post-footer img {
-  width: 35%; }
-
-.work-content .post-footer .digital-products-work-img {
-  width: 45%; }
-
-.work-content .post-footer .our-work-footer {
-  width: 30%; }
-
 .work-img-wrapper {
   position: relative;
   width: 78%;
@@ -115,11 +106,7 @@ h1 {
   .centered {
     top: 23%;
     left: initial;
-    transform: initial; }
-  .work-content .post-footer img {
-    width: 75%; }
-  .work-content .post-footer .digital-products-work-img {
-    width: 95%; } }
+    transform: initial; } }
 
 @media screen and (max-width: 450px) {
   h1 {

@@ -814,382 +814,7 @@
 
 /***/ },
 /* 4 */,
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  hey, [be]Lazy.js - v1.8.2 - 2016.10.25
-	  A fast, small and dependency free lazy load script (https://github.com/dinbror/blazy)
-	  (c) Bjoern Klinggaard - @bklinggaard - http://dinbror.dk/blazy
-	*/
-	;
-	(function(root, blazy) {
-	    if (true) {
-	        // AMD. Register bLazy as an anonymous module
-	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (blazy), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof exports === 'object') {
-	        // Node. Does not work with strict CommonJS, but
-	        // only CommonJS-like environments that support module.exports,
-	        // like Node.
-	        module.exports = blazy();
-	    } else {
-	        // Browser globals. Register bLazy on window
-	        root.Blazy = blazy();
-	    }
-	})(this, function() {
-	    'use strict';
-
-	    //private vars
-	    var _source, _viewport, _isRetina, _supportClosest, _attrSrc = 'src', _attrSrcset = 'srcset';
-
-	    // constructor
-	    return function Blazy(options) {
-	        //IE7- fallback for missing querySelectorAll support
-	        if (!document.querySelectorAll) {
-	            var s = document.createStyleSheet();
-	            document.querySelectorAll = function(r, c, i, j, a) {
-	                a = document.all, c = [], r = r.replace(/\[for\b/gi, '[htmlFor').split(',');
-	                for (i = r.length; i--;) {
-	                    s.addRule(r[i], 'k:v');
-	                    for (j = a.length; j--;) a[j].currentStyle.k && c.push(a[j]);
-	                    s.removeRule(0);
-	                }
-	                return c;
-	            };
-	        }
-
-	        //options and helper vars
-	        var scope = this;
-	        var util = scope._util = {};
-	        util.elements = [];
-	        util.destroyed = true;
-	        scope.options = options || {};
-	        scope.options.error = scope.options.error || false;
-	        scope.options.offset = scope.options.offset || 100;
-	        scope.options.root = scope.options.root || document;
-	        scope.options.success = scope.options.success || false;
-	        scope.options.selector = scope.options.selector || '.b-lazy';
-	        scope.options.separator = scope.options.separator || '|';
-	        scope.options.containerClass = scope.options.container;
-	        scope.options.container = scope.options.containerClass ? document.querySelectorAll(scope.options.containerClass) : false;
-	        scope.options.errorClass = scope.options.errorClass || 'b-error';
-	        scope.options.breakpoints = scope.options.breakpoints || false;
-	        scope.options.loadInvisible = scope.options.loadInvisible || false;
-	        scope.options.successClass = scope.options.successClass || 'b-loaded';
-	        scope.options.validateDelay = scope.options.validateDelay || 25;
-	        scope.options.saveViewportOffsetDelay = scope.options.saveViewportOffsetDelay || 50;
-	        scope.options.srcset = scope.options.srcset || 'data-srcset';
-	        scope.options.src = _source = scope.options.src || 'data-src';
-	        _supportClosest = Element.prototype.closest;
-	        _isRetina = window.devicePixelRatio > 1;
-	        _viewport = {};
-	        _viewport.top = 0 - scope.options.offset;
-	        _viewport.left = 0 - scope.options.offset;
-
-
-	        /* public functions
-	         ************************************/
-	        scope.revalidate = function() {
-	            initialize(scope);
-	        };
-	        scope.load = function(elements, force) {
-	            var opt = this.options;
-	            if (elements && elements.length === undefined) {
-	                loadElement(elements, force, opt);
-	            } else {
-	                each(elements, function(element) {
-	                    loadElement(element, force, opt);
-	                });
-	            }
-	        };
-	        scope.destroy = function() {            
-	            var util = scope._util;
-	            if (scope.options.container) {
-	                each(scope.options.container, function(object) {
-	                    unbindEvent(object, 'scroll', util.validateT);
-	                });
-	            }
-	            unbindEvent(window, 'scroll', util.validateT);
-	            unbindEvent(window, 'resize', util.validateT);
-	            unbindEvent(window, 'resize', util.saveViewportOffsetT);
-	            util.count = 0;
-	            util.elements.length = 0;
-	            util.destroyed = true;
-	        };
-
-	        //throttle, ensures that we don't call the functions too often
-	        util.validateT = throttle(function() {
-	            validate(scope);
-	        }, scope.options.validateDelay, scope);
-	        util.saveViewportOffsetT = throttle(function() {
-	            saveViewportOffset(scope.options.offset);
-	        }, scope.options.saveViewportOffsetDelay, scope);
-	        saveViewportOffset(scope.options.offset);
-
-	        //handle multi-served image src (obsolete)
-	        each(scope.options.breakpoints, function(object) {
-	            if (object.width >= window.screen.width) {
-	                _source = object.src;
-	                return false;
-	            }
-	        });
-
-	        // start lazy load
-	        setTimeout(function() {
-	            initialize(scope);
-	        }); // "dom ready" fix
-
-	    };
-
-
-	    /* Private helper functions
-	     ************************************/
-	    function initialize(self) {
-	        var util = self._util;
-	        // First we create an array of elements to lazy load
-	        util.elements = toArray(self.options);
-	        util.count = util.elements.length;
-	        // Then we bind resize and scroll events if not already binded
-	        if (util.destroyed) {
-	            util.destroyed = false;
-	            if (self.options.container) {
-	                each(self.options.container, function(object) {
-	                    bindEvent(object, 'scroll', util.validateT);
-	                });
-	            }
-	            bindEvent(window, 'resize', util.saveViewportOffsetT);
-	            bindEvent(window, 'resize', util.validateT);
-	            bindEvent(window, 'scroll', util.validateT);
-	        }
-	        // And finally, we start to lazy load.
-	        validate(self);
-	    }
-
-	    function validate(self) {
-	        var util = self._util;
-	        for (var i = 0; i < util.count; i++) {
-	            var element = util.elements[i];
-	            if (elementInView(element, self.options) || hasClass(element, self.options.successClass)) {
-	                self.load(element);
-	                util.elements.splice(i, 1);
-	                util.count--;
-	                i--;
-	            }
-	        }
-	        if (util.count === 0) {
-	            self.destroy();
-	        }
-	    }
-
-	    function elementInView(ele, options) {
-	        var rect = ele.getBoundingClientRect();
-
-	        if(options.container && _supportClosest){
-	            // Is element inside a container?
-	            var elementContainer = ele.closest(options.containerClass);
-	            if(elementContainer){
-	                var containerRect = elementContainer.getBoundingClientRect();
-	                // Is container in view?
-	                if(inView(containerRect, _viewport)){
-	                    var top = containerRect.top - options.offset;
-	                    var right = containerRect.right + options.offset;
-	                    var bottom = containerRect.bottom + options.offset;
-	                    var left = containerRect.left - options.offset;
-	                    var containerRectWithOffset = {
-	                        top: top > _viewport.top ? top : _viewport.top,
-	                        right: right < _viewport.right ? right : _viewport.right,
-	                        bottom: bottom < _viewport.bottom ? bottom : _viewport.bottom,
-	                        left: left > _viewport.left ? left : _viewport.left
-	                    };
-	                    // Is element in view of container?
-	                    return inView(rect, containerRectWithOffset);
-	                } else {
-	                    return false;
-	                }
-	            }
-	        }      
-	        return inView(rect, _viewport);
-	    }
-
-	    function inView(rect, viewport){
-	        // Intersection
-	        return rect.right >= viewport.left &&
-	               rect.bottom >= viewport.top && 
-	               rect.left <= viewport.right && 
-	               rect.top <= viewport.bottom;
-	    }
-
-	    function loadElement(ele, force, options) {
-	        // if element is visible, not loaded or forced
-	        if (!hasClass(ele, options.successClass) && (force || options.loadInvisible || (ele.offsetWidth > 0 && ele.offsetHeight > 0))) {
-	            var dataSrc = getAttr(ele, _source) || getAttr(ele, options.src); // fallback to default 'data-src'
-	            if (dataSrc) {
-	                var dataSrcSplitted = dataSrc.split(options.separator);
-	                var src = dataSrcSplitted[_isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
-	                var srcset = getAttr(ele, options.srcset);
-	                var isImage = equal(ele, 'img');
-	                var parent = ele.parentNode;
-	                var isPicture = parent && equal(parent, 'picture');
-	                // Image or background image
-	                if (isImage || ele.src === undefined) {
-	                    var img = new Image();
-	                    // using EventListener instead of onerror and onload
-	                    // due to bug introduced in chrome v50 
-	                    // (https://productforums.google.com/forum/#!topic/chrome/p51Lk7vnP2o)
-	                    var onErrorHandler = function() {
-	                        if (options.error) options.error(ele, "invalid");
-	                        addClass(ele, options.errorClass);
-	                        unbindEvent(img, 'error', onErrorHandler);
-	                        unbindEvent(img, 'load', onLoadHandler);
-	                    };
-	                    var onLoadHandler = function() {
-	                        // Is element an image
-	                        if (isImage) {
-	                            if(!isPicture) {
-	                                handleSources(ele, src, srcset);
-	                            }
-	                        // or background-image
-	                        } else {
-	                            ele.style.backgroundImage = 'url("' + src + '")';
-	                        }
-	                        itemLoaded(ele, options);
-	                        unbindEvent(img, 'load', onLoadHandler);
-	                        unbindEvent(img, 'error', onErrorHandler);
-	                    };
-	                    
-	                    // Picture element
-	                    if (isPicture) {
-	                        img = ele; // Image tag inside picture element wont get preloaded
-	                        each(parent.getElementsByTagName('source'), function(source) {
-	                            handleSource(source, _attrSrcset, options.srcset);
-	                        });
-	                    }
-	                    bindEvent(img, 'error', onErrorHandler);
-	                    bindEvent(img, 'load', onLoadHandler);
-	                    handleSources(img, src, srcset); // Preload
-
-	                } else { // An item with src like iframe, unity games, simpel video etc
-	                    ele.src = src;
-	                    itemLoaded(ele, options);
-	                }
-	            } else {
-	                // video with child source
-	                if (equal(ele, 'video')) {
-	                    each(ele.getElementsByTagName('source'), function(source) {
-	                        handleSource(source, _attrSrc, options.src);
-	                    });
-	                    ele.load();
-	                    itemLoaded(ele, options);
-	                } else {
-	                    if (options.error) options.error(ele, "missing");
-	                    addClass(ele, options.errorClass);
-	                }
-	            }
-	        }
-	    }
-
-	    function itemLoaded(ele, options) {
-	        addClass(ele, options.successClass);
-	        if (options.success) options.success(ele);
-	        // cleanup markup, remove data source attributes
-	        removeAttr(ele, options.src);
-	        removeAttr(ele, options.srcset);
-	        each(options.breakpoints, function(object) {
-	            removeAttr(ele, object.src);
-	        });
-	    }
-
-	    function handleSource(ele, attr, dataAttr) {
-	        var dataSrc = getAttr(ele, dataAttr);
-	        if (dataSrc) {
-	            setAttr(ele, attr, dataSrc);
-	            removeAttr(ele, dataAttr);
-	        }
-	    }
-
-	    function handleSources(ele, src, srcset){
-	        if(srcset) {
-	            setAttr(ele, _attrSrcset, srcset); //srcset
-	        }
-	        ele.src = src; //src 
-	    }
-
-	    function setAttr(ele, attr, value){
-	        ele.setAttribute(attr, value);
-	    }
-
-	    function getAttr(ele, attr) {
-	        return ele.getAttribute(attr);
-	    }
-
-	    function removeAttr(ele, attr){
-	        ele.removeAttribute(attr); 
-	    }
-
-	    function equal(ele, str) {
-	        return ele.nodeName.toLowerCase() === str;
-	    }
-
-	    function hasClass(ele, className) {
-	        return (' ' + ele.className + ' ').indexOf(' ' + className + ' ') !== -1;
-	    }
-
-	    function addClass(ele, className) {
-	        if (!hasClass(ele, className)) {
-	            ele.className += ' ' + className;
-	        }
-	    }
-
-	    function toArray(options) {
-	        var array = [];
-	        var nodelist = (options.root).querySelectorAll(options.selector);
-	        for (var i = nodelist.length; i--; array.unshift(nodelist[i])) {}
-	        return array;
-	    }
-
-	    function saveViewportOffset(offset) {
-	        _viewport.bottom = (window.innerHeight || document.documentElement.clientHeight) + offset;
-	        _viewport.right = (window.innerWidth || document.documentElement.clientWidth) + offset;
-	    }
-
-	    function bindEvent(ele, type, fn) {
-	        if (ele.attachEvent) {
-	            ele.attachEvent && ele.attachEvent('on' + type, fn);
-	        } else {
-	            ele.addEventListener(type, fn, { capture: false, passive: true });
-	        }
-	    }
-
-	    function unbindEvent(ele, type, fn) {
-	        if (ele.detachEvent) {
-	            ele.detachEvent && ele.detachEvent('on' + type, fn);
-	        } else {
-	            ele.removeEventListener(type, fn, { capture: false, passive: true });
-	        }
-	    }
-
-	    function each(object, fn) {
-	        if (object && fn) {
-	            var l = object.length;
-	            for (var i = 0; i < l && fn(object[i], i) !== false; i++) {}
-	        }
-	    }
-
-	    function throttle(fn, minDelay, scope) {
-	        var lastCall = 0;
-	        return function() {
-	            var now = +new Date();
-	            if (now - lastCall < minDelay) {
-	                return;
-	            }
-	            lastCall = now;
-	            fn.apply(scope, arguments);
-	        };
-	    }
-	});
-
-
-/***/ },
+/* 5 */,
 /* 6 */,
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
@@ -10413,253 +10038,113 @@
 
 	'use strict';
 
-	__webpack_require__(10);
-
-	__webpack_require__(3);
-
-	var _blazy = __webpack_require__(5);
-
-	var _blazy2 = _interopRequireDefault(_blazy);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var smoothScroll = __webpack_require__(14);
-
-	var bLazy = new _blazy2.default({
-	  successClass: 'img-fadein',
-	  offset: 0
-	});
-
-	if (document.getElementById('crema-vid-mask')) {
-	  (function () {
-	    //resize home page video
-	    var cremaVid = document.getElementById('crema-vid-logo');
-	    window.addEventListener('resize', function () {
-	      var vidMask = document.getElementById('video-size');
-	      cremaVid.style.height = vidMask.clientHeight - 20 + 'px';
-	      cremaVid.style.width = vidMask.clientWidth - 20 + 'px';
-	    });
-
-	    //turn crema video off and on if on homepage  
-	    new Waypoint({
-	      element: document.getElementById('showcase1'),
-	      handler: function handler(direction) {
-	        if (direction == 'up') {
-	          cremaVid.play();
-	          console.log('play logo vid');
-	        } else {
-	          cremaVid.pause();
-	          console.log('pause logo vid');
-	        }
-	      }
-	    });
-
-	    var scrollEnt = document.getElementById('scroll-enterprise');
-	    var enterprise = document.getElementById('ML-img');
-	    var handleScrollEnt = function handleScrollEnt(event) {
-	      event.preventDefault();
-	      smoothScroll(enterprise);
-	    };
-	    scrollEnt.addEventListener('click', handleScrollEnt);
-
-	    var scrollInnovate = document.getElementById('scroll-innovate');
-	    var innovate = document.getElementById('tilr-mobile-img');
-	    var handleScrollInno = function handleScrollInno(event) {
-	      event.preventDefault();
-	      smoothScroll(innovate, 800);
-	    };
-	    scrollInnovate.addEventListener('click', handleScrollInno);
-
-	    var scrollOur = document.getElementById('scroll-our');
-	    var ourWork = document.getElementById('scroll-to-this-point');
-	    var handleScrollOur = function handleScrollOur(event) {
-	      event.preventDefault();
-	      smoothScroll(ourWork, 900);
-	    };
-	    scrollOur.addEventListener('click', handleScrollOur);
-	  })();
-	}
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var _jquery = __webpack_require__(7);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
+	__webpack_require__(3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function draw() {
-	  requestAnimationFrame(draw);
-	  scrollEvent();
-	}
-	draw();
+	(0, _jquery2.default)(document).ready(function () {
 
-	function scrollEvent() {
-	  if (!is_small_device()) {
-	    (function () {
-	      var sym = void 0;
-	      var viewportTop = (0, _jquery2.default)(window).scrollTop();
-	      var windowHeight = (0, _jquery2.default)(window).height();
-	      var viewportBottom = windowHeight + viewportTop;
-	      if ((0, _jquery2.default)(window).width()) (0, _jquery2.default)('[data-parallax="true"]').each(function () {
-	        if (isElementInViewport(this)) {
-	          var distance = viewportTop * (0, _jquery2.default)(this).attr('data-speed');
-	          if ((0, _jquery2.default)(this).attr('data-direction') === 'up') {
-	            sym = '-';
-	          } else {
-	            sym = '';
-	          }
-	          (0, _jquery2.default)(this).css('transform', 'translate3d(0, ' + sym + distance + 'px,0)');
-	        }
-	      });
-	    })();
-	  }
-	}
-
-	function is_small_device() {
-	  return window.innerWidth < 701;
-	}
-
-	function isElementInViewport(el) {
-	  //special bonus for those using jQuery
-	  if (typeof jQuery === 'function' && el instanceof jQuery) {
-	    el = el[0];
-	  }
-
-	  var rect = el.getBoundingClientRect();
-
-	  return rect.top >= -1200 && rect.left >= -250 && rect.bottom - 1200 <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-	  rect.right - 250 <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
-	  ;
-	}
-
-/***/ },
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, smoothScroll) {
-	  'use strict';
-
-	  // Support RequireJS and CommonJS/NodeJS module formats.
-	  // Attach smoothScroll to the `window` when executed as a <script>.
-
-	  // RequireJS
-	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (smoothScroll), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-	  // CommonJS
-	  } else if (typeof exports === 'object' && typeof module === 'object') {
-	    module.exports = smoothScroll();
-
-	  } else {
-	    root.smoothScroll = smoothScroll();
-	  }
-
-	})(this, function(){
-	'use strict';
-
-	// Do not initialize smoothScroll when running server side, handle it in client:
-	if (typeof window !== 'object') return;
-
-	// We do not want this script to be applied in browsers that do not support those
-	// That means no smoothscroll on IE9 and below.
-	if(document.querySelectorAll === void 0 || window.pageYOffset === void 0 || history.pushState === void 0) { return; }
-
-	// Get the top position of an element in the document
-	var getTop = function(element) {
-	    // return value of html.getBoundingClientRect().top ... IE : 0, other browsers : -pageYOffset
-	    if(element.nodeName === 'HTML') return -window.pageYOffset
-	    return element.getBoundingClientRect().top + window.pageYOffset;
-	}
-	// ease in out function thanks to:
-	// http://blog.greweb.fr/2012/02/bezier-curve-based-easing-functions-from-concept-to-implementation/
-	var easeInOutCubic = function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
-
-	// calculate the scroll position we should be in
-	// given the start and end point of the scroll
-	// the time elapsed from the beginning of the scroll
-	// and the total duration of the scroll (default 500ms)
-	var position = function(start, end, elapsed, duration) {
-	    if (elapsed > duration) return end;
-	    return start + (end - start) * easeInOutCubic(elapsed / duration); // <-- you can change the easing funtion there
-	    // return start + (end - start) * (elapsed / duration); // <-- this would give a linear scroll
-	}
-
-	// we use requestAnimationFrame to be called by the browser before every repaint
-	// if the first argument is an element then scroll to the top of this element
-	// if the first argument is numeric then scroll to this location
-	// if the callback exist, it is called when the scrolling is finished
-	// if context is set then scroll that element, else scroll window 
-	var smoothScroll = function(el, duration, callback, context){
-	    duration = duration || 500;
-	    context = context || window;
-	    var start = window.pageYOffset;
-
-	    if (typeof el === 'number') {
-	      var end = parseInt(el);
-	    } else {
-	      var end = getTop(el);
+	  var headerVideo = document.getElementById('bgvid');
+	  new Waypoint({
+	    element: document.getElementById('trigger-video-off'),
+	    handler: function handler(direction) {
+	      if (direction == 'down') {
+	        headerVideo.pause();
+	      } else {
+	        headerVideo.play();
+	      }
 	    }
+	  });
 
-	    var clock = Date.now();
-	    var requestAnimationFrame = window.requestAnimationFrame ||
-	        window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
-	        function(fn){window.setTimeout(fn, 15);};
+	  var tagline_1 = document.getElementById('tagline-1');
+	  var tagline_2 = document.getElementById('tagline-2');
+	  var tagline_3 = document.getElementById('tagline-3');
+	  var tagline_4 = document.getElementById('tagline-4');
+	  var triggerOffset = window.innerHeight * .5;
 
-	    var step = function(){
-	        var elapsed = Date.now() - clock;
-	        if (context !== window) {
-	        	context.scrollTop = position(start, end, elapsed, duration);
-	        }
-	        else {
-	        	window.scroll(0, position(start, end, elapsed, duration));
-	        }
+	  // top-showcase-mask waypoint
+	  new Waypoint({
+	    element: tagline_1,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {
+	        tagline_1.classList.add('tagline-animate-in');
+	      } else {}
+	    },
+	    offset: triggerOffset
+	  });
+	  new Waypoint({
+	    element: tagline_2,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {
+	        tagline_2.classList.add('tagline-animate-in');
+	        tagline_1.classList.remove('tagline-animate-in');
+	      } else {}
+	    },
+	    offset: triggerOffset
+	  });
+	  new Waypoint({
+	    element: tagline_3,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {
+	        tagline_3.classList.add('tagline-animate-in');
+	        tagline_2.classList.remove('tagline-animate-in');
+	      } else {}
+	    },
+	    offset: triggerOffset
+	  });
+	  new Waypoint({
+	    element: tagline_4,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {
+	        tagline_4.classList.add('tagline-animate-in');
+	        tagline_3.classList.remove('tagline-animate-in');
+	      } else {}
+	    },
+	    offset: triggerOffset
+	  });
 
-	        if (elapsed > duration) {
-	            if (typeof callback === 'function') {
-	                callback(el);
-	            }
-	        } else {
-	            requestAnimationFrame(step);
-	        }
+	  // Going Up //
+	  new Waypoint({
+	    element: tagline_1,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_1.classList.add('tagline-animate-in');
+	        tagline_2.classList.remove('tagline-animate-in');
+	      }
 	    }
-	    step();
-	}
-
-	var linkHandler = function(ev) {
-	    ev.preventDefault();
-
-	    if (location.hash !== this.hash) window.history.pushState(null, null, this.hash)
-	    // using the history api to solve issue #1 - back doesn't work
-	    // most browser don't update :target when the history api is used:
-	    // THIS IS A BUG FROM THE BROWSERS.
-	    // change the scrolling duration in this call
-	    smoothScroll(document.getElementById(this.hash.substring(1)), 500, function(el) {
-	        location.replace('#' + el.id)
-	        // this will cause the :target to be activated.
-	    });
-	}
-
-	// We look for all the internal links in the documents and attach the smoothscroll function
-	document.addEventListener("DOMContentLoaded", function () {
-	    var internal = document.querySelectorAll('a[href^="#"]:not([href="#"])'), a;
-	    for(var i=internal.length; a=internal[--i];){
-	        a.addEventListener("click", linkHandler, false);
+	  });
+	  new Waypoint({
+	    element: tagline_2,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_2.classList.add('tagline-animate-in');
+	        tagline_3.classList.remove('tagline-animate-in');
+	      }
 	    }
+	  });
+	  new Waypoint({
+	    element: tagline_3,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_3.classList.add('tagline-animate-in');
+	        tagline_4.classList.remove('tagline-animate-in');
+	      }
+	    }
+	  });
+	  new Waypoint({
+	    element: tagline_4,
+	    handler: function handler(direction) {
+	      if (direction == 'down') {} else {
+	        tagline_3.classList.add('tagline-animate-in');
+	        tagline_4.classList.remove('tagline-animate-in');
+	      }
+	    }
+	  });
 	});
-
-	// return smoothscroll API
-	return smoothScroll;
-
-	});
-
 
 /***/ }
 /******/ ]);

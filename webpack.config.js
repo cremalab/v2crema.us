@@ -1,13 +1,14 @@
 module.exports = {
   entry: {
     bundle: ['./public/javascripts/entry.js'],
+    home: ['./public/javascripts/home.js'],
     servicesMobile: ['./public/javascripts/services-mobile.js'],
     expertiseB: ['./public/javascripts/expertise.js'],
     teamB:['./public/javascripts/team.js'],
     
   },
   output: {
-    path: './public/javascripts',
+    path: './public/javascripts/build',
     filename: '[name].js'
   },
   module: {

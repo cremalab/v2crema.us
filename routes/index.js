@@ -53,6 +53,7 @@ var logoFileNames = []
 fs.readdir(pathToLogos, function(err, names){
   if (err) console.log('Error returning logo filenames:', err)
   logoFileNames = names.map(logoName => relativePathToLogos + logoName)
+  logoFileNames = logoFileNames.filter( logoName => logoName.indexOf('.DS_Store') == -1)
   console.log(logoFileNames.length, 'Client logos loaded Sucessfully')
 })
 
@@ -64,6 +65,7 @@ var teamPhotos = []
 fs.readdir(pathToTeam, function(err, photos){
   if (err) console.log('Error returning team filenames:', err)
   teamPhotos = photos.map(photoName => relativeTeamPath + photoName)
+  teamPhotos = teamPhotos.filter( photoName => photoName.indexOf('.DS_Store') == -1)
   console.log(teamPhotos.length, 'Team Photos Loaded Sucessfully')
 })
 
@@ -76,12 +78,12 @@ console.log(teamNameTitles.length, 'Team Titles Loaded Sucessfully')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Crema.us', logoFileNames: logoFileNames })
+  res.render('home', { title: 'Crema.us', logoFileNames: logoFileNames })
 })
 
 router.get('/services', function(req, res, next) {
     res.render('services', { 
-      title: 'Crema.us',
+      title: 'Crema.us - Services',
       logoFileNames: techImgPaths, 
       techSubs: techSubs,  
       techNum: techSubs.length,
@@ -105,6 +107,15 @@ router.get('/team', function(req, res, next) {
   })
   console.log(`Serving ${teamPhotos.length} team photos to /team`)
 })
+
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { title: 'Crema.us - Contact'})
+})
+
+router.get('/work', function(req, res, next) {
+  res.render('work', { title: 'Crema.us - Work'})
+})
+
 
 
 // Work Galleries

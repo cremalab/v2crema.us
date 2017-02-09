@@ -3,68 +3,77 @@
   z-index: 5;
   width: 100%;
   overflow: hidden;
-  height: 60px; }
+  height: 72px; }
   .header-nav .grid {
     position: absolute;
     width: 100vw;
     height: 100px; }
     .header-nav .grid .links-nav {
-      width: 40%;
+      width: 540px;
       margin-right: 0;
       text-align: right;
       padding-right: 2em;
       vertical-align: middle; }
       .header-nav .grid .links-nav a {
+        color: black;
         padding-left: 20px;
         padding-right: 20px; }
     .header-nav .grid .-cremalogo {
-      text-align: left; }
+      text-align: left;
+      padding-left: 2em; }
     .header-nav .grid #cremaLogoSVG {
       height: 75px;
       margin-left: 2em;
       margin-top: 4px; }
+    .header-nav .grid .-btn-nav {
+      padding: 10px 16px;
+      width: auto;
+      height: auto; }
   .header-nav .col {
     text-align: center; }
 
 @media screen and (min-width: 701px) {
   .links-nav {
-    min-width: 500px; }
-  #crema-mobile-color-logo {
-    display: none; } }
+    min-width: 500px; } }
 
 @media screen and (max-width: 700px) {
-  #crema-logo-desktop {
-    display: none; }
-  #crema-mobile-color-logo {
-    text-align: center;
-    height: 60px; }
-    #crema-mobile-color-logo img {
-      height: 100%; }
   .header-nav {
     padding-top: 20px;
-    height: 125px;
     max-width: 100vw; }
     .header-nav .grid {
       max-width: 100vw; }
+      .header-nav .grid .-cremalogo {
+        text-align: center;
+        padding-left: 0;
+        padding-bottom: .5em;
+        padding-top: 0.3em; }
+      .header-nav .grid #cremaLogoSVG {
+        margin: 0; }
       .header-nav .grid .links-nav {
-        padding-top: 1.5em;
+        padding-top: .3em;
         padding-right: initial;
         margin-right: auto;
         width: 100%;
         text-align: center; }
-        .header-nav .grid .links-nav a {
+        .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
           font-size: 14px;
           padding-left: 10px;
-          padding-right: 10px; } }
+          padding-right: 10px;
+          color: #afafaf; }
+        .header-nav .grid .links-nav button.mango-btn {
+          background: transparent; }
+        .header-nav .grid .links-nav .-btn-nav {
+          padding: 0; } }
 
-@media screen and (max-width: 350px) {
-  .header-nav .grid .links-nav a {
+@media screen and (max-width: 355px) {
+  .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
     font-size: 12px; } }
 
 .footer {
   width: 100%;
   text-align: center;
-  padding: 5vw 0;
+  padding-top: .5vw;
+  padding-bottom: 2vw;
   position: relative;
   background-color: #fc5252; }
   .footer .footer-content {
@@ -102,16 +111,6 @@
     .footer .social-wrapper img {
       margin: 0 10px; }
 
-.post-footer {
-  text-align: center;
-  width: 100%;
-  position: relative;
-  background-color: white;
-  padding: 50px 0; }
-  .post-footer img {
-    cursor: pointer;
-    width: 25%; }
-
 @media screen and (max-width: 700px) {
   .footer .address {
     text-align: center;
@@ -121,17 +120,15 @@
     text-align: center; }
     .footer .social-wrapper a {
       display: inline-block;
-      margin-left: 5px;
-      margin-right: 5px;
+      margin-left: 1px;
+      margin-right: 1px;
       margin-bottom: 25px;
-      height: 30px; }
+      height: 18px; }
       .footer .social-wrapper a img {
         height: 100%; }
   .footer button {
     margin: 1.5em auto;
-    display: block; }
-  .post-footer img {
-    width: 70%; } }
+    display: block; } }
 
 body {
   margin: 0;
@@ -150,11 +147,16 @@ body {
   vertical-align: middle; }
 
 a {
-  color: black;
-  size: 14px;
+  color: white;
+  size: 18px;
   text-decoration: none;
-  font-family: 'Spartan', sans-serif;
-  outline: none; }
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal; }
 
 a:hover {
   color: #8CD8FD; }
@@ -169,11 +171,9 @@ p {
   font-weight: 300; }
 
 .mango-btn {
-  width: 253px;
+  padding: 0 16px;
   height: 48px;
-  font-family: 'Lato';
   font-size: 14px;
-  font-weight: 900;
   line-height: 1.4;
   color: white;
   position: relative;

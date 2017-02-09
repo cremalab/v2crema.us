@@ -217,7 +217,7 @@ block content
         
   
     .mobile-services-text-wrapper
-      .service-text-mobile
+      .service-text-mobile#mobile-service-relative
         h1 Innovation strategy
         p We'll unpack your idea and align our teams to the problem you're solving and the solution needed to create and test it quickly.  Together, we'll consider all possibilities, arriving at a strategic direction forward for your business. We'll look at the short-term launch and validation of your product alongside the long-term business opportunity and growth plan.  
       .service-text-mobile
@@ -228,7 +228,7 @@ block content
         p A good brand informs product style, copy direction, and market position.  Your brand includes all of the touch points that a person has with your product or company.  Your branding should be consistent across all mediums, and be unique to the personality and purpose of the solution. Our designers will work with you to give your product a voice and style you are extremely proud of.
       .service-text-mobile    
         h1 User experience design
-        p  We'll work to craft an experience that delights the user and enhances the value of the solution you are creating.  Our designers consider each feature's user interface, as well as the interactive moments that guide the person through the product.  Our aim is is delight users and provide them value.      
+        p  We'll work to craft an experience that delights the user and enhances the value of the solution you are creating.  Our designers consider each feature's user interface, as well as the interactive moments that guide the person through the product.  Our aim is delight users and provide them value.      
       .service-text-mobile
         h1 Web application API development
         p  Our in-house development team will collaborate with you to create web application that is ready to scale.  We use modern open source technology for API development in order to provide the most extensible platforms across devices and integrations. There's no cubes in our office. Strategy, design and development disciplines work together from product start to finish.  
@@ -271,16 +271,13 @@ block content
 
           
   include ./partials/footer
-  .post-footer
-    a(href='expertise')
-      img(src='/images/footer/pic-links/expertise.png')
 
    
   script.
-    var mobileScript = '<script type="text/javascript" src="/javascripts/servicesMobile.js"><\/script>'
+    var mobileScript = '<script type="text/javascript" src="/javascripts/build/servicesMobile.js"><\/script>'
     var element
     var parent = document.body
-    console.log(window.innerWidth)
+    //- console.log(window.innerWidth)
     if(window.innerWidth < 801){
         document.write(mobileScript)
       } else {
@@ -288,7 +285,7 @@ block content
           if(window.innerWidth < 801){
             element = document.createElement("script");
             element.type = "text/javascript";
-            element.src  = '/javascripts/servicesMobile.js';
+            element.src  = '/javascripts/build/servicesMobile.js';
             parent.appendChild(element);
             window.onresize = null
           }

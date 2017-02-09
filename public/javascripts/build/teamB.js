@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(13);
+	module.exports = __webpack_require__(12);
 
 
 /***/ },
@@ -14035,8 +14035,7 @@
 
 
 /***/ },
-/* 12 */,
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14058,15 +14057,6 @@
 	  (0, _jquery2.default)('.rel-wrapper').slick({
 	    speed: 300
 	  });
-	  var arrow = document.getElementById('value-right-arrow');
-	  //add back in for kaley if wanted
-	  // $('.rel-wrapper').on('swipe', function(event, slick, direction){
-	  //   console.log(slick.currentSlide, arrow)
-	  //   if (slick.currentSlide != 0) 
-	  //     arrow.style.opacity = 0
-	  //   else  
-	  //     arrow.style.opacity = .7
-	  // })
 	}
 
 	function unslick() {

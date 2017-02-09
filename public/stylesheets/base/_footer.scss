@@ -1,7 +1,8 @@
 .footer {
   width: 100%;
   text-align: center;
-  padding: 5vw 0;
+  padding-top: .5vw;
+  padding-bottom: 2vw;
   position: relative;
   background-color: $coral;
   .footer-content{
@@ -53,18 +54,6 @@
   }
 }
 
-.post-footer {
-  text-align: center;
-  width: 100%;
-  position: relative;
-  background-color: white;
-  padding: 50px 0;
-  img {
-    cursor: pointer;
-    width: 25%;
-  }
-}
-
 @media screen and (max-width:700px) {
   .footer {
     .address {
@@ -76,10 +65,10 @@
       text-align: center;
       a {
         display: inline-block;
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: 1px;
+        margin-right: 1px;
         margin-bottom: 25px;
-        height: 30px;
+        height: 18px;
         img { height:100%;}
       }
     
@@ -87,11 +76,6 @@
     button {
       margin: 1.5em auto;
       display: block;
-    }
-  }
-  .post-footer {
-    img {
-      width: 70%;
     }
   }
 }

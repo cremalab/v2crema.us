@@ -16,12 +16,10 @@ if (document.getElementById('services-links') && window.innerWidth > 800 ) {
   addPlayBtnListeners('videowrapper')
 
   function initServiceVideo(iframeId){
-    console.log(this.id)
     let vid = this.getElementsByTagName('iframe')[0]
     let btn = this.getElementsByClassName('play-btn-svg')[0]
     btn.style.zIndex= 0
     btn.style.animationName = 'crema-spinner-rev'
-    console.log(btn)
     if (!vid.dataset.added) {
       vid.src = vid.dataset.src
       vid.dataset.added = 'true'

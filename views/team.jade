@@ -11,7 +11,7 @@ append styles
 block vars
 
 append scripts 
-  script(src="/javascripts/teamB.js")
+  script(src="/javascripts/build/teamB.js")
   
 
 block content
@@ -96,7 +96,7 @@ block content
               img(src="/images/values/generosity@2x.png")
             .col
               h1 Generosity
-              p We desire to be generous with our time, talents, and efforts to get the right things done for the good of others
+              p We desire to be generous with our time, talents, and efforts to get the right things done for the good of others.
 
   .join-team
     h1 Join our team
@@ -107,13 +107,10 @@ block content
           a(href="#{arr[1]}" target="_blank") #{arr[0]}
     else
       .job-postings
-        p Email <a href="mailto:info@cremalab.com" style="display:inline; font-size: 20px;"> info@cremalab.com</a> to inquire about open positions
+        p Email <a href="mailto:info@cremalab.com" style="display:inline; font-size: 20px;"> info@cremalab.com</a> to inquire about open positions.
          
     
   include ./partials/footer.jade
-  .post-footer
-    a(href='/')
-      img(src='/images/footer/pic-links/what.png')
   
   script.
     var hideNormal = function (el) {
