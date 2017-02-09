@@ -1,8 +1,7 @@
-import $ from 'jquery'
 import 'waypoints/lib/noframework.waypoints.js'
 
-$(document).ready(()=>{
-  
+document.addEventListener('DOMContentLoaded', () => {
+    
   let headerVideo = document.getElementById('bgvid') 
   new Waypoint({
     element: document.getElementById('trigger-video-off'), 
