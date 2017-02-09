@@ -179,7 +179,7 @@ video[poster] {
   .showcase-wrapper .slides {
     transform: translate(0, 6.5%); }
   .card {
-    width: 200px; } }
+    width: 210px; } }
 
 @media screen and (max-width: 900px) {
   #showcase-mask-top svg, #showcase-mask-bot svg {
