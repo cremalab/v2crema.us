@@ -72,8 +72,8 @@
 .footer {
   width: 100%;
   text-align: center;
-  padding-top: .5vw;
-  padding-bottom: 2vw;
+  padding-top: .5em;
+  padding-bottom: 2em;
   position: relative;
   background-color: #fc5252; }
   .footer .footer-content {
