@@ -47,7 +47,7 @@ video#bgvid {
 }
 .banner-wrapper {
   position: relative;
-  height: 60vh;
+  height: 70vh;
   .grid {
     max-width: 1200px;
     position: relative;
@@ -125,6 +125,7 @@ video#bgvid {
 // =============
 @media screen and (max-width: 1200px) {
   .banner-wrapper {
+    height: 60vh;
     .grid {
       .sub-logo {
         padding-bottom: 0vw;
@@ -142,9 +143,6 @@ video#bgvid {
       .text {
         font-size: 18px;
       }
-      .sub-logo {
-        // padding-bottom: 6vw;
-      }
     }
   }
 }
@@ -154,18 +152,16 @@ video#bgvid {
   } }
   .banner-wrapper {
     .grid {
-      .sub-logo {
-        // padding-bottom: 6vw;
-      }
     }
   }
 } 
 
 @media (max-width: 850px) {
   .banner-wrapper {
+    height: 55vh;
     .grid {
       .col {
-        transform: translateY(-100px);
+        transform: translateY(-50px);
         vertical-align: middle;
       }
       .sub-logo {

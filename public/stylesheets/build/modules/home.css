@@ -303,7 +303,7 @@ video#bgvid {
 
 .banner-wrapper {
   position: relative;
-  height: 60vh; }
+  height: 70vh; }
   .banner-wrapper .grid {
     max-width: 1200px;
     position: relative; }
@@ -363,8 +363,10 @@ video#bgvid {
       color: #f254ca; }
 
 @media screen and (max-width: 1200px) {
-  .banner-wrapper .grid .sub-logo {
-    padding-bottom: 0vw; }
+  .banner-wrapper {
+    height: 60vh; }
+    .banner-wrapper .grid .sub-logo {
+      padding-bottom: 0vw; }
   .banner-subtext p {
     width: 80%; } }
 
@@ -377,11 +379,13 @@ video#bgvid {
     width: 80%; } }
 
 @media (max-width: 850px) {
-  .banner-wrapper .grid .col {
-    transform: translateY(-100px);
-    vertical-align: middle; }
-  .banner-wrapper .grid .sub-logo {
-    display: none; } }
+  .banner-wrapper {
+    height: 55vh; }
+    .banner-wrapper .grid .col {
+      transform: translateY(-50px);
+      vertical-align: middle; }
+    .banner-wrapper .grid .sub-logo {
+      display: none; } }
 
 @media screen and (max-width: 700px) {
   .banner-wrapper {
