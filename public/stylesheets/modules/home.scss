@@ -23,7 +23,6 @@ svg {
   }
 } 
 
-
 video#bgvid { 
     position: fixed;
     top: 50%;
@@ -48,27 +47,28 @@ video#bgvid {
 }
 .banner-wrapper {
   position: relative;
+  height: 90vh;
   .grid {
     position: relative;
-    padding-bottom: 8em;
+    .col {
+      vertical-align: bottom;
+      height: 100%;
+    }
     .text {
       font-family: 'Spartan', sans-serif;
-      font-size: 18px;
+      font-size: 1.6vw;
       line-height: .9;
       text-align: left;
       color: #ffffff;
       transform: translateY(2vw)
     }
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .banner-wrapper{
-    .grid{
-      padding-bottom: 12em;
-      .text {
-        transform: translate(-3vw,30px)
-      }
+    .sub-logo {
+      text-align: center;
+      font-size: 20px;
+      color: $servicesLinkGrey;
+      font-family: 'Lato', sans-serif;
+      padding-top: 1em;
+      padding-bottom: 10vw;
     }
   }
 }
@@ -91,7 +91,6 @@ video#bgvid {
     height: auto;
   }
 }
-
 .banner-subtext {
   height: 100%;
   background: white;
@@ -101,27 +100,75 @@ video#bgvid {
     display: inline-block;
     font-size: 22px;
     line-height: 44px;
-    padding-bottom: 3em; 
-    margin-top: 0;
-    span {
-      color: #f254ca;
-      display: block;
-    }
+    padding-bottom: 0; 
+    padding-top: .5em;
     width: 65%;
     margin-left: 3em;
-    padding-top: 4em;
     color: $servicesLinkGrey;
+    margin-top: 0;
+    span {
+      color: $pink;
+      // display: block;
+    }
   }
 }
 
+// =============
+//  Medias Queries
+// =============
+@media screen and (max-width: 1200px) {
+  .banner-wrapper {
+    .grid {
+      .sub-logo {
+        padding-bottom: 8vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .banner-wrapper {
+    .grid {
+      .text {
+        font-size: 18px;
+      }
+      .sub-logo {
+        // padding-bottom: 6vw;
+      }
+    }
+  }
+}
 @media (max-width: 950px) {
   .banner-subtext { p {
     width: 80%;
   } }
+  .banner-wrapper {
+    .grid {
+      .sub-logo {
+        padding-bottom: 6vw;
+      }
+    }
+  }
+} 
+
+@media (max-width: 850px) {
+  .banner-wrapper {
+    .grid {
+      .col {
+        transform: translateY(-100px);
+        vertical-align: middle;
+      }
+      .sub-logo {
+        display: none;
+      }
+    }
+  }
 } 
 
 @media screen and (max-width: 700px) {
    .banner-wrapper{
+     height: auto;
+     padding-bottom: 21vw;
      .video-bg {
         position: fixed;
         min-width: 100%;
@@ -137,6 +184,7 @@ video#bgvid {
      }
     .grid {
       .col {
+        height: auto;
         .banner-logo {
           padding-top: 2.5em;
           img {
@@ -147,6 +195,9 @@ video#bgvid {
       }
       .text {
         font-size: 14px;
+      }
+      .sub-logo {
+        display: none;
       }
     }
   }
@@ -163,9 +214,6 @@ video#bgvid {
 @media screen and (min-width: 701px) { 
   .banner-mask {
     bottom: -1px;
-  }
-  .banner-wrapper {
-    padding-top: 7em; 
   }
   .showcase-mobile-wrapper {
     display: none;

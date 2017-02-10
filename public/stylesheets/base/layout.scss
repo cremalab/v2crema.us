@@ -15,6 +15,9 @@ body{
   height: 100%;
   width: 100%;
 }
+.row {
+  display: table-row;
+}
 .col {
   display: table-cell;
   vertical-align: middle;
