@@ -417,8 +417,7 @@ video#bgvid {
     margin: 0 auto; }
     .banner-subtext p {
       margin: 0 auto;
-      display: block;
-      font-size: 20px; } }
+      display: block; } }
 
 @media screen and (min-width: 701px) {
   .banner-mask {
