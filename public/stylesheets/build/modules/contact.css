@@ -25,6 +25,14 @@ body {
     font-size: 1.6em;
     padding: 1em 0; }
 
+.typeform h1 {
+  margin-bottom: 10px; }
+
+.typeform p {
+  font-family: 'Spartan', sans-serif;
+  margin-top: 0;
+  font-size: 20px; }
+
 .footer {
   background: transparent;
   padding: 0; }
