@@ -32,15 +32,17 @@ ul {
   width: 135px;
   height: 65px;
   margin: 1em;
-  vertical-align: middle; }
+  box-sizing: initial; }
 
 /*sliding usecase divs under earch other*/
 @media screen and (max-width: 500px) {
+  #waypoints-logos > ul > li:nth-child(1) > img {
+    max-height: initial;
+    padding-bottom: 15px; }
   .landing-logos .logo {
-    width: 90px;
+    width: 150px;
     margin-left: .11em;
-    margin-right: .11em;
-    vertical-align: middle; }
+    margin-right: .11em; }
     .landing-logos .logo img {
       width: 100%;
       height: auto; } }

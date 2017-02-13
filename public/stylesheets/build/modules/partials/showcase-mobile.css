@@ -4,7 +4,8 @@
   .showcase-mobile-wrapper {
     background: white; }
   .showcase-mobile {
-    position: relative; }
+    position: relative;
+    background: white; }
     .showcase-mobile svg {
       position: absolute;
       z-index: 0;
