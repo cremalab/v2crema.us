@@ -2,6 +2,13 @@
 
 .header-nav {
   position: fixed;
+  .grid {
+    .links-nav {
+      a,button {
+      color: white;
+      }
+    }
+  }
 }
 
 .svg-wrapper {
@@ -430,7 +437,7 @@
   
   .header-nav {
     padding-top: 20px;
-    height: 90px;
+    height: 85px;
     max-width: 100vw;
     .grid {
       .-cremalogo {

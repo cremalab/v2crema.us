@@ -1,6 +1,16 @@
 @import '../base/_colors';
 
 
+.header-nav {
+  .grid {
+    .links-nav {
+      a,button {
+      color: white;
+      }
+    }
+  }
+}
+
 .headline {
   padding-top: 4em;
   color: white;
@@ -80,6 +90,15 @@
 }
 
 @media screen and (max-width: 700px) {
+  .header-nav {
+  .grid {
+    .links-nav {
+      a,button {
+      color: $servicesLinkGrey;
+      }
+    }
+  }
+}
   .expertise-header-svg {
     height: 75vh;
     top: auto;

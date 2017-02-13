@@ -1,8 +1,8 @@
 body {
   background: #fc5277; }
 
-.header-nav .grid .links-nav a {
-  color: black; }
+.header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
+  color: white; }
 
 .contact-details {
   padding-top: 3em;
@@ -46,8 +46,6 @@ body {
     width: 80vw; } }
 
 @media screen and (max-width: 700px) {
-  .header-nav .grid .links-nav button {
-    color: black; }
   .contact-details {
     padding-top: 2em; }
   .title h1 {

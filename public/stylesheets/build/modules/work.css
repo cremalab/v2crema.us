@@ -99,7 +99,7 @@
 
 @media screen and (max-width: 700px) {
   .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
-    color: black; }
+    color: #afafaf; }
   .work-showcase {
     padding: 1em 0; }
   .work {

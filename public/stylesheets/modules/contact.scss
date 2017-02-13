@@ -7,8 +7,8 @@ body {
 .header-nav {
     .grid {
      .links-nav {
-       a {
-       color: black;
+       a, button {
+       color: white;
        }
      }
     }
@@ -71,15 +71,7 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  .header-nav {
-    .grid {
-     .links-nav {
-       button {
-       color: black;
-       }
-     }
-    }
-  } 
+  
   .contact-details {
     padding-top: 2em;
   }

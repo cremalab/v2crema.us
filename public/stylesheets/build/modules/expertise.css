@@ -1,3 +1,6 @@
+.header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
+  color: white; }
+
 .headline {
   padding-top: 4em;
   color: white;
@@ -64,6 +67,8 @@
     color: #8CD8FD; }
 
 @media screen and (max-width: 700px) {
+  .header-nav .grid .links-nav a, .header-nav .grid .links-nav button {
+    color: #afafaf; }
   .expertise-header-svg {
     height: 75vh;
     top: auto;

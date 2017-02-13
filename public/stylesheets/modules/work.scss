@@ -1,3 +1,5 @@
+@import '../base/_colors';
+
 .header-nav {
   .grid {
     .links-nav {
@@ -120,7 +122,7 @@
     .grid {
     .links-nav {
       a,button {
-      color: black;
+      color: $servicesLinkGrey;
       }
     }}
   } 
