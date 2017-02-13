@@ -387,6 +387,12 @@ video#bgvid {
     .banner-wrapper .grid .sub-logo {
       display: none; } }
 
+@media screen and (min-width: 701px) {
+  .banner-mask {
+    bottom: -1px; }
+  .showcase-mobile-wrapper {
+    display: none; } }
+
 @media screen and (max-width: 700px) {
   .banner-wrapper {
     height: auto;
@@ -421,12 +427,6 @@ video#bgvid {
 @media screen and (max-width: 550px) {
   .banner-wrapper {
     padding-top: 24vw; } }
-
-@media screen and (min-width: 701px) {
-  .banner-mask {
-    bottom: -1px; }
-  .showcase-mobile-wrapper {
-    display: none; } }
 
 @media screen and (max-width: 350px) {
   .banner-wrapper {

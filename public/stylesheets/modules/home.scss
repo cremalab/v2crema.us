@@ -157,6 +157,8 @@ video#bgvid {
   }
 } 
 
+
+
 @media (max-width: 850px) {
   .banner-wrapper {
     height: 55vh;
@@ -171,6 +173,15 @@ video#bgvid {
     }
   }
 } 
+
+@media screen and (min-width: 701px) { 
+  .banner-mask {
+    bottom: -1px;
+  }
+  .showcase-mobile-wrapper {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 700px) {
    .banner-wrapper {
@@ -221,16 +232,6 @@ video#bgvid {
   .banner-wrapper {
     padding-top: 24vw;
   }
-}
-
-@media screen and (min-width: 701px) { 
-  .banner-mask {
-    bottom: -1px;
-  }
-  .showcase-mobile-wrapper {
-    display: none;
-  }
-
 }
 
 @media screen and (max-width: 350px) {
