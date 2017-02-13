@@ -391,7 +391,7 @@ video#bgvid {
   .banner-wrapper {
     height: auto;
     padding-bottom: 21vw;
-    padding-top: 6vw; }
+    padding-top: 18vw; }
     .banner-wrapper .video-bg {
       position: fixed;
       min-width: 100%;
@@ -406,10 +406,8 @@ video#bgvid {
     .banner-wrapper .grid .col {
       height: auto;
       text-align: center; }
-      .banner-wrapper .grid .col .banner-logo {
-        padding-top: 2.5em; }
-        .banner-wrapper .grid .col .banner-logo img {
-          margin: 0 auto; }
+      .banner-wrapper .grid .col .banner-logo img {
+        margin: 0 auto; }
     .banner-wrapper .grid .text {
       font-size: 14px; }
     .banner-wrapper .grid .sub-logo {
@@ -427,5 +425,5 @@ video#bgvid {
     display: none; } }
 
 @media screen and (max-width: 350px) {
-  .banner-wrapper .grid .col .banner-logo {
-    padding-top: 1.5em; } }
+  .banner-wrapper {
+    padding-top: 22vw; } }
