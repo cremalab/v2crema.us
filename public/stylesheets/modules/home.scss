@@ -173,9 +173,9 @@ video#bgvid {
 } 
 
 @media screen and (max-width: 700px) {
-   .banner-wrapper{
+   .banner-wrapper {
      height: auto;
-     padding-bottom: 21vw;
+     padding-bottom: 18vw;
      padding-top: 18vw;
      .video-bg {
         position: fixed;
@@ -217,6 +217,12 @@ video#bgvid {
 
 }
 
+@media screen and (max-width: 550px) {
+  .banner-wrapper {
+    padding-top: 24vw;
+  }
+}
+
 @media screen and (min-width: 701px) { 
   .banner-mask {
     bottom: -1px;
@@ -229,7 +235,7 @@ video#bgvid {
 
 @media screen and (max-width: 350px) {
   .banner-wrapper {
-    padding-top: 22vw;
+    padding-top: 28vw;
   }
 }
 
