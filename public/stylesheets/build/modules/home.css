@@ -40,7 +40,8 @@ ul {
     max-height: initial;
     padding-bottom: 15px; }
   .landing-logos .logo {
-    width: 150px;
+    height: auto;
+    vertical-align: middle;
     margin-left: .11em;
     margin-right: .11em; }
     .landing-logos .logo img {
