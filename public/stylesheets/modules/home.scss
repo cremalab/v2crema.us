@@ -14,6 +14,7 @@ svg {
 * { box-sizing: border-box;}
 
 .header-nav {
+  animation: fade-in-logo 2.5s ease-out 1;
   .grid {
     .links-nav {
       a, button {
@@ -37,6 +38,7 @@ video#bgvid {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     background-size: cover; 
+    animation: fade-in-logo 3.5s ease-out 1;
     
 }
 .gradient-header {
@@ -45,6 +47,7 @@ video#bgvid {
   top: 0px;
   height: 145px;
   width: 100vw;
+  animation: fade-in-logo 3s ease-out 1;
 }
 .banner-wrapper {
   position: relative;
@@ -62,7 +65,8 @@ video#bgvid {
       line-height: .9;
       text-align: left;
       color: #ffffff;
-      transform: translateY(2vw)
+      transform: translateY(2vw);
+      animation: fade-in-faster 4s ease-out 1;
     }
     .sub-logo {
       h1 {
@@ -72,6 +76,7 @@ video#bgvid {
         transform: translateX(10px);
         color: $pink;
         font-family: 'Lato', sans-serif;
+        animation: fade-in-faster 2.5s ease-out 1;
       }
       padding-top: 1em;
       padding-bottom: 2vw;
@@ -85,9 +90,21 @@ video#bgvid {
     width: 55vw;
     max-width: 600px;
     display: block;
-     margin: 0 auto;
+    margin: 0 auto;
+    animation: fade-in-logo 1.5s ease-out 1;
   }
 }
+
+@keyframes fade-in-logo {
+  0% {opacity: 0}
+  55% {opacity: 0}
+  100% {opacity: 100}
+} 
+@keyframes fade-in-faster {
+  0% {opacity: 0}
+  85% {opacity: 0}
+  100% {opacity: 100}
+} 
 
 .banner-mask {
   position: absolute;
@@ -104,6 +121,7 @@ video#bgvid {
   position: relative;
   text-align: center;
   p {
+    animation: fade-in-logo 6.5s ease-out 1;
     display: inline-block;
     font-size: 18px;
     text-align: left;
