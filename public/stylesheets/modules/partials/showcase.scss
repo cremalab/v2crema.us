@@ -164,12 +164,22 @@
 .card {
   box-shadow: -1px 2px 10px -3px rgba(0,0,0,0.75);
   width: 255px;
+  position: relative;
   background: white;
   margin: 2em .5em 2em .5em;
   transition: all .4s;
   img {
     width:100%;
     height: auto;
+    margin-bottom: -4px;
+  }
+  .play-icon {
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: .8;
+    transform: translate(-50%,-50%);
   }
   p {
     padding-top: 20px;
@@ -189,7 +199,7 @@
 }
 
 .card:hover {
-      box-shadow: -1px 12px 25px -2px rgba(100, 100, 100, 1);
+  box-shadow: -1px 12px 25px -2px rgba(100, 100, 100, 1);
 }
 
 

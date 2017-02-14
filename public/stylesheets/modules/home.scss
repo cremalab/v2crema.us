@@ -115,8 +115,7 @@ video#bgvid {
     margin: 0 auto;
     color: $servicesLinkGrey;
     span {
-      color: $pink;
-      // display: block;
+      display: none;
     }
   }
 }
@@ -160,6 +159,12 @@ video#bgvid {
 
 
 @media (max-width: 850px) {
+  .banner-subtext {
+    p { span {
+      display: initial;
+      color: $pink;
+    }}
+  }
   .banner-wrapper {
     height: 55vh;
     .grid {
