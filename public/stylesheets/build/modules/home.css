@@ -376,6 +376,10 @@ video#bgvid {
     .banner-subtext p span {
       display: none; }
 
+@media screen and (min-width: 1400px) {
+  .banner-wrapper {
+    padding-bottom: 2vw; } }
+
 @media screen and (max-width: 1200px) {
   .banner-wrapper {
     height: 60vh; }
