@@ -45,6 +45,7 @@ ul {
     margin-left: .11em;
     margin-right: .11em; }
     .landing-logos .logo img {
+      max-width: 125px;
       width: 100%;
       height: auto; } }
 
