@@ -421,14 +421,18 @@ video#bgvid {
     width: 80%; } }
 
 @media (max-width: 850px) {
-  .banner-subtext p span {
-    display: initial;
-    color: #f254ca; }
+  .banner-subtext p {
+    animation: fade-in-logo 3.5s ease-out 1; }
+    .banner-subtext p span {
+      display: initial;
+      color: #f254ca; }
   .banner-wrapper {
     height: 55vh; }
     .banner-wrapper .grid .col {
       transform: translateY(-50px);
       vertical-align: middle; }
+    .banner-wrapper .grid .text {
+      animation: fade-in-logo 2.5s ease-out 1; }
     .banner-wrapper .grid .sub-logo {
       display: none; } }
 

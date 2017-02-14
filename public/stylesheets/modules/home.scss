@@ -184,7 +184,9 @@ video#bgvid {
 
 @media (max-width: 850px) {
   .banner-subtext {
-    p { span {
+    p {
+      animation: fade-in-logo 3.5s ease-out 1; 
+      span {
       display: initial;
       color: $pink;
     }}
@@ -195,6 +197,9 @@ video#bgvid {
       .col {
         transform: translateY(-50px);
         vertical-align: middle;
+      }
+      .text {
+        animation: fade-in-logo 2.5s ease-out 1;
       }
       .sub-logo {
         display: none;
