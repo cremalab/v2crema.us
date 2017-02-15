@@ -20,18 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let tagline_4 = document.getElementById('tagline-4')
   let triggerOffset = window.innerHeight * .5
    
+  tagline_1.classList.add('tagline-animate-in')
   // top-showcase-mask waypoint
-  new Waypoint({
-    element: tagline_1, 
-    handler: function(direction) {
-      if (direction == 'down') {
-        tagline_1.classList.add('tagline-animate-in')
-      } else {
-        
-      }
-    },
-    offset: triggerOffset  
-  })
   new Waypoint({
     element: tagline_2, 
     handler: function(direction) {

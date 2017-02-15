@@ -65,9 +65,6 @@
   }
 }
 
-.-opacity-0 {
- opacity: 0; 
-}
 .tagline-animate-in {
   margin-left:15%;
   opacity: 1;
@@ -118,8 +115,6 @@
 .showcase-mask-bot-start {
   position: absolute;
   bottom: -1px;
-  // top: 100vh;
-  // transform: translateY(-100%);
 }
 .showcase-mask-bot-scroll {
   position: fixed;
@@ -130,7 +125,6 @@
   position: absolute;
   bottom: -2px;
 }
-
 
 #showcase-mask-bot {
   display: flex;
