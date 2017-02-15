@@ -334,7 +334,7 @@ video#bgvid {
       transform: translateY(2vw);
       animation: fade-in-faster 2.5s ease-out 1;
       text-shadow: 0px 1px 1px #323232; }
-      .banner-wrapper .grid .text p {
+      .banner-wrapper .grid .text h2 {
         font-size: 2em;
         font-family: 'Spartan', sans-serif;
         font-weight: bold;
